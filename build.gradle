@@ -1,11 +1,10 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
-        jcenter()
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -17,7 +16,7 @@ apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remappe
 
 version = "${project.minecraft_version}-${project.mod_version}"
 group = "lykrast.glassential"
-archivesBaseName = "glassential-forge"
+archivesBaseName = "glassential-renewed-forge"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
