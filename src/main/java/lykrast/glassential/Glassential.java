@@ -5,14 +5,12 @@ import lykrast.glassential.init.GItems;
 import lykrast.glassential.tab.GlassentialCreativeTab;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,8 +41,7 @@ public class Glassential {
 		LOGGER.info("Starting Glassential Renewed...");
 	}
 
-	@OnlyIn(Dist.CLIENT)
-	private void setupClient(final FMLCommonSetupEvent event) {
+	private void setupClient(final FMLClientSetupEvent event) {
 		ItemBlockRenderTypes.setRenderLayer(GBlocks.GLASS_DOOR.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(GBlocks.GLASS_TRAPDOOR.get(), RenderType.cutout());
 
