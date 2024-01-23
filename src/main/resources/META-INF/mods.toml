@@ -1,13 +1,13 @@
 modLoader="javafml"
-loaderVersion="[48,)"
-issueTrackerURL="https://github.com/Lykrast/Glassential/issues"
-license="MIT License https://github.com/Lykrast/Glassential/blob/master/LICENSE"
+loaderVersion="[49,)"
+issueTrackerURL="https://github.com/bigenergy/glassential-renewed/issues"
+license="MIT License https://github.com/bigenergy/glassential-renewed/blob/master/LICENSE"
 
 [[mods]]
 modId="glassential"
 version="${file.jarVersion}"
 displayName="Glassential"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/glassential"
+displayURL="https://curseforge.com/minecraft/mc-mods/glassential-renewed"
 logoFile="logo.png"
 credits="Extra Utilities 2 for the inspiration, MayusYT for the name, Wouter for the awesome logo, UpcraftLP for the Fabric maintain."
 authors="Lykrast / Ported by Big_Energy"
@@ -18,12 +18,12 @@ Various glasses for all your decorative needs.
 [[dependencies.glassential]]
     modId="forge"
     mandatory=true
-    versionRange="[48,)"
+    versionRange="[49,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.glassential]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.2,]"
+    versionRange="[1.20.4]"
     ordering="NONE"
     side="BOTH"

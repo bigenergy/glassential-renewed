@@ -58,7 +58,7 @@ public class Glassential {
 
 	private static Block.Properties glassProp() {
 		//Turns out "from" doesn't copy everything that glass sets
-		return Block.Properties.copy(Blocks.GLASS)
+		return Block.Properties.ofFullCopy(Blocks.GLASS)
 				.isValidSpawn(Glassential::neverAllowSpawn)
 				.isRedstoneConductor(Glassential::isntSolid)
 				.isSuffocating(Glassential::isntSolid)

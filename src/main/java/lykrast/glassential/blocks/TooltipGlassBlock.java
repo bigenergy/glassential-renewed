@@ -1,25 +1,25 @@
 package lykrast.glassential.blocks;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.GlassBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class TooltipGlassBlock extends GlassBlock {
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class TooltipGlassBlock extends TransparentBlock {
 	//Used for Light and Ghostly glass that don't need their own classes for their properties
 	private String tooltip;
 
 	public TooltipGlassBlock(Properties properties, String tooltip) {
 		super(properties);
 		this.tooltip = tooltip;
+		properties.strength(0.3F);
 	}
 
 	@Override
