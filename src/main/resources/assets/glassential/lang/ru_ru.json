@@ -6,6 +6,9 @@
     "block.glassential.glass_ghostly": "Призрачное стекло",
     "block.glassential.glass_light": "Светящееся стекло",
     "block.glassential.glass_redstone": "Редстоуновое стекло",
+
+    "block.glassential.glass_door": "Стеклянная дверь",
+    "block.glassential.glass_trapdoor": "Стеклянный люк",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.ethereal": "Пропускает игрока",
@@ -14,5 +17,5 @@
     "tooltip.glassential.light": "Излучает свет",
     "tooltip.glassential.redstone": "Излучает сигнал редстоуна",
 	
-    "itemGroup.glassential.items": "Glassential"
+    "itemGroup.glassential": "Glassential Renewed"
 }

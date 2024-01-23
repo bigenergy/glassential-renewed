@@ -1,13 +1,13 @@
 modLoader="javafml"
 loaderVersion="[47,)"
-issueTrackerURL="https://github.com/Lykrast/Glassential/issues"
+issueTrackerURL="https://github.com/bigenergy/glassential-renewed/issues"
 license="MIT License https://github.com/Lykrast/Glassential/blob/master/LICENSE"
 
 [[mods]]
 modId="glassential"
 version="${file.jarVersion}"
-displayName="Glassential"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/glassential"
+displayName="Glassential Renewed"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/glassential-renewed"
 logoFile="logo.png"
 credits="Extra Utilities 2 for the inspiration, MayusYT for the name, Wouter for the awesome logo, UpcraftLP for the Fabric maintain."
 authors="Lykrast / Ported by Big_Energy"
