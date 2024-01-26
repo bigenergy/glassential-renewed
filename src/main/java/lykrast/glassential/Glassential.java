@@ -37,7 +37,6 @@ public class Glassential {
 	@SubscribeEvent
 	public void onServerStarting(ServerStartingEvent event)
 	{
-		// Do something when the server starts
 		LOGGER.info("Starting Glassential Renewed...");
 	}
 
