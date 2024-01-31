@@ -1,10 +1,6 @@
 {
-    "ctm": {
-        "ctm_version": 1,
-        "type": "ctm",
-        "layer": "TRANSLUCENT",
-        "textures": [
-            "glassential:block/ethereal_reverse-ctm"
-        ]
+    "fusion": {
+        "type": "connecting",
+        "layout": "simple"
     }
 }
