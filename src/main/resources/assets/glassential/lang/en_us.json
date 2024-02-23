@@ -8,6 +8,7 @@
     "block.glassential.glass_redstone": "Redstone Glass",
 
     "block.glassential.glass_door": "Glass Door",
+    "block.glassential.dark_ethereal_door": "Tinted Ethereal Glass Door",
     "block.glassential.glass_trapdoor": "Glass TrapDoor",
 	
     "tooltip.glassential.dark": "Blocks light",
