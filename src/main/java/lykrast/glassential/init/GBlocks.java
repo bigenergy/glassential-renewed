@@ -7,6 +7,7 @@ import lykrast.glassential.blocks.RedstoneGlassBlock;
 import lykrast.glassential.blocks.TooltipGlassBlock;
 import lykrast.glassential.doors.GlassDoorBlock;
 import lykrast.glassential.doors.GlassLightDoorBlock;
+import lykrast.glassential.doors.GlassLightTrapDoorBlock;
 import lykrast.glassential.doors.GlassTrapDoorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -93,6 +94,12 @@ public class GBlocks {
     public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door", () ->
             new GlassLightDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
+    public static final RegistryObject<Block> REDSTONE_DOOR = registerBlock("redstone_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GHOSTLY_DOOR = registerBlock("ghostly_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
     // trapdoors
 
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
@@ -109,6 +116,15 @@ public class GBlocks {
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerBlock("ethereal_reverse_trapdoor", () ->
             new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerBlock("redstone_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GHOSTLY_TRAPDOOR = registerBlock("ghostly_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor", () ->
+            new GlassLightTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
     // end
 

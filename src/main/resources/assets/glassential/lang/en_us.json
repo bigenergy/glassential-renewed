@@ -13,7 +13,7 @@
     "block.glassential.ethereal_door": "Ethereal Glass Door",
     "block.glassential.ethereal_reverse_door": "Ethereal Reverse Glass Door",
     "block.glassential.light_door": "Luminous Glass Door",
-    "block.glassential.redstone_door": "Red Glass Door",
+    "block.glassential.redstone_door": "Redstone Glass Door",
     "block.glassential.ghostly_door": "Ghostly Glass Door",
 
     "block.glassential.glass_trapdoor": "Glass TrapDoor",
@@ -21,6 +21,9 @@
     "block.glassential.dark_ethereal_reverse_trapdoor": "Tinted Reverse Ethereal Glass TrapDoor",
     "block.glassential.ethereal_trapdoor": "Ethereal Glass TrapDoor",
     "block.glassential.ethereal_reverse_trapdoor": "Ethereal Reverse Glass TrapDoor",
+    "block.glassential.ghostly_trapdoor": "Ghostly Glass TrapDoor",
+    "block.glassential.redstone_trapdoor": "Redstone Glass TrapDoor",
+    "block.glassential.light_trapdoor": "Luminous Glass TrapDoor",
 	
     "tooltip.glassential.dark": "Blocks light",
     "tooltip.glassential.ethereal": "Not solid to players",

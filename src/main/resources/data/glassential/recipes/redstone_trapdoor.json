@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "##",
+      "##"
+    ],
+    "key": {
+      "#": {
+        "item": "glassential:glass_redstone"
+      }
+    },
+    "result": {
+      "item": "glassential:redstone_trapdoor"
+    }
+  }

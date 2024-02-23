@@ -21,6 +21,9 @@
     "block.glassential.dark_ethereal_reverse_trapdoor": "Люк из обратного тёмного эфирного стекла",
     "block.glassential.ethereal_trapdoor": "Люк из эфирного стекла",
     "block.glassential.ethereal_reverse_trapdoor": "Люк из обратного эфирного стекла",
+    "block.glassential.ghostly_trapdoor": "Люк из призрачного стекла",
+    "block.glassential.redstone_trapdoor": "Люк из редстоунового стекла",
+    "block.glassential.light_trapdoor": "Люк из светящегося стекла",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.ethereal": "Пропускает игрока",
