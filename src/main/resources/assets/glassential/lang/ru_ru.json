@@ -9,6 +9,8 @@
 
     "block.glassential.glass_door": "Стеклянная дверь",
     "block.glassential.dark_ethereal_door": "Дверь из тёмного эфирного стекла",
+    "block.glassential.dark_ethereal_reverse_door": "Дверь из обратного тёмного эфирного стекла",
+
     "block.glassential.glass_trapdoor": "Стеклянный люк",
 	
     "tooltip.glassential.dark": "Блокирует свет",

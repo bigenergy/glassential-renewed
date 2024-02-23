@@ -82,6 +82,9 @@ public class GBlocks {
 
     public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerBlock("dark_ethereal_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_DOOR = registerBlock("dark_ethereal_reverse_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
     // end
 
     private static Block.Properties glassProp() {
