@@ -77,9 +77,6 @@ public class GBlocks {
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
-    public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
-
     public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerBlock("dark_ethereal_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
@@ -91,6 +88,24 @@ public class GBlocks {
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerBlock("ethereal_reverse_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    // trapdoors
+
+    public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> DARK_ETHEREAL_TRAPDOOR = registerBlock("dark_ethereal_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerBlock("dark_ethereal_reverse_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerBlock("ethereal_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerBlock("ethereal_reverse_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
     // end
 
     private static Block.Properties glassProp() {

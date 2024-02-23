@@ -14,6 +14,10 @@
     "block.glassential.ethereal_reverse_door": "Дверь из обратного эфирного стекла",
 
     "block.glassential.glass_trapdoor": "Стеклянный люк",
+    "block.glassential.dark_ethereal_trapdoor": "Люк из тёмного эфирного стекла",
+    "block.glassential.dark_ethereal_reverse_trapdoor": "Люк из обратного тёмного эфирного стекла",
+    "block.glassential.ethereal_trapdoor": "Люк из эфирного стекла",
+    "block.glassential.ethereal_reverse_trapdoor": "Люк из обратного эфирного стекла",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.ethereal": "Пропускает игрока",
