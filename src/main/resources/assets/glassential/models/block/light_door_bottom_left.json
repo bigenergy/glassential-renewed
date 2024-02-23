@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "render_type": "cutout",
+  "textures": {
+    "bottom": "glassential:block/light_door_bottom",
+    "top": "glassential:block/light_door_top"
+  }
+}

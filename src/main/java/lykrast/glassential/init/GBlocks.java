@@ -6,6 +6,7 @@ import lykrast.glassential.blocks.EtherealGlassBlock;
 import lykrast.glassential.blocks.RedstoneGlassBlock;
 import lykrast.glassential.blocks.TooltipGlassBlock;
 import lykrast.glassential.doors.GlassDoorBlock;
+import lykrast.glassential.doors.GlassLightDoorBlock;
 import lykrast.glassential.doors.GlassTrapDoorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -88,6 +89,9 @@ public class GBlocks {
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerBlock("ethereal_reverse_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door", () ->
+            new GlassLightDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
     // trapdoors
 

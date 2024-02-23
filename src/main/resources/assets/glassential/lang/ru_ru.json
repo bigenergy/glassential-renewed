@@ -12,6 +12,9 @@
     "block.glassential.dark_ethereal_reverse_door": "Дверь из обратного тёмного эфирного стекла",
     "block.glassential.ethereal_door": "Дверь из эфирного стекла",
     "block.glassential.ethereal_reverse_door": "Дверь из обратного эфирного стекла",
+    "block.glassential.light_door": "Дверь из светящегося стекла",
+    "block.glassential.redstone_door": "Дверь из редстоунового стекла",
+    "block.glassential.ghostly_door": "Дверь из призрачного стекла",
 
     "block.glassential.glass_trapdoor": "Стеклянный люк",
     "block.glassential.dark_ethereal_trapdoor": "Люк из тёмного эфирного стекла",
