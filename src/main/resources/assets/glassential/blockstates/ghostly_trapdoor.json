@@ -44,7 +44,7 @@
         "y": 180
       },
       "facing=south,half=top,open=true": {
-        "model": "moredoors:block/ghostly_trapdoor_open",
+        "model": "glassential:block/ghostly_trapdoor_open",
         "x": 180,
         "y": 0
       },
