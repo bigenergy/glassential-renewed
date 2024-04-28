@@ -30,7 +30,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-public class GBlocks {
+public class GlassentialBlocks {
     public static final SoundEvent METAL_OPEN = SoundEvents.IRON_DOOR_OPEN;
     public static final SoundEvent METAL_CLOSE = SoundEvents.IRON_DOOR_CLOSE;
     public static final SoundEvent WOOD_OPEN = SoundEvents.WOODEN_DOOR_OPEN;
@@ -134,10 +134,10 @@ public class GBlocks {
     private static Block.Properties glassProp() {
         //Turns out "from" doesn't copy everything that glass sets
         return Block.Properties.copy(Blocks.GLASS)
-                .isValidSpawn(GBlocks::never)
-                .isRedstoneConductor(GBlocks::isntSolid)
-                .isSuffocating(GBlocks::isntSolid)
-                .isViewBlocking(GBlocks::isntSolid);
+                .isValidSpawn(GlassentialBlocks::never)
+                .isRedstoneConductor(GlassentialBlocks::isntSolid)
+                .isSuffocating(GlassentialBlocks::isntSolid)
+                .isViewBlocking(GlassentialBlocks::isntSolid);
     }
 
     private static Block.Properties glassStairsProp() {
@@ -145,10 +145,10 @@ public class GBlocks {
         return BlockBehaviour.Properties.of()
                 .instrument(NoteBlockInstrument.HAT).strength(0.3F)
                 .sound(SoundType.GLASS).noOcclusion()
-                .isValidSpawn(GBlocks::never)
-                .isRedstoneConductor(GBlocks::never)
-                .isSuffocating(GBlocks::never)
-                .isViewBlocking(GBlocks::never);
+                .isValidSpawn(GlassentialBlocks::never)
+                .isRedstoneConductor(GlassentialBlocks::never)
+                .isSuffocating(GlassentialBlocks::never)
+                .isViewBlocking(GlassentialBlocks::never);
     }
 
 
@@ -172,7 +172,7 @@ public class GBlocks {
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return GItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        return GlassentialItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
 

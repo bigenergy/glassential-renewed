@@ -1,7 +1,7 @@
 package com.bigenergy.glassential;
 
-import com.bigenergy.glassential.init.GBlocks;
-import com.bigenergy.glassential.init.GItems;
+import com.bigenergy.glassential.init.GlassentialBlocks;
+import com.bigenergy.glassential.init.GlassentialItems;
 import com.bigenergy.glassential.tab.GlassentialCreativeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -22,8 +22,8 @@ public class Glassential {
 	public Glassential() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		GBlocks.register(bus);
-		GItems.register(bus);
+		GlassentialBlocks.register(bus);
+		GlassentialItems.register(bus);
 
 		bus.addListener(GlassentialCreativeTab::registerTab);
 
