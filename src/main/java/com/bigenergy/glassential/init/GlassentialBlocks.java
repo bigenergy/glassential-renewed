@@ -9,6 +9,10 @@ import com.bigenergy.glassential.doors.GlassLightDoorBlock;
 import com.bigenergy.glassential.doors.GlassLightTrapDoorBlock;
 import com.bigenergy.glassential.doors.GlassTrapDoorBlock;
 import com.bigenergy.glassential.doors.GlassDoorBlock;
+import com.bigenergy.glassential.panes.DarkEtherealPaneBlock;
+import com.bigenergy.glassential.panes.EtherealPaneBlock;
+import com.bigenergy.glassential.panes.BasicPaneBlock;
+import com.bigenergy.glassential.panes.RedstonePaneBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -76,8 +80,6 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone", () ->
             new RedstoneGlassBlock(glassProp()));
 
-
-
     // doors
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
@@ -131,8 +133,33 @@ public class GlassentialBlocks {
 
     // end
 
+    // panes
+    public static final RegistryObject<Block> GLASS_DARK_ETHEREAL_PANE = registerBlock("glass_dark_ethereal_pane", () ->
+            new DarkEtherealPaneBlock(glassPaneProp().noCollission(), false));
+
+    public static final RegistryObject<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerBlock("glass_dark_ethereal_reverse_pane", () ->
+            new DarkEtherealPaneBlock(glassPaneProp().noCollission(), true));
+
+    public static final RegistryObject<Block> GLASS_ETHEREAL_PANE = registerBlock("glass_ethereal_pane", () ->
+            new EtherealPaneBlock(glassPaneProp().noCollission(), false));
+
+    public static final RegistryObject<Block> GLASS_ETHEREAL_REVERSE_PANE = registerBlock("glass_ethereal_reverse_pane", () ->
+            new EtherealPaneBlock(glassPaneProp().noCollission(), true));
+
+    public static final RegistryObject<Block> GLASS_REDSTONE_PANE = registerBlock("glass_redstone_pane", () ->
+            new RedstonePaneBlock(glassPaneProp()));
+
+    public static final RegistryObject<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane", () ->
+            new BasicPaneBlock(glassPaneProp().noCollission(), false));
+
+    public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane", () ->
+            new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
+
+
+
+    // end
+
     private static Block.Properties glassProp() {
-        //Turns out "from" doesn't copy everything that glass sets
         return Block.Properties.copy(Blocks.GLASS)
                 .isValidSpawn(GlassentialBlocks::never)
                 .isRedstoneConductor(GlassentialBlocks::isntSolid)
@@ -140,15 +167,12 @@ public class GlassentialBlocks {
                 .isViewBlocking(GlassentialBlocks::isntSolid);
     }
 
-    private static Block.Properties glassStairsProp() {
-        //Turns out "from" doesn't copy everything that glass sets
+    private static Block.Properties glassPaneProp() {
         return BlockBehaviour.Properties.of()
-                .instrument(NoteBlockInstrument.HAT).strength(0.3F)
-                .sound(SoundType.GLASS).noOcclusion()
-                .isValidSpawn(GlassentialBlocks::never)
-                .isRedstoneConductor(GlassentialBlocks::never)
-                .isSuffocating(GlassentialBlocks::never)
-                .isViewBlocking(GlassentialBlocks::never);
+                .instrument(NoteBlockInstrument.HAT)
+                .strength(0.3F)
+                .sound(SoundType.GLASS)
+                .noOcclusion();
     }
 
 

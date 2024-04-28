@@ -24,13 +24,26 @@
     "block.glassential.ghostly_trapdoor": "Ghostly Glass TrapDoor",
     "block.glassential.redstone_trapdoor": "Redstone Glass TrapDoor",
     "block.glassential.light_trapdoor": "Luminous Glass TrapDoor",
+
+    "block.glassential.glass_dark_ethereal_pane": "Tinted Ethereal Glass Pane",
+    "block.glassential.glass_dark_ethereal_reverse_pane": "Tinted Reverse Ethereal Glass Pane",
+    "block.glassential.glass_ethereal_pane": "Ethereal Glass Pane",
+    "block.glassential.glass_ethereal_reverse_pane": "Reverse Ethereal Glass Pane",
+    "block.glassential.glass_ghostly_pane": "Ghostly Glass Pane",
+    "block.glassential.glass_light_pane": "Luminous Glass Pane",
+    "block.glassential.glass_redstone_pane": "Redstone Glass Pane",
 	
     "tooltip.glassential.dark": "Blocks light",
+    "tooltip.glassential.dark_pane": "Blocks light a bit",
     "tooltip.glassential.ethereal": "Not solid to players",
     "tooltip.glassential.ethereal_reverse": "Only solid to players",
     "tooltip.glassential.ghostly": "Not solid to entities",
     "tooltip.glassential.light": "Emits light",
     "tooltip.glassential.redstone": "Emits a redstone signal",
+
+    "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
+    "tooltip.glassential.pane_light": "Emits light",
+    "tooltip.glassential.pane_collideplayers": "Not solid to players",
 
     "itemGroup.glassential": "Glassential Renewed"
 }

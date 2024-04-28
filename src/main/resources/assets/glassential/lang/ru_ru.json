@@ -1,6 +1,6 @@
 {
-    "block.glassential.glass_dark_ethereal": "Тёмное эфирное стекло",
-    "block.glassential.glass_dark_ethereal_reverse": "Обратное тёмное эфирное стекло",
+    "block.glassential.glass_dark_ethereal": "Тёмно-эфирное стекло",
+    "block.glassential.glass_dark_ethereal_reverse": "Обратное тёмно-эфирное стекло",
     "block.glassential.glass_ethereal": "Эфирное стекло",
     "block.glassential.glass_ethereal_reverse": "Обратное эфирное стекло",
     "block.glassential.glass_ghostly": "Призрачное стекло",
@@ -8,8 +8,8 @@
     "block.glassential.glass_redstone": "Редстоуновое стекло",
 
     "block.glassential.glass_door": "Стеклянная дверь",
-    "block.glassential.dark_ethereal_door": "Дверь из тёмного эфирного стекла",
-    "block.glassential.dark_ethereal_reverse_door": "Дверь из обратного тёмного эфирного стекла",
+    "block.glassential.dark_ethereal_door": "Дверь из тёмно-эфирного стекла",
+    "block.glassential.dark_ethereal_reverse_door": "Дверь из обратного тёмно-эфирного стекла",
     "block.glassential.ethereal_door": "Дверь из эфирного стекла",
     "block.glassential.ethereal_reverse_door": "Дверь из обратного эфирного стекла",
     "block.glassential.light_door": "Дверь из светящегося стекла",
@@ -17,20 +17,33 @@
     "block.glassential.ghostly_door": "Дверь из призрачного стекла",
 
     "block.glassential.glass_trapdoor": "Стеклянный люк",
-    "block.glassential.dark_ethereal_trapdoor": "Люк из тёмного эфирного стекла",
-    "block.glassential.dark_ethereal_reverse_trapdoor": "Люк из обратного тёмного эфирного стекла",
+    "block.glassential.dark_ethereal_trapdoor": "Люк из тёмно-эфирного стекла",
+    "block.glassential.dark_ethereal_reverse_trapdoor": "Люк из обратного тёмно-эфирного стекла",
     "block.glassential.ethereal_trapdoor": "Люк из эфирного стекла",
     "block.glassential.ethereal_reverse_trapdoor": "Люк из обратного эфирного стекла",
     "block.glassential.ghostly_trapdoor": "Люк из призрачного стекла",
     "block.glassential.redstone_trapdoor": "Люк из редстоунового стекла",
     "block.glassential.light_trapdoor": "Люк из светящегося стекла",
+
+    "block.glassential.glass_dark_ethereal_pane": "Тёмно-эфирная стеклянная панель",
+    "block.glassential.glass_dark_ethereal_reverse_pane": "Тёмно-эфирная стеклянная панель (обратная)",
+    "block.glassential.glass_ethereal_pane": "Эфирная стеклянная панель",
+    "block.glassential.glass_ethereal_reverse_pane": "Эфирная стеклянная панель (обратная)",
+    "block.glassential.glass_ghostly_pane": "Призрачная стеклянная панель",
+    "block.glassential.glass_light_pane": "Светящееся стеклянная панель",
+    "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
 	
     "tooltip.glassential.dark": "Блокирует свет",
+    "tooltip.glassential.dark_pane": "Слегка блокирует свет",
     "tooltip.glassential.ethereal": "Пропускает игрока",
     "tooltip.glassential.ethereal_reverse": "Не пропускает только игрока",
     "tooltip.glassential.ghostly": "Пропускает только сущности",
     "tooltip.glassential.light": "Излучает свет",
     "tooltip.glassential.redstone": "Излучает сигнал редстоуна",
+
+    "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
+    "tooltip.glassential.pane_light": "Излучает свет",
+    "tooltip.glassential.pane_collideplayers": "Not solid to players",
 	
     "itemGroup.glassential": "Glassential Renewed"
 }

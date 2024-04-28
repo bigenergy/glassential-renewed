@@ -145,6 +145,7 @@ dependencies {
     implementation fg.deobf("curse.maven:fusion-connected-textures-854949:5005130")
     implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:4927036")
 
+    runtimeOnly fg.deobf("curse.maven:jei-238222:5101366")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
