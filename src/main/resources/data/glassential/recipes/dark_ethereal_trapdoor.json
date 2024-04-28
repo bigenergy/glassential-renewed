@@ -6,11 +6,11 @@
     ],
     "key": {
       "#": {
-        "item": "glassential:glass_redstone"
+        "item": "glassential:glass_dark_ethereal"
       }
     },
     "result": {
-      "item": "glassential:redstone_trapdoor",
+      "item": "glassential:dark_ethereal_trapdoor",
       "count": 2
     }
   }
