@@ -155,7 +155,113 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane", () ->
             new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
 
+    // end
 
+    // dyed glass doors & trapdoors
+
+    public static final RegistryObject<Block> BLACK_GLASS_DOOR = registerBlock("black_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> BLUE_GLASS_DOOR = registerBlock("blue_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> BROWN_GLASS_DOOR = registerBlock("brown_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> CYAN_GLASS_DOOR = registerBlock("cyan_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GRAY_GLASS_DOOR = registerBlock("gray_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GREEN_GLASS_DOOR = registerBlock("green_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_GLASS_DOOR = registerBlock("light_blue_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_GLASS_DOOR = registerBlock("light_gray_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIME_GLASS_DOOR = registerBlock("lime_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> MAGENTA_GLASS_DOOR = registerBlock("magenta_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> ORANGE_GLASS_DOOR = registerBlock("orange_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> PINK_GLASS_DOOR = registerBlock("pink_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> PURPLE_GLASS_DOOR = registerBlock("purple_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> RED_GLASS_DOOR = registerBlock("red_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> TINTED_GLASS_DOOR = registerBlock("tinted_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> WHITE_GLASS_DOOR = registerBlock("white_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> YELLOW_GLASS_DOOR = registerBlock("yellow_glass_door", () ->
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    ////////////////////////////////////
+
+    public static final RegistryObject<Block> BLACK_GLASS_TRAPDOOR = registerBlock("black_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> BLUE_GLASS_TRAPDOOR = registerBlock("blue_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> BROWN_GLASS_TRAPDOOR = registerBlock("brown_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> CYAN_GLASS_TRAPDOOR = registerBlock("cyan_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GRAY_GLASS_TRAPDOOR = registerBlock("gray_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> GREEN_GLASS_TRAPDOOR = registerBlock("green_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_BLUE_GLASS_TRAPDOOR = registerBlock("light_blue_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIGHT_GRAY_GLASS_TRAPDOOR = registerBlock("light_gray_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> LIME_GLASS_TRAPDOOR = registerBlock("lime_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> MAGENTA_GLASS_TRAPDOOR = registerBlock("magenta_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> ORANGE_GLASS_TRAPDOOR = registerBlock("orange_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> PINK_GLASS_TRAPDOOR = registerBlock("pink_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> PURPLE_GLASS_TRAPDOOR = registerBlock("purple_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> RED_GLASS_TRAPDOOR = registerBlock("red_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> TINTED_GLASS_TRAPDOOR = registerBlock("tinted_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> WHITE_GLASS_TRAPDOOR = registerBlock("white_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+
+    public static final RegistryObject<Block> YELLOW_GLASS_TRAPDOOR = registerBlock("yellow_glass_trapdoor", () ->
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
     // end
 
