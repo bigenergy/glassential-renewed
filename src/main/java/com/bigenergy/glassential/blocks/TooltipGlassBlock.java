@@ -1,4 +1,4 @@
-package lykrast.glassential.blocks;
+package com.bigenergy.glassential.blocks;
 
 import java.util.List;
 

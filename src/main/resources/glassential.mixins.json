@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
-  "package": "lykrast.glassential.mixin",
+  "package": "com.bigenergy.glassential.mixin",
   "mixins": [
   ],
   "client": [

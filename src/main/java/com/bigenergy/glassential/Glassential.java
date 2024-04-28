@@ -1,8 +1,8 @@
-package lykrast.glassential;
+package com.bigenergy.glassential;
 
-import lykrast.glassential.init.GBlocks;
-import lykrast.glassential.init.GItems;
-import lykrast.glassential.tab.GlassentialCreativeTab;
+import com.bigenergy.glassential.init.GBlocks;
+import com.bigenergy.glassential.init.GItems;
+import com.bigenergy.glassential.tab.GlassentialCreativeTab;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;

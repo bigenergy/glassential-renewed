@@ -1,4 +1,4 @@
-package lykrast.glassential.doors;
+package com.bigenergy.glassential.doors;
 
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.properties.BlockSetType;

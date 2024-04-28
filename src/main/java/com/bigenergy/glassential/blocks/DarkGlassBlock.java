@@ -1,4 +1,4 @@
-package lykrast.glassential.blocks;
+package com.bigenergy.glassential.blocks;
 
 import java.util.List;
 
@@ -11,14 +11,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class DarkEtherealGlassBlock extends EtherealGlassBlock {
+public class DarkGlassBlock extends GlassBlock {
 
-	public DarkEtherealGlassBlock(Block.Properties properties, boolean collidePlayers) {
-		super(properties, collidePlayers);
+	public DarkGlassBlock(Block.Properties properties) {
+		super(properties);
 	}
 
 	@Override

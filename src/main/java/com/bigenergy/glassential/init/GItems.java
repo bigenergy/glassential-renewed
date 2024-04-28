@@ -1,6 +1,6 @@
-package lykrast.glassential.init;
+package com.bigenergy.glassential.init;
 
-import lykrast.glassential.Glassential;
+import com.bigenergy.glassential.Glassential;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

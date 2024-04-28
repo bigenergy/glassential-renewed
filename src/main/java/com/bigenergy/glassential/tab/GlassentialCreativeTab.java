@@ -1,8 +1,8 @@
-package lykrast.glassential.tab;
+package com.bigenergy.glassential.tab;
 
-import lykrast.glassential.Glassential;
-import lykrast.glassential.init.GBlocks;
-import lykrast.glassential.init.GItems;
+import com.bigenergy.glassential.Glassential;
+import com.bigenergy.glassential.init.GBlocks;
+import com.bigenergy.glassential.init.GItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

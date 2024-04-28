@@ -1,4 +1,4 @@
-package lykrast.glassential.doors;
+package com.bigenergy.glassential.doors;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

@@ -1,14 +1,14 @@
-package lykrast.glassential.init;
+package com.bigenergy.glassential.init;
 
-import lykrast.glassential.Glassential;
-import lykrast.glassential.blocks.DarkEtherealGlassBlock;
-import lykrast.glassential.blocks.EtherealGlassBlock;
-import lykrast.glassential.blocks.RedstoneGlassBlock;
-import lykrast.glassential.blocks.TooltipGlassBlock;
-import lykrast.glassential.doors.GlassDoorBlock;
-import lykrast.glassential.doors.GlassLightDoorBlock;
-import lykrast.glassential.doors.GlassLightTrapDoorBlock;
-import lykrast.glassential.doors.GlassTrapDoorBlock;
+import com.bigenergy.glassential.Glassential;
+import com.bigenergy.glassential.blocks.DarkEtherealGlassBlock;
+import com.bigenergy.glassential.blocks.EtherealGlassBlock;
+import com.bigenergy.glassential.blocks.RedstoneGlassBlock;
+import com.bigenergy.glassential.blocks.TooltipGlassBlock;
+import com.bigenergy.glassential.doors.GlassLightDoorBlock;
+import com.bigenergy.glassential.doors.GlassLightTrapDoorBlock;
+import com.bigenergy.glassential.doors.GlassTrapDoorBlock;
+import com.bigenergy.glassential.doors.GlassDoorBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -74,6 +75,8 @@ public class GBlocks {
             new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone", () ->
             new RedstoneGlassBlock(glassProp()));
+
+
 
     // doors
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
@@ -131,13 +134,31 @@ public class GBlocks {
     private static Block.Properties glassProp() {
         //Turns out "from" doesn't copy everything that glass sets
         return Block.Properties.copy(Blocks.GLASS)
-                .isValidSpawn(GBlocks::neverAllowSpawn)
+                .isValidSpawn(GBlocks::never)
                 .isRedstoneConductor(GBlocks::isntSolid)
                 .isSuffocating(GBlocks::isntSolid)
                 .isViewBlocking(GBlocks::isntSolid);
     }
 
-    private static Boolean neverAllowSpawn(BlockState state, BlockGetter reader, BlockPos pos, EntityType<?> entity) {
+    private static Block.Properties glassStairsProp() {
+        //Turns out "from" doesn't copy everything that glass sets
+        return BlockBehaviour.Properties.of()
+                .instrument(NoteBlockInstrument.HAT).strength(0.3F)
+                .sound(SoundType.GLASS).noOcclusion()
+                .isValidSpawn(GBlocks::never)
+                .isRedstoneConductor(GBlocks::never)
+                .isSuffocating(GBlocks::never)
+                .isViewBlocking(GBlocks::never);
+    }
+
+
+    private static boolean never(BlockState blockState, BlockGetter blockView,
+                                 BlockPos blockPos)
+    {
+        return false;
+    }
+
+    private static Boolean never(BlockState state, BlockGetter reader, BlockPos pos, EntityType<?> entity) {
         return false;
     }
     private static boolean isntSolid(BlockState state, BlockGetter reader, BlockPos pos) {
