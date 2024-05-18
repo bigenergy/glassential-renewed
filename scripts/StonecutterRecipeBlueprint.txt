@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "{TAG}"
+  },
+  "result": "masonry:{CHILD_ITEM}",
+  "count": {COUNT}
+}

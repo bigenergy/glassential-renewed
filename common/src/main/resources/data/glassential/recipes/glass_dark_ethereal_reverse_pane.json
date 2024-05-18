@@ -1,0 +1,18 @@
+
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "   ",
+      "###",
+      "###"
+    ],
+    "key": {
+      "#": {
+        "item": "glassential:glass_dark_ethereal_reverse"
+      }
+    },
+    "result": {
+      "item": "glassential:glass_dark_ethereal_reverse_pane",
+      "count": 16
+    }
+  }

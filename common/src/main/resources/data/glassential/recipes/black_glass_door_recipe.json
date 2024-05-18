@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "01",
+    "23",
+    "45"
+  ],
+  "key": {
+    "0": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "1": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "2": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "3": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "4": {
+      "item": "minecraft:black_stained_glass"
+    },
+    "5": {
+      "item": "minecraft:black_stained_glass"
+    }
+  },
+  "result": {
+    "item": "glassential:black_glass_door",
+    "count": 3
+  }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/template_orientable_trapdoor_open",
+    "render_type": "translucent",
+    "textures": {
+      "texture": "glassential:block/dark_ethereal_reverse_trapdoor"
+    }
+  }

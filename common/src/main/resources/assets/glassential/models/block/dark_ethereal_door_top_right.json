@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "render_type": "translucent",
+  "textures": {
+    "bottom": "glassential:block/dark_ethereal_door_bottom",
+    "top": "glassential:block/dark_ethereal_door_top"
+  }
+}
