@@ -5,6 +5,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
 
+// big thanks Up-Mods - https://github.com/Up-Mods/Glassential/blob/1.20.4/src/main/java/dev/upcraft/glassential/GlassentialClient.java
 public class GlassentialClient implements ClientModInitializer {
 
     @Override
