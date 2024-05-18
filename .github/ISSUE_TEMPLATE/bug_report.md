@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Version (please complete the following information):**\
- - Mod Version [0.81b, etc.]
+ - Mod Version [1.0.0, etc.]
  - Forge Version [82.0.81, etc.]
 
 **Additional context**
