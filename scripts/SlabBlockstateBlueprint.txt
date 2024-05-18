@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "type=bottom": { "model": "masonry:block/{API_NAME}slab" },
-        "type=top": { "model": "masonry:block/{API_NAME}slabtop" },
-        "type=double": { "model": "masonry:block/{API_NAME}" }
-    }
-}

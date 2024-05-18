@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": [
-      { "model": "masonry:block/{API_NAME}" }
-    ]
-  }
-}
