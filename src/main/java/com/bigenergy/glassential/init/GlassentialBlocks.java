@@ -5,6 +5,7 @@ import com.bigenergy.glassential.blocks.DarkEtherealGlassBlock;
 import com.bigenergy.glassential.blocks.EtherealGlassBlock;
 import com.bigenergy.glassential.blocks.RedstoneGlassBlock;
 import com.bigenergy.glassential.blocks.TooltipGlassBlock;
+import com.bigenergy.glassential.blocks.slabs.GlassSlabBlock;
 import com.bigenergy.glassential.doors.GlassLightDoorBlock;
 import com.bigenergy.glassential.doors.GlassLightTrapDoorBlock;
 import com.bigenergy.glassential.doors.GlassTrapDoorBlock;
@@ -210,7 +211,7 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> YELLOW_GLASS_DOOR = registerBlock("yellow_glass_door", () ->
             new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
-    ////////////////////////////////////
+    //////////////////////////////////// trapdoors
 
     public static final RegistryObject<Block> BLACK_GLASS_TRAPDOOR = registerBlock("black_glass_trapdoor", () ->
             new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
@@ -264,6 +265,17 @@ public class GlassentialBlocks {
             new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
 
     // end
+
+    // slabs
+    public static final RegistryObject<Block> GLASS_SLAB =
+            registerBlock("glass_slab",
+                    () -> new GlassSlabBlock(BlockBehaviour.Properties.of()
+                            .instrument(NoteBlockInstrument.HAT).strength(0.3F)
+                            .sound(SoundType.GLASS).noOcclusion()
+                            .isValidSpawn(GlassentialBlocks::never)
+                            .isRedstoneConductor(GlassentialBlocks::never)
+                            .isSuffocating(GlassentialBlocks::never)
+                            .isViewBlocking(GlassentialBlocks::never)));
 
     private static Block.Properties glassProp() {
         return Block.Properties.copy(Blocks.GLASS)
