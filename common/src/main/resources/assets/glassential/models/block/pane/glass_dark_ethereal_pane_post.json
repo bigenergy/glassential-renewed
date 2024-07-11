@@ -1,0 +1,8 @@
+{
+  "parent": "glassential:block/pane/template/template_glass_pane_post",
+  "render_type": "translucent",
+  "textures": {
+    "edge": "glassential:block/glass_dark_ethereal_pane_top",
+    "pane": "glassential:block/dark_ethereal"
+  }
+}
