@@ -1,7 +1,10 @@
 {
-    "fusion": {
-        "type": "connecting",
-        "layout": "simple",
-        "render_type": "translucent"
+    "ctm": {
+        "ctm_version": 1,
+        "type": "ctm",
+        "layer": "TRANSLUCENT",
+        "textures": [
+            "glassential:block/ghostly-ctm"
+        ]
     }
 }
