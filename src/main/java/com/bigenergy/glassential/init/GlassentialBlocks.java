@@ -5,7 +5,7 @@ import com.bigenergy.glassential.blocks.DarkEtherealGlassBlock;
 import com.bigenergy.glassential.blocks.EtherealGlassBlock;
 import com.bigenergy.glassential.blocks.RedstoneGlassBlock;
 import com.bigenergy.glassential.blocks.TooltipGlassBlock;
-import com.bigenergy.glassential.blocks.slabs.GlassSlabBlock;
+import com.bigenergy.glassential.slabs.GlassSlabBlock;
 import com.bigenergy.glassential.doors.GlassLightDoorBlock;
 import com.bigenergy.glassential.doors.GlassLightTrapDoorBlock;
 import com.bigenergy.glassential.doors.GlassTrapDoorBlock;

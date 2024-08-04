@@ -1,4 +1,4 @@
-package com.bigenergy.glassential.blocks.slabs;
+package com.bigenergy.glassential.slabs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
