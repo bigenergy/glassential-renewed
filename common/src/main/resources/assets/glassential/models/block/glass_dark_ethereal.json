@@ -1,5 +1,11 @@
 {
-
+    "loader": "fusion:model",
+    "type": "connecting",
+    "connections": [
+      {
+        "type": "is_same_block"
+      }
+    ],
     "parent": "block/cube_all",
 	"render_type": "translucent",
     "textures": {

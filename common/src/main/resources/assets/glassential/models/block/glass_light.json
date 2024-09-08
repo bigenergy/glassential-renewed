@@ -1,4 +1,12 @@
 {
+    "loader": "fusion:model",
+    "type": "fusion:connecting",
+    "render_type": "minecraft:translucent",
+    "connections": [
+      {
+        "type": "is_same_block"
+      }
+    ],
     "parent": "block/cube_all",
     "textures": {
         "all": "glassential:block/light"
