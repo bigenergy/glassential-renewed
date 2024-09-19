@@ -6,10 +6,7 @@ import com.bigenergy.glassential.blocks.EtherealGlassBlock;
 import com.bigenergy.glassential.blocks.RedstoneGlassBlock;
 import com.bigenergy.glassential.blocks.TooltipGlassBlock;
 import com.bigenergy.glassential.blocks.slabs.GlassSlabBlock;
-import com.bigenergy.glassential.doors.GlassLightDoor;
-import com.bigenergy.glassential.doors.GlassLightTrapDoor;
-import com.bigenergy.glassential.doors.GlassTrapDoor;
-import com.bigenergy.glassential.doors.GlassDoor;
+import com.bigenergy.glassential.doors.*;
 import com.bigenergy.glassential.panes.DarkEtherealPaneBlock;
 import com.bigenergy.glassential.panes.EtherealPaneBlock;
 import com.bigenergy.glassential.panes.BasicPaneBlock;
@@ -61,6 +58,10 @@ public class GlassentialBlocks {
             new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone", () ->
             new RedstoneGlassBlock(glassProp()));
+    public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass", () ->
+            new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
+
+    // end
 
     // doors
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
@@ -87,6 +88,9 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GHOSTLY_DOOR = registerBlock("ghostly_door", () ->
             new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
 
+    public static final RegistryObject<Block> OBSIDIAN_DOOR = registerBlock("obsidian_door", () ->
+            new ObsidianGlassDoor(glassProtectedProp(), BlockSetType.IRON));
+
     // trapdoors
 
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
@@ -112,6 +116,9 @@ public class GlassentialBlocks {
 
     public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor", () ->
             new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+
+    public static final RegistryObject<Block> OBSIDIAN_TRAPDOOR = registerBlock("obsidian_trapdoor", () ->
+            new ObsidianGlassTrapDoor(glassProtectedProp(), BlockSetType.IRON));
 
     // end
 
@@ -277,6 +284,16 @@ public class GlassentialBlocks {
                 .strength(0.3F)
                 .sound(SoundType.GLASS)
                 .noOcclusion();
+    }
+
+    private static Block.Properties glassProtectedProp() {
+        return Block.Properties.ofFullCopy(Blocks.GLASS)
+                .strength(1, 1200)
+                .requiresCorrectToolForDrops()
+                .isValidSpawn(GlassentialBlocks::never)
+                .isRedstoneConductor(GlassentialBlocks::isntSolid)
+                .isSuffocating(GlassentialBlocks::isntSolid)
+                .isViewBlocking(GlassentialBlocks::isntSolid);
     }
 
 

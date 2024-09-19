@@ -16,7 +16,8 @@ public class GlassentialClient implements ClientModInitializer {
                 GlassentialBlocks.GLASS_ETHEREAL_REVERSE.get(),
                 GlassentialBlocks.GLASS_GHOSTLY.get(),
                 GlassentialBlocks.GLASS_LIGHT.get(),
-                GlassentialBlocks.GLASS_REDSTONE.get()
+                GlassentialBlocks.GLASS_REDSTONE.get(),
+                GlassentialBlocks.OBSIDIAN_GLASS.get()
         );
 
 
@@ -33,6 +34,7 @@ public class GlassentialClient implements ClientModInitializer {
                 GlassentialBlocks.LIGHT_DOOR.get(),
                 GlassentialBlocks.REDSTONE_DOOR.get(),
                 GlassentialBlocks.GHOSTLY_DOOR.get(),
+                GlassentialBlocks.OBSIDIAN_DOOR.get(),
 
                 GlassentialBlocks.GLASS_TRAPDOOR.get(),
                 GlassentialBlocks.DARK_ETHEREAL_TRAPDOOR.get(),
@@ -42,6 +44,7 @@ public class GlassentialClient implements ClientModInitializer {
                 GlassentialBlocks.REDSTONE_TRAPDOOR.get(),
                 GlassentialBlocks.GHOSTLY_TRAPDOOR.get(),
                 GlassentialBlocks.LIGHT_TRAPDOOR.get(),
+                GlassentialBlocks.OBSIDIAN_TRAPDOOR.get(),
 
                 GlassentialBlocks.GLASS_DARK_ETHEREAL_PANE.get(),
                 GlassentialBlocks.GLASS_DARK_ETHEREAL_REVERSE_PANE.get(),

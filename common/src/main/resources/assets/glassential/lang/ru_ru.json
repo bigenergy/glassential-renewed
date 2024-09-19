@@ -15,6 +15,7 @@
     "block.glassential.light_door": "Дверь из светящегося стекла",
     "block.glassential.redstone_door": "Дверь из редстоунового стекла",
     "block.glassential.ghostly_door": "Дверь из призрачного стекла",
+    "block.glassential.obsidian_door": "Дверь из обсидианового стекла",
 
     "block.glassential.glass_trapdoor": "Стеклянный люк",
     "block.glassential.dark_ethereal_trapdoor": "Люк из тёмно-эфирного стекла",
@@ -24,6 +25,7 @@
     "block.glassential.ghostly_trapdoor": "Люк из призрачного стекла",
     "block.glassential.redstone_trapdoor": "Люк из редстоунового стекла",
     "block.glassential.light_trapdoor": "Люк из светящегося стекла",
+    "block.glassential.obsidian_trapdoor": "Люк из обсидианового стекла",
 
     "block.glassential.gray_glass_trapdoor": "Серый стеклянный люк",
     "block.glassential.brown_glass_trapdoor": "Коричневый стеклянный люк",
@@ -70,6 +72,8 @@
     "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
 
     "block.glassential.glass_slab": "Стеклянная плита",
+
+    "block.glassential.obsidian_glass": "Обсидиановое стекло",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.dark_pane": "Слегка блокирует свет",
@@ -82,6 +86,9 @@
     "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
+    "tooltip.glassential.protected": "Устойчиво к взрывам, как обсидиан",
+    "tooltip.glassential.protected_door": "Устойчиво к взрывам, работает как железная дверь",
+    "tooltip.glassential.protected_trapdoor": "Устойчиво к взрывам, работает как железный люк",
 	
     "itemGroup.glassential": "Glassential Renewed"
 }
