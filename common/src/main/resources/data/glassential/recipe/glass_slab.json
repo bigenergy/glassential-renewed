@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "A#",
-    "#A"
+    "   ",
+    "###",
+    "   "
   ],
   "key": {
     "#": {
       "item": "minecraft:glass"
-    },
-    "A": {
-      "item": "glassential:glass_slab"
     }
   },
   "result": {
-    "id": "glassential:glass_trapdoor",
-    "count": 2
+    "id": "glassential:glass_slab",
+    "count": 6
   }
 }
