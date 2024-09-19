@@ -1,10 +1,7 @@
 package com.bigenergy.glassential.init;
 
 import com.bigenergy.glassential.Constants;
-import com.bigenergy.glassential.blocks.DarkEtherealGlassBlock;
-import com.bigenergy.glassential.blocks.EtherealGlassBlock;
-import com.bigenergy.glassential.blocks.RedstoneGlassBlock;
-import com.bigenergy.glassential.blocks.TooltipGlassBlock;
+import com.bigenergy.glassential.blocks.*;
 import com.bigenergy.glassential.blocks.slabs.GlassSlabBlock;
 import com.bigenergy.glassential.doors.*;
 import com.bigenergy.glassential.panes.DarkEtherealPaneBlock;
@@ -60,6 +57,10 @@ public class GlassentialBlocks {
             new RedstoneGlassBlock(glassProp()));
     public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass", () ->
             new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
+    public static final RegistryObject<Block> STONE_GLASS = registerBlock("stone_glass", () ->
+            new SimpleGlassBlock(glassProtectedProp()));
+    public static final RegistryObject<Block> SANDSTONE_GLASS = registerBlock("sandstone_glass", () ->
+            new SimpleGlassBlock(glassProtectedProp()));
 
     // end
 

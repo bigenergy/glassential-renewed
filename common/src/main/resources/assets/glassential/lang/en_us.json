@@ -6,6 +6,8 @@
     "block.glassential.glass_ghostly": "Ghostly Glass",
     "block.glassential.glass_light": "Luminous Glass",
     "block.glassential.glass_redstone": "Redstone Glass",
+    "block.glassential.stone_glass": "Glass with stone frame",
+    "block.glassential.sandstone_glass": "Glass with sandstone frame",
 
     "block.glassential.glass_door": "Glass Door",
     "block.glassential.dark_ethereal_door": "Tinted Ethereal Glass Door",
