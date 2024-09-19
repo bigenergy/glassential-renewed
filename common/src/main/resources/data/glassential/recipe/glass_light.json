@@ -6,7 +6,7 @@
 		{ "item": "minecraft:glass" },
 		{ "item": "minecraft:glass" },
 		{ "item": "minecraft:glass" },
-        { "tag": "forge:dusts/glowstone" }
+        { "item": "minecraft:glowstone" }
     ],
 	"result": { "id": "glassential:glass_light", "count": 4 }
 }
