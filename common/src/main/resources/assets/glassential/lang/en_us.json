@@ -67,6 +67,8 @@
     "block.glassential.glass_ghostly_pane": "Ghostly Glass Pane",
     "block.glassential.glass_light_pane": "Luminous Glass Pane",
     "block.glassential.glass_redstone_pane": "Redstone Glass Pane",
+
+    "block.glassential.glass_slab": "Glass slab",
 	
     "tooltip.glassential.dark": "Blocks light",
     "tooltip.glassential.dark_pane": "Blocks light a bit",

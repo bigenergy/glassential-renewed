@@ -68,6 +68,8 @@
     "block.glassential.glass_ghostly_pane": "Призрачная стеклянная панель",
     "block.glassential.glass_light_pane": "Светящееся стеклянная панель",
     "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
+
+    "block.glassential.glass_slab": "Стеклянная плита",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.dark_pane": "Слегка блокирует свет",
