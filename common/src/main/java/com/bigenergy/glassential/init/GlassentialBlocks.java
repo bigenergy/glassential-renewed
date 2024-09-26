@@ -58,9 +58,9 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass", () ->
             new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
     public static final RegistryObject<Block> STONE_GLASS = registerBlock("stone_glass", () ->
-            new SimpleGlassBlock(glassProtectedProp()));
+            new SimpleGlassBlock(glassProp()));
     public static final RegistryObject<Block> SANDSTONE_GLASS = registerBlock("sandstone_glass", () ->
-            new SimpleGlassBlock(glassProtectedProp()));
+            new SimpleGlassBlock(glassProp()));
 
     // end
 
