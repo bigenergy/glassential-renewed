@@ -2,26 +2,11 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "012",
-    "345"
+    "##",
+    "##"
   ],
   "key": {
-    "0": {
-      "item": "minecraft:tinted_glass"
-    },
-    "1": {
-      "item": "minecraft:tinted_glass"
-    },
-    "2": {
-      "item": "minecraft:tinted_glass"
-    },
-    "3": {
-      "item": "minecraft:tinted_glass"
-    },
-    "4": {
-      "item": "minecraft:tinted_glass"
-    },
-    "5": {
+    "#": {
       "item": "minecraft:tinted_glass"
     }
   },
