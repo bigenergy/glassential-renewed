@@ -15,8 +15,6 @@ import com.bigenergy.glassential.panes.EtherealPaneBlock;
 import com.bigenergy.glassential.panes.BasicPaneBlock;
 import com.bigenergy.glassential.panes.RedstonePaneBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -36,31 +34,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 public class GlassentialBlocks {
-    public static final SoundEvent METAL_OPEN = SoundEvents.IRON_DOOR_OPEN;
-    public static final SoundEvent METAL_CLOSE = SoundEvents.IRON_DOOR_CLOSE;
-    public static final SoundEvent WOOD_OPEN = SoundEvents.WOODEN_DOOR_OPEN;
-    public static final SoundEvent WOOD_CLOSE = SoundEvents.WOODEN_DOOR_CLOSE;
-    public static final SoundEvent METAL_TRAP_OPEN = SoundEvents.IRON_TRAPDOOR_OPEN;
-    public static final SoundEvent METAL_TRAP_CLOSE = SoundEvents.IRON_TRAPDOOR_CLOSE;
-    public static final SoundEvent WOOD_TRAP_OPEN = SoundEvents.WOODEN_TRAPDOOR_OPEN;
-    public static final SoundEvent WOOD_TRAP_CLOSE = SoundEvents.WOODEN_TRAPDOOR_CLOSE;
-
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Glassential.MODID);
-
-    public static BlockSetType registerSound(Block block, Boolean isMetal)  {
-        SoundType soundGroup = block.getSoundType(null);
-
-
-        if(isMetal){
-            return BlockSetType.register(new BlockSetType("blockset",false, soundGroup, METAL_CLOSE, METAL_OPEN, METAL_TRAP_CLOSE, METAL_TRAP_OPEN, SoundEvents.METAL_PRESSURE_PLATE_CLICK_OFF, SoundEvents.METAL_PRESSURE_PLATE_CLICK_ON, SoundEvents.STONE_BUTTON_CLICK_OFF, SoundEvents.STONE_BUTTON_CLICK_ON));
-
-        }else {
-            return BlockSetType.register(new BlockSetType("blockset",true, soundGroup, WOOD_CLOSE, WOOD_OPEN, WOOD_TRAP_CLOSE, WOOD_TRAP_OPEN, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_OFF, SoundEvents.WOODEN_PRESSURE_PLATE_CLICK_ON, SoundEvents.WOODEN_BUTTON_CLICK_OFF, SoundEvents.WOODEN_BUTTON_CLICK_ON));
-        }
-
-
-    }
-
 
 
     // register blocks
@@ -83,54 +57,54 @@ public class GlassentialBlocks {
 
     // doors
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerBlock("dark_ethereal_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_DOOR = registerBlock("dark_ethereal_reverse_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_DOOR = registerBlock("ethereal_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerBlock("ethereal_reverse_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door", () ->
-            new GlassLightDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassLightDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> REDSTONE_DOOR = registerBlock("redstone_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GHOSTLY_DOOR = registerBlock("ghostly_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     // trapdoors
 
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_TRAPDOOR = registerBlock("dark_ethereal_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerBlock("dark_ethereal_reverse_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerBlock("ethereal_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerBlock("ethereal_reverse_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerBlock("redstone_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GHOSTLY_TRAPDOOR = registerBlock("ghostly_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor", () ->
-            new GlassLightTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassLightTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     // end
 
@@ -161,108 +135,108 @@ public class GlassentialBlocks {
     // dyed glass doors & trapdoors
 
     public static final RegistryObject<Block> BLACK_GLASS_DOOR = registerBlock("black_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BLUE_GLASS_DOOR = registerBlock("blue_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BROWN_GLASS_DOOR = registerBlock("brown_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> CYAN_GLASS_DOOR = registerBlock("cyan_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GRAY_GLASS_DOOR = registerBlock("gray_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GREEN_GLASS_DOOR = registerBlock("green_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_BLUE_GLASS_DOOR = registerBlock("light_blue_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_GRAY_GLASS_DOOR = registerBlock("light_gray_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIME_GLASS_DOOR = registerBlock("lime_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> MAGENTA_GLASS_DOOR = registerBlock("magenta_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ORANGE_GLASS_DOOR = registerBlock("orange_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PINK_GLASS_DOOR = registerBlock("pink_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PURPLE_GLASS_DOOR = registerBlock("purple_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> RED_GLASS_DOOR = registerBlock("red_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> TINTED_GLASS_DOOR = registerBlock("tinted_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> WHITE_GLASS_DOOR = registerBlock("white_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> YELLOW_GLASS_DOOR = registerBlock("yellow_glass_door", () ->
-            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     //////////////////////////////////// trapdoors
 
     public static final RegistryObject<Block> BLACK_GLASS_TRAPDOOR = registerBlock("black_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BLUE_GLASS_TRAPDOOR = registerBlock("blue_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BROWN_GLASS_TRAPDOOR = registerBlock("brown_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> CYAN_GLASS_TRAPDOOR = registerBlock("cyan_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GRAY_GLASS_TRAPDOOR = registerBlock("gray_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GREEN_GLASS_TRAPDOOR = registerBlock("green_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_BLUE_GLASS_TRAPDOOR = registerBlock("light_blue_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_GRAY_GLASS_TRAPDOOR = registerBlock("light_gray_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIME_GLASS_TRAPDOOR = registerBlock("lime_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> MAGENTA_GLASS_TRAPDOOR = registerBlock("magenta_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ORANGE_GLASS_TRAPDOOR = registerBlock("orange_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PINK_GLASS_TRAPDOOR = registerBlock("pink_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PURPLE_GLASS_TRAPDOOR = registerBlock("purple_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> RED_GLASS_TRAPDOOR = registerBlock("red_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> TINTED_GLASS_TRAPDOOR = registerBlock("tinted_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> WHITE_GLASS_TRAPDOOR = registerBlock("white_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     public static final RegistryObject<Block> YELLOW_GLASS_TRAPDOOR = registerBlock("yellow_glass_trapdoor", () ->
-            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), registerSound(Blocks.GLASS, false)));
+            new GlassTrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.GLASS), BlockSetType.OAK));
 
     // end
 
