@@ -40,7 +40,7 @@
       "y": 270
     },
     "facing=north,half=lower,hinge=right,open=true": {
-      "model": "glassential:block/dark_ethereal_dreverse_oor_bottom_right_open",
+      "model": "glassential:block/dark_ethereal_reverse_door_bottom_right_open",
       "y": 180
     },
     "facing=north,half=upper,hinge=left,open=false": {
