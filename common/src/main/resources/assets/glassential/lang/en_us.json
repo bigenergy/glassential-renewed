@@ -8,6 +8,7 @@
     "block.glassential.glass_redstone": "Redstone Glass",
     "block.glassential.stone_glass": "Glass with stone frame",
     "block.glassential.sandstone_glass": "Glass with sandstone frame",
+    "block.glassential.obsidian_glass": "Obsidian glass",
 
     "block.glassential.glass_door": "Glass Door",
     "block.glassential.dark_ethereal_door": "Tinted Ethereal Glass Door",
@@ -73,8 +74,6 @@
     "block.glassential.glass_redstone_pane": "Redstone Glass Pane",
 
     "block.glassential.glass_slab": "Glass slab",
-
-    "block.glassential.obsidian_glass": "Obsidian glass",
 	
     "tooltip.glassential.dark": "Blocks light",
     "tooltip.glassential.dark_pane": "Blocks light a bit",

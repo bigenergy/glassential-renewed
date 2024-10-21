@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "glassential:glass_dark_ethereal_pane",
+    "glassential:glass_dark_ethereal_reverse_pane",
+    "glassential:glass_ethereal_pane",
+    "glassential:glass_ethereal_reverse_pane",
+    "glassential:glass_ghostly_pane",
+    "glassential:glass_light_pane",
+    "glassential:glass_redstone_pane"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:wooden_trapdoors",
+    "minecraft:iron_trapdoor",
+    "glassential:glass_trapdoor",
+    "glassential:dark_ethereal_trapdoor",
+    "glassential:dark_ethereal_reverse_trapdoor",
+    "glassential:ethereal_trapdoor",
+    "glassential:ethereal_reverse_trapdoor",
+    "glassential:ghostly_trapdoor",
+    "glassential:redstone_trapdoor",
+    "glassential:light_trapdoor",
+    "glassential:obsidian_trapdoor",
+    "glassential:gray_glass_trapdoor",
+    "glassential:brown_glass_trapdoor",
+    "glassential:yellow_glass_trapdoor",
+    "glassential:green_glass_trapdoor",
+    "glassential:orange_glass_trapdoor",
+    "glassential:white_glass_trapdoor",
+    "glassential:tinted_glass_trapdoor",
+    "glassential:cyan_glass_trapdoor",
+    "glassential:black_glass_trapdoor",
+    "glassential:purple_glass_trapdoor",
+    "glassential:lime_glass_trapdoor",
+    "glassential:pink_glass_trapdoor",
+    "glassential:magenta_glass_trapdoor",
+    "glassential:light_gray_glass_trapdoor",
+    "glassential:light_blue_glass_trapdoor",
+    "glassential:red_glass_trapdoor",
+    "glassential:blue_glass_trapdoor"
+  ]
+}

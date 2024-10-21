@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:wooden_doors",
+    "minecraft:iron_door",
+	"glassential:glass_door",
+    "glassential:dark_ethereal_door",
+    "glassential:dark_ethereal_reverse_door",
+    "glassential:ethereal_door",
+    "glassential:ethereal_reverse_door",
+    "glassential:light_door",
+    "glassential:redstone_door",
+    "glassential:ghostly_door",
+    "glassential:obsidian_door",
+    "glassential:lime_glass_door",
+    "glassential:orange_glass_door",
+    "glassential:tinted_glass_door",
+    "glassential:yellow_glass_door",
+    "glassential:brown_glass_door",
+    "glassential:gray_glass_door",
+    "glassential:red_glass_door",
+    "glassential:light_gray_glass_door",
+    "glassential:light_blue_glass_door",
+    "glassential:blue_glass_door",
+    "glassential:green_glass_door",
+    "glassential:cyan_glass_door",
+    "glassential:black_glass_door",
+    "glassential:pink_glass_door",
+    "glassential:white_glass_door",
+    "glassential:purple_glass_door",
+    "glassential:magenta_glass_door"
+  ]
+}

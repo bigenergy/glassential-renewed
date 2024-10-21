@@ -8,6 +8,7 @@
     "block.glassential.glass_redstone": "Редстоуновое стекло",
     "block.glassential.stone_glass": "Стекло с каменной рамкой",
     "block.glassential.sandstone_glass": "Стекло с песчаной рамкой",
+    "block.glassential.obsidian_glass": "Обсидиановое стекло",
 
     "block.glassential.glass_door": "Стеклянная дверь",
     "block.glassential.dark_ethereal_door": "Дверь из тёмно-эфирного стекла",
@@ -74,8 +75,6 @@
     "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
 
     "block.glassential.glass_slab": "Стеклянная плита",
-
-    "block.glassential.obsidian_glass": "Обсидиановое стекло",
 	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.dark_pane": "Слегка блокирует свет",
