@@ -1,12 +1,20 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "group": "glassential_glass_redstone",
-    "ingredients": [
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-        { "item": "minecraft:redstone" }
-    ],
-	"result": { "id": "glassential:glass_redstone", "count": 4 }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_block"
+    },
+    "A": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "id": "glassential:glass_redstone",
+    "count": 8
+  }
 }
