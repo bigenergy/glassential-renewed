@@ -1,12 +1,20 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "group": "glassential_glass_light",
-    "ingredients": [
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-        { "item": "minecraft:glowstone" }
-    ],
-	"result": { "id": "glassential:glass_light", "count": 4 }
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glowstone"
+    },
+    "A": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "id": "glassential:glass_light",
+    "count": 8
+  }
 }
