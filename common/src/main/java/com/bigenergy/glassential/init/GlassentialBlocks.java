@@ -256,7 +256,6 @@ public class GlassentialBlocks {
 
     // end
 
-    // slabs
 
     // slabs
     public static final RegistryObject<Block> GLASS_SLAB =
