@@ -8,8 +8,8 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://fabricmc.net/",
-        "sources": "https://github.com/FabricMC/fabric-example-mod"
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/glassential-renewed",
+        "sources": "https://github.com/bigenergy/glassential-renewed"
     },
     "license": "${license}",
     "icon": "${mod_id}.png",
@@ -27,7 +27,8 @@
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}"
+        "java": ">=${java_version}",
+        "fusion": "${fusion_dependency_fabric}"
     },
     "suggests": {
         "another-mod": "*"
