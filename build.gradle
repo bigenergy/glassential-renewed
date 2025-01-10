@@ -142,8 +142,8 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    implementation fg.deobf("curse.maven:fusion-connected-textures-854949:5005130")
-    implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:4927036")
+    implementation fg.deobf("curse.maven:fusion-connected-textures-854949:6070260")
+    implementation fg.deobf("curse.maven:supermartijn642s-core-lib-454372:6034718")
 
     runtimeOnly fg.deobf("curse.maven:jei-238222:5101366")
 

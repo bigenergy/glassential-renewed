@@ -1,6 +1,7 @@
 {
     "fusion": {
         "type": "connecting",
-        "layout": "simple"
+        "layout": "simple",
+        "render_type": "translucent"
     }
 }
