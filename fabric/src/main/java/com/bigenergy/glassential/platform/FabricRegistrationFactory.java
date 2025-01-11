@@ -2,6 +2,7 @@ package com.bigenergy.glassential.platform;
 
 import com.bigenergy.glassential.registration.RegistrationProvider;
 import com.bigenergy.glassential.registration.RegistryObject;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -30,18 +31,19 @@ public class FabricRegistrationFactory implements RegistrationProvider.Factory {
         private final String modId;
         private final Registry<T> registry;
 
-        private final Set<RegistryObject<T>> entries = new HashSet<>();
-        private final Set<RegistryObject<T>> entriesView = Collections.unmodifiableSet(entries);
+        private final Set<RegistryObject<T>> entries = new ObjectOpenHashSet<>();
+        private final Set<RegistryObject<T>> entriesView = Collections.unmodifiableSet(this.entries);
 
         @SuppressWarnings({"unchecked"})
         private Provider(String modId, ResourceKey<? extends Registry<T>> key) {
             this.modId = modId;
 
-            final var reg = BuiltInRegistries.REGISTRY.get(key.location());
+            final var reg = BuiltInRegistries.REGISTRY.getValue(key.location());
+
             if (reg == null) {
                 throw new RuntimeException("Registry with name " + key.location() + " was not found!");
             }
-            registry = (Registry<T>) reg;
+            this.registry = (Registry<T>) reg;
         }
 
         private Provider(String modId, Registry<T> registry) {
@@ -52,14 +54,14 @@ public class FabricRegistrationFactory implements RegistrationProvider.Factory {
         @Override
         @SuppressWarnings("unchecked")
         public <I extends T> RegistryObject<I> register(String name, Supplier<? extends I> supplier) {
-            final var rl = ResourceLocation.fromNamespaceAndPath(modId, name);
-            final var obj = Registry.register(registry, rl, supplier.get());
+            final var rl = ResourceLocation.fromNamespaceAndPath(this.modId, name);
+            final var obj = Registry.register(this.registry, rl, supplier.get());
             final var ro = new RegistryObject<I>() {
-                final ResourceKey<I> key = ResourceKey.create((ResourceKey<? extends Registry<I>>) registry.key(), rl);
+                final ResourceKey<I> key = ResourceKey.create((ResourceKey<? extends Registry<I>>) Provider.this.registry.key(), rl);
 
                 @Override
                 public ResourceKey<I> getResourceKey() {
-                    return key;
+                    return this.key;
                 }
 
                 @Override
@@ -74,21 +76,21 @@ public class FabricRegistrationFactory implements RegistrationProvider.Factory {
 
                 @Override
                 public Holder<I> asHolder() {
-                    return (Holder<I>) registry.getHolderOrThrow((ResourceKey<T>) this.key);
+                    return (Holder<I>) Provider.this.registry.get((ResourceKey<T>) this.key).orElseThrow();
                 }
             };
-            entries.add((RegistryObject<T>) ro);
+            this.entries.add((RegistryObject<T>) ro);
             return ro;
         }
 
         @Override
         public Collection<RegistryObject<T>> getEntries() {
-            return entriesView;
+            return this.entriesView;
         }
 
         @Override
         public String getModId() {
-            return modId;
+            return this.modId;
         }
     }
 }
