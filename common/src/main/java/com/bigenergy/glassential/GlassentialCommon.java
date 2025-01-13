@@ -5,6 +5,7 @@ import com.bigenergy.glassential.registration.RegistrationProvider;
 import com.bigenergy.glassential.registration.RegistryObject;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -21,5 +22,9 @@ public class GlassentialCommon {
 
     public static void init() {
         GlassentialBlocks.load();
+    }
+
+    public static ResourceLocation id(String string) {
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, string);
     }
 }

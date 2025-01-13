@@ -1,6 +1,7 @@
 package com.bigenergy.glassential.init;
 
 import com.bigenergy.glassential.Constants;
+import com.bigenergy.glassential.GlassentialCommon;
 import com.bigenergy.glassential.blocks.*;
 import com.bigenergy.glassential.blocks.slabs.GlassSlabBlock;
 import com.bigenergy.glassential.doors.*;
@@ -12,6 +13,8 @@ import com.bigenergy.glassential.registration.RegistrationProvider;
 import com.bigenergy.glassential.registration.RegistryObject;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -42,217 +45,244 @@ public class GlassentialBlocks {
 
     // glasses
     public static final RegistryObject<Block> GLASS_DARK_ETHEREAL = registerBlock("glass_dark_ethereal", () ->
-            new DarkEtherealGlassBlock(glassProp().noCollission(), false));
+            new DarkEtherealGlassBlock(glassProp().noCollission()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_dark_ethereal"))),
+                    false));
+
     public static final RegistryObject<Block> GLASS_DARK_ETHEREAL_REVERSE = registerBlock("glass_dark_ethereal_reverse", () ->
-            new DarkEtherealGlassBlock(glassProp().noCollission(), true));
+            new DarkEtherealGlassBlock(glassProp().noCollission()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_dark_ethereal_reverse"))),
+                    true));
+
     public static final RegistryObject<Block> GLASS_ETHEREAL = registerBlock("glass_ethereal", () ->
-            new EtherealGlassBlock(glassProp().noCollission(), false));
+            new EtherealGlassBlock(glassProp().noCollission()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ethereal"))),
+                    false));
+
     public static final RegistryObject<Block> GLASS_ETHEREAL_REVERSE = registerBlock("glass_ethereal_reverse", () ->
-            new EtherealGlassBlock(glassProp().noCollission(), true));
+            new EtherealGlassBlock(glassProp().noCollission()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ethereal_reverse"))),
+                    true));
+
     public static final RegistryObject<Block> GLASS_GHOSTLY = registerBlock("glass_ghostly", () ->
-            new TooltipGlassBlock(glassProp().noCollission(), "tooltip.glassential.ghostly"));
+            new TooltipGlassBlock(glassProp().noCollission()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ghostly"))),
+                    "tooltip.glassential.ghostly"));
+
     public static final RegistryObject<Block> GLASS_LIGHT = registerBlock("glass_light", () ->
-            new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+            new TooltipGlassBlock(glassProp()
+                    .lightLevel((b) -> 15)
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_light"))),
+                    "tooltip.glassential.light"));
+
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone", () ->
-            new RedstoneGlassBlock(glassProp()));
+            new RedstoneGlassBlock(glassProp()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_redstone")))));
+
     public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass", () ->
-            new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
+            new TooltipGlassBlock(glassProtectedProp()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("obsidian_glass"))),
+                    "tooltip.glassential.protected"));
+
     public static final RegistryObject<Block> STONE_GLASS = registerBlock("stone_glass", () ->
-            new SimpleGlassBlock(glassProp()));
+            new SimpleGlassBlock(glassProp()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("stone_glass")))));
+
     public static final RegistryObject<Block> SANDSTONE_GLASS = registerBlock("sandstone_glass", () ->
-            new SimpleGlassBlock(glassProp()));
+            new SimpleGlassBlock(glassProp()
+                    .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("sandstone_glass")))));
 
     // end
 
     // doors
     public static final RegistryObject<Block> GLASS_DOOR = registerBlock("glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerBlock("dark_ethereal_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("dark_ethereal_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_DOOR = registerBlock("dark_ethereal_reverse_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("dark_ethereal_reverse_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_DOOR = registerBlock("ethereal_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ethereal_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerBlock("ethereal_reverse_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ethereal_reverse_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door", () ->
-            new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> REDSTONE_DOOR = registerBlock("redstone_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("redstone_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GHOSTLY_DOOR = registerBlock("ghostly_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ghostly_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> OBSIDIAN_DOOR = registerBlock("obsidian_door", () ->
-            new ObsidianGlassDoor(glassProtectedProp(), BlockSetType.IRON));
+            new ObsidianGlassDoor(glassProtectedProp().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("obsidian_door"))), BlockSetType.IRON));
 
     // trapdoors
 
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerBlock("glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_TRAPDOOR = registerBlock("dark_ethereal_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("dark_ethereal_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerBlock("dark_ethereal_reverse_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("dark_ethereal_reverse_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerBlock("ethereal_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ethereal_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerBlock("ethereal_reverse_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ethereal_reverse_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerBlock("redstone_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("redstone_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GHOSTLY_TRAPDOOR = registerBlock("ghostly_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("ghostly_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor", () ->
-            new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> OBSIDIAN_TRAPDOOR = registerBlock("obsidian_trapdoor", () ->
-            new ObsidianGlassTrapDoor(glassProtectedProp(), BlockSetType.IRON));
+            new ObsidianGlassTrapDoor(glassProtectedProp().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("obsidian_trapdoor"))), BlockSetType.IRON));
 
     // end
 
     // panes
     public static final RegistryObject<Block> GLASS_DARK_ETHEREAL_PANE = registerBlock("glass_dark_ethereal_pane", () ->
-            new DarkEtherealPaneBlock(glassPaneProp().noCollission(), false));
+            new DarkEtherealPaneBlock(glassPaneProp().noCollission().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_dark_ethereal_pane"))), false));
 
     public static final RegistryObject<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerBlock("glass_dark_ethereal_reverse_pane", () ->
-            new DarkEtherealPaneBlock(glassPaneProp().noCollission(), true));
+            new DarkEtherealPaneBlock(glassPaneProp().noCollission().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_dark_ethereal_reverse_pane"))), true));
 
     public static final RegistryObject<Block> GLASS_ETHEREAL_PANE = registerBlock("glass_ethereal_pane", () ->
-            new EtherealPaneBlock(glassPaneProp().noCollission(), false));
+            new EtherealPaneBlock(glassPaneProp().noCollission().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ethereal_pane"))), false));
 
     public static final RegistryObject<Block> GLASS_ETHEREAL_REVERSE_PANE = registerBlock("glass_ethereal_reverse_pane", () ->
-            new EtherealPaneBlock(glassPaneProp().noCollission(), true));
+            new EtherealPaneBlock(glassPaneProp().noCollission().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ethereal_reverse_pane"))), true));
 
     public static final RegistryObject<Block> GLASS_REDSTONE_PANE = registerBlock("glass_redstone_pane", () ->
-            new RedstonePaneBlock(glassPaneProp()));
+            new RedstonePaneBlock(glassPaneProp().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_redstone_pane")))));
 
     public static final RegistryObject<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane", () ->
-            new BasicPaneBlock(glassPaneProp().noCollission(), false));
+            new BasicPaneBlock(glassPaneProp().noCollission().setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_ghostly_pane"))), false));
 
     public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane", () ->
-            new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
+            new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_light_pane"))), true));
 
     // end
 
     // dyed glass doors & trapdoors
 
     public static final RegistryObject<Block> BLACK_GLASS_DOOR = registerBlock("black_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("black_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BLUE_GLASS_DOOR = registerBlock("blue_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("blue_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BROWN_GLASS_DOOR = registerBlock("brown_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("brown_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> CYAN_GLASS_DOOR = registerBlock("cyan_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("cyan_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GRAY_GLASS_DOOR = registerBlock("gray_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("gray_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GREEN_GLASS_DOOR = registerBlock("green_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("green_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_BLUE_GLASS_DOOR = registerBlock("light_blue_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_blue_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_GRAY_GLASS_DOOR = registerBlock("light_gray_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_gray_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIME_GLASS_DOOR = registerBlock("lime_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("lime_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> MAGENTA_GLASS_DOOR = registerBlock("magenta_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("magenta_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ORANGE_GLASS_DOOR = registerBlock("orange_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("orange_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PINK_GLASS_DOOR = registerBlock("pink_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("pink_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PURPLE_GLASS_DOOR = registerBlock("purple_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("purple_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> RED_GLASS_DOOR = registerBlock("red_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("red_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> TINTED_GLASS_DOOR = registerBlock("tinted_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("tinted_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> WHITE_GLASS_DOOR = registerBlock("white_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("white_glass_door"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> YELLOW_GLASS_DOOR = registerBlock("yellow_glass_door", () ->
-            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("yellow_glass_door"))), BlockSetType.OAK));
 
     // end
     // trapdoors
 
     public static final RegistryObject<Block> BLACK_GLASS_TRAPDOOR = registerBlock("black_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("black_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BLUE_GLASS_TRAPDOOR = registerBlock("blue_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("blue_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> BROWN_GLASS_TRAPDOOR = registerBlock("brown_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("brown_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> CYAN_GLASS_TRAPDOOR = registerBlock("cyan_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("cyan_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GRAY_GLASS_TRAPDOOR = registerBlock("gray_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("gray_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> GREEN_GLASS_TRAPDOOR = registerBlock("green_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("green_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_BLUE_GLASS_TRAPDOOR = registerBlock("light_blue_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_blue_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIGHT_GRAY_GLASS_TRAPDOOR = registerBlock("light_gray_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("light_gray_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> LIME_GLASS_TRAPDOOR = registerBlock("lime_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("lime_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> MAGENTA_GLASS_TRAPDOOR = registerBlock("magenta_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("magenta_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> ORANGE_GLASS_TRAPDOOR = registerBlock("orange_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("orange_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PINK_GLASS_TRAPDOOR = registerBlock("pink_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("pink_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> PURPLE_GLASS_TRAPDOOR = registerBlock("purple_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("purple_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> RED_GLASS_TRAPDOOR = registerBlock("red_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("red_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> TINTED_GLASS_TRAPDOOR = registerBlock("tinted_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("tinted_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> WHITE_GLASS_TRAPDOOR = registerBlock("white_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("white_glass_trapdoor"))), BlockSetType.OAK));
 
     public static final RegistryObject<Block> YELLOW_GLASS_TRAPDOOR = registerBlock("yellow_glass_trapdoor", () ->
-            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("yellow_glass_trapdoor"))), BlockSetType.OAK));
 
     // end
 
@@ -261,6 +291,7 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_SLAB =
             registerBlock("glass_slab",
                     () -> new GlassSlabBlock(BlockBehaviour.Properties.of()
+                            .setId(ResourceKey.create(Registries.BLOCK, GlassentialCommon.id("glass_slab")))
                             .instrument(NoteBlockInstrument.HAT).strength(0.3F)
                             .sound(SoundType.GLASS).noOcclusion()
                             .isValidSpawn(GlassentialBlocks::never)
@@ -311,11 +342,19 @@ public class GlassentialBlocks {
     }
 
 
-    // new
     private static RegistryObject<Block> registerBlock(String name, Supplier<Block> blockSupplier) {
         RegistryObject<Block> block = BLOCK_DEFERRED.register(name, blockSupplier);
 
-        RegistryObject<Item> blockItem = ITEM_DEFERRED.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        RegistryObject<Item> blockItem = ITEM_DEFERRED.register(name,
+                () ->
+                        new BlockItem(
+                                block.get(),
+                                new Item.Properties()
+                                        .useBlockDescriptionPrefix()
+                                        .setId(ResourceKey.create(Registries.ITEM, GlassentialCommon.id(name)))
+                        )
+        );
+
         ITEMS_FOR_TAB_LIST.add(blockItem);
 
         return block;

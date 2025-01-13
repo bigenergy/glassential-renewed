@@ -41,5 +41,5 @@ public interface RegistryObject<T> extends Supplier<T> {
      *
      * @return the holder
      */
-    Holder<T> asHolder();
+   // Holder<T> asHolder();
 }

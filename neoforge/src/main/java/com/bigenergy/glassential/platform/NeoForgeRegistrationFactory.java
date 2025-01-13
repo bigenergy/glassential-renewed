@@ -1,5 +1,6 @@
 package com.bigenergy.glassential.platform;
 
+import com.bigenergy.glassential.Constants;
 import com.bigenergy.glassential.registration.RegistrationProvider;
 import com.bigenergy.glassential.registration.RegistryObject;
 import net.minecraft.core.Holder;
@@ -12,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -25,7 +27,7 @@ public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory
         final var cont = containerOpt.get();
         if (cont instanceof FMLModContainer fmlModContainer) {
             final var register = DeferredRegister.create(resourceKey, modId);
-            register.register(fmlModContainer.getEventBus());
+            register.register(Objects.requireNonNull(fmlModContainer.getEventBus()));
             return new Provider<>(modId, register);
         } else {
             throw new ClassCastException("The container of the mod " + modId + " is not a FML one!");
@@ -50,13 +52,14 @@ public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory
         }
 
         @Override
+        @SuppressWarnings("unchecked")
         public <I extends T> RegistryObject<I> register(String name, Supplier<? extends I> supplier) {
             final var obj = registry.<I>register(name, supplier);
             final var ro = new RegistryObject<I>() {
 
                 @Override
                 public ResourceKey<I> getResourceKey() {
-                    return (ResourceKey<I>) obj.getKey();
+                    return (ResourceKey<I>)obj.getKey();
                 }
 
                 @Override
@@ -69,10 +72,10 @@ public class NeoForgeRegistrationFactory implements RegistrationProvider.Factory
                     return obj.get();
                 }
 
-                @Override
-                public Holder<I> asHolder() {
-                    return (Holder<I>) obj;
-                }
+                // @Override
+                // public Holder<I> asHolder() {
+                //     return (Holder<I>) obj.getDelegate();
+                // }
             };
             entries.add((RegistryObject<T>) ro);
             return ro;
