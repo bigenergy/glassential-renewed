@@ -7,9 +7,7 @@
       "###"
     ],
     "key": {
-      "#": {
-        "item": "glassential:glass_dark_ethereal"
-      }
+      "#": "glassential:glass_dark_ethereal"
     },
     "result": {
       "id": "glassential:glass_dark_ethereal_pane",

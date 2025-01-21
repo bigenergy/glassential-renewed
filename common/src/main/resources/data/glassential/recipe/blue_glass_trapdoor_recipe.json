@@ -6,9 +6,7 @@
     "##"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:blue_stained_glass"
-    }
+    "#": "minecraft:blue_stained_glass"
   },
   "result": {
     "id": "glassential:blue_glass_trapdoor",

@@ -6,9 +6,7 @@
     "   "
   ],
   "key": {
-    "#": {
-      "item": "minecraft:glass"
-    }
+    "#": "minecraft:glass"
   },
   "result": {
     "id": "glassential:glass_slab",

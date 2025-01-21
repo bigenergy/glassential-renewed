@@ -6,9 +6,7 @@
       "##"
     ],
     "key": {
-      "#": {
-        "item": "glassential:glass_redstone"
-      }
+      "#": "glassential:glass_redstone"
     },
     "result": {
       "id": "glassential:redstone_door",

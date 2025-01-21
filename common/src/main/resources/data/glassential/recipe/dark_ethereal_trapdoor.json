@@ -5,9 +5,7 @@
       "##"
     ],
     "key": {
-      "#": {
-        "item": "glassential:glass_dark_ethereal"
-      }
+      "#": "glassential:glass_dark_ethereal"
     },
     "result": {
       "id": "glassential:dark_ethereal_trapdoor",

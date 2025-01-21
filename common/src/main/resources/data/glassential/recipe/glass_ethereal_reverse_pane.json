@@ -6,9 +6,7 @@
       "###"
     ],
     "key": {
-      "#": {
-        "item": "glassential:glass_ethereal_reverse"
-      }
+      "#": "glassential:glass_ethereal_reverse"
     },
     "result": {
       "id": "glassential:glass_ethereal_reverse_pane",

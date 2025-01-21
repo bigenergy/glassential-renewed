@@ -7,8 +7,8 @@
 		" A "
 	],
 	"key": {
-		"G": { "item": "glassential:glass_ethereal" },
-		"A": { "item": "minecraft:amethyst_shard" }
+		"G": "glassential:glass_ethereal",
+		"A": "minecraft:amethyst_shard"
 	},
 	"result": { "id": "glassential:glass_dark_ethereal", "count": 2 }
 }
