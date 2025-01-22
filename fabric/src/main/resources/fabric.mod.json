@@ -16,7 +16,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "com.bigenergy.glassential.Glassential"
+            "com.bigenergy.glassential.Glassential"
+        ],
+        "client": [
+            "com.bigenergy.glassential.GlassentialClient"
         ]
     },
     "mixins": [
