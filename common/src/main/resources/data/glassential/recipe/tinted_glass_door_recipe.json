@@ -7,7 +7,7 @@
     "##"
   ],
   "key": {
-    "#": "minecraft:tinted_stained_glass"
+    "#": "minecraft:tinted_glass"
   },
   "result": {
     "id": "glassential:tinted_glass_door",
