@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
           "com.bigenergy.glassential.Glassential"
+        ],
+        "client": [
+            "com.bigenergy.glassential.GlassentialClient"
         ]
     },
     "mixins": [
