@@ -1,19 +1,18 @@
 package com.bigenergy.glassential.blocks;
 
-import java.util.List;
+import java.util.function.Consumer;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.component.TooltipProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class DarkGlassBlock extends TransparentBlock {
+public class DarkGlassBlock extends TransparentBlock implements TooltipProvider  {
 
 	public DarkGlassBlock(Block.Properties properties) {
 		super(properties);
@@ -25,8 +24,7 @@ public class DarkGlassBlock extends TransparentBlock {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-		super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-		pTooltipComponents.add(Component.translatable("tooltip.glassential.dark").withStyle(ChatFormatting.GRAY));
+	public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+		consumer.accept(Component.translatable("tooltip.glassential.dark").withStyle(ChatFormatting.GRAY));
 	}
 }

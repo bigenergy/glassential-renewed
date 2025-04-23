@@ -16,7 +16,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -346,13 +345,12 @@ public class GlassentialBlocks {
         RegistryObject<Block> block = BLOCK_DEFERRED.register(name, blockSupplier);
 
         RegistryObject<Item> blockItem = ITEM_DEFERRED.register(name,
-                () ->
-                        new BlockItem(
-                                block.get(),
-                                new Item.Properties()
-                                        .useBlockDescriptionPrefix()
-                                        .setId(ResourceKey.create(Registries.ITEM, GlassentialCommon.id(name)))
-                        )
+                () -> new ForwardingTooltipBlockItem(
+                        block.get(),
+                        new Item.Properties()
+                                .useBlockDescriptionPrefix()
+                                .setId(ResourceKey.create(Registries.ITEM, GlassentialCommon.id(name)))
+                )
         );
 
         ITEMS_FOR_TAB_LIST.add(blockItem);

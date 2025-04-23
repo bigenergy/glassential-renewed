@@ -3,17 +3,18 @@ package com.bigenergy.glassential.panes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.TooltipProvider;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.IronBarsBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.List;
+import java.util.function.Consumer;
 
-public class RedstonePaneBlock extends IronBarsBlock{
+public class RedstonePaneBlock extends IronBarsBlock implements TooltipProvider {
 
     public RedstonePaneBlock(Properties properties) {
         super(properties);
@@ -30,11 +31,9 @@ public class RedstonePaneBlock extends IronBarsBlock{
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-        pTooltipComponents.add(Component.translatable("tooltip.glassential.pane_frameless").withStyle(ChatFormatting.GRAY));
-        pTooltipComponents.add(Component.translatable("tooltip.glassential.redstone").withStyle(ChatFormatting.RED));
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+        consumer.accept(Component.translatable("tooltip.glassential.pane_frameless").withStyle(ChatFormatting.GRAY));
+        consumer.accept(Component.translatable("tooltip.glassential.redstone").withStyle(ChatFormatting.RED));
     }
-
 
 }
