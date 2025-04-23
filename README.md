@@ -2,13 +2,13 @@
 
 <p><img src="https://i.imgur.com/QeYedtE.png" alt="Logo"></p>
 <p><strong>Updated to minecraft 1.20.1+. improved version.</strong></p>
-<p><strong>Since 2.1.0 requied <a href="https://www.curseforge.com/minecraft/mc-mods/fusion-connected-textures" rel="nofollow">Fusion (Connected Textures)</a></strong></p>
+<p><strong>Since 2.1.0 required <a href="https://www.curseforge.com/minecraft/mc-mods/fusion-connected-textures" rel="nofollow">Fusion (Connected Textures)</a></strong></p>
 <p>Several mods, such as Extra Utilities, add a bunch of cool glasses to your game. Like glass that you can see through but blocks light or glass that emits light.</p>
 <p>Have you ever wanted to get that cool stuff, but without all the overhead of putting a major content mod in your modpack? Well look no further than Glassential.</p>
 <ul>
 <li><strong>Full support connected textures (by fusion)!</strong></li>
 </ul>
-<p>Currently adds the following glasses and other features in 1.20.1+:</p>
+<p>Currently, adds the following glasses and other features in 1.20.1+:</p>
 <ul>
 <li><strong>Luminous Glass:&nbsp;</strong>emits light, just like Glowstone.</li>
 <li><strong>Redstone Glass:&nbsp;</strong>emits a strong redstone signal, just like a Block of Redstone.</li>
