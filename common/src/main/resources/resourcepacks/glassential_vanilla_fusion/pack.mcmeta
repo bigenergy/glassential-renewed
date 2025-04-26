@@ -6,8 +6,5 @@
                 "text": "Connect Texture Support by Fusion"
             }
         ]
-    },
-    "fusion": {
-        "overrides_folder": "fusion"
     }
 }
