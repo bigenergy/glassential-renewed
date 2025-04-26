@@ -90,5 +90,8 @@
     "tooltip.glassential.protected_door": "Resistant to explosions, works like an iron door",
     "tooltip.glassential.protected_trapdoor": "Resistant to explosions, works like an iron trapdoor",
 
-    "itemGroup.glassential": "Glassential Renewed"
+    "itemGroup.glassential": "Glassential Renewed",
+
+    "pack.glassential_fusion.name": "Glassential - Fusion Support",
+    "pack.glassential_vanilla_fusion.name": "Glassential - Fusion for Vanilla"
 }
