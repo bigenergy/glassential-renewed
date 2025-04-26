@@ -1,16 +1,9 @@
 {
-  "loader": "fusion:model",
-  "type": "connecting",
-  "connections": [
-    {
-      "type": "is_same_block"
-    }
-  ],
-  "render_type": "minecraft:cutout_mipped",
+  "render_type": "minecraft:cutout",
   "parent": "block/slab_top",
   "textures": {
-    "bottom": "glassential:block/glass",
-    "top": "glassential:block/glass",
-    "side": "glassential:block/glass_slab_top"
+    "bottom": "minecraft:block/glass",
+    "top": "minecraft:block/glass",
+    "side": "glassential:block/glass_for_slab"
   }
 }

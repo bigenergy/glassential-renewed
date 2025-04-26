@@ -3,7 +3,12 @@ package com.bigenergy.glassential;
 import com.bigenergy.glassential.init.GlassentialBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 
 // big thanks Up-Mods - https://github.com/Up-Mods/Glassential/blob/1.20.4/src/main/java/dev/upcraft/glassential/GlassentialClient.java
 public class GlassentialClient implements ClientModInitializer {
@@ -92,5 +97,12 @@ public class GlassentialClient implements ClientModInitializer {
                 GlassentialBlocks.WHITE_GLASS_TRAPDOOR.get(),
                 GlassentialBlocks.YELLOW_GLASS_TRAPDOOR.get()
         );
+
+        FabricLoader.getInstance().getModContainer(Constants.MOD_ID).ifPresent(container -> {
+            ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "glassential_fusion"),
+                    container, Component.translatable("pack.glassential_fusion.name"), ResourcePackActivationType.NORMAL);
+            ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, "glassential_vanilla_fusion"),
+                    container, Component.translatable("pack.glassential_vanilla_fusion.name"), ResourcePackActivationType.NORMAL);
+        });
     }
 }

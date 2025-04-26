@@ -1,11 +1,7 @@
 {
-  "loader": "fusion:model",
-  "type": "connecting",
-  "connections": [
-    {
-      "type": "is_same_block"
-    }
-  ],
-  "render_type": "minecraft:cutout_mipped",
-  "parent": "block/glass"
+  "parent": "block/cube_all",
+  "render_type": "cutout",
+  "textures": {
+    "all": "glassential:block/glass"
+  }
 }

@@ -1,0 +1,13 @@
+{
+    "pack": {
+        "pack_format": 34,
+        "description": [
+            {
+                "text": "Connect Texture Support by Fusion"
+            }
+        ]
+    },
+    "fusion": {
+        "overrides_folder": "fusion"
+    }
+}

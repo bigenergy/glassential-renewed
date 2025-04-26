@@ -30,10 +30,10 @@
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}",
-        "fusion": "${fusion_dependency_fabric}"
+        "java": ">=${java_version}"
     },
     "suggests": {
+        "fusion": "${fusion_dependency_fabric}",
         "another-mod": "*"
     }
 }
