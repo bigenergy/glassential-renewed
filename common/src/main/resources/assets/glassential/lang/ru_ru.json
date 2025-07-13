@@ -5,7 +5,9 @@
     "block.glassential.glass_ethereal_reverse": "Обратное эфирное стекло",
     "block.glassential.glass_ghostly": "Призрачное стекло",
     "block.glassential.glass_light": "Светящееся стекло",
+    "block.glassential.glass_light_tinted": "Тонированное светящееся стекло",
     "block.glassential.glass_redstone": "Редстоуновое стекло",
+    "block.glassential.glass_redstone_tinted": "Тонированное редстоуновое стекло",
     "block.glassential.stone_glass": "Стекло с каменной рамкой",
     "block.glassential.sandstone_glass": "Стекло с песчаной рамкой",
     "block.glassential.obsidian_glass": "Обсидиановое стекло",
@@ -72,7 +74,9 @@
     "block.glassential.glass_ethereal_reverse_pane": "Эфирная стеклянная панель (обратная)",
     "block.glassential.glass_ghostly_pane": "Призрачная стеклянная панель",
     "block.glassential.glass_light_pane": "Светящееся стеклянная панель",
+    "block.glassential.glass_light_tinted_pane": "Светящееся тонированная стеклянная панель",
     "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
+    "block.glassential.glass_redstone_tinted_pane": "Тонированная редстоуновая стеклянная панель",
 
     "block.glassential.glass_slab": "Стеклянная плита",
 	

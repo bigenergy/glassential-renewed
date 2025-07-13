@@ -53,7 +53,11 @@ public class GlassentialBlocks {
             new TooltipGlassBlock(glassProp().noCollission(), "tooltip.glassential.ghostly"));
     public static final RegistryObject<Block> GLASS_LIGHT = registerBlock("glass_light", () ->
             new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+    public static final RegistryObject<Block> GLASS_LIGHT_TINTED = registerBlock("glass_light_tinted", () ->
+            new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone", () ->
+            new RedstoneGlassBlock(glassProp()));
+    public static final RegistryObject<Block> GLASS_REDSTONE_TINTED = registerBlock("glass_redstone_tinted", () ->
             new RedstoneGlassBlock(glassProp()));
     public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass", () ->
             new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
@@ -139,12 +143,17 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_REDSTONE_PANE = registerBlock("glass_redstone_pane", () ->
             new RedstonePaneBlock(glassPaneProp()));
 
+    public static final RegistryObject<Block> GLASS_REDSTONE_TINTED_PANE = registerBlock("glass_redstone_tinted_pane", () ->
+            new RedstonePaneBlock(glassPaneProp()));
+
     public static final RegistryObject<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane", () ->
             new BasicPaneBlock(glassPaneProp().noCollission(), false));
 
     public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane", () ->
             new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
 
+    public static final RegistryObject<Block> GLASS_LIGHT_TINTED_PANE = registerBlock("glass_light_tinted_pane", () ->
+            new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
     // end
 
     // dyed glass doors & trapdoors
