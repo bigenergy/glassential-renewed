@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "glassential:glass_dark_ethereal",
+    "glassential:glass_dark_ethereal_reverse",
+    "glassential:glass_ethereal",
+    "glassential:glass_ethereal_reverse",
+    "glassential:glass_ghostly",
+    "glassential:glass_light",
+    "glassential:glass_redstone"
+  ]
+}
