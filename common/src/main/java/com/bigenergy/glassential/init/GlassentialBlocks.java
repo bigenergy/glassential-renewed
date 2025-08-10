@@ -73,7 +73,8 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerGlassDoor("ethereal_reverse_door", true);
     public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door",
             () -> new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
-    public static final RegistryObject<Block> REDSTONE_DOOR = registerGlassDoor("redstone_door");
+    public static final RegistryObject<Block> REDSTONE_DOOR = registerBlock("redstone_door",
+            () -> new GlassRedstoneDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
     public static final RegistryObject<Block> GHOSTLY_DOOR = registerGlassDoor("ghostly_door");
     public static final RegistryObject<Block> OBSIDIAN_DOOR = registerBlock("obsidian_door",
             () -> new ObsidianGlassDoor(glassProtectedProp(), BlockSetType.IRON));
@@ -84,7 +85,8 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_reverse_trapdoor", true);
     public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerGlassTrapdoor("ethereal_trapdoor", false);
     public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("ethereal_reverse_trapdoor", true);
-    public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerGlassTrapdoor("redstone_trapdoor");
+    public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerBlock("redstone_trapdoor",
+            () -> new GlassRedstoneTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
     public static final RegistryObject<Block> GHOSTLY_TRAPDOOR = registerGlassTrapdoor("ghostly_trapdoor");
     public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor",
             () -> new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
