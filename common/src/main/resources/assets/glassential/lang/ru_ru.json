@@ -14,6 +14,8 @@
     "block.glassential.ice_glass": "Ледяное стекло",
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",
+    "block.glassential.glass_glowstone_lamp": "Светокаменный фонарь",
+    "block.glassential.glass_glowstone_lamp_tinted": "Тонированный светокаменный фонарь",
 
     "block.glassential.glass_door": "Стеклянная дверь",
     "block.glassential.dark_ethereal_door": "Дверь из тёмно-эфирного стекла",

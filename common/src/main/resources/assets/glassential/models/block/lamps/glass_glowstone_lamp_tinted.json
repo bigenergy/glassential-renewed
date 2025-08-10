@@ -1,9 +1,9 @@
 {
-  "parent": "glassential:block/custom/lava_lamp",
+  "parent": "glassential:custom/lamp_block",
   "textures": {
     "all": "block/tinted_glass",
     "particle": "block/tinted_glass",
-    "0": "block/lava_flow",
+    "0": "block/glowstone",
     "1": "block/tinted_glass"
   },
   "render_type": "translucent"

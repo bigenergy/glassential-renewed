@@ -60,6 +60,10 @@ public class GlassentialBlocks {
             () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
     public static final RegistryObject<Block> GLASS_LAVA_LAMP_TINTED = registerBlock("glass_lava_lamp_tinted",
             () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
+    public static final RegistryObject<Block> GLASS_GLOWSTONE_LAMP = registerBlock("glass_glowstone_lamp",
+            () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+    public static final RegistryObject<Block> GLASS_GLOWSTONE_LAMP_TINTED = registerBlock("glass_glowstone_lamp_tinted",
+            () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
 
     // Glass Doors
     public static final RegistryObject<Block> GLASS_DOOR = registerGlassDoor("glass_door");

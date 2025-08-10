@@ -1,5 +1,5 @@
 {
     "variants": {
-        "": { "model": "glassential:block/glass_lava_lamp_tinted" }
+        "": { "model": "glassential:block/lamps/glass_lava_lamp_tinted" }
     }
 }
