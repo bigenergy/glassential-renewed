@@ -56,6 +56,10 @@ public class GlassentialBlocks {
             () -> new SimpleGlassBlock(glassProp()));
     public static final RegistryObject<Block> ICE_GLASS = registerBlock("ice_glass",
             () -> new IceGlassBlock(glassProp(), "tooltip.glassential.ice"));
+    public static final RegistryObject<Block> IRON_GLASS = registerBlock("iron_glass",
+            () -> new SimpleGlassBlock(glassProp()));
+
+    // Glass Lamps
     public static final RegistryObject<Block> GLASS_LAVA_LAMP = registerBlock("glass_lava_lamp",
             () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
     public static final RegistryObject<Block> GLASS_LAVA_LAMP_TINTED = registerBlock("glass_lava_lamp_tinted",
