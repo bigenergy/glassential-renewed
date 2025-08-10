@@ -11,6 +11,7 @@
     "block.glassential.stone_glass": "Glass with stone frame",
     "block.glassential.sandstone_glass": "Glass with sandstone frame",
     "block.glassential.obsidian_glass": "Obsidian glass",
+    "block.glassential.ice_glass": "Ice glass",
 
     "block.glassential.glass_door": "Glass Door",
     "block.glassential.dark_ethereal_door": "Tinted Ethereal Glass Door",
@@ -86,6 +87,7 @@
     "tooltip.glassential.ghostly": "Not solid to entities",
     "tooltip.glassential.light": "Emits light",
     "tooltip.glassential.redstone": "Emits a redstone signal",
+    "tooltip.glassential.ice": "Ice in thermal glass, not melt",
 
     "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
     "tooltip.glassential.pane_light": "Emits light",

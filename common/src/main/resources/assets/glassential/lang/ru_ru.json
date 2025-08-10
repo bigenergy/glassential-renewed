@@ -11,6 +11,7 @@
     "block.glassential.stone_glass": "Стекло с каменной рамкой",
     "block.glassential.sandstone_glass": "Стекло с песчаной рамкой",
     "block.glassential.obsidian_glass": "Обсидиановое стекло",
+    "block.glassential.ice_glass": "Ледяное стекло",
 
     "block.glassential.glass_door": "Стеклянная дверь",
     "block.glassential.dark_ethereal_door": "Дверь из тёмно-эфирного стекла",
@@ -87,6 +88,7 @@
     "tooltip.glassential.ghostly": "Пропускает только сущности",
     "tooltip.glassential.light": "Излучает свет",
     "tooltip.glassential.redstone": "Излучает сигнал редстоуна",
+    "tooltip.glassential.ice": "Лёд в термальном стекле, не растает",
 
     "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
