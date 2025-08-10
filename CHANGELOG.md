@@ -4,6 +4,7 @@ Glassential Renewed 3.2.1
 - Added glowstone lamp & tinted
 - Redstone glass door & trapdoor now emits redstone signal
 - Ethereal (Trap)doors now follow collision rules of block forms (fix [#24](https://github.com/bigenergy/glassential-renewed/issues/24))
+- Added iron glass
 
 Glassential Renewed 3.2.0
 ================
