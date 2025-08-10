@@ -56,15 +56,19 @@ public class GlassentialBlocks {
             () -> new SimpleGlassBlock(glassProp()));
     public static final RegistryObject<Block> ICE_GLASS = registerBlock("ice_glass",
             () -> new IceGlassBlock(glassProp(), "tooltip.glassential.ice"));
+    public static final RegistryObject<Block> GLASS_LAVA_LAMP = registerBlock("glass_lava_lamp",
+            () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
+    public static final RegistryObject<Block> GLASS_LAVA_LAMP_TINTED = registerBlock("glass_lava_lamp_tinted",
+            () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
 
     // Glass Doors
     public static final RegistryObject<Block> GLASS_DOOR = registerGlassDoor("glass_door");
-    public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerGlassDoor("dark_ethereal_door");
-    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_DOOR = registerGlassDoor("dark_ethereal_reverse_door");
-    public static final RegistryObject<Block> ETHEREAL_DOOR = registerGlassDoor("ethereal_door");
-    public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerGlassDoor("ethereal_reverse_door");
+    public static final RegistryObject<Block> DARK_ETHEREAL_DOOR = registerGlassDoor("dark_ethereal_door", false);
+    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_DOOR = registerGlassDoor("dark_ethereal_reverse_door", true);
+    public static final RegistryObject<Block> ETHEREAL_DOOR = registerGlassDoor("ethereal_door", false);
+    public static final RegistryObject<Block> ETHEREAL_REVERSE_DOOR = registerGlassDoor("ethereal_reverse_door", true);
     public static final RegistryObject<Block> LIGHT_DOOR = registerBlock("light_door",
-            () -> new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            () -> new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
     public static final RegistryObject<Block> REDSTONE_DOOR = registerGlassDoor("redstone_door");
     public static final RegistryObject<Block> GHOSTLY_DOOR = registerGlassDoor("ghostly_door");
     public static final RegistryObject<Block> OBSIDIAN_DOOR = registerBlock("obsidian_door",
@@ -72,14 +76,14 @@ public class GlassentialBlocks {
 
     // Glass Trapdoors
     public static final RegistryObject<Block> GLASS_TRAPDOOR = registerGlassTrapdoor("glass_trapdoor");
-    public static final RegistryObject<Block> DARK_ETHEREAL_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_trapdoor");
-    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_reverse_trapdoor");
-    public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerGlassTrapdoor("ethereal_trapdoor");
-    public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("ethereal_reverse_trapdoor");
+    public static final RegistryObject<Block> DARK_ETHEREAL_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_trapdoor", false);
+    public static final RegistryObject<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_reverse_trapdoor", true);
+    public static final RegistryObject<Block> ETHEREAL_TRAPDOOR = registerGlassTrapdoor("ethereal_trapdoor", false);
+    public static final RegistryObject<Block> ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("ethereal_reverse_trapdoor", true);
     public static final RegistryObject<Block> REDSTONE_TRAPDOOR = registerGlassTrapdoor("redstone_trapdoor");
     public static final RegistryObject<Block> GHOSTLY_TRAPDOOR = registerGlassTrapdoor("ghostly_trapdoor");
     public static final RegistryObject<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor",
-            () -> new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+            () -> new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
     public static final RegistryObject<Block> OBSIDIAN_TRAPDOOR = registerBlock("obsidian_trapdoor",
             () -> new ObsidianGlassTrapDoor(glassProtectedProp(), BlockSetType.IRON));
 
@@ -202,8 +206,16 @@ public class GlassentialBlocks {
         return registerBlock(name, () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
     }
 
+    private static RegistryObject<Block> registerGlassDoor(String name, boolean collidePlayers) {
+        return registerBlock(name, () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, collidePlayers));
+    }
+
     private static RegistryObject<Block> registerGlassTrapdoor(String name) {
         return registerBlock(name, () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    }
+
+    private static RegistryObject<Block> registerGlassTrapdoor(String name, boolean collidePlayers) {
+        return registerBlock(name, () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, collidePlayers));
     }
 
     public static void load() {
