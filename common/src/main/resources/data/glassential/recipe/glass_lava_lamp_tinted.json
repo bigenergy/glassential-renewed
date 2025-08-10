@@ -10,7 +10,7 @@
       "item": "minecraft:lava_bucket"
     },
     "A": {
-      "item": "minecraft:glass_tinted"
+      "item": "minecraft:tinted_glass"
     }
   },
   "result": {
