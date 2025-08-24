@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "AAA",
-    "A#A",
+    "B#B",
     "AAA"
   ],
   "key": {
@@ -11,6 +11,9 @@
     },
     "A": {
       "item": "minecraft:tinted_glass"
+    },
+    "B": {
+      "item": "glassential:glass_light"
     }
   },
   "result": {

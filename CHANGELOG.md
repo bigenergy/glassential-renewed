@@ -1,3 +1,7 @@
+Glassential Renewed 3.2.2
+================
+- Fixed wrong recipe (fix [#34](https://github.com/bigenergy/glassential-renewed/issues/34))
+
 Glassential Renewed 3.2.1
 ================
 - Added lava lamp & tinted
