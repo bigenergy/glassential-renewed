@@ -1,5 +1,11 @@
 Glassential Renewed 3.2.2
 ================
+- Updated zh_cn translate (thanks Ironnoob73)
+- Updated pt_br translate (thanks PrincessStelllar)
+- Added ja_jp translate (thanks Abbage230)
+
+Glassential Renewed 3.2.2
+================
 - Fixed wrong recipe (fix [#34](https://github.com/bigenergy/glassential-renewed/issues/34))
 
 Glassential Renewed 3.2.1
