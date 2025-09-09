@@ -1,4 +1,4 @@
-Glassential Renewed 3.2.2
+Glassential Renewed 3.2.3
 ================
 - Updated zh_cn translate (thanks Ironnoob73)
 - Updated pt_br translate (thanks PrincessStelllar)
