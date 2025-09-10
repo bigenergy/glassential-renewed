@@ -132,7 +132,7 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> PINK_GLASS_DOOR = registerGlassDoor("pink_glass_door");
     public static final RegistryObject<Block> PURPLE_GLASS_DOOR = registerGlassDoor("purple_glass_door");
     public static final RegistryObject<Block> RED_GLASS_DOOR = registerGlassDoor("red_glass_door");
-    public static final RegistryObject<Block> TINTED_GLASS_DOOR = registerGlassDoor("tinted_glass_door");
+    public static final RegistryObject<Block> TINTED_GLASS_DOOR = registerTintedGlassDoor("tinted_glass_door");
     public static final RegistryObject<Block> WHITE_GLASS_DOOR = registerGlassDoor("white_glass_door");
     public static final RegistryObject<Block> YELLOW_GLASS_DOOR = registerGlassDoor("yellow_glass_door");
 
@@ -151,7 +151,7 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> PINK_GLASS_TRAPDOOR = registerGlassTrapdoor("pink_glass_trapdoor");
     public static final RegistryObject<Block> PURPLE_GLASS_TRAPDOOR = registerGlassTrapdoor("purple_glass_trapdoor");
     public static final RegistryObject<Block> RED_GLASS_TRAPDOOR = registerGlassTrapdoor("red_glass_trapdoor");
-    public static final RegistryObject<Block> TINTED_GLASS_TRAPDOOR = registerGlassTrapdoor("tinted_glass_trapdoor");
+    public static final RegistryObject<Block> TINTED_GLASS_TRAPDOOR = registerTintedGlassTrapdoor("tinted_glass_trapdoor");
     public static final RegistryObject<Block> WHITE_GLASS_TRAPDOOR = registerGlassTrapdoor("white_glass_trapdoor");
     public static final RegistryObject<Block> YELLOW_GLASS_TRAPDOOR = registerGlassTrapdoor("yellow_glass_trapdoor");
 
@@ -214,6 +214,14 @@ public class GlassentialBlocks {
 
     private static RegistryObject<Block> registerGlassDoor(String name) {
         return registerBlock(name, () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    }
+
+    private static RegistryObject<Block> registerTintedGlassDoor(String name) {
+        return registerBlock(name, () -> new TintedGlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    }
+
+    private static RegistryObject<Block> registerTintedGlassTrapdoor(String name) {
+        return registerBlock(name, () -> new TintedGlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
     }
 
     private static RegistryObject<Block> registerGlassDoor(String name, boolean collidePlayers) {
