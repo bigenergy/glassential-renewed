@@ -6,7 +6,7 @@
       "type": "is_same_block"
     }
   ],
-  "render_type": "minecraft:cutout_mipped",
+  "render_type": "cutout",
   "parent": "block/slab_top",
   "textures": {
     "bottom": "glassential:block/glass",

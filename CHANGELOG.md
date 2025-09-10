@@ -1,6 +1,13 @@
 Glassential Renewed 3.2.3
 ================
 - Updated zh_cn translate (thanks Ironnoob73)
+- Fixed tinted redstone/light/lamp glass so it doesn't let light through anymore
+- Changed lava_flow -> lava_still for lava lamps
+- Fixed glass slab side blur
+
+Glassential Renewed 3.2.3
+================
+- Updated zh_cn translate (thanks Ironnoob73)
 - Updated pt_br translate (thanks PrincessStelllar)
 - Added ja_jp translate (thanks Abbage230)
 
