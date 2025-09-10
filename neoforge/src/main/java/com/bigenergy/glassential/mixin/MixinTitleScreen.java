@@ -15,6 +15,6 @@ public class MixinTitleScreen {
     private void init(CallbackInfo info) {
 
         Constants.LOG.info("Glassential Renewed");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        Constants.LOG.info("NeoForge Version: {}", Minecraft.getInstance().getLaunchedVersion());
     }
 }
