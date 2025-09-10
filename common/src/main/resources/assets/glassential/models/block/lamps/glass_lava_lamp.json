@@ -3,7 +3,7 @@
   "textures": {
     "all": "block/glass",
     "particle": "block/glass",
-    "0": "block/lava_flow",
+    "0": "block/lava_still",
     "1": "block/glass"
   },
   "render_type": "cutout"
