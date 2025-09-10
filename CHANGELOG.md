@@ -4,6 +4,8 @@ Glassential Renewed 3.2.3
 - Fixed tinted redstone/light/lamp glass so it doesn't let light through anymore
 - Changed lava_flow -> lava_still for lava lamps
 - Fixed glass slab side blur
+- Tinted door/trapdoor now really tinted (fix)
+- Tinted light/redstone pane now really tinted (fix)
 
 Glassential Renewed 3.2.3
 ================
