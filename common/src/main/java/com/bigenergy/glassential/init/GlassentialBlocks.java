@@ -41,13 +41,13 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_GHOSTLY = registerBlock("glass_ghostly",
             () -> new TooltipGlassBlock(glassProp().noCollission(), "tooltip.glassential.ghostly"));
     public static final RegistryObject<Block> GLASS_LIGHT = registerBlock("glass_light",
-            () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+            () -> new LightGlassBlock(glassProp()));
     public static final RegistryObject<Block> GLASS_LIGHT_TINTED = registerBlock("glass_light_tinted",
-            () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+            () -> new TintedLightGlassBlock(glassProp()));
     public static final RegistryObject<Block> GLASS_REDSTONE = registerBlock("glass_redstone",
             () -> new RedstoneGlassBlock(glassProp()));
     public static final RegistryObject<Block> GLASS_REDSTONE_TINTED = registerBlock("glass_redstone_tinted",
-            () -> new RedstoneGlassBlock(glassProp()));
+            () -> new TintedRedstoneGlassBlock(glassProp()));
     public static final RegistryObject<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass",
             () -> new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
     public static final RegistryObject<Block> STONE_GLASS = registerBlock("stone_glass",
@@ -63,11 +63,11 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_LAVA_LAMP = registerBlock("glass_lava_lamp",
             () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
     public static final RegistryObject<Block> GLASS_LAVA_LAMP_TINTED = registerBlock("glass_lava_lamp_tinted",
-            () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
+            () -> new CustomTintedGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
     public static final RegistryObject<Block> GLASS_GLOWSTONE_LAMP = registerBlock("glass_glowstone_lamp",
             () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
     public static final RegistryObject<Block> GLASS_GLOWSTONE_LAMP_TINTED = registerBlock("glass_glowstone_lamp_tinted",
-            () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
+            () -> new TooltipTintedGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
 
     // Glass Doors
     public static final RegistryObject<Block> GLASS_DOOR = registerGlassDoor("glass_door");
