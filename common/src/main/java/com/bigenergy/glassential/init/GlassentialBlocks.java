@@ -109,13 +109,13 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_REDSTONE_PANE = registerBlock("glass_redstone_pane",
             () -> new RedstonePaneBlock(glassPaneProp()));
     public static final RegistryObject<Block> GLASS_REDSTONE_TINTED_PANE = registerBlock("glass_redstone_tinted_pane",
-            () -> new RedstonePaneBlock(glassPaneProp()));
+            () -> new TintedRedstonePaneBlock(glassPaneProp()));
     public static final RegistryObject<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane",
             () -> new BasicPaneBlock(glassPaneProp().noCollission(), false));
     public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane",
             () -> new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
     public static final RegistryObject<Block> GLASS_LIGHT_TINTED_PANE = registerBlock("glass_light_tinted_pane",
-            () -> new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
+            () -> new TintedBasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
 
     // Dyed Glass Doors
     public static final RegistryObject<Block> BLACK_GLASS_DOOR = registerGlassDoor("black_glass_door");
