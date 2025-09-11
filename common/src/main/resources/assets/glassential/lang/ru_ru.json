@@ -96,6 +96,7 @@
     "tooltip.glassential.redstone": "Излучает сигнал редстоуна",
     "tooltip.glassential.ice": "Лёд в термальном стекле, не растает",
     "tooltip.glassential.lava_lamp": "Природный фонарь, обжигает как магма",
+    "tooltip.glassential.gravity": "Смягчает падение, нет коллизии",
 
     "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",

@@ -39,24 +39,19 @@ artifacts {
     commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }
 
-// 1) Подключаем src/generated/resources как ресурсы
-sourceSets {
-    main {
-        resources {
-            srcDir 'src/generated/resources'
-        }
-    }
-}
-
-// 2) Чистим только наши (опционально, чтобы не копились «старые» JSON)
-tasks.register('cleanCommonDatagen', Delete) {
-    delete file('src/generated/resources/data/glassential') // путь к твоим данным
-}
-
-// 3) Гарантируем, что датаген отработает до сборки ресурсов common.
-//    Укажи ТУ задачу из fabric/ (или neoforge/), которая запускает datagen.
-tasks.named('processResources').configure {
-    dependsOn ':fabric:runDatagen'    // если генерируешь через Fabric
-    // dependsOn ':neoforge:runData'  // если генерируешь через NeoForge
-    dependsOn 'cleanCommonDatagen'
-}
+//sourceSets {
+//    main {
+//        resources {
+//            srcDir 'src/generated/resources'
+//        }
+//    }
+//}
+//
+//tasks.register('cleanCommonDatagen', Delete) {
+//    delete file('src/generated/resources/data/glassential')
+//}
+//
+//tasks.named('processResources').configure {
+//    dependsOn ':fabric:runDatagen'
+//    dependsOn 'cleanCommonDatagen'
+//}
