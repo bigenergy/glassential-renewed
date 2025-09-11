@@ -1,4 +1,4 @@
-Glassential Renewed 3.2.3
+Glassential Renewed 3.2.4
 ================
 - Updated zh_cn translate (thanks Ironnoob73)
 - Fixed tinted redstone/light/lamp glass so it doesn't let light through anymore
