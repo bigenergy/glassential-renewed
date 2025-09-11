@@ -20,11 +20,8 @@ import java.util.List;
 
 public class GhostPaneBlock extends IronBarsBlock {
 
-    private final boolean collidePlayers;
-
-    public GhostPaneBlock(Properties properties, boolean collidePlayers) {
+    public GhostPaneBlock(Properties properties) {
         super(properties);
-        this.collidePlayers = collidePlayers;
     }
 
 
