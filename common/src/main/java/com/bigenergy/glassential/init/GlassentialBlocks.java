@@ -25,8 +25,8 @@ import java.util.function.Supplier;
 
 public class GlassentialBlocks {
 
-    private static final RegistrationProvider<Block> BLOCK_DEFERRED = RegistrationProvider.get(BuiltInRegistries.BLOCK, Constants.MOD_ID);
-    private static final RegistrationProvider<Item> ITEM_DEFERRED = RegistrationProvider.get(BuiltInRegistries.ITEM, Constants.MOD_ID);
+    public static final RegistrationProvider<Block> BLOCK_DEFERRED = RegistrationProvider.get(BuiltInRegistries.BLOCK, Constants.MOD_ID);
+    public static final RegistrationProvider<Item> ITEM_DEFERRED = RegistrationProvider.get(BuiltInRegistries.ITEM, Constants.MOD_ID);
     public static final Collection<RegistryObject<Item>> ITEMS_FOR_TAB_LIST = new ArrayList<>();
 
     // Glasses

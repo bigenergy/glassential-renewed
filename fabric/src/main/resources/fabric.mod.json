@@ -12,7 +12,7 @@
         "sources": "https://github.com/bigenergy/glassential-renewed"
     },
     "license": "${license}",
-    "icon": "${mod_id}.png",
+    "icon": "logo.png",
     "environment": "*",
     "entrypoints": {
         "main": [
@@ -20,7 +20,10 @@
         ],
         "client": [
             "com.bigenergy.glassential.GlassentialClient"
-        ]
+        ],
+      "fabric-datagen": [
+        "com.bigenergy.glassential.TemplateDatagen"
+      ]
     },
     "mixins": [
         "${mod_id}.mixins.json",
