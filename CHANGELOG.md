@@ -1,3 +1,8 @@
+Glassential Renewed 3.2.5
+================
+- Added gravity glass
+- Hotfix loot drops
+
 Glassential Renewed 3.2.4
 ================
 - Updated zh_cn translate (thanks Ironnoob73)

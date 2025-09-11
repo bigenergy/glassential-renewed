@@ -95,6 +95,7 @@
     "tooltip.glassential.redstone": "Emits a redstone signal",
     "tooltip.glassential.ice": "Ice in thermal glass, not melt",
     "tooltip.glassential.lava_lamp": "Natural lantern, burns like magma",
+    "tooltip.glassential.gravity": "Softens the fall, no collision",
 
     "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
     "tooltip.glassential.pane_light": "Emits light",
