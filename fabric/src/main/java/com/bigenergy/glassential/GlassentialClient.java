@@ -22,7 +22,8 @@ public class GlassentialClient implements ClientModInitializer {
                 GlassentialBlocks.OBSIDIAN_GLASS.get(),
                 GlassentialBlocks.STONE_GLASS.get(),
                 GlassentialBlocks.SANDSTONE_GLASS.get(),
-                GlassentialBlocks.ICE_GLASS.get()
+                GlassentialBlocks.ICE_GLASS.get(),
+                GlassentialBlocks.GRAVITY_GLASS.get()
         );
 
 
