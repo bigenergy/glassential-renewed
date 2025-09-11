@@ -113,7 +113,7 @@ public class GlassentialBlocks {
     public static final RegistryObject<Block> GLASS_REDSTONE_TINTED_PANE = registerBlock("glass_redstone_tinted_pane",
             () -> new TintedRedstonePaneBlock(glassPaneProp()));
     public static final RegistryObject<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane",
-            () -> new BasicPaneBlock(glassPaneProp().noCollission(), false));
+            () -> new GhostPaneBlock(glassPaneProp().noCollission(), false));
     public static final RegistryObject<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane",
             () -> new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
     public static final RegistryObject<Block> GLASS_LIGHT_TINTED_PANE = registerBlock("glass_light_tinted_pane",

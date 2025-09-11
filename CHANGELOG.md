@@ -6,6 +6,8 @@ Glassential Renewed 3.2.3
 - Fixed glass slab side blur
 - Tinted door/trapdoor now really tinted (fix)
 - Tinted light/redstone pane now really tinted (fix)
+- Fixed silk touch drops all blocks
+- Ghost door/trapdoor now has properties of its glass
 
 Glassential Renewed 3.2.3
 ================
