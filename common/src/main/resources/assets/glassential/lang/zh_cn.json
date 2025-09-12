@@ -7,12 +7,13 @@
     "block.glassential.glass_light": "发光玻璃",
     "block.glassential.glass_light_tinted": "有色发光玻璃",
     "block.glassential.glass_redstone": "红石玻璃",
-    "block.glassential.glass_redstone_tinted": "有色红石玻璃",
+    "block.glassential.glass_redstone_tinted": "无光红石玻璃",
     "block.glassential.stone_glass": "石框玻璃",
     "block.glassential.sandstone_glass": "砂岩框玻璃",
     "block.glassential.obsidian_glass": "黑曜石玻璃",
     "block.glassential.ice_glass": "冰玻璃",
     "block.glassential.iron_glass": "铁框玻璃",
+    "block.glassential.gravity_glass": "重力玻璃",
 
     "block.glassential.glass_lava_lamp": "熔岩灯",
     "block.glassential.glass_lava_lamp_tinted": "暗色熔岩灯",
@@ -82,7 +83,7 @@
     "block.glassential.glass_light_pane": "发光玻璃板",
     "block.glassential.glass_light_tinted_pane": "有色发光玻璃板",
     "block.glassential.glass_redstone_pane": "红石玻璃板",
-    "block.glassential.glass_redstone_tinted_pane": "有色红石玻璃板",
+    "block.glassential.glass_redstone_tinted_pane": "无光红石玻璃板",
 
     "block.glassential.glass_slab": "玻璃台阶",
 
@@ -95,6 +96,7 @@
     "tooltip.glassential.redstone": "激活红石信号",
     "tooltip.glassential.ice": "冰在隔热玻璃中，不会融化",
     "tooltip.glassential.lava_lamp": "天然灯笼，炽如岩浆",
+    "tooltip.glassential.gravity": "缓降，无碰撞",
 
     "tooltip.glassential.pane_frameless": "在方块之间时无框",
     "tooltip.glassential.pane_light": "发光",
