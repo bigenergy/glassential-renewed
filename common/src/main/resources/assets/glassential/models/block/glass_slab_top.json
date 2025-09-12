@@ -1,16 +1,90 @@
 {
   "loader": "fusion:model",
   "type": "connecting",
-  "connections": [
-    {
-      "type": "is_same_block"
-    }
-  ],
+  "connections": {
+    "side": [
+      {
+        "type": "and",
+        "predicates": [
+          {
+            "type": "is_direction",
+            "directions": [
+              "top",
+              "top_left",
+              "top_right"
+            ]
+          },
+          {
+            "type": "or",
+            "predicates": [
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "bottom"
+                }
+              },
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "double"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "and",
+        "predicates": [
+          {
+            "type": "or",
+            "predicates": [
+              {
+                "type": "is_same_state"
+              },
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "double"
+                }
+              }
+            ]
+          },
+          {
+            "type": "is_direction",
+            "directions": [
+              "left",
+              "right"
+            ]
+          }
+        ]
+      }
+    ],
+    "bottom": {
+      "type": "or",
+      "predicates": [
+        {
+          "type": "is_same_state"
+        },
+        {
+          "type": "match_state",
+          "block": "glassential:glass_slab",
+          "properties": {
+            "type": "double"
+          }
+        }
+      ]
+    },
+    "top": "#bottom"
+  },
   "render_type": "cutout",
   "parent": "block/slab_top",
   "textures": {
     "bottom": "glassential:block/glass",
     "top": "glassential:block/glass",
-    "side": "glassential:block/glass_slab_top"
+    "side": "glassential:block/glass_for_slab"
   }
 }
