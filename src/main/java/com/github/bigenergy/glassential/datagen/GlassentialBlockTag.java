@@ -4,7 +4,10 @@ import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -14,61 +17,92 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 public class GlassentialBlockTag extends BlockTagsProvider {
-    public GlassentialBlockTag(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+    public GlassentialBlockTag(PackOutput output,
+                               CompletableFuture<HolderLookup.Provider> lookupProvider,
+                               @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, Glassential.MODID, existingFileHelper);
     }
 
-
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        // glasses
-        tag(BlockTags.IMPERMEABLE)
-                .add(GlassentialBlocks.GLASSES.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        // ======== GLASS / TINTED GLASS / PANES / SLABS ========
+        tag(BlockTags.IMPERMEABLE).add(
+                Stream.of(
+                                GlassentialBlocks.GLASSES.stream(),
+                                GlassentialBlocks.GLASSES_TINTED.stream(),
+                                GlassentialBlocks.PANES.stream(),
+                                GlassentialBlocks.SLABS.stream()
+                        ).flatMap(s -> s.map(DeferredHolder::get))
+                        .toArray(Block[]::new)
+        );
 
-        tag(Tags.Blocks.GLASS_BLOCKS)
-                .add(GlassentialBlocks.GLASSES.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        tag(Tags.Blocks.GLASS_BLOCKS).add(
+                Stream.concat(
+                        GlassentialBlocks.GLASSES.stream(),
+                        GlassentialBlocks.GLASSES_TINTED.stream()
+                ).map(DeferredHolder::get).toArray(Block[]::new)
+        );
 
-        // panes
-        tag(BlockTags.IMPERMEABLE)
-                .add(GlassentialBlocks.PANES.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        tag(Tags.Blocks.GLASS_BLOCKS_TINTED).add(
+                GlassentialBlocks.GLASSES_TINTED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
+        tag(Tags.Blocks.GLASS_PANES).add(
+                GlassentialBlocks.PANES.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
 
-        tag(Tags.Blocks.GLASS_PANES)
-                .add(GlassentialBlocks.PANES.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        // ======== DOORS ========
+        tag(BlockTags.DOORS).add(
+                GlassentialBlocks.DOORS.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
 
-        // doors
-        tag(BlockTags.DOORS)
-                .add(GlassentialBlocks.DOORS.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        // ======== DOORS DYED ========
+        tag(GlassentialTags.Blocks.DOORS_DYED).add(
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
+        tag(BlockTags.DOORS).add(
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
+        tag(Tags.Blocks.DYED).add(
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
 
-        // trapdoors
-        tag(BlockTags.TRAPDOORS)
-                .add(GlassentialBlocks.TRAPDOORS.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
-        tag(BlockTags.IMPERMEABLE)
-                .add(GlassentialBlocks.TRAPDOORS.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        GlassentialBlocks.DOOR_COLOR.forEach((def, color) -> {
+            tag(GlassentialTags.Blocks.DOORS_DYED_BY_COLOR.get(color)).add(def.get());
+            tag(cDyedBlock(color)).add(def.get());
+        });
 
-        // slabs
-        tag(BlockTags.SLABS)
-                .add(GlassentialBlocks.SLABS.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
-        tag(BlockTags.IMPERMEABLE)
-                .add(GlassentialBlocks.SLABS.stream()
-                        .map(DeferredHolder::get) // DeferredBlock<Block> → Block
-                        .toArray(Block[]::new));
+        // ======== TRAPDOORS ========
+        tag(BlockTags.TRAPDOORS).add(
+                Stream.concat(
+                        GlassentialBlocks.TRAPDOORS.stream(),
+                        GlassentialBlocks.TRAPDOORS_DYED.stream()
+                ).map(DeferredHolder::get).toArray(Block[]::new)
+        );
+
+        tag(GlassentialTags.Blocks.TRAPDOORS_DYED).add(
+                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
+        tag(Tags.Blocks.DYED).add(
+                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+        );
+
+        GlassentialBlocks.TRAPDOOR_COLOR.forEach((def, color) -> {
+            tag(GlassentialTags.Blocks.TRAPDOORS_DYED_BY_COLOR.get(color)).add(def.get());
+            tag(cDyedBlock(color)).add(def.get());
+        });
+    }
+
+    private static @Nullable DyeColor parseColorFromPath(String path) {
+        for (DyeColor c : DyeColor.values()) {
+            if (path.startsWith(c.getName() + "_")) return c;
+        }
+        return null;
+    }
+
+    private static TagKey<Block> cDyedBlock(DyeColor color) {
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + color.getName()));
     }
 }
