@@ -14,6 +14,7 @@
     "block.glassential.ice_glass": "Ледяное стекло",
     "block.glassential.iron_glass": "Стекло с железной рамкой",
     "block.glassential.gravity_glass": "Гравитационное стекло",
+    "block.glassential.one_way_glass": "Одностороннее стекло",
 
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",
@@ -98,14 +99,15 @@
     "tooltip.glassential.ice": "Лёд в термальном стекле, не растает",
     "tooltip.glassential.lava_lamp": "Природный фонарь, обжигает как магма",
     "tooltip.glassential.gravity": "Смягчает падение, нет коллизии",
+    "tooltip.glassential.one_way": "Секретное окно. Прозрачно с одной стороны и непрозрачно с другой.\nПКМ блоком по стороне — замаскировать её этим блоком.",
 
-    "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
+  "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
     "tooltip.glassential.protected": "Устойчиво к взрывам, как обсидиан",
     "tooltip.glassential.protected_door": "Устойчиво к взрывам, работает как железная дверь",
     "tooltip.glassential.protected_trapdoor": "Устойчиво к взрывам, работает как железный люк",
 
-  "itemGroup.glassential": "Glassential Renewed - Функциональные блоки",
-  "itemGroup.glassential_misc": "Glassential Renewed - Обычные блоки"
+  "itemGroup.glassential": "Glassential Renewed - Функц. блоки",
+  "itemGroup.glassential_misc": "Glassential Renewed - Прочее"
 }

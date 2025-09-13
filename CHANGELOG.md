@@ -3,6 +3,8 @@ Glassential Renewed 3.3.0
 - No more support fabric, only neoforge
 - Rewrite code
 - Added tags for all mod blocks
+- Added One Way Glass (secret window)
+- Functional glasses moved to creative sub tab
 
 Glassential Renewed 3.2.5
 ================

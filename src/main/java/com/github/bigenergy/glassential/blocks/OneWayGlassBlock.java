@@ -1,14 +1,18 @@
 package com.github.bigenergy.glassential.blocks;
 
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,6 +27,8 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     public static final DirectionProperty OPAQUE_FACE = DirectionProperty.create("opaque_face", Direction.values());
@@ -40,6 +46,12 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         return defaultBlockState().setValue(OPAQUE_FACE, ctx.getNearestLookingDirection().getOpposite());
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        pTooltipComponents.add(Component.translatable("tooltip.glassential.one_way").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
