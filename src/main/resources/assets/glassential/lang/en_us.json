@@ -105,5 +105,6 @@
     "tooltip.glassential.protected_door": "Resistant to explosions, works like an iron door",
     "tooltip.glassential.protected_trapdoor": "Resistant to explosions, works like an iron trapdoor",
 
-    "itemGroup.glassential": "Glassential Renewed"
+    "itemGroup.glassential": "Glassential Renewed - Functional blocks",
+    "itemGroup.glassential_misc": "Glassential Renewed - Simple blocks"
 }

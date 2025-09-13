@@ -105,6 +105,7 @@
     "tooltip.glassential.protected": "Устойчиво к взрывам, как обсидиан",
     "tooltip.glassential.protected_door": "Устойчиво к взрывам, работает как железная дверь",
     "tooltip.glassential.protected_trapdoor": "Устойчиво к взрывам, работает как железный люк",
-	
-    "itemGroup.glassential": "Glassential Renewed"
+
+  "itemGroup.glassential": "Glassential Renewed - Функциональные блоки",
+  "itemGroup.glassential_misc": "Glassential Renewed - Обычные блоки"
 }
