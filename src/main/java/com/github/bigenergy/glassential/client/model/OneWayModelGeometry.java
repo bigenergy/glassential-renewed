@@ -1,4 +1,4 @@
-package com.github.bigenergy.glassential.client;
+package com.github.bigenergy.glassential.client.model;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;

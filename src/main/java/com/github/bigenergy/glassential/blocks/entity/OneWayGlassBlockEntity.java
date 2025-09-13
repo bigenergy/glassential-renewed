@@ -1,4 +1,4 @@
-package com.github.bigenergy.glassential.blocks;
+package com.github.bigenergy.glassential.blocks.entity;
 
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import net.minecraft.client.Minecraft;

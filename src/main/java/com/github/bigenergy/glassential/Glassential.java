@@ -1,17 +1,11 @@
 package com.github.bigenergy.glassential;
 
-import com.github.bigenergy.glassential.blocks.OneWayGlassBlockEntity;
-import com.github.bigenergy.glassential.client.OneWayModelGeometry;
 import com.github.bigenergy.glassential.datagen.GlassentialBlockLoot;
 import com.github.bigenergy.glassential.datagen.GlassentialBlockTag;
 import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,21 +13,15 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -118,56 +106,21 @@ public class Glassential {
 
         gen.addProvider(e.includeServer(), new LootTableProvider(
                 out,
-                Set.of(), // не включаем ваниллу
+                Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
-                        // передаём lookup в твой провайдер
                         GlassentialBlockLoot::new,
                         LootContextParamSets.BLOCK
                 )),
                 lookup
         ));
 
-        // 2) Block-tags
         var blockTags = gen.addProvider(e.includeServer(),
                 new GlassentialBlockTag(out, lookup, helper));
 
-        // 3) Item-tags (зависят от blockTags)
         gen.addProvider(e.includeServer(),
                 new GlassentialItemTag(out, lookup, blockTags.contentsGetter(), helper));
 
     }
 
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
 
-
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-
-            event.enqueueWork(() -> {
-                // слой рендера стеклянный (как и был)
-                ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.cutoutMipped());
-
-                // === ВАЖНО: цвет проксируется к мимику ===
-                BlockColors bc = Minecraft.getInstance().getBlockColors();
-                bc.register((state, level, pos, tintIndex) -> {
-                    if (level == null || pos == null) return -1; // item / нет мира — не красим
-                    var be = level.getBlockEntity(pos);
-                    if (be instanceof OneWayGlassBlockEntity ow) {
-                        BlockState mimic = ow.getMimic();
-                        // спросим цвет у исходного блока-имитатора
-                        return Minecraft.getInstance().getBlockColors().getColor(mimic, level, pos, tintIndex);
-                    }
-                    return -1; // нет тинта
-                }, GlassentialBlocks.ONE_WAY_GLASS.get());
-            });
-        }
-
-
-        @SubscribeEvent
-        public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders e) {
-            e.register(ResourceLocation.fromNamespaceAndPath(MODID, "one_way_loader"), new OneWayModelGeometry.Loader());
-        }
-    }
 }

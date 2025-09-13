@@ -1,5 +1,6 @@
 package com.github.bigenergy.glassential.blocks;
 
+import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
@@ -41,9 +43,9 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
-                                           BlockPos pos, Player player, InteractionHand hand,
-                                           BlockHitResult hit) {
+    public @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
+                                                    BlockPos pos, Player player, InteractionHand hand,
+                                                    BlockHitResult hit) {
         if (level.isClientSide) return ItemInteractionResult.SUCCESS;
 
         BlockEntity be = level.getBlockEntity(pos);
@@ -63,8 +65,8 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     }
 
     @Override
-    public InteractionResult useWithoutItem(BlockState state, Level level,
-                                            BlockPos pos, Player player, BlockHitResult hit) {
+    public @NotNull InteractionResult useWithoutItem(BlockState state, Level level,
+                                                     BlockPos pos, Player player, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
         level.setBlock(pos, state.setValue(OPAQUE_FACE, hit.getDirection()), 3);

@@ -1,7 +1,7 @@
 package com.github.bigenergy.glassential.init;
 
 import com.github.bigenergy.glassential.Glassential;
-import com.github.bigenergy.glassential.blocks.OneWayGlassBlockEntity;
+import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredHolder;

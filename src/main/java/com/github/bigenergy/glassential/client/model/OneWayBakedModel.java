@@ -1,7 +1,7 @@
-package com.github.bigenergy.glassential.client;
+package com.github.bigenergy.glassential.client.model;
 
 import com.github.bigenergy.glassential.blocks.OneWayGlassBlock;
-import com.github.bigenergy.glassential.blocks.OneWayGlassBlockEntity;
+import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
