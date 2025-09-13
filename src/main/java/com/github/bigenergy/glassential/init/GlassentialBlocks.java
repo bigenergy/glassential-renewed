@@ -28,140 +28,156 @@ public class GlassentialBlocks {
 
     public static final Collection<DeferredItem<BlockItem>> ITEMS_FOR_TAB_LIST = new ArrayList<>();
 
+    public static final Collection<DeferredBlock<Block>> GLASSES = new ArrayList<>();
+    public static final Collection<DeferredBlock<Block>> DOORS = new ArrayList<>();
+    public static final Collection<DeferredBlock<Block>> TRAPDOORS = new ArrayList<>();
+    public static final Collection<DeferredBlock<Block>> PANES = new ArrayList<>();
+    public static final Collection<DeferredBlock<Block>> SLABS = new ArrayList<>();
+
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Glassential.MODID);
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Glassential.MODID);
     // Glasses
-    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL = registerBlock("glass_dark_ethereal",
+    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL = registerGlass("glass_dark_ethereal",
             () -> new DarkEtherealGlassBlock(glassProp().noCollission(), false));
-    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE = registerBlock("glass_dark_ethereal_reverse",
+    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE = registerGlass("glass_dark_ethereal_reverse",
             () -> new DarkEtherealGlassBlock(glassProp().noCollission(), true));
-    public static final DeferredBlock<Block> GLASS_ETHEREAL = registerBlock("glass_ethereal",
+    public static final DeferredBlock<Block> GLASS_ETHEREAL = registerGlass("glass_ethereal",
             () -> new EtherealGlassBlock(glassProp().noCollission(), false));
-    public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE = registerBlock("glass_ethereal_reverse",
+    public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE = registerGlass("glass_ethereal_reverse",
             () -> new EtherealGlassBlock(glassProp().noCollission(), true));
-    public static final DeferredBlock<Block> GLASS_GHOSTLY = registerBlock("glass_ghostly",
+    public static final DeferredBlock<Block> GLASS_GHOSTLY = registerGlass("glass_ghostly",
             () -> new TooltipGlassBlock(glassProp().noCollission(), "tooltip.glassential.ghostly"));
-    public static final DeferredBlock<Block> GLASS_LIGHT = registerBlock("glass_light",
+    public static final DeferredBlock<Block> GLASS_LIGHT = registerGlass("glass_light",
             () -> new LightGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> GLASS_LIGHT_TINTED = registerBlock("glass_light_tinted",
+    public static final DeferredBlock<Block> GLASS_LIGHT_TINTED = registerGlass("glass_light_tinted",
             () -> new TintedLightGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> GLASS_REDSTONE = registerBlock("glass_redstone",
+    public static final DeferredBlock<Block> GLASS_REDSTONE = registerGlass("glass_redstone",
             () -> new RedstoneGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED = registerBlock("glass_redstone_tinted",
+    public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED = registerGlass("glass_redstone_tinted",
             () -> new TintedRedstoneGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> OBSIDIAN_GLASS = registerBlock("obsidian_glass",
+    public static final DeferredBlock<Block> OBSIDIAN_GLASS = registerGlass("obsidian_glass",
             () -> new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"));
-    public static final DeferredBlock<Block> STONE_GLASS = registerBlock("stone_glass",
+    public static final DeferredBlock<Block> STONE_GLASS = registerGlass("stone_glass",
             () -> new SimpleGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> SANDSTONE_GLASS = registerBlock("sandstone_glass",
+    public static final DeferredBlock<Block> SANDSTONE_GLASS = registerGlass("sandstone_glass",
             () -> new SimpleGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> ICE_GLASS = registerBlock("ice_glass",
+    public static final DeferredBlock<Block> ICE_GLASS = registerGlass("ice_glass",
             () -> new IceGlassBlock(glassProp(), "tooltip.glassential.ice"));
-    public static final DeferredBlock<Block> IRON_GLASS = registerBlock("iron_glass",
+    public static final DeferredBlock<Block> IRON_GLASS = registerGlass("iron_glass",
             () -> new SimpleGlassBlock(glassProp()));
-    public static final DeferredBlock<Block> GRAVITY_GLASS = registerBlock("gravity_glass",
+    public static final DeferredBlock<Block> GRAVITY_GLASS = registerGlass("gravity_glass",
             () -> new GravityGlassBlock(glassProp()));
 
     // Glass Lamps
-    public static final DeferredBlock<Block> GLASS_LAVA_LAMP = registerBlock("glass_lava_lamp",
+    public static final DeferredBlock<Block> GLASS_LAVA_LAMP = registerGlass("glass_lava_lamp",
             () -> new CustomGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
-    public static final DeferredBlock<Block> GLASS_LAVA_LAMP_TINTED = registerBlock("glass_lava_lamp_tinted",
+    public static final DeferredBlock<Block> GLASS_LAVA_LAMP_TINTED = registerGlass("glass_lava_lamp_tinted",
             () -> new CustomTintedGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.lava_lamp"));
-    public static final DeferredBlock<Block> GLASS_GLOWSTONE_LAMP = registerBlock("glass_glowstone_lamp",
+    public static final DeferredBlock<Block> GLASS_GLOWSTONE_LAMP = registerGlass("glass_glowstone_lamp",
             () -> new TooltipGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
-    public static final DeferredBlock<Block> GLASS_GLOWSTONE_LAMP_TINTED = registerBlock("glass_glowstone_lamp_tinted",
+    public static final DeferredBlock<Block> GLASS_GLOWSTONE_LAMP_TINTED = registerGlass("glass_glowstone_lamp_tinted",
             () -> new TooltipTintedGlassBlock(glassProp().lightLevel((b) -> 15), "tooltip.glassential.light"));
 
     // Glass Doors
-    public static final DeferredBlock<Block> GLASS_DOOR = registerGlassDoor("glass_door");
-    public static final DeferredBlock<Block> DARK_ETHEREAL_DOOR = registerGlassDoor("dark_ethereal_door", false);
-    public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_DOOR = registerGlassDoor("dark_ethereal_reverse_door", true);
-    public static final DeferredBlock<Block> ETHEREAL_DOOR = registerGlassDoor("ethereal_door", false);
-    public static final DeferredBlock<Block> ETHEREAL_REVERSE_DOOR = registerGlassDoor("ethereal_reverse_door", true);
-    public static final DeferredBlock<Block> LIGHT_DOOR = registerBlock("light_door",
+    public static final DeferredBlock<Block> GLASS_DOOR = registerDoor("glass_door",
+            () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    public static final DeferredBlock<Block> DARK_ETHEREAL_DOOR = registerDoor("dark_ethereal_door",
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false));
+    public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_DOOR = registerDoor("dark_ethereal_reverse_door",
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true));
+    public static final DeferredBlock<Block> ETHEREAL_DOOR = registerDoor("ethereal_door",
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false));
+    public static final DeferredBlock<Block> ETHEREAL_REVERSE_DOOR = registerDoor("ethereal_reverse_door",
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true));
+    public static final DeferredBlock<Block> LIGHT_DOOR = registerDoor("light_door",
             () -> new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
-    public static final DeferredBlock<Block> REDSTONE_DOOR = registerBlock("redstone_door",
+    public static final DeferredBlock<Block> REDSTONE_DOOR = registerDoor("redstone_door",
             () -> new GlassRedstoneDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
-    public static final DeferredBlock<Block> GHOSTLY_DOOR = registerBlock("ghostly_door",
+    public static final DeferredBlock<Block> GHOSTLY_DOOR = registerDoor("ghostly_door",
             () -> new GlassGhostDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
-    public static final DeferredBlock<Block> OBSIDIAN_DOOR = registerBlock("obsidian_door",
+    public static final DeferredBlock<Block> OBSIDIAN_DOOR = registerDoor("obsidian_door",
             () -> new ObsidianGlassDoor(glassProtectedProp(), BlockSetType.IRON));
 
     // Glass Trapdoors
-    public static final DeferredBlock<Block> GLASS_TRAPDOOR = registerGlassTrapdoor("glass_trapdoor");
-    public static final DeferredBlock<Block> DARK_ETHEREAL_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_trapdoor", false);
-    public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("dark_ethereal_reverse_trapdoor", true);
-    public static final DeferredBlock<Block> ETHEREAL_TRAPDOOR = registerGlassTrapdoor("ethereal_trapdoor", false);
-    public static final DeferredBlock<Block> ETHEREAL_REVERSE_TRAPDOOR = registerGlassTrapdoor("ethereal_reverse_trapdoor", true);
-    public static final DeferredBlock<Block> REDSTONE_TRAPDOOR = registerBlock("redstone_trapdoor",
+    public static final DeferredBlock<Block> GLASS_TRAPDOOR = registerTrapDoor("glass_trapdoor",
+            () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    public static final DeferredBlock<Block> DARK_ETHEREAL_TRAPDOOR = registerTrapDoor("dark_ethereal_trapdoor",
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false));
+    public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerTrapDoor("dark_ethereal_reverse_trapdoor",
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true));
+    public static final DeferredBlock<Block> ETHEREAL_TRAPDOOR = registerTrapDoor("ethereal_trapdoor",
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false));
+    public static final DeferredBlock<Block> ETHEREAL_REVERSE_TRAPDOOR = registerTrapDoor("ethereal_reverse_trapdoor",
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true));
+    public static final DeferredBlock<Block> REDSTONE_TRAPDOOR = registerTrapDoor("redstone_trapdoor",
             () -> new GlassRedstoneTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
-    public static final DeferredBlock<Block> GHOSTLY_TRAPDOOR = registerBlock("ghostly_trapdoor",
+    public static final DeferredBlock<Block> GHOSTLY_TRAPDOOR = registerTrapDoor("ghostly_trapdoor",
             () -> new GlassGhostTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
-    public static final DeferredBlock<Block> LIGHT_TRAPDOOR = registerBlock("light_trapdoor",
+    public static final DeferredBlock<Block> LIGHT_TRAPDOOR = registerTrapDoor("light_trapdoor",
             () -> new GlassLightTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel((b) -> 15), BlockSetType.OAK));
-    public static final DeferredBlock<Block> OBSIDIAN_TRAPDOOR = registerBlock("obsidian_trapdoor",
+    public static final DeferredBlock<Block> OBSIDIAN_TRAPDOOR = registerTrapDoor("obsidian_trapdoor",
             () -> new ObsidianGlassTrapDoor(glassProtectedProp(), BlockSetType.IRON));
 
     // Glass Panes
-    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_PANE = registerBlock("glass_dark_ethereal_pane",
+    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_PANE = registerPane("glass_dark_ethereal_pane",
             () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission(), false));
-    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerBlock("glass_dark_ethereal_reverse_pane",
+    public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerPane("glass_dark_ethereal_reverse_pane",
             () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission(), true));
-    public static final DeferredBlock<Block> GLASS_ETHEREAL_PANE = registerBlock("glass_ethereal_pane",
+    public static final DeferredBlock<Block> GLASS_ETHEREAL_PANE = registerPane("glass_ethereal_pane",
             () -> new EtherealPaneBlock(glassPaneProp().noCollission(), false));
-    public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE_PANE = registerBlock("glass_ethereal_reverse_pane",
+    public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE_PANE = registerPane("glass_ethereal_reverse_pane",
             () -> new EtherealPaneBlock(glassPaneProp().noCollission(), true));
-    public static final DeferredBlock<Block> GLASS_REDSTONE_PANE = registerBlock("glass_redstone_pane",
+    public static final DeferredBlock<Block> GLASS_REDSTONE_PANE = registerPane("glass_redstone_pane",
             () -> new RedstonePaneBlock(glassPaneProp()));
-    public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED_PANE = registerBlock("glass_redstone_tinted_pane",
+    public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED_PANE = registerPane("glass_redstone_tinted_pane",
             () -> new TintedRedstonePaneBlock(glassPaneProp()));
-    public static final DeferredBlock<Block> GLASS_GHOSTLY_PANE = registerBlock("glass_ghostly_pane",
+    public static final DeferredBlock<Block> GLASS_GHOSTLY_PANE = registerPane("glass_ghostly_pane",
             () -> new GhostPaneBlock(glassPaneProp().noCollission()));
-    public static final DeferredBlock<Block> GLASS_LIGHT_PANE = registerBlock("glass_light_pane",
+    public static final DeferredBlock<Block> GLASS_LIGHT_PANE = registerPane("glass_light_pane",
             () -> new BasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
-    public static final DeferredBlock<Block> GLASS_LIGHT_TINTED_PANE = registerBlock("glass_light_tinted_pane",
+    public static final DeferredBlock<Block> GLASS_LIGHT_TINTED_PANE = registerPane("glass_light_tinted_pane",
             () -> new TintedBasicPaneBlock(glassPaneProp().lightLevel((b) -> 15), true));
 
     // Dyed Glass Doors
-    public static final DeferredBlock<Block> BLACK_GLASS_DOOR = registerGlassDoor("black_glass_door");
-    public static final DeferredBlock<Block> BLUE_GLASS_DOOR = registerGlassDoor("blue_glass_door");
-    public static final DeferredBlock<Block> BROWN_GLASS_DOOR = registerGlassDoor("brown_glass_door");
-    public static final DeferredBlock<Block> CYAN_GLASS_DOOR = registerGlassDoor("cyan_glass_door");
-    public static final DeferredBlock<Block> GRAY_GLASS_DOOR = registerGlassDoor("gray_glass_door");
-    public static final DeferredBlock<Block> GREEN_GLASS_DOOR = registerGlassDoor("green_glass_door");
-    public static final DeferredBlock<Block> LIGHT_BLUE_GLASS_DOOR = registerGlassDoor("light_blue_glass_door");
-    public static final DeferredBlock<Block> LIGHT_GRAY_GLASS_DOOR = registerGlassDoor("light_gray_glass_door");
-    public static final DeferredBlock<Block> LIME_GLASS_DOOR = registerGlassDoor("lime_glass_door");
-    public static final DeferredBlock<Block> MAGENTA_GLASS_DOOR = registerGlassDoor("magenta_glass_door");
-    public static final DeferredBlock<Block> ORANGE_GLASS_DOOR = registerGlassDoor("orange_glass_door");
-    public static final DeferredBlock<Block> PINK_GLASS_DOOR = registerGlassDoor("pink_glass_door");
-    public static final DeferredBlock<Block> PURPLE_GLASS_DOOR = registerGlassDoor("purple_glass_door");
-    public static final DeferredBlock<Block> RED_GLASS_DOOR = registerGlassDoor("red_glass_door");
-    public static final DeferredBlock<Block> TINTED_GLASS_DOOR = registerTintedGlassDoor("tinted_glass_door");
-    public static final DeferredBlock<Block> WHITE_GLASS_DOOR = registerGlassDoor("white_glass_door");
-    public static final DeferredBlock<Block> YELLOW_GLASS_DOOR = registerGlassDoor("yellow_glass_door");
+    public static final DeferredBlock<Block> BLACK_GLASS_DOOR = registerSimpleDoor("black_glass_door");
+    public static final DeferredBlock<Block> BLUE_GLASS_DOOR = registerSimpleDoor("blue_glass_door");
+    public static final DeferredBlock<Block> BROWN_GLASS_DOOR = registerSimpleDoor("brown_glass_door");
+    public static final DeferredBlock<Block> CYAN_GLASS_DOOR = registerSimpleDoor("cyan_glass_door");
+    public static final DeferredBlock<Block> GRAY_GLASS_DOOR = registerSimpleDoor("gray_glass_door");
+    public static final DeferredBlock<Block> GREEN_GLASS_DOOR = registerSimpleDoor("green_glass_door");
+    public static final DeferredBlock<Block> LIGHT_BLUE_GLASS_DOOR = registerSimpleDoor("light_blue_glass_door");
+    public static final DeferredBlock<Block> LIGHT_GRAY_GLASS_DOOR = registerSimpleDoor("light_gray_glass_door");
+    public static final DeferredBlock<Block> LIME_GLASS_DOOR = registerSimpleDoor("lime_glass_door");
+    public static final DeferredBlock<Block> MAGENTA_GLASS_DOOR = registerSimpleDoor("magenta_glass_door");
+    public static final DeferredBlock<Block> ORANGE_GLASS_DOOR = registerSimpleDoor("orange_glass_door");
+    public static final DeferredBlock<Block> PINK_GLASS_DOOR = registerSimpleDoor("pink_glass_door");
+    public static final DeferredBlock<Block> PURPLE_GLASS_DOOR = registerSimpleDoor("purple_glass_door");
+    public static final DeferredBlock<Block> RED_GLASS_DOOR = registerSimpleDoor("red_glass_door");
+    public static final DeferredBlock<Block> TINTED_GLASS_DOOR = registerSimpleTintedDoor("tinted_glass_door");
+    public static final DeferredBlock<Block> WHITE_GLASS_DOOR = registerSimpleDoor("white_glass_door");
+    public static final DeferredBlock<Block> YELLOW_GLASS_DOOR = registerSimpleDoor("yellow_glass_door");
 
     // Dyed Glass Trapdoors
-    public static final DeferredBlock<Block> BLACK_GLASS_TRAPDOOR = registerGlassTrapdoor("black_glass_trapdoor");
-    public static final DeferredBlock<Block> BLUE_GLASS_TRAPDOOR = registerGlassTrapdoor("blue_glass_trapdoor");
-    public static final DeferredBlock<Block> BROWN_GLASS_TRAPDOOR = registerGlassTrapdoor("brown_glass_trapdoor");
-    public static final DeferredBlock<Block> CYAN_GLASS_TRAPDOOR = registerGlassTrapdoor("cyan_glass_trapdoor");
-    public static final DeferredBlock<Block> GRAY_GLASS_TRAPDOOR = registerGlassTrapdoor("gray_glass_trapdoor");
-    public static final DeferredBlock<Block> GREEN_GLASS_TRAPDOOR = registerGlassTrapdoor("green_glass_trapdoor");
-    public static final DeferredBlock<Block> LIGHT_BLUE_GLASS_TRAPDOOR = registerGlassTrapdoor("light_blue_glass_trapdoor");
-    public static final DeferredBlock<Block> LIGHT_GRAY_GLASS_TRAPDOOR = registerGlassTrapdoor("light_gray_glass_trapdoor");
-    public static final DeferredBlock<Block> LIME_GLASS_TRAPDOOR = registerGlassTrapdoor("lime_glass_trapdoor");
-    public static final DeferredBlock<Block> MAGENTA_GLASS_TRAPDOOR = registerGlassTrapdoor("magenta_glass_trapdoor");
-    public static final DeferredBlock<Block> ORANGE_GLASS_TRAPDOOR = registerGlassTrapdoor("orange_glass_trapdoor");
-    public static final DeferredBlock<Block> PINK_GLASS_TRAPDOOR = registerGlassTrapdoor("pink_glass_trapdoor");
-    public static final DeferredBlock<Block> PURPLE_GLASS_TRAPDOOR = registerGlassTrapdoor("purple_glass_trapdoor");
-    public static final DeferredBlock<Block> RED_GLASS_TRAPDOOR = registerGlassTrapdoor("red_glass_trapdoor");
-    public static final DeferredBlock<Block> TINTED_GLASS_TRAPDOOR = registerTintedGlassTrapdoor("tinted_glass_trapdoor");
-    public static final DeferredBlock<Block> WHITE_GLASS_TRAPDOOR = registerGlassTrapdoor("white_glass_trapdoor");
-    public static final DeferredBlock<Block> YELLOW_GLASS_TRAPDOOR = registerGlassTrapdoor("yellow_glass_trapdoor");
+    public static final DeferredBlock<Block> BLACK_GLASS_TRAPDOOR = registerSimpleTrapDoor("black_glass_trapdoor");
+    public static final DeferredBlock<Block> BLUE_GLASS_TRAPDOOR = registerSimpleTrapDoor("blue_glass_trapdoor");
+    public static final DeferredBlock<Block> BROWN_GLASS_TRAPDOOR = registerSimpleTrapDoor("brown_glass_trapdoor");
+    public static final DeferredBlock<Block> CYAN_GLASS_TRAPDOOR = registerSimpleTrapDoor("cyan_glass_trapdoor");
+    public static final DeferredBlock<Block> GRAY_GLASS_TRAPDOOR = registerSimpleTrapDoor("gray_glass_trapdoor");
+    public static final DeferredBlock<Block> GREEN_GLASS_TRAPDOOR = registerSimpleTrapDoor("green_glass_trapdoor");
+    public static final DeferredBlock<Block> LIGHT_BLUE_GLASS_TRAPDOOR = registerSimpleTrapDoor("light_blue_glass_trapdoor");
+    public static final DeferredBlock<Block> LIGHT_GRAY_GLASS_TRAPDOOR = registerSimpleTrapDoor("light_gray_glass_trapdoor");
+    public static final DeferredBlock<Block> LIME_GLASS_TRAPDOOR = registerSimpleTrapDoor("lime_glass_trapdoor");
+    public static final DeferredBlock<Block> MAGENTA_GLASS_TRAPDOOR = registerSimpleTrapDoor("magenta_glass_trapdoor");
+    public static final DeferredBlock<Block> ORANGE_GLASS_TRAPDOOR = registerSimpleTrapDoor("orange_glass_trapdoor");
+    public static final DeferredBlock<Block> PINK_GLASS_TRAPDOOR = registerSimpleTrapDoor("pink_glass_trapdoor");
+    public static final DeferredBlock<Block> PURPLE_GLASS_TRAPDOOR = registerSimpleTrapDoor("purple_glass_trapdoor");
+    public static final DeferredBlock<Block> RED_GLASS_TRAPDOOR = registerSimpleTrapDoor("red_glass_trapdoor");
+    public static final DeferredBlock<Block> TINTED_GLASS_TRAPDOOR = registerSimpleTintedTrapDoor("tinted_glass_trapdoor");
+    public static final DeferredBlock<Block> WHITE_GLASS_TRAPDOOR = registerSimpleTrapDoor("white_glass_trapdoor");
+    public static final DeferredBlock<Block> YELLOW_GLASS_TRAPDOOR = registerSimpleTrapDoor("yellow_glass_trapdoor");
 
     // Glass Slabs
-    public static final DeferredBlock<Block> GLASS_SLAB = registerBlock("glass_slab",
+    public static final DeferredBlock<Block> GLASS_SLAB = registerSlab("glass_slab",
             () -> new GlassSlabBlock(BlockBehaviour.Properties.of()
                     .instrument(NoteBlockInstrument.HAT)
                     .strength(0.3F)
@@ -210,8 +226,9 @@ public class GlassentialBlocks {
         return false;
     }
 
+
+    // todo: maybe refactor \/
     private static DeferredBlock<Block> registerBlock(String name, Supplier<Block> blockSupplier) {
-        //DeferredBlock<Block> block = BLOCK_DEFERRED.register(name, blockSupplier);
         DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
         DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
 
@@ -220,30 +237,94 @@ public class GlassentialBlocks {
         return block;
     }
 
-    private static DeferredBlock<Block> registerGlassDoor(String name) {
-        return registerBlock(name, () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+
+    private static DeferredBlock<Block> registerSlab(String name, Supplier<Block> blockSupplier) {
+        DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        SLABS.add(block);
+
+        return block;
     }
 
-    private static DeferredBlock<Block> registerTintedGlassDoor(String name) {
-        return registerBlock(name, () -> new TintedGlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    private static DeferredBlock<Block> registerGlass(String name, Supplier<Block> blockSupplier) {
+        DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        GLASSES.add(block);
+
+        return block;
     }
 
-    private static DeferredBlock<Block> registerTintedGlassTrapdoor(String name) {
-        return registerBlock(name, () -> new TintedGlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    private static DeferredBlock<Block> registerPane(String name, Supplier<Block> blockSupplier) {
+        DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        PANES.add(block);
+
+        return block;
     }
 
-    private static DeferredBlock<Block> registerGlassDoor(String name, boolean collidePlayers) {
-        return registerBlock(name, () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, collidePlayers));
+    private static DeferredBlock<Block> registerDoor(String name, Supplier<Block> blockSupplier) {
+        DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        DOORS.add(block);
+
+        return block;
     }
 
-    private static DeferredBlock<Block> registerGlassTrapdoor(String name) {
-        return registerBlock(name, () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+    private static DeferredBlock<Block> registerTrapDoor(String name, Supplier<Block> blockSupplier) {
+        DeferredBlock<Block> block = BLOCKS.register(name, blockSupplier);
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        TRAPDOORS.add(block);
+
+        return block;
     }
 
-    private static DeferredBlock<Block> registerGlassTrapdoor(String name, boolean collidePlayers) {
-        return registerBlock(name, () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, collidePlayers));
+    private static DeferredBlock<Block> registerSimpleDoor(String name) {
+        DeferredBlock<Block> block = BLOCKS.register(name, () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        DOORS.add(block);
+
+        return block;
     }
 
-    public static void load() {
+    private static DeferredBlock<Block> registerSimpleTintedDoor(String name) {
+        DeferredBlock<Block> block = BLOCKS.register(name, () -> new TintedGlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        DOORS.add(block);
+
+        return block;
+    }
+
+    private static DeferredBlock<Block> registerSimpleTrapDoor(String name) {
+        DeferredBlock<Block> block = BLOCKS.register(name, () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        TRAPDOORS.add(block);
+
+        return block;
+    }
+
+    private static DeferredBlock<Block> registerSimpleTintedTrapDoor(String name) {
+        DeferredBlock<Block> block = BLOCKS.register(name, () -> new TintedGlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK));
+        DeferredItem<BlockItem> blockItem = ITEMS.registerSimpleBlockItem(name, block);
+
+        ITEMS_FOR_TAB_LIST.add(blockItem);
+        TRAPDOORS.add(block);
+
+        return block;
     }
 }

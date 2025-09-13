@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "glassential:glass_dark_ethereal",
     "glassential:glass_dark_ethereal_reverse",
@@ -10,10 +9,15 @@
     "glassential:glass_light_tinted",
     "glassential:glass_redstone",
     "glassential:glass_redstone_tinted",
+    "glassential:obsidian_glass",
     "glassential:stone_glass",
     "glassential:sandstone_glass",
-    "glassential:obsidian_glass",
     "glassential:ice_glass",
-    "glassential:iron_glass"
+    "glassential:iron_glass",
+    "glassential:gravity_glass",
+    "glassential:glass_lava_lamp",
+    "glassential:glass_lava_lamp_tinted",
+    "glassential:glass_glowstone_lamp",
+    "glassential:glass_glowstone_lamp_tinted"
   ]
 }

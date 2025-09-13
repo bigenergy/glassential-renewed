@@ -1,6 +1,8 @@
 package com.github.bigenergy.glassential;
 
 import com.github.bigenergy.glassential.datagen.GlassentialBlockLoot;
+import com.github.bigenergy.glassential.datagen.GlassentialBlockTag;
+import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import com.mojang.logging.LogUtils;
 import net.minecraft.core.HolderLookup;
@@ -83,6 +85,7 @@ public class Glassential {
     private void gatherData(GatherDataEvent e) {
         DataGenerator gen = e.getGenerator();
         PackOutput out = gen.getPackOutput();
+        var helper = e.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookup = e.getLookupProvider();
 
         gen.addProvider(e.includeServer(), new LootTableProvider(
@@ -95,6 +98,15 @@ public class Glassential {
                 )),
                 lookup
         ));
+
+        // 2) Block-tags
+        var blockTags = gen.addProvider(e.includeServer(),
+                new GlassentialBlockTag(out, lookup, helper));
+
+        // 3) Item-tags (зависят от blockTags)
+        gen.addProvider(e.includeServer(),
+                new GlassentialItemTag(out, lookup, blockTags.contentsGetter(), helper));
+
     }
 
 //    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
