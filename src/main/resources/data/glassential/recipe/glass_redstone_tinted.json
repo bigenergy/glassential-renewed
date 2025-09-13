@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:tinted_glass"
+    },
+    "A": {
+      "item": "glassential:glass_redstone"
+    }
+  },
+  "result": {
+    "id": "glassential:glass_redstone_tinted",
+    "count": 8
+  }
+}

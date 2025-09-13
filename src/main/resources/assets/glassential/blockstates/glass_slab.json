@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "glassential:block/glass_slab" },
+    "type=top": { "model": "glassential:block/glass_slab_top" },
+    "type=double": { "model": "glassential:block/glass_slab_double" }
+  }
+}

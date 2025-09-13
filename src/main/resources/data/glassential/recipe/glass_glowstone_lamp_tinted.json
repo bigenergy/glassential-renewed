@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "B#B",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glowstone"
+    },
+    "A": {
+      "item": "minecraft:tinted_glass"
+    },
+    "B": {
+      "item": "glassential:glass_light"
+    }
+  },
+  "result": {
+    "id": "glassential:glass_glowstone_lamp_tinted",
+    "count": 2
+  }
+}

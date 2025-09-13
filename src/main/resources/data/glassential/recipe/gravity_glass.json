@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cobweb"
+    },
+    "A": {
+      "item": "glassential:iron_glass"
+    }
+  },
+  "result": {
+    "id": "glassential:gravity_glass",
+    "count": 8
+  }
+}

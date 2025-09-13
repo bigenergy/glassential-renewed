@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "   ",
+      "###",
+      "###"
+    ],
+    "key": {
+      "#": {
+        "item": "glassential:glass_light"
+      }
+    },
+    "result": {
+      "id": "glassential:glass_light_pane",
+      "count": 16
+    }
+  }

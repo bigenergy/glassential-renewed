@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#A#",
+    "A A",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "A": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "glassential:iron_glass",
+    "count": 4
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/door_bottom_left",
+  "textures": {
+    "bottom": "glassential:block/blueglassdoorb",
+    "top": "glassential:block/blueglassdoort"
+  },
+  "render_type": "translucent"
+}

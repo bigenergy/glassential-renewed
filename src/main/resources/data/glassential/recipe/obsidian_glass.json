@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "#A#",
+    "A A",
+    "#A#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass"
+    },
+    "A": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "id": "glassential:obsidian_glass",
+    "count": 4
+  }
+}

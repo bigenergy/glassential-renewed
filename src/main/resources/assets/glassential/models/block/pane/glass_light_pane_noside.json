@@ -1,0 +1,7 @@
+{
+  "parent": "glassential:block/pane/template/template_glass_pane_noside",
+  "render_type": "translucent",
+  "textures": {
+    "pane": "glassential:block/light"
+  }
+}
