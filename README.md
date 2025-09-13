@@ -1,4 +1,4 @@
-# Glassential Renewed 1.21.1 (neoforge/fabric)
+# Glassential Renewed 1.21.1 [NEOFORGE]
 
 <p><img src="https://i.imgur.com/QeYedtE.png" alt="Logo"></p>
 <p><strong>Updated to minecraft 1.20.1+. improved version.</strong></p>
