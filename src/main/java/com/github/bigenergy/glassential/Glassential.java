@@ -1,29 +1,35 @@
 package com.github.bigenergy.glassential;
 
+import com.github.bigenergy.glassential.datagen.GlassentialBlockLoot;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.api.distmarker.Dist;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+
 @Mod(Glassential.MODID)
 public class Glassential {
     public static final String MODID = "glassential";
@@ -46,7 +52,7 @@ public class Glassential {
         CREATIVE_MODE_TABS.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
-        //modEventBus.addListener(this::addCreative);
+        modEventBus.addListener(this::gatherData);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -74,14 +80,31 @@ public class Glassential {
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
+    private void gatherData(GatherDataEvent e) {
+        DataGenerator gen = e.getGenerator();
+        PackOutput out = gen.getPackOutput();
+        CompletableFuture<HolderLookup.Provider> lookup = e.getLookupProvider();
+
+        gen.addProvider(e.includeServer(), new LootTableProvider(
+                out,
+                Set.of(), // не включаем ваниллу
+                List.of(new LootTableProvider.SubProviderEntry(
+                        // передаём lookup в твой провайдер
+                        GlassentialBlockLoot::new,
+                        LootContextParamSets.BLOCK
+                )),
+                lookup
+        ));
     }
+
+//    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+//    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+//    public static class ClientModEvents {
+//        @SubscribeEvent
+//        public static void onClientSetup(FMLClientSetupEvent event) {
+//            // Some client setup code
+//            LOGGER.info("HELLO FROM CLIENT SETUP");
+//            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+//        }
+//    }
 }

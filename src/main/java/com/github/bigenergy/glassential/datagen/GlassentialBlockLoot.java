@@ -1,0 +1,33 @@
+package com.github.bigenergy.glassential.datagen;
+
+import com.github.bigenergy.glassential.Glassential;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
+import java.util.Set;
+
+public class GlassentialBlockLoot extends BlockLootSubProvider {
+
+    public GlassentialBlockLoot(HolderLookup.Provider registries) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);    }
+
+    @Override
+    public void generate() {
+        BuiltInRegistries.BLOCK.entrySet().stream()
+                .filter(e -> e.getKey().location().getNamespace().equals(Glassential.MODID))
+                .map(Map.Entry::getValue).forEach(this::dropWhenSilkTouch);
+    }
+
+    @Override
+    protected @NotNull Iterable<Block> getKnownBlocks() {
+        return BuiltInRegistries.BLOCK.entrySet().stream()
+                .filter(e -> e.getKey().location().getNamespace().equals(Glassential.MODID))
+                .map(Map.Entry::getValue)
+                .toList();
+    }
+}
