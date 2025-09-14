@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "glassential:item/lightblueglassdoor"
-  },
-  "render_type": "translucent"
-}
