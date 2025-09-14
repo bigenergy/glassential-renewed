@@ -27,14 +27,30 @@ public class ClientModEvents {
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
+
+            // reentrancy guard
+            final ThreadLocal<Boolean> REENTRANT = ThreadLocal.withInitial(() -> false);
+
             bc.register((state, level, pos, tintIndex) -> {
                 if (level == null || pos == null) return -1;
+
+                if (Boolean.TRUE.equals(REENTRANT.get())) return -1;
+
                 var be = level.getBlockEntity(pos);
                 if (be instanceof OneWayGlassBlockEntity ow) {
                     BlockState mimic = ow.getMimic();
-                    return Minecraft.getInstance().getBlockColors().getColor(mimic, level, pos, tintIndex);
+
+                    if (mimic == null || mimic.isAir()) return -1;
+                    if (mimic.getBlock() == state.getBlock()) return -1;
+
+                    try {
+                        REENTRANT.set(true);
+                        return bc.getColor(mimic, level, pos, tintIndex);
+                    } finally {
+                        REENTRANT.set(false);
+                    }
                 }
-                return -1; // нет тинта
+                return -1;
             }, GlassentialBlocks.ONE_WAY_GLASS.get());
         });
     }
