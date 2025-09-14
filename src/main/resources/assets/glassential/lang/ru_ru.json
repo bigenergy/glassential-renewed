@@ -16,6 +16,7 @@
     "block.glassential.gravity_glass": "Гравитационное стекло",
     "block.glassential.one_way_glass": "Одностороннее стекло",
     "block.glassential.clear_fluid_glass": "Стекло без водного тумана",
+    "block.glassential.clear_fluid_fake_glass": "Фейковое стекло без водного тумана",
 
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",

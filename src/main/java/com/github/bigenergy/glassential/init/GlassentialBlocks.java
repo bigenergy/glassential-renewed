@@ -182,6 +182,8 @@ public class GlassentialBlocks {
                     .isRedstoneConductor((s,w,p)->false)), false);
     public static final DeferredBlock<Block> CLEAR_FLUID_GLASS = registerGlass("clear_fluid_glass",
             () -> new ClearFluidGlassBlock(BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.GLASS)), false);
+    public static final DeferredBlock<Block> CLEAR_FLUID_FAKE_GLASS = registerGlass("clear_fluid_fake_glass",
+            () -> new ClearFluidFakeGlassBlock(BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.GLASS)), false);
 
     // Lamps
     public static final DeferredBlock<Block> GLASS_LAVA_LAMP = registerGlass("glass_lava_lamp",

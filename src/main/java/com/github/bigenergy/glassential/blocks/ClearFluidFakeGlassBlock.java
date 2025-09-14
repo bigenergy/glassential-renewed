@@ -15,7 +15,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
@@ -30,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ClearFluidGlassBlock extends BigGlassBlockEntity {
+public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
     protected static final VoxelShape SHAPE_DOWN = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 0.01D, 16.0D);
     protected static final VoxelShape SHAPE_UP = Block.box(0.0D, 15.99D, 0.0D, 16.0D, 16.0D, 16.0D);
     protected static final VoxelShape SHAPE_NORTH = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 0.01D);
@@ -46,8 +48,8 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
         put(Direction.WEST, SHAPE_WEST);
     }};
 
-    public static final MapCodec<ClearFluidGlassBlock> CODEC = simpleCodec(ClearFluidGlassBlock::new);
-    public ClearFluidGlassBlock(Properties properties) {
+    public static final MapCodec<ClearFluidFakeGlassBlock> CODEC = simpleCodec(ClearFluidFakeGlassBlock::new);
+    public ClearFluidFakeGlassBlock(Properties properties) {
         super(properties);
     }
 
@@ -65,6 +67,13 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
     ) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         tooltipComponents.add(Component.translatable("tooltip.glassential.clear_fluid").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.glassential.ethereal").withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public @NotNull VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+        //Ty KingLemming for finding that new way for the old behavior
+        return !(context instanceof EntityCollisionContext && ((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
     }
 
     @Override

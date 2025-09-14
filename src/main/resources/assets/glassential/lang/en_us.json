@@ -16,6 +16,7 @@
     "block.glassential.gravity_glass": "Gravity Glass",
     "block.glassential.one_way_glass": "One Way Glass",
     "block.glassential.clear_fluid_glass": "Clear Fluid Glass",
+    "block.glassential.clear_fluid_fake_glass": "Clear Fluid Fake Glass",
 
     "block.glassential.glass_lava_lamp": "Lava Lamp",
     "block.glassential.glass_lava_lamp_tinted": "Tinted Lava Lamp",
@@ -128,7 +129,7 @@
     "tooltip.glassential.one_way": "A secret window. Transparent from one side, solid from the other.\\nRight-click a face with any block to disguise that side.",
     "tooltip.glassential.clear_fluid": "Removes the near-surface water face behind the glass for a crystal-clear view",
 
-  "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
+    "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
     "tooltip.glassential.pane_light": "Emits light",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
     "tooltip.glassential.protected": "Resistant to explosions",

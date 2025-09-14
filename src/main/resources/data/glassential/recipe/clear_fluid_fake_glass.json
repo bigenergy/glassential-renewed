@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "GGG",
+    "GPG",
+    "GGG"
+  ],
+  "key": {
+    "G": { "item": "glassential:clear_fluid_glass" },
+    "P": { "item": "minecraft:ender_eye" }
+  },
+  "result": {
+    "id": "glassential:clear_fluid_fake_glass",
+    "count": 8
+  }
+}

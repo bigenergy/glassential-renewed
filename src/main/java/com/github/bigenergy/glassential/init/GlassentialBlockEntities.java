@@ -24,7 +24,8 @@ public class GlassentialBlockEntities {
             BLOCK_ENTITIES.register("clear_fluid_glass",
                     () -> BlockEntityType.Builder.of(
                             ClearFluidGlassBlockEntity::new,
-                            GlassentialBlocks.CLEAR_FLUID_GLASS.get()
+                            GlassentialBlocks.CLEAR_FLUID_GLASS.get(),
+                            GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get()
                     ).build(null)
             );
 }
