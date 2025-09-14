@@ -260,29 +260,29 @@ public class GlassentialBlocks {
             () -> new ObsidianGlassTrapDoor(glassProtectedProp(), BlockSetType.IRON), false);
 
     // Other trapdoors
-    public static final DeferredBlock<Block> OAK_GLASS_TRAPDOOR = registerDoor("oak_glass_trapdoor",
+    public static final DeferredBlock<Block> OAK_GLASS_TRAPDOOR = registerTrapDoor("oak_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), true);
-    public static final DeferredBlock<Block> SPRUCE_GLASS_TRAPDOOR = registerDoor("spruce_glass_trapdoor",
+    public static final DeferredBlock<Block> SPRUCE_GLASS_TRAPDOOR = registerTrapDoor("spruce_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.SPRUCE), true);
-    public static final DeferredBlock<Block> BIRCH_GLASS_TRAPDOOR = registerDoor("birch_glass_trapdoor",
+    public static final DeferredBlock<Block> BIRCH_GLASS_TRAPDOOR = registerTrapDoor("birch_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.BIRCH), true);
-    public static final DeferredBlock<Block> ACACIA_GLASS_TRAPDOOR = registerDoor("acacia_glass_trapdoor",
+    public static final DeferredBlock<Block> ACACIA_GLASS_TRAPDOOR = registerTrapDoor("acacia_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.ACACIA), true);
-    public static final DeferredBlock<Block> JUNGLE_GLASS_TRAPDOOR = registerDoor("jungle_glass_trapdoor",
+    public static final DeferredBlock<Block> JUNGLE_GLASS_TRAPDOOR = registerTrapDoor("jungle_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.JUNGLE), true);
-    public static final DeferredBlock<Block> DARK_OAK_GLASS_TRAPDOOR = registerDoor("dark_oak_glass_trapdoor",
+    public static final DeferredBlock<Block> DARK_OAK_GLASS_TRAPDOOR = registerTrapDoor("dark_oak_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.DARK_OAK), true);
-    public static final DeferredBlock<Block> CRIMSON_GLASS_TRAPDOOR = registerDoor("crimson_glass_trapdoor",
+    public static final DeferredBlock<Block> CRIMSON_GLASS_TRAPDOOR = registerTrapDoor("crimson_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.CRIMSON), true);
-    public static final DeferredBlock<Block> WARPED_GLASS_TRAPDOOR = registerDoor("warped_glass_trapdoor",
+    public static final DeferredBlock<Block> WARPED_GLASS_TRAPDOOR = registerTrapDoor("warped_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.WARPED), true);
-    public static final DeferredBlock<Block> IRON_GLASS_TRAPDOOR = registerDoor("iron_glass_trapdoor",
+    public static final DeferredBlock<Block> IRON_GLASS_TRAPDOOR = registerTrapDoor("iron_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.IRON), true);
-    public static final DeferredBlock<Block> MANGROVE_GLASS_TRAPDOOR = registerDoor("mangrove_glass_trapdoor",
+    public static final DeferredBlock<Block> MANGROVE_GLASS_TRAPDOOR = registerTrapDoor("mangrove_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.MANGROVE), true);
-    public static final DeferredBlock<Block> BAMBOO_GLASS_TRAPDOOR = registerDoor("bamboo_glass_trapdoor",
+    public static final DeferredBlock<Block> BAMBOO_GLASS_TRAPDOOR = registerTrapDoor("bamboo_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.BAMBOO), true);
-    public static final DeferredBlock<Block> CHERRY_GLASS_TRAPDOOR = registerDoor("cherry_glass_trapdoor",
+    public static final DeferredBlock<Block> CHERRY_GLASS_TRAPDOOR = registerTrapDoor("cherry_glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.CHERRY), true);
 
     // Panes
