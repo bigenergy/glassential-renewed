@@ -1,3 +1,10 @@
+Glassential Renewed 3.3.2
+================
+- Updated zh_cn translate (thanks Ironnoob73)
+- Fixed Clear Fluid Fake Glass dagame in survival mode
+- Fixed Tinted Ethereal Glass Pane & Tinted Reverse Ethereal Glass - now tinted
+- Fixed Ghost Glass and Gravity Glass placing in water
+
 Glassential Renewed 3.3.1
 ================
 - Hotfix: missing register tinted glass trapdoor
