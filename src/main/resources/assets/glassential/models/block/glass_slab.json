@@ -1,11 +1,85 @@
 {
   "loader": "fusion:model",
   "type": "connecting",
-  "connections": [
-    {
-      "type": "is_same_block"
-    }
-  ],
+  "connections": {
+    "side": [
+      {
+        "type": "and",
+        "predicates": [
+          {
+            "type": "is_direction",
+            "directions": [
+              "bottom",
+              "bottom_left",
+              "bottom_right"
+            ]
+          },
+          {
+            "type": "or",
+            "predicates": [
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "top"
+                }
+              },
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "double"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "and",
+        "predicates": [
+          {
+            "type": "or",
+            "predicates": [
+              {
+                "type": "is_same_state"
+              },
+              {
+                "type": "match_state",
+                "block": "glassential:glass_slab",
+                "properties": {
+                  "type": "double"
+                }
+              }
+            ]
+          },
+          {
+            "type": "is_direction",
+            "directions": [
+              "left",
+              "right"
+            ]
+          }
+        ]
+      }
+    ],
+    "bottom": {
+      "type": "or",
+      "predicates": [
+        {
+          "type": "is_same_state"
+        },
+        {
+          "type": "match_state",
+          "block": "glassential:glass_slab",
+          "properties": {
+            "type": "double"
+          }
+        }
+      ]
+    },
+    "top": "#bottom"
+  },
   "render_type": "cutout",
   "parent": "block/slab",
   "textures": {
