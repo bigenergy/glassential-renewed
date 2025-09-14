@@ -14,6 +14,9 @@
     "block.glassential.ice_glass": "冰玻璃",
     "block.glassential.iron_glass": "铁框玻璃",
     "block.glassential.gravity_glass": "重力玻璃",
+    "block.glassential.one_way_glass": "单向玻璃",
+    "block.glassential.clear_fluid_glass": "流体澄澈玻璃",
+    "block.glassential.clear_fluid_fake_glass": "流体澄澈假玻璃",
 
     "block.glassential.glass_lava_lamp": "熔岩灯",
     "block.glassential.glass_lava_lamp_tinted": "暗色熔岩灯",
@@ -29,6 +32,32 @@
     "block.glassential.redstone_door": "红石玻璃门",
     "block.glassential.ghostly_door": "幽灵玻璃门",
     "block.glassential.obsidian_door": "黑曜石玻璃门",
+
+    "block.glassential.oak_glass_door": "橡木玻璃门",
+    "block.glassential.spruce_glass_door": "云杉木玻璃门",
+    "block.glassential.birch_glass_door": "白桦木玻璃门",
+    "block.glassential.acacia_glass_door": "金合欢木玻璃门",
+    "block.glassential.jungle_glass_door": "丛林木玻璃门",
+    "block.glassential.dark_oak_glass_door": "深色橡木玻璃门",
+    "block.glassential.crimson_glass_door": "绯红木玻璃门",
+    "block.glassential.warped_glass_door": "诡异木玻璃门",
+    "block.glassential.iron_glass_door": "铁玻璃门",
+    "block.glassential.mangrove_glass_door": "红木玻璃门",
+    "block.glassential.bamboo_glass_door": "竹玻璃门",
+    "block.glassential.cherry_glass_door": "樱花木玻璃门",
+
+    "block.glassential.oak_glass_trapdoor": "橡木玻璃活板门",
+    "block.glassential.spruce_glass_trapdoor": "云杉木玻璃活板门",
+    "block.glassential.birch_glass_trapdoor": "白桦木玻璃活板门",
+    "block.glassential.acacia_glass_trapdoor": "金合欢木玻璃活板门",
+    "block.glassential.jungle_glass_trapdoor": "丛林木玻璃活板门",
+    "block.glassential.dark_oak_glass_trapdoor": "深色橡木玻璃活板门",
+    "block.glassential.crimson_glass_trapdoor": "绯红木玻璃活板门",
+    "block.glassential.warped_glass_trapdoor": "诡异木玻璃活板门",
+    "block.glassential.iron_glass_trapdoor": "铁玻璃活板门",
+    "block.glassential.mangrove_glass_trapdoor": "红木玻璃活板门",
+    "block.glassential.bamboo_glass_trapdoor": "竹玻璃活板门",
+    "block.glassential.cherry_glass_trapdoor": "樱花木玻璃活板门",
 
     "block.glassential.glass_trapdoor": "玻璃活板门",
     "block.glassential.dark_ethereal_trapdoor": "无光缥缈玻璃活板门",
@@ -97,6 +126,8 @@
     "tooltip.glassential.ice": "冰在隔热玻璃中，不会融化",
     "tooltip.glassential.lava_lamp": "天然灯笼，炽如岩浆",
     "tooltip.glassential.gravity": "缓降，无碰撞",
+    "tooltip.glassential.one_way": "一扇秘密窗户。一面透明，另一面不透明。\\n使用任意方块右击其中一面即可伪装该面。",
+    "tooltip.glassential.clear_fluid": "消除玻璃后与之相邻的水面以获得清晰的视野",
 
     "tooltip.glassential.pane_frameless": "在方块之间时无框",
     "tooltip.glassential.pane_light": "发光",
@@ -104,6 +135,7 @@
     "tooltip.glassential.protected": "防爆",
     "tooltip.glassential.protected_door": "防爆，需要红石激活",
     "tooltip.glassential.protected_trapdoor": "防爆，需要红石激活",
-    
-    "itemGroup.glassential": "精致玻璃"
+
+    "itemGroup.glassential": "精致玻璃 - 功能方块",
+    "itemGroup.glassential_misc": "精致玻璃 - 简单方块"
 }
