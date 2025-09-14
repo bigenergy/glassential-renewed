@@ -358,6 +358,6 @@ public class GlassentialBlocks {
     public static final DeferredBlock<Block> WHITE_GLASS_TRAPDOOR      = registerDyedTrapdoorColoredProps("white_glass_trapdoor", DyeColor.WHITE, BlockSetType.OAK);
     public static final DeferredBlock<Block> YELLOW_GLASS_TRAPDOOR     = registerDyedTrapdoorColoredProps("yellow_glass_trapdoor", DyeColor.YELLOW, BlockSetType.OAK);
 
-    public static final DeferredBlock<Block> TINTED_GLASS_TRAPDOOR = registerDoor("tinted_glass_trapdoor",
+    public static final DeferredBlock<Block> TINTED_GLASS_TRAPDOOR = registerTrapDoor("tinted_glass_trapdoor",
             () -> new TintedGlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), true);
 }
