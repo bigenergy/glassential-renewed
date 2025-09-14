@@ -5,7 +5,7 @@ Glassential Renewed 3.3.0
 - Added tags for all mod blocks
 - Added One Way Glass (secret window)
 - Functional glasses moved to creative sub tab
-- Added Clear Fluid Glass (no waterfog glass)
+- Added Clear Fluid Glass (no waterfog glass) + fake variant (collide player)
 - Added wood-type glass doors/trapdoors
 
 Glassential Renewed 3.2.5
