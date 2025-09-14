@@ -1,3 +1,8 @@
+Glassential Renewed 3.3.1
+================
+- Hotfix: missing register tinted glass trapdoor
+- Nearly perfect Glass Slab connection (thanks Ironnoob73)
+
 Glassential Renewed 3.3.0
 ================
 - No more support fabric, only neoforge
