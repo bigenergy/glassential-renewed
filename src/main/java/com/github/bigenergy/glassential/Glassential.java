@@ -2,6 +2,7 @@ package com.github.bigenergy.glassential;
 
 import com.github.bigenergy.glassential.datagen.GlassentialBlockLoot;
 import com.github.bigenergy.glassential.datagen.GlassentialBlockTag;
+import com.github.bigenergy.glassential.datagen.GlassentialFluid;
 import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
@@ -13,6 +14,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -27,16 +29,19 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(Glassential.MODID)
 public class Glassential {
     public static final String MODID = "glassential";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger("Glassential Renewed");
+
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GLASSENTIAL_TAB =
@@ -73,6 +78,10 @@ public class Glassential {
         //modEventBus.addListener();
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    public static ResourceLocation prefix(String name) {
+        return ResourceLocation.fromNamespaceAndPath("glassential", name.toLowerCase(Locale.ROOT));
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -119,6 +128,7 @@ public class Glassential {
 
         gen.addProvider(e.includeServer(),
                 new GlassentialItemTag(out, lookup, blockTags.contentsGetter(), helper));
+        gen.addProvider(e.includeServer(), new GlassentialFluid(out, lookup, helper));
 
     }
 

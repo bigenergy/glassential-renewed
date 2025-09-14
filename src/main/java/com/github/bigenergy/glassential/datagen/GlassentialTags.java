@@ -3,11 +3,13 @@ package com.github.bigenergy.glassential.datagen;
 import com.github.bigenergy.glassential.Glassential;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -52,5 +54,14 @@ public final class GlassentialTags {
             );
             return map;
         }
+    }
+
+    public static class Fluids {
+        public static final TagKey<Fluid> CLEAR_FLUID_GLASS_FLUIDS_TAG = tag("clear_fluid_glass_fluids");
+
+        private static TagKey<Fluid> tag(String name) {
+            return FluidTags.create(Glassential.prefix(name));
+        }
+
     }
 }

@@ -15,6 +15,7 @@
     "block.glassential.iron_glass": "Стекло с железной рамкой",
     "block.glassential.gravity_glass": "Гравитационное стекло",
     "block.glassential.one_way_glass": "Одностороннее стекло",
+    "block.glassential.clear_fluid_glass": "Стекло без водного тумана",
 
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",
@@ -100,8 +101,9 @@
     "tooltip.glassential.lava_lamp": "Природный фонарь, обжигает как магма",
     "tooltip.glassential.gravity": "Смягчает падение, нет коллизии",
     "tooltip.glassential.one_way": "Секретное окно. Прозрачно с одной стороны и непрозрачно с другой.\nПКМ блоком по стороне — замаскировать её этим блоком.",
+    "tooltip.glassential.clear_fluid": "Убирает водный туман — вид в океан становится чистым",
 
-  "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
+    "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
     "tooltip.glassential.protected": "Устойчиво к взрывам, как обсидиан",

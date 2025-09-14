@@ -23,7 +23,9 @@ public class ClientModEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
 
         event.enqueueWork(() -> {
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
+
             BlockColors bc = Minecraft.getInstance().getBlockColors();
             bc.register((state, level, pos, tintIndex) -> {
                 if (level == null || pos == null) return -1;
@@ -42,4 +44,7 @@ public class ClientModEvents {
     public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders e) {
         e.register(ResourceLocation.fromNamespaceAndPath(Glassential.MODID, "one_way_loader"), new OneWayModelGeometry.Loader());
     }
+
+
+
 }

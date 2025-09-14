@@ -1,6 +1,7 @@
 package com.github.bigenergy.glassential.init;
 
 import com.github.bigenergy.glassential.Glassential;
+import com.github.bigenergy.glassential.blocks.entity.ClearFluidGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -16,6 +17,14 @@ public class GlassentialBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             OneWayGlassBlockEntity::new,
                             GlassentialBlocks.ONE_WAY_GLASS.get()
+                    ).build(null)
+            );
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClearFluidGlassBlockEntity>> CLEAR_FLUID_GLASS =
+            BLOCK_ENTITIES.register("clear_fluid_glass",
+                    () -> BlockEntityType.Builder.of(
+                            ClearFluidGlassBlockEntity::new,
+                            GlassentialBlocks.CLEAR_FLUID_GLASS.get()
                     ).build(null)
             );
 }
