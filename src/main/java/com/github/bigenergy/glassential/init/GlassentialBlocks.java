@@ -154,7 +154,7 @@ public class GlassentialBlocks {
     public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE = registerGlass("glass_ethereal_reverse",
             () -> new EtherealGlassBlock(glassProp().noCollission(), true), false);
     public static final DeferredBlock<Block> GLASS_GHOSTLY = registerGlass("glass_ghostly",
-            () -> new TooltipGlassBlock(glassProp().noCollission(), "tooltip.glassential.ghostly"), false);
+            () -> new GhostGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT = registerGlass("glass_light",
             () -> new LightGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT_TINTED = registerTintedGlass("glass_light_tinted",
