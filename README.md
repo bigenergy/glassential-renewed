@@ -1,5 +1,8 @@
 # Glassential Renewed 1.21.1 [NEOFORGE]
 
+[![CurseForge Downloads](https://cf.way2muchnoise.eu/full_945149_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/glassential-renewed)
+[![Minecraft Versions](https://cf.way2muchnoise.eu/versions/945149.svg)](https://www.curseforge.com/minecraft/mc-mods/glassential-renewed)
+
 <p><img src="https://i.imgur.com/QeYedtE.png" alt="Logo"></p>
 <p><strong>Updated to minecraft 1.20.1+. improved version.</strong></p>
 <p><strong>Since 2.1.0 required <a href="https://www.curseforge.com/minecraft/mc-mods/fusion-connected-textures" rel="nofollow">Fusion (Connected Textures)</a></strong></p>
@@ -26,5 +29,4 @@
 <li>Vanilla glasses have been completely replaced by connected (CTM)</li>
 </ul>
 
-[CurseForge link](https://curseforge.com/minecraft/mc-mods/glassential-renewed)
 
