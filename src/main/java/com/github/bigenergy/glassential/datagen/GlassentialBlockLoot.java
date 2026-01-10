@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SlabBlock;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -20,7 +21,13 @@ public class GlassentialBlockLoot extends BlockLootSubProvider {
     public void generate() {
         BuiltInRegistries.BLOCK.entrySet().stream()
                 .filter(e -> e.getKey().location().getNamespace().equals(Glassential.MODID))
-                .map(Map.Entry::getValue).forEach(this::dropWhenSilkTouch);
+                .map(Map.Entry::getValue).forEach(block -> {
+                    if (block instanceof SlabBlock) {
+                        add(block, createSlabItemTable(block));
+                    } else {
+                        dropWhenSilkTouch(block);
+                    }
+                });
     }
 
     @Override
