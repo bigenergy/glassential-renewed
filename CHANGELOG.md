@@ -1,3 +1,9 @@
+Glassential Renewed 3.3.3
+================
+- Fixed breaking slab block gives only one slab
+- Mobs can no longer spawn on glass without collision
+- Misc fixes
+
 Glassential Renewed 3.3.2
 ================
 - Updated zh_cn translate (thanks Ironnoob73)
