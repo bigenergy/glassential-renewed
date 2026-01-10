@@ -146,13 +146,13 @@ public class GlassentialBlocks {
 
     // Glasses
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL = registerGlass("glass_dark_ethereal",
-            () -> new DarkEtherealGlassBlock(glassProp().noCollission(), false), false);
+            () -> new DarkEtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE = registerGlass("glass_dark_ethereal_reverse",
-            () -> new DarkEtherealGlassBlock(glassProp().noCollission(), true), false);
+            () -> new DarkEtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL = registerGlass("glass_ethereal",
-            () -> new EtherealGlassBlock(glassProp().noCollission(), false), false);
+            () -> new EtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE = registerGlass("glass_ethereal_reverse",
-            () -> new EtherealGlassBlock(glassProp().noCollission(), true), false);
+            () -> new EtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_GHOSTLY = registerGlass("glass_ghostly",
             () -> new GhostGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT = registerGlass("glass_light",
@@ -202,13 +202,13 @@ public class GlassentialBlocks {
     public static final DeferredBlock<Block> GLASS_DOOR = registerDoor("glass_door",
             () -> new GlassDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), true);
     public static final DeferredBlock<Block> DARK_ETHEREAL_DOOR = registerDoor("dark_ethereal_door",
-            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false), false);
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, false), false);
     public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_DOOR = registerDoor("dark_ethereal_reverse_door",
-            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true), false);
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, true), false);
     public static final DeferredBlock<Block> ETHEREAL_DOOR = registerDoor("ethereal_door",
-            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false), false);
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, false), false);
     public static final DeferredBlock<Block> ETHEREAL_REVERSE_DOOR = registerDoor("ethereal_reverse_door",
-            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true), false);
+            () -> new GlassEtherealDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, true), false);
     public static final DeferredBlock<Block> LIGHT_DOOR = registerDoor("light_door",
             () -> new GlassLightDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).lightLevel(b -> 15), BlockSetType.OAK), false);
     public static final DeferredBlock<Block> REDSTONE_DOOR = registerDoor("redstone_door",
@@ -248,13 +248,13 @@ public class GlassentialBlocks {
     public static final DeferredBlock<Block> GLASS_TRAPDOOR = registerTrapDoor("glass_trapdoor",
             () -> new GlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), true);
     public static final DeferredBlock<Block> DARK_ETHEREAL_TRAPDOOR = registerTrapDoor("dark_ethereal_trapdoor",
-            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false), false);
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, false), false);
     public static final DeferredBlock<Block> DARK_ETHEREAL_REVERSE_TRAPDOOR = registerTrapDoor("dark_ethereal_reverse_trapdoor",
-            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true), false);
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, true), false);
     public static final DeferredBlock<Block> ETHEREAL_TRAPDOOR = registerTrapDoor("ethereal_trapdoor",
-            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, false), false);
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, false), false);
     public static final DeferredBlock<Block> ETHEREAL_REVERSE_TRAPDOOR = registerTrapDoor("ethereal_reverse_trapdoor",
-            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK, true), false);
+            () -> new GlassEtherealTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).isValidSpawn(GlassentialBlocks::never), BlockSetType.OAK, true), false);
     public static final DeferredBlock<Block> REDSTONE_TRAPDOOR = registerTrapDoor("redstone_trapdoor",
             () -> new GlassRedstoneTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), false);
     public static final DeferredBlock<Block> GHOSTLY_TRAPDOOR = registerTrapDoor("ghostly_trapdoor",
@@ -292,13 +292,13 @@ public class GlassentialBlocks {
 
     // Panes
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_PANE = registerPane("glass_dark_ethereal_pane",
-            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission(), false), false);
+            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerPane("glass_dark_ethereal_reverse_pane",
-            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission(), true), false);
+            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_PANE = registerPane("glass_ethereal_pane",
-            () -> new EtherealPaneBlock(glassPaneProp().noCollission(), false), false);
+            () -> new EtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE_PANE = registerPane("glass_ethereal_reverse_pane",
-            () -> new EtherealPaneBlock(glassPaneProp().noCollission(), true), false);
+            () -> new EtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_REDSTONE_PANE = registerPane("glass_redstone_pane",
             () -> new RedstonePaneBlock(glassPaneProp()), false);
     public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED_PANE = registerPane("glass_redstone_tinted_pane",

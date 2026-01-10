@@ -34,7 +34,6 @@ public class EtherealPaneBlock extends IronBarsBlock {
         return (context instanceof EntityCollisionContext && ((EntityCollisionContext) context).getEntity() instanceof Player) == collidePlayers ? state.getShape(world, pos) : Shapes.empty();
     }
 
-
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
