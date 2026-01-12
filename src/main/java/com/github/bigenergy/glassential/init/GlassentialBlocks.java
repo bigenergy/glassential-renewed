@@ -155,6 +155,10 @@ public class GlassentialBlocks {
             () -> new EtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_GHOSTLY = registerGlass("glass_ghostly",
             () -> new GhostGlassBlock(glassProp()), false);
+    public static final DeferredBlock<Block> COLORABLE_GLASS = registerGlass("colorable_glass",
+            () -> new ColorableGlassBlock(glassProp()), false);
+    public static final DeferredBlock<Block> COLORABLE_STAINED_GLASS = registerGlass("colorable_stained_glass",
+            () -> new ColorableStainedGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT = registerGlass("glass_light",
             () -> new LightGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT_TINTED = registerTintedGlass("glass_light_tinted",
@@ -363,4 +367,10 @@ public class GlassentialBlocks {
 
     public static final DeferredBlock<Block> TINTED_GLASS_TRAPDOOR = registerTrapDoor("tinted_glass_trapdoor",
             () -> new TintedGlassTrapDoor(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), BlockSetType.OAK), true);
+
+    // Tools
+    public static final DeferredItem<com.github.bigenergy.glassential.items.GlassPainterItem> GLASS_PAINTER =
+            ITEMS.register("glass_painter", () -> new com.github.bigenergy.glassential.items.GlassPainterItem(
+                    new net.minecraft.world.item.Item.Properties().stacksTo(1)
+            ));
 }

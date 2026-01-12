@@ -2,6 +2,7 @@ package com.github.bigenergy.glassential.init;
 
 import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.blocks.entity.ClearFluidGlassBlockEntity;
+import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -28,4 +29,16 @@ public class GlassentialBlockEntities {
                             GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get()
                     ).build(null)
             );
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColorableGlassBlockEntity>> COLORABLE_GLASS =
+            BLOCK_ENTITIES.register("colorable_glass",
+                    () -> BlockEntityType.Builder.of(
+                            ColorableGlassBlockEntity::new,
+                            GlassentialBlocks.COLORABLE_GLASS.get(),
+                            GlassentialBlocks.COLORABLE_STAINED_GLASS.get()
+                    ).build(null)
+            );
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColorableGlassBlockEntity>> COLORABLE_STAINED_GLASS =
+            COLORABLE_GLASS;
 }

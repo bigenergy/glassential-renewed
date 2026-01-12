@@ -17,6 +17,8 @@
     "block.glassential.one_way_glass": "Одностороннее стекло",
     "block.glassential.clear_fluid_glass": "Стекло без водного тумана",
     "block.glassential.clear_fluid_fake_glass": "Фейковое стекло без водного тумана",
+    "block.glassential.colorable_glass": "Цветное стекло",
+    "block.glassential.colorable_stained_glass": "Цветное окрашенное стекло",
 
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",
@@ -129,6 +131,7 @@
     "tooltip.glassential.gravity": "Смягчает падение, нет коллизии",
     "tooltip.glassential.one_way": "Секретное окно. Прозрачно с одной стороны и непрозрачно с другой.\nПКМ блоком по стороне — замаскировать её этим блоком.",
     "tooltip.glassential.clear_fluid": "Убирает водный туман — вид в океан становится чистым",
+    "tooltip.glassential.colorable": "Меняйте цвет и свойства с помощью Glassential кисти.",
 
     "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
@@ -137,6 +140,22 @@
     "tooltip.glassential.protected_door": "Устойчиво к взрывам, работает как железная дверь",
     "tooltip.glassential.protected_trapdoor": "Устойчиво к взрывам, работает как железный люк",
 
-  "itemGroup.glassential": "Glassential Renewed - Функц. блоки",
-  "itemGroup.glassential_misc": "Glassential Renewed - Прочее"
+    "item.glassential.glass_painter": "Glassential кисть",
+
+    "gui.glassential.glass_painter": "Настройка цвета и свойств",
+    "gui.glassential.emit_light": "Излучать свет",
+    "gui.glassential.emit_redstone": "Излучать редстоун",
+    "gui.glassential.pass_player": "Пропускать игрока",
+    "gui.glassential.pass_entity": "Пропускать всех",
+    "gui.glassential.apply": "Применить",
+
+    "tooltip.glassential.painter.color": "Цвет: %s",
+    "tooltip.glassential.painter.emit_light": "✦ Излучение света",
+    "tooltip.glassential.painter.emit_redstone": "⚡ Излучение редстоуна",
+    "tooltip.glassential.painter.pass_player": "◯ Пропуск игроков",
+    "tooltip.glassential.painter.pass_entity": "◈ Пропуск всех сущностей",
+    "tooltip.glassential.painter.usage": "ПКМ для настройки",
+
+    "itemGroup.glassential": "Glassential Renewed - Функц. блоки",
+    "itemGroup.glassential_misc": "Glassential Renewed - Прочее"
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "glassential:block/colorable_glass"
+    },
+    "lit=true": {
+      "model": "glassential:block/colorable_glass"
+    }
+  }
+}

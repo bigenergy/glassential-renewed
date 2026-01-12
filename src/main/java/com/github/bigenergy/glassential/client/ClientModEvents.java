@@ -1,6 +1,7 @@
 package com.github.bigenergy.glassential.client;
 
 import com.github.bigenergy.glassential.Glassential;
+import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import com.github.bigenergy.glassential.client.model.OneWayModelGeometry;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
@@ -25,6 +26,8 @@ public class ClientModEvents {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), RenderType.translucent());
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
 
@@ -52,6 +55,28 @@ public class ClientModEvents {
                 }
                 return -1;
             }, GlassentialBlocks.ONE_WAY_GLASS.get());
+
+            // Colorable glass
+            bc.register((state, level, pos, tintIndex) -> {
+                if (level == null || pos == null) return 0xFFFFFF;
+
+                var be = level.getBlockEntity(pos);
+                if (be instanceof ColorableGlassBlockEntity colorable) {
+                    return colorable.getColor();
+                }
+                return 0xFFFFFF;
+            }, GlassentialBlocks.COLORABLE_GLASS.get());
+
+            // Colorable stained glass
+            bc.register((state, level, pos, tintIndex) -> {
+                if (level == null || pos == null) return 0xFFFFFF;
+
+                var be = level.getBlockEntity(pos);
+                if (be instanceof ColorableGlassBlockEntity colorable) {
+                    return colorable.getColor();
+                }
+                return 0xFFFFFF;
+            }, GlassentialBlocks.COLORABLE_STAINED_GLASS.get());
         });
     }
 
@@ -61,6 +86,5 @@ public class ClientModEvents {
         e.register(ResourceLocation.fromNamespaceAndPath(Glassential.MODID, "one_way_loader"), new OneWayModelGeometry.Loader());
     }
 
-
-
+    // Model wrapping is now handled by ConnectingBakedModelMixin
 }

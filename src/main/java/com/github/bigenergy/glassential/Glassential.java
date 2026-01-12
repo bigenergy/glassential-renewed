@@ -6,9 +6,7 @@ import com.github.bigenergy.glassential.datagen.GlassentialFluid;
 import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
-import com.mojang.logging.LogUtils;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -16,14 +14,12 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -51,6 +47,7 @@ public class Glassential {
                             .icon(() -> new ItemStack(GlassentialBlocks.GLASS_DARK_ETHEREAL.get()))
                             .displayItems((parameters, output) -> {
             GlassentialBlocks.ITEMS_FOR_TAB_LIST_FUNC.forEach(registryObject -> output.accept(new ItemStack(registryObject.get())));
+            output.accept(new ItemStack(GlassentialBlocks.GLASS_PAINTER.get()));
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GLASSENTIAL_TAB_FUNCTIONALITY =
@@ -73,11 +70,23 @@ public class Glassential {
 
         CREATIVE_MODE_TABS.register(modEventBus);
 
+        // Register network packets
+        modEventBus.addListener(this::registerPackets);
+
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::gatherData);
         //modEventBus.addListener();
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void registerPackets(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent event) {
+        var registrar = event.registrar("1");
+        registrar.playToServer(
+            com.github.bigenergy.glassential.network.GlassPainterPacket.TYPE,
+            com.github.bigenergy.glassential.network.GlassPainterPacket.STREAM_CODEC,
+            com.github.bigenergy.glassential.network.GlassPainterPacket::handle
+        );
     }
 
     public static ResourceLocation prefix(String name) {

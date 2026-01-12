@@ -17,6 +17,8 @@
     "block.glassential.one_way_glass": "One Way Glass",
     "block.glassential.clear_fluid_glass": "Clear Fluid Glass",
     "block.glassential.clear_fluid_fake_glass": "Clear Fluid Fake Glass",
+    "block.glassential.colorable_glass": "Colorable Glass",
+    "block.glassential.colorable_stained_glass": "Colorable Stained Glass",
 
     "block.glassential.glass_lava_lamp": "Lava Lamp",
     "block.glassential.glass_lava_lamp_tinted": "Tinted Lava Lamp",
@@ -128,6 +130,7 @@
     "tooltip.glassential.gravity": "Softens the fall, no collision",
     "tooltip.glassential.one_way": "A secret window. Transparent from one side, solid from the other.\\nRight-click a face with any block to disguise that side.",
     "tooltip.glassential.clear_fluid": "Removes the near-surface water face behind the glass for a crystal-clear view",
+    "tooltip.glassential.colorable": "Change color and properties with Glassential Brush",
 
     "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
     "tooltip.glassential.pane_light": "Emits light",
@@ -135,6 +138,22 @@
     "tooltip.glassential.protected": "Resistant to explosions",
     "tooltip.glassential.protected_door": "Resistant to explosions, works like an iron door",
     "tooltip.glassential.protected_trapdoor": "Resistant to explosions, works like an iron trapdoor",
+
+    "item.glassential.glass_painter": "Glassential Brush",
+
+    "gui.glassential.glass_painter": "Glassential Brush Tuning",
+    "gui.glassential.emit_light": "Emit Light",
+    "gui.glassential.emit_redstone": "Emit Redstone Signal",
+    "gui.glassential.pass_player": "Pass Player",
+    "gui.glassential.pass_entity": "Pass All Entities",
+    "gui.glassential.apply": "Apply",
+
+    "tooltip.glassential.painter.color": "Color: %s",
+    "tooltip.glassential.painter.emit_light": "✦ Emits Light",
+    "tooltip.glassential.painter.emit_redstone": "⚡ Emits Redstone",
+    "tooltip.glassential.painter.pass_player": "◯ Player Passthrough",
+    "tooltip.glassential.painter.pass_entity": "◈ Entity Passthrough",
+    "tooltip.glassential.painter.usage": "Right-click to configure",
 
     "itemGroup.glassential": "Glassential Renewed - Functional",
     "itemGroup.glassential_misc": "Glassential Renewed - Blocks"
