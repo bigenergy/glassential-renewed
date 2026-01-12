@@ -1,3 +1,23 @@
+Glassential Renewed 3.4.0
+================
+### New
+- **Glassential Brush** - a new tool for customizing colored glass
+- Opens a GUI with an HSV color picker for selecting any color
+- 4 configurable properties:
+- **Emit Light** - glass emits light (level 15)
+- **Emit Redstone Signal** - glass emits a redstone signal (strength 15)
+- **Pass Player** - player passes through glass
+- **Pass All Entities** - all entities pass through glass
+- RMB in the air - open settings
+- RMB on colored glass - apply saved settings
+- - **Colorable Glass** - programmable transparent glass
+- Any RGB color via brush
+- CTM (fusion) support
+- Dynamic properties of light, redstone, and collision
+- - **Colorable Stained Glass** - Programmable Colorable Glass
+- All the features of standard Colorable Glass
+- Tinted version for better visual effects
+
 Glassential Renewed 3.3.3
 ================
 - Fixed breaking slab block gives only one slab
