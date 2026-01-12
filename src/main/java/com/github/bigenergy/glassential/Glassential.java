@@ -6,6 +6,7 @@ import com.github.bigenergy.glassential.datagen.GlassentialFluid;
 import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
+import com.github.bigenergy.glassential.network.GlassPainterPacket;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -83,9 +84,9 @@ public class Glassential {
     private void registerPackets(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent event) {
         var registrar = event.registrar("1");
         registrar.playToServer(
-            com.github.bigenergy.glassential.network.GlassPainterPacket.TYPE,
-            com.github.bigenergy.glassential.network.GlassPainterPacket.STREAM_CODEC,
-            com.github.bigenergy.glassential.network.GlassPainterPacket::handle
+            GlassPainterPacket.TYPE,
+            GlassPainterPacket.STREAM_CODEC,
+            GlassPainterPacket::handle
         );
     }
 

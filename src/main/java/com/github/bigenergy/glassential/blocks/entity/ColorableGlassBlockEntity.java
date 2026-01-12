@@ -12,6 +12,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ColorableGlassBlockEntity extends BlockEntity {
@@ -97,7 +98,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+    protected void saveAdditional(@NotNull CompoundTag pTag, HolderLookup.@NotNull Provider pRegistries) {
         super.saveAdditional(pTag, pRegistries);
         pTag.putInt("Color", color);
         pTag.putBoolean("EmitLight", emitLight);
@@ -107,7 +108,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+    protected void loadAdditional(@NotNull CompoundTag pTag, HolderLookup.@NotNull Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
         color = pTag.getInt("Color");
         emitLight = pTag.getBoolean("EmitLight");
@@ -117,7 +118,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.@NotNull Provider pRegistries) {
         CompoundTag tag = super.getUpdateTag(pRegistries);
         tag.putInt("Color", color);
         tag.putBoolean("EmitLight", emitLight);
