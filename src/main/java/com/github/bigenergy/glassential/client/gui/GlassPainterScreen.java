@@ -183,9 +183,9 @@ public class GlassPainterScreen extends Screen {
                     float v = 1.0f - (float) py / PICKER_SIZE;
                     float[] rgb = hsvToRgb(hue, s, v);
                     int color = (255 << 24) |
-                               (((int)(rgb[0] * 255) & 0xFF) << 16) |
-                               (((int)(rgb[1] * 255) & 0xFF) << 8) |
-                               ((int)(rgb[2] * 255) & 0xFF);
+                            (((int)(rgb[2] * 255) & 0xFF) << 16) |  // B
+                            (((int)(rgb[1] * 255) & 0xFF) << 8) |   // G
+                            ((int)(rgb[0] * 255) & 0xFF);           // R
                     image.setPixelRGBA(px, py, color);
                 }
             }
@@ -200,9 +200,10 @@ public class GlassPainterScreen extends Screen {
                     float v = 1.0f - (float) py / PICKER_SIZE;
                     float[] rgb = hsvToRgb(hue, s, v);
                     int color = (255 << 24) |
-                               (((int)(rgb[0] * 255) & 0xFF) << 16) |
-                               (((int)(rgb[1] * 255) & 0xFF) << 8) |
-                               ((int)(rgb[2] * 255) & 0xFF);
+                            (((int)(rgb[2] * 255) & 0xFF) << 16) |  // B
+                            (((int)(rgb[1] * 255) & 0xFF) << 8) |   // G
+                            ((int)(rgb[0] * 255) & 0xFF);           // R
+                    assert image != null;
                     image.setPixelRGBA(px, py, color);
                 }
             }
@@ -218,9 +219,9 @@ public class GlassPainterScreen extends Screen {
                 float h = (float) py / PICKER_SIZE;
                 float[] rgb = hsvToRgb(h, 1.0f, 1.0f);
                 int color = (255 << 24) |
-                           (((int)(rgb[0] * 255) & 0xFF) << 16) |
-                           (((int)(rgb[1] * 255) & 0xFF) << 8) |
-                           ((int)(rgb[2] * 255) & 0xFF);
+                        (((int)(rgb[2] * 255) & 0xFF) << 16) |  // B
+                        (((int)(rgb[1] * 255) & 0xFF) << 8) |   // G
+                        ((int)(rgb[0] * 255) & 0xFF);           // R
                 for (int px = 0; px < 20; px++) {
                     image.setPixelRGBA(px, py, color);
                 }
