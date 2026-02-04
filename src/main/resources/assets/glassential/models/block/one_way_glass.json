@@ -1,5 +1,3 @@
-
 {
-  "loader": "glassential:one_way_loader",
-  "glass_model": "minecraft:block/glass"
+  "parent": "minecraft:block/glass"
 }

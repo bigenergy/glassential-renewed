@@ -1,4 +1,3 @@
-// com/github/bigenergy/glassential/datagen/GlassentialItemTag.java
 package com.github.bigenergy.glassential.datagen;
 
 import com.github.bigenergy.glassential.Glassential;
@@ -11,17 +10,14 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-
 
 import java.util.concurrent.CompletableFuture;
 
 public class GlassentialItemTag extends ItemTagsProvider {
     public GlassentialItemTag(PackOutput output,
                               CompletableFuture<HolderLookup.Provider> lookup,
-                              CompletableFuture<TagsProvider.TagLookup<Block>> blockTags,
-                              ExistingFileHelper helper) {
-        super(output, lookup, blockTags, Glassential.MODID, helper);
+                              CompletableFuture<TagsProvider.TagLookup<Block>> blockTags) {
+        super(output, lookup, blockTags, Glassential.MODID);
     }
 
     @Override

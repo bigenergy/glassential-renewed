@@ -11,19 +11,16 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 public class GlassentialBlockTag extends BlockTagsProvider {
     public GlassentialBlockTag(PackOutput output,
-                               CompletableFuture<HolderLookup.Provider> lookupProvider,
-                               @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, Glassential.MODID, existingFileHelper);
+                               CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Glassential.MODID);
     }
 
     @Override
