@@ -3,17 +3,14 @@ package com.github.bigenergy.glassential.blocks;
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -27,8 +24,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class ColorableGlassBlock extends BaseEntityBlock {
 
@@ -53,13 +48,6 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState pState) {
         return RenderShape.MODEL;
-    }
-
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("tooltip.glassential.colorable").withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -106,12 +94,13 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel,
-                                           BlockPos pPos, BlockPos pNeighborPos) {
+    protected @NotNull BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pScheduledTickAccess,
+                                              BlockPos pPos, Direction pDirection, BlockPos pNeighborPos,
+                                              BlockState pNeighborState, RandomSource pRandom) {
         if (pLevel instanceof Level level) {
             level.updateNeighborsAt(pPos, this);
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+        return super.updateShape(pState, pLevel, pScheduledTickAccess, pPos, pDirection, pNeighborPos, pNeighborState, pRandom);
     }
 
     @Override

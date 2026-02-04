@@ -2,9 +2,10 @@ package com.github.bigenergy.glassential.blocks.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -51,19 +52,22 @@ public abstract class BigGlassBlockEntity extends BaseEntityBlock {
         return defaultBlockState().setValue(NORTH, northState.is(this)).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this)).setValue(UP, upState.is(this)).setValue(DOWN, downState.is(this));
     }
 
-    public BlockState updateShape(BlockState state, Direction direction, BlockState state2, LevelAccessor levelreader, BlockPos blockpos, BlockPos pos2) {
+    @Override
+    protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess,
+                                     BlockPos blockpos, Direction direction, BlockPos neighborPos,
+                                     BlockState neighborState, RandomSource random) {
         BlockPos n = blockpos.north();
         BlockPos e = blockpos.east();
         BlockPos s = blockpos.south();
         BlockPos w = blockpos.west();
         BlockPos u = blockpos.above();
         BlockPos d = blockpos.below();
-        BlockState northState = levelreader.getBlockState(n);
-        BlockState eastState = levelreader.getBlockState(e);
-        BlockState southState = levelreader.getBlockState(s);
-        BlockState westState = levelreader.getBlockState(w);
-        BlockState upState = levelreader.getBlockState(u);
-        BlockState downState = levelreader.getBlockState(d);
+        BlockState northState = levelReader.getBlockState(n);
+        BlockState eastState = levelReader.getBlockState(e);
+        BlockState southState = levelReader.getBlockState(s);
+        BlockState westState = levelReader.getBlockState(w);
+        BlockState upState = levelReader.getBlockState(u);
+        BlockState downState = levelReader.getBlockState(d);
         return state.setValue(NORTH, northState.is(this)).setValue(NORTH, northState.is(this)).setValue(EAST, eastState.is(this)).setValue(SOUTH, southState.is(this)).setValue(WEST, westState.is(this)).setValue(UP, upState.is(this)).setValue(DOWN, downState.is(this));
     }
 }

@@ -3,33 +3,23 @@ package com.github.bigenergy.glassential.client;
 import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
-import com.github.bigenergy.glassential.client.model.OneWayBakedModel;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypes;
-import net.minecraft.client.renderer.block.BlockModelShaper;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
 
 @EventBusSubscriber(modid = Glassential.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-
         event.enqueueWork(() -> {
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderTypes.translucent());
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderTypes.translucent());
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), RenderTypes.translucent());
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), RenderTypes.translucent());
+            // Note: Render layers are now defined in block properties or JSON in 1.21.4+
+            // ItemBlockRenderTypes.setRenderLayer is deprecated/removed
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
 
@@ -82,22 +72,6 @@ public class ClientModEvents {
         });
     }
 
-
-    @SubscribeEvent
-    public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
-        // Wrap one-way glass models with our custom baked model for each block state
-        GlassentialBlocks.ONE_WAY_GLASS.get().getStateDefinition().getPossibleStates().forEach(state -> {
-            event.getBakingResult().blockStateModels().computeIfPresent(
-                BlockModelShaper.stateToModelLocation(state),
-                (location, model) -> {
-                    if (model instanceof OneWayBakedModel) {
-                        return model; // Already wrapped
-                    }
-                    return new OneWayBakedModel(model);
-                }
-            );
-        });
-    }
-
-    // Model wrapping is now handled by ModifyBakingResult event above
+    // TODO: One-way glass model wrapping disabled - model system changed in 1.21.4+
+    // Need to implement using new BlockStateModel system
 }
