@@ -3,14 +3,15 @@ package com.github.bigenergy.glassential.client;
 import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
-import com.github.bigenergy.glassential.client.model.OneWayModelGeometry;
+import com.github.bigenergy.glassential.client.model.OneWayBakedModel;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypes;
-import net.minecraft.resources.Identifier;
+import net.minecraft.client.renderer.block.BlockModelShaper;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -18,7 +19,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 
-@EventBusSubscriber(modid = Glassential.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = Glassential.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
 
     @SubscribeEvent
@@ -83,9 +84,20 @@ public class ClientModEvents {
 
 
     @SubscribeEvent
-    public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders e) {
-        e.register(Identifier.fromNamespaceAndPath(Glassential.MODID, "one_way_loader"), new OneWayModelGeometry.Loader());
+    public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
+        // Wrap one-way glass models with our custom baked model for each block state
+        GlassentialBlocks.ONE_WAY_GLASS.get().getStateDefinition().getPossibleStates().forEach(state -> {
+            event.getBakingResult().blockStateModels().computeIfPresent(
+                BlockModelShaper.stateToModelLocation(state),
+                (location, model) -> {
+                    if (model instanceof OneWayBakedModel) {
+                        return model; // Already wrapped
+                    }
+                    return new OneWayBakedModel(model);
+                }
+            );
+        });
     }
 
-    // Model wrapping is now handled by ConnectingBakedModelMixin
+    // Model wrapping is now handled by ModifyBakingResult event above
 }
