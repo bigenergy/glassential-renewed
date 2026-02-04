@@ -16,7 +16,7 @@ public class TintedGlassTrapDoor extends TrapDoorBlock {
     }
 
     protected int getLightBlock(BlockState p_154828_, BlockGetter p_154829_, BlockPos p_154830_) {
-        return p_154829_.getMaxLightLevel();
+        return 15;
     }
 
 }

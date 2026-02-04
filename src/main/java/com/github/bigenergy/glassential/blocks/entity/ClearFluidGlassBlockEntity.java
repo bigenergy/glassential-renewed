@@ -61,10 +61,10 @@ public class ClearFluidGlassBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
-        ListTag occlusionDirTag = pTag.getList("occlusiondirs", Tag.TAG_COMPOUND);
+        ListTag occlusionDirTag = pTag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
         for (int i = 0; i < occlusionDirTag.size(); i++) {
             CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-            String dirString = dirCompoundTag.getString("dir");
+            String dirString = dirCompoundTag.getString("dir").orElse("");
             Direction direction = Direction.byName(dirString);
             if (direction != null) {
                 occlusionDirs.add(direction);
@@ -82,10 +82,10 @@ public class ClearFluidGlassBlockEntity extends BlockEntity {
     @Override
     public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         super.handleUpdateTag(tag, lookupProvider);
-        ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND);
+        ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
         for (int i = 0; i < occlusionDirTag.size(); i++) {
             CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-            String dirString = dirCompoundTag.getString("dir");
+            String dirString = dirCompoundTag.getString("dir").orElse("");
             Direction direction = Direction.byName(dirString);
             if (direction != null) {
                 occlusionDirs.add(direction);
@@ -120,11 +120,11 @@ public class ClearFluidGlassBlockEntity extends BlockEntity {
         super.onDataPacket(net, pkt, lookupProvider);
         ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) this.level.getBlockEntity(pkt.getPos());
         CompoundTag tag = pkt.getTag();
-        if(tag != null && tag.contains("occlusiondirs", 10)) {
-            ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND);
+        if(tag != null && tag.contains("occlusiondirs", 10).orElse(false)) {
+            ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
             for (int i = 0; i < occlusionDirTag.size(); i++) {
                 CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-                String dirString = dirCompoundTag.getString("dir");
+                String dirString = dirCompoundTag.getString("dir").orElse("");
                 Direction direction = Direction.byName(dirString);
                 if (direction != null) {
                     occlusionDirs.add(direction);

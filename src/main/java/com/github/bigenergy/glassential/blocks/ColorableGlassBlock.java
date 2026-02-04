@@ -51,7 +51,7 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    protected float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         return 1.0F;
     }
 
@@ -65,7 +65,7 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public int getLightBlock(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+    protected int getLightBlock(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         // If emitting light, block incoming light to emit properly
         if (pState.getValue(LIT)) {
             return 15;
@@ -104,7 +104,7 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
+    protected boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
         // If emitting light, don't propagate skylight so the block can emit properly
         if (pState.getValue(LIT)) {
             return false;

@@ -6,7 +6,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
-@EventBusSubscriber(modid = Glassential.MODID)
+@EventBusSubscriber(modid = Glassential.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class PacketHandler {
 
     @SubscribeEvent
@@ -17,6 +17,12 @@ public class PacketHandler {
                 ColorUpdatePacket.TYPE,
                 ColorUpdatePacket.STREAM_CODEC,
                 ColorUpdatePacket::handle
+        );
+
+        registrar.playToServer(
+                GlassPainterPacket.TYPE,
+                GlassPainterPacket.STREAM_CODEC,
+                GlassPainterPacket::handle
         );
     }
 }

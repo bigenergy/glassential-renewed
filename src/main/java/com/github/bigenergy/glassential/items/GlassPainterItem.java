@@ -36,12 +36,12 @@ public class GlassPainterItem extends Item {
             CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             CompoundTag tag = customData.copyTag();
 
-            if (tag.contains("Color")) {
-                int color = tag.getInt("Color");
-                boolean emitLight = tag.getBoolean("EmitLight");
-                boolean emitRedstone = tag.getBoolean("EmitRedstone");
-                boolean passPlayer = tag.getBoolean("PassPlayer");
-                boolean passEntity = tag.getBoolean("PassEntity");
+            if (tag.contains("Color").orElse(false)) {
+                int color = tag.getInt("Color").orElse(0xFFFFFF);
+                boolean emitLight = tag.getBoolean("EmitLight").orElse(false);
+                boolean emitRedstone = tag.getBoolean("EmitRedstone").orElse(false);
+                boolean passPlayer = tag.getBoolean("PassPlayer").orElse(false);
+                boolean passEntity = tag.getBoolean("PassEntity").orElse(false);
 
                 colorable.setColor(color);
                 colorable.setEmitLight(emitLight);
@@ -72,14 +72,14 @@ public class GlassPainterItem extends Item {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         CompoundTag tag = customData.copyTag();
 
-        int currentColor = tag.getInt("Color");
+        int currentColor = tag.getInt("Color").orElse(0);
         if (currentColor == 0) {
             currentColor = 0xFFFFFF;
         }
-        boolean emitLight = tag.getBoolean("EmitLight");
-        boolean emitRedstone = tag.getBoolean("EmitRedstone");
-        boolean passPlayer = tag.getBoolean("PassPlayer");
-        boolean passEntity = tag.getBoolean("PassEntity");
+        boolean emitLight = tag.getBoolean("EmitLight").orElse(false);
+        boolean emitRedstone = tag.getBoolean("EmitRedstone").orElse(false);
+        boolean passPlayer = tag.getBoolean("PassPlayer").orElse(false);
+        boolean passEntity = tag.getBoolean("PassEntity").orElse(false);
 
         Minecraft.getInstance().setScreen(
             new com.github.bigenergy.glassential.client.gui.GlassPainterScreen(
@@ -95,21 +95,21 @@ public class GlassPainterItem extends Item {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         CompoundTag tag = customData.copyTag();
 
-        if (tag.contains("Color")) {
-            int color = tag.getInt("Color");
+        if (tag.contains("Color").orElse(false)) {
+            int color = tag.getInt("Color").orElse(0xFFFFFF);
             String hexColor = String.format("#%06X", color);
             tooltipComponents.add(Component.translatable("tooltip.glassential.painter.color", hexColor).withStyle(ChatFormatting.GRAY));
 
-            if (tag.getBoolean("EmitLight")) {
+            if (tag.getBoolean("EmitLight").orElse(false)) {
                 tooltipComponents.add(Component.translatable("tooltip.glassential.painter.emit_light").withStyle(ChatFormatting.YELLOW));
             }
-            if (tag.getBoolean("EmitRedstone")) {
+            if (tag.getBoolean("EmitRedstone").orElse(false)) {
                 tooltipComponents.add(Component.translatable("tooltip.glassential.painter.emit_redstone").withStyle(ChatFormatting.RED));
             }
-            if (tag.getBoolean("PassPlayer")) {
+            if (tag.getBoolean("PassPlayer").orElse(false)) {
                 tooltipComponents.add(Component.translatable("tooltip.glassential.painter.pass_player").withStyle(ChatFormatting.AQUA));
             }
-            if (tag.getBoolean("PassEntity")) {
+            if (tag.getBoolean("PassEntity").orElse(false)) {
                 tooltipComponents.add(Component.translatable("tooltip.glassential.painter.pass_entity").withStyle(ChatFormatting.GREEN));
             }
         } else {

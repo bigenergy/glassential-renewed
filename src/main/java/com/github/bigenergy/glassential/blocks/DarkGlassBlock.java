@@ -12,7 +12,7 @@ public class DarkGlassBlock extends TransparentBlock {
 	}
 
 	@Override
-	public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+	protected int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
 		return 15; // Max light level
 	}
 }
