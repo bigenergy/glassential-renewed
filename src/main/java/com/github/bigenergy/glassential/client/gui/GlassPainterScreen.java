@@ -9,7 +9,7 @@ import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -44,9 +44,9 @@ public class GlassPainterScreen extends Screen {
 
     // Cached textures
     private DynamicTexture pickerTexture;
-    private ResourceLocation pickerLocation;
+    private Identifier pickerLocation;
     private DynamicTexture hueTexture;
-    private ResourceLocation hueLocation;
+    private Identifier hueLocation;
     private float lastHue = -1;
 
     public GlassPainterScreen(ItemStack stack, int currentColor, boolean emitLight, boolean emitRedstone, boolean passPlayer, boolean passEntity) {

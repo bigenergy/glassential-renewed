@@ -1,7 +1,7 @@
 package com.github.bigenergy.glassential.datagen;
 
 import com.github.bigenergy.glassential.Glassential;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.ItemTags;
@@ -26,7 +26,7 @@ public final class GlassentialTags {
         public static final Map<DyeColor, TagKey<Block>> TRAPDOORS_DYED_BY_COLOR = colored("trapdoors/dyed/");
 
         private static TagKey<Block> tag(String path) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Glassential.MODID, path));
+            return BlockTags.create(Identifier.fromNamespaceAndPath(Glassential.MODID, path));
         }
         private static Map<DyeColor, TagKey<Block>> colored(String base) {
             Map<DyeColor, TagKey<Block>> map = new EnumMap<>(DyeColor.class);
@@ -45,7 +45,7 @@ public final class GlassentialTags {
         public static final Map<DyeColor, TagKey<Item>> TRAPDOORS_DYED_BY_COLOR = icolored("trapdoors/dyed/");
 
         private static TagKey<Item> itag(String path) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Glassential.MODID, path));
+            return ItemTags.create(Identifier.fromNamespaceAndPath(Glassential.MODID, path));
         }
         private static Map<DyeColor, TagKey<Item>> icolored(String base) {
             Map<DyeColor, TagKey<Item>> map = new EnumMap<>(DyeColor.class);

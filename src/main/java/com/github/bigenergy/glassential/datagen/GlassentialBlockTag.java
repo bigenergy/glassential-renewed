@@ -4,7 +4,7 @@ import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
@@ -103,6 +103,6 @@ public class GlassentialBlockTag extends BlockTagsProvider {
     }
 
     private static TagKey<Block> cDyedBlock(DyeColor color) {
-        return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", "dyed/" + color.getName()));
+        return BlockTags.create(Identifier.fromNamespaceAndPath("c", "dyed/" + color.getName()));
     }
 }

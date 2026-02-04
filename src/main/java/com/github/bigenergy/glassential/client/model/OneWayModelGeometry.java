@@ -5,7 +5,7 @@ import com.google.gson.JsonParseException;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.GsonHelper;
 import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
 import net.neoforged.neoforge.client.model.geometry.IGeometryLoader;
@@ -15,9 +15,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Function;
 
 public class OneWayModelGeometry implements IUnbakedGeometry<OneWayModelGeometry> {
-    private final ResourceLocation glassModel;
+    private final Identifier glassModel;
 
-    public OneWayModelGeometry(ResourceLocation glassModel) {
+    public OneWayModelGeometry(Identifier glassModel) {
         this.glassModel = glassModel;
     }
 
@@ -31,7 +31,7 @@ public class OneWayModelGeometry implements IUnbakedGeometry<OneWayModelGeometry
         @Override
         public @NotNull OneWayModelGeometry read(@NotNull JsonObject json, @NotNull JsonDeserializationContext ctx) throws JsonParseException {
             String glassStr = GsonHelper.getAsString(json, "glass_model", "minecraft:block/glass");
-            ResourceLocation glass = ResourceLocation.tryParse(glassStr);
+            Identifier glass = Identifier.tryParse(glassStr);
             if (glass == null) throw new JsonParseException("Invalid glass_model: " + glassStr);
             return new OneWayModelGeometry(glass);
         }

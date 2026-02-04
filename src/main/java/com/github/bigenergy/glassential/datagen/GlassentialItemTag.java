@@ -6,7 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -39,11 +39,11 @@ public class GlassentialItemTag extends ItemTagsProvider {
 
     private static TagKey<Block> cDyedBlock(net.minecraft.world.item.DyeColor color) {
         return BlockTags.create(
-                ResourceLocation.fromNamespaceAndPath("c", "dyed/" + color.getName()));
+                Identifier.fromNamespaceAndPath("c", "dyed/" + color.getName()));
     }
 
     private static TagKey<net.minecraft.world.item.Item> cDyedItem(net.minecraft.world.item.DyeColor color) {
         return ItemTags.create(
-                ResourceLocation.fromNamespaceAndPath("c", "dyed/" + color.getName()));
+                Identifier.fromNamespaceAndPath("c", "dyed/" + color.getName()));
     }
 }

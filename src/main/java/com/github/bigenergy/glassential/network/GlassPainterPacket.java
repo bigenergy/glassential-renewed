@@ -5,7 +5,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 public record GlassPainterPacket(int color, boolean emitLight, boolean emitRedstone, boolean passPlayer, boolean passEntity) implements CustomPacketPayload {
 
     public static final CustomPacketPayload.Type<GlassPainterPacket> TYPE =
-            new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath("glassential", "glass_painter"));
+            new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath("glassential", "glass_painter"));
 
     public static final StreamCodec<ByteBuf, GlassPainterPacket> STREAM_CODEC = StreamCodec.of(
             (buf, packet) -> {
