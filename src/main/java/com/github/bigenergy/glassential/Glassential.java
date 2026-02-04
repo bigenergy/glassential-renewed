@@ -117,13 +117,12 @@ public class Glassential {
         LOGGER.info("Starting Glassential Renewed");
     }
 
-    private void gatherData(GatherDataEvent e) {
+    private void gatherData(GatherDataEvent.Server e) {
         DataGenerator gen = e.getGenerator();
         PackOutput out = gen.getPackOutput();
-        var helper = e.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookup = e.getLookupProvider();
 
-        gen.addProvider(e.includeServer(), new LootTableProvider(
+        gen.addProvider(true, new LootTableProvider(
                 out,
                 Set.of(),
                 List.of(new LootTableProvider.SubProviderEntry(
@@ -133,13 +132,12 @@ public class Glassential {
                 lookup
         ));
 
-        var blockTags = gen.addProvider(e.includeServer(),
-                new GlassentialBlockTag(out, lookup, helper));
+        var blockTags = gen.addProvider(true,
+                new GlassentialBlockTag(out, lookup));
 
-        gen.addProvider(e.includeServer(),
-                new GlassentialItemTag(out, lookup, blockTags.contentsGetter(), helper));
-        gen.addProvider(e.includeServer(), new GlassentialFluid(out, lookup, helper));
-
+        gen.addProvider(true,
+                new GlassentialItemTag(out, lookup, blockTags.contentsGetter()));
+        gen.addProvider(true, new GlassentialFluid(out, lookup));
     }
 
 
