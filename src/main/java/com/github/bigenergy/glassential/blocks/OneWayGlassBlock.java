@@ -7,7 +7,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,7 +23,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
@@ -36,7 +35,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
-    public static final DirectionProperty OPAQUE_FACE = DirectionProperty.create("opaque_face", Direction.values());
+    public static final EnumProperty<Direction> OPAQUE_FACE = EnumProperty.create("opaque_face", Direction.class);
 
     public OneWayGlassBlock(Properties props) {
         super(props);
@@ -60,13 +59,13 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     }
 
     @Override
-    public @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
-                                                    BlockPos pos, Player player, InteractionHand hand,
-                                                    BlockHitResult hit) {
-        if (level.isClientSide) return ItemInteractionResult.SUCCESS;
+    protected @NotNull InteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
+                                                   BlockPos pos, Player player, InteractionHand hand,
+                                                   BlockHitResult hit) {
+        if (level.isClientSide) return InteractionResult.SUCCESS;
 
         BlockEntity be = level.getBlockEntity(pos);
-        if (!(be instanceof OneWayGlassBlockEntity ow)) return ItemInteractionResult.FAIL;
+        if (!(be instanceof OneWayGlassBlockEntity ow)) return InteractionResult.FAIL;
 
         Direction face = hit.getDirection();
 
@@ -75,15 +74,15 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
 
             ow.setMimic(bi.getBlock().defaultBlockState());
 
-            return ItemInteractionResult.CONSUME;
+            return InteractionResult.CONSUME;
         }
 
-        return ItemInteractionResult.FAIL;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override
-    public @NotNull InteractionResult useWithoutItem(BlockState state, Level level,
-                                                     BlockPos pos, Player player, BlockHitResult hit) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level,
+                                                        BlockPos pos, Player player, BlockHitResult hit) {
         if (level.isClientSide) return InteractionResult.SUCCESS;
 
         level.setBlock(pos, state.setValue(OPAQUE_FACE, hit.getDirection()), 3);

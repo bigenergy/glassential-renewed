@@ -68,5 +68,5 @@ public class OneWayBakedModel implements BakedModel /* + фордж-хук ни�
     @Override public boolean isCustomRenderer()    { return glassModel.isCustomRenderer(); }
     @Override public TextureAtlasSprite getParticleIcon() { return glassModel.getParticleIcon(); }
     @Override public ItemTransforms getTransforms()       { return glassModel.getTransforms(); }
-    @Override public ItemOverrides  getOverrides()        { return glassModel.getOverrides(); }
+    @Override public ItemOverrides  overrides()           { return glassModel.overrides(); }
 }
