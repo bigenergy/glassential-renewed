@@ -146,13 +146,13 @@ public class GlassentialBlocks {
 
     // Glasses
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL = registerGlass("glass_dark_ethereal",
-            () -> new DarkEtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
+            () -> new DarkEtherealGlassBlock(glassProp().noCollision().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE = registerGlass("glass_dark_ethereal_reverse",
-            () -> new DarkEtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
+            () -> new DarkEtherealGlassBlock(glassProp().noCollision().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL = registerGlass("glass_ethereal",
-            () -> new EtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
+            () -> new EtherealGlassBlock(glassProp().noCollision().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE = registerGlass("glass_ethereal_reverse",
-            () -> new EtherealGlassBlock(glassProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
+            () -> new EtherealGlassBlock(glassProp().noCollision().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_GHOSTLY = registerGlass("glass_ghostly",
             () -> new GhostGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> COLORABLE_GLASS = registerGlass("colorable_glass",
@@ -296,19 +296,19 @@ public class GlassentialBlocks {
 
     // Panes
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_PANE = registerPane("glass_dark_ethereal_pane",
-            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
+            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollision().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_DARK_ETHEREAL_REVERSE_PANE = registerPane("glass_dark_ethereal_reverse_pane",
-            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
+            () -> new DarkEtherealPaneBlock(glassPaneProp().noCollision().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_PANE = registerPane("glass_ethereal_pane",
-            () -> new EtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), false), false);
+            () -> new EtherealPaneBlock(glassPaneProp().noCollision().isValidSpawn(GlassentialBlocks::never), false), false);
     public static final DeferredBlock<Block> GLASS_ETHEREAL_REVERSE_PANE = registerPane("glass_ethereal_reverse_pane",
-            () -> new EtherealPaneBlock(glassPaneProp().noCollission().isValidSpawn(GlassentialBlocks::never), true), false);
+            () -> new EtherealPaneBlock(glassPaneProp().noCollision().isValidSpawn(GlassentialBlocks::never), true), false);
     public static final DeferredBlock<Block> GLASS_REDSTONE_PANE = registerPane("glass_redstone_pane",
             () -> new RedstonePaneBlock(glassPaneProp()), false);
     public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED_PANE = registerPane("glass_redstone_tinted_pane",
             () -> new TintedRedstonePaneBlock(glassPaneProp()), false);
     public static final DeferredBlock<Block> GLASS_GHOSTLY_PANE = registerPane("glass_ghostly_pane",
-            () -> new GhostPaneBlock(glassPaneProp().noCollission()), false);
+            () -> new GhostPaneBlock(glassPaneProp().noCollision()), false);
     public static final DeferredBlock<Block> GLASS_LIGHT_PANE = registerPane("glass_light_pane",
             () -> new BasicPaneBlock(glassPaneProp().lightLevel(b -> 15), true), false);
     public static final DeferredBlock<Block> GLASS_LIGHT_TINTED_PANE = registerPane("glass_light_tinted_pane",

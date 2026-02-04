@@ -49,7 +49,7 @@ public class GlassPainterItem extends Item {
                 colorable.setPassPlayer(passPlayer);
                 colorable.setPassEntity(passEntity);
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(level.isClientSide());
             }
         }
 
@@ -60,7 +60,7 @@ public class GlassPainterItem extends Item {
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
             openPainterScreen(stack);
         }
 

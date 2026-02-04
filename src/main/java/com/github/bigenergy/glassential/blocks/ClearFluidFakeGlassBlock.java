@@ -5,14 +5,9 @@ import com.github.bigenergy.glassential.blocks.entity.ClearFluidGlassBlockEntity
 import com.github.bigenergy.glassential.datagen.GlassentialTags;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -21,6 +16,7 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -29,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
@@ -59,18 +54,6 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
     }
 
     @Override
-    public void appendHoverText(
-            @NotNull ItemStack stack,
-            @NotNull Item.TooltipContext context,
-            @NotNull List<Component> tooltipComponents,
-            @NotNull TooltipFlag tooltipFlag
-    ) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable("tooltip.glassential.clear_fluid").withStyle(ChatFormatting.GRAY));
-        tooltipComponents.add(Component.translatable("tooltip.glassential.ethereal").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
     public @NotNull VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         //Ty KingLemming for finding that new way for the old behavior
         return !(context instanceof EntityCollisionContext && ((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
@@ -83,7 +66,7 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
 
     @Override
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving) {
-        if(!pLevel.isClientSide){
+        if(!pLevel.isClientSide()){
             ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
             blockEntity.getOcclusionDirs().clear();
             blockEntity.setOcclusionShape(Shapes.empty());
@@ -99,12 +82,10 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
             blockEntity.setOcclusionShape(shape);
         }
         pLevel.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_IMMEDIATE);
-
-
     }
 
     @Override
-    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+    protected void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, @Nullable Orientation pOrientation, boolean pIsMoving) {
         if(!pLevel.isClientSide()){
             ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
             blockEntity.getOcclusionDirs().clear();
@@ -121,10 +102,8 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
             blockEntity.setOcclusionShape(shape);
         }
         pLevel.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_IMMEDIATE);
-        super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
+        super.neighborChanged(pState, pLevel, pPos, pBlock, pOrientation, pIsMoving);
     }
-
-
 
     public VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
         return Shapes.empty();

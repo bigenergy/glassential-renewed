@@ -1,19 +1,15 @@
 package com.github.bigenergy.glassential.blocks;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BubbleColumnBlock;
 import net.minecraft.world.level.block.TintedGlassBlock;
@@ -23,8 +19,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
-
 public class CustomTintedGlassBlock extends TintedGlassBlock {
 
     private final String tooltip;
@@ -32,17 +26,6 @@ public class CustomTintedGlassBlock extends TintedGlassBlock {
     public CustomTintedGlassBlock(Properties p_309186_, String tooltip) {
         super(p_309186_);
         this.tooltip = tooltip;
-    }
-
-    @Override
-    public void appendHoverText(
-            @NotNull ItemStack stack,
-            @NotNull Item.TooltipContext context,
-            @NotNull List<Component> tooltipComponents,
-            @NotNull TooltipFlag tooltipFlag
-    ) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-        tooltipComponents.add(Component.translatable(this.tooltip).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -59,14 +42,18 @@ public class CustomTintedGlassBlock extends TintedGlassBlock {
             );
         }
     }
+
     @Override
-    protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+    protected @NotNull BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pScheduledTickAccess,
+                                              BlockPos pCurrentPos, Direction pFacing, BlockPos pFacingPos,
+                                              BlockState pFacingState, RandomSource pRandom) {
         if (pFacing == Direction.UP && pFacingState.is(Blocks.WATER)) {
-            pLevel.scheduleTick(pCurrentPos, this, 20);
+            pScheduledTickAccess.scheduleTick(pCurrentPos, this, 20);
         }
 
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        return super.updateShape(pState, pLevel, pScheduledTickAccess, pCurrentPos, pFacing, pFacingPos, pFacingState, pRandom);
     }
+
     @Override
     public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if (!pEntity.isSteppingCarefully() && pEntity instanceof LivingEntity) {
