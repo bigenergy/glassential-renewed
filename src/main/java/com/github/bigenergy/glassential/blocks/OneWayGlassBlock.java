@@ -78,7 +78,7 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     @Override public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level l, BlockState s, BlockEntityType<T> t) { return null; }
 
     @Override
-    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.world.item.component.DataComponentGetter dataComponentGetter) {
+    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.core.component.DataComponentGetter dataComponentGetter) {
         consumer.accept(net.minecraft.network.chat.Component.translatable("tooltip.glassential.one_way").withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 }

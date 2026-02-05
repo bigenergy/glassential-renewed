@@ -32,11 +32,11 @@ public class GlassPainterItem extends Item {
             CompoundTag tag = customData.copyTag();
 
             if (tag.contains("Color")) {
-                int color = tag.getInt("Color");
-                boolean emitLight = tag.getBoolean("EmitLight");
-                boolean emitRedstone = tag.getBoolean("EmitRedstone");
-                boolean passPlayer = tag.getBoolean("PassPlayer");
-                boolean passEntity = tag.getBoolean("PassEntity");
+                int color = tag.getIntOr("Color", 0xFFFFFF);
+                boolean emitLight = tag.getBooleanOr("EmitLight", false);
+                boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
+                boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
+                boolean passEntity = tag.getBooleanOr("PassEntity", false);
 
                 colorable.setColor(color);
                 colorable.setEmitLight(emitLight);
@@ -67,14 +67,14 @@ public class GlassPainterItem extends Item {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         CompoundTag tag = customData.copyTag();
 
-        int currentColor = tag.contains("Color") ? tag.getInt("Color") : 0xFFFFFF;
+        int currentColor = tag.getIntOr("Color", 0xFFFFFF);
         if (currentColor == 0) {
             currentColor = 0xFFFFFF;
         }
-        boolean emitLight = tag.contains("EmitLight") && tag.getBoolean("EmitLight");
-        boolean emitRedstone = tag.contains("EmitRedstone") && tag.getBoolean("EmitRedstone");
-        boolean passPlayer = tag.contains("PassPlayer") && tag.getBoolean("PassPlayer");
-        boolean passEntity = tag.contains("PassEntity") && tag.getBoolean("PassEntity");
+        boolean emitLight = tag.getBooleanOr("EmitLight", false);
+        boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
+        boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
+        boolean passEntity = tag.getBooleanOr("PassEntity", false);
 
         Minecraft.getInstance().setScreen(
             new com.github.bigenergy.glassential.client.gui.GlassPainterScreen(

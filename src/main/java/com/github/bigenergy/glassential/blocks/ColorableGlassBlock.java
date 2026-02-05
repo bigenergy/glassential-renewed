@@ -65,12 +65,12 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public boolean hasAnalogOutputSignal(BlockState pState) {
+    protected boolean hasAnalogOutputSignal(BlockState pState) {
         return true;
     }
 
     @Override
-    public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
+    protected int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos, Direction pDirection) {
         var be = pLevel.getBlockEntity(pPos);
         if (be instanceof ColorableGlassBlockEntity colorable && colorable.getEmitRedstone()) {
             return 15;
@@ -119,7 +119,7 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.world.item.component.DataComponentGetter dataComponentGetter) {
+    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.core.component.DataComponentGetter dataComponentGetter) {
         consumer.accept(net.minecraft.network.chat.Component.translatable("tooltip.glassential.colorable").withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 }
