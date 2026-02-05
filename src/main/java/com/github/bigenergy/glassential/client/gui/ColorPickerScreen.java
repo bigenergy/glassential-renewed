@@ -5,7 +5,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.handling.ClientPacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
 // Simplified color picker - custom rendering removed due to API changes in 1.21.4+
@@ -112,7 +112,7 @@ public class ColorPickerScreen extends Screen {
     @Override
     public void onClose() {
         // Send packet to server with selected color
-        PacketDistributor.SERVER.noArg().send(new ColorUpdatePacket(blockPos, selectedColor));
+        ClientPacketDistributor.sendToServer(new ColorUpdatePacket(blockPos, selectedColor));
         super.onClose();
     }
 

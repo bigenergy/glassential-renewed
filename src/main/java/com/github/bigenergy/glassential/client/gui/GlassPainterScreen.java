@@ -7,7 +7,7 @@ import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.handling.ClientPacketDistributor;
 
 // Simplified glass painter - custom rendering removed due to API changes in 1.21.4+
 public class GlassPainterScreen extends Screen {
@@ -107,7 +107,7 @@ public class GlassPainterScreen extends Screen {
                             (((int)(rgb[1] * 255) & 0xFF) << 8) |
                             ((int)(rgb[2] * 255) & 0xFF);
 
-        PacketDistributor.SERVER.noArg().send(new GlassPainterPacket(selectedColor, emitLight, emitRedstone, passPlayer, passEntity));
+        ClientPacketDistributor.sendToServer(new GlassPainterPacket(selectedColor, emitLight, emitRedstone, passPlayer, passEntity));
         this.onClose();
     }
 

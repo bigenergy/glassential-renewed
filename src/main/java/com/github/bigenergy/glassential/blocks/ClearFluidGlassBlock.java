@@ -94,12 +94,10 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
     }
 
     @Override
-    public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
-        if(blockEntity != null) {
-            VoxelShape shape = blockEntity.getOcclusionShape();
-            return shape;
-        }
+    protected VoxelShape getOcclusionShape(BlockState pState) {
+        // Note: In 1.21.5+, getOcclusionShape no longer has access to BlockGetter/BlockPos
+        // The dynamic occlusion based on block entity is no longer directly possible here
+        // Return empty shape as default - fluid blocking is handled elsewhere
         return Shapes.empty();
     }
 
@@ -114,7 +112,7 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
     }
 
     @Override
-    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.world.item.component.DataComponentGetter dataComponentGetter) {
+    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.core.component.DataComponentGetter dataComponentGetter) {
         consumer.accept(net.minecraft.network.chat.Component.translatable("tooltip.glassential.clear_fluid").withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 }
