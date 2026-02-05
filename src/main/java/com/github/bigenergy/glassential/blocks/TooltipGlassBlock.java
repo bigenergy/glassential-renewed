@@ -18,9 +18,4 @@ public class TooltipGlassBlock extends TransparentBlock {
         super(properties);
         this.tooltip = tooltip;
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable(tooltip).withStyle(ChatFormatting.GRAY));
-    }
 }

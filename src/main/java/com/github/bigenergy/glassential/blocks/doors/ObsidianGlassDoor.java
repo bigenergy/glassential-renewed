@@ -15,9 +15,4 @@ public class ObsidianGlassDoor extends DoorBlock {
     public ObsidianGlassDoor(Properties properties, BlockSetType blockSetType) {
         super(blockSetType, properties.noOcclusion().explosionResistance(100000000));
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable("tooltip.glassential.protected_door").withStyle(ChatFormatting.GRAY));
-    }
 }

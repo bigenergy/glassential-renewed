@@ -27,9 +27,4 @@ public class IceGlassBlock extends IceBlock {
                               @NotNull BlockPos pos, @NotNull RandomSource random) {
         // Disable the ice melting mechanic to block permanent saving
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable(tooltip).withStyle(ChatFormatting.GRAY));
-    }
 }
