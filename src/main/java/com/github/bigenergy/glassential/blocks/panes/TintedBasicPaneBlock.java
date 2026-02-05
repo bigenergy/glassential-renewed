@@ -1,11 +1,15 @@
 package com.github.bigenergy.glassential.blocks.panes;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.DataComponentGetter;
 import net.minecraft.world.level.block.IronBarsBlock;
-import net.minecraft.world.level.block.state.BlockState;
 
-public class TintedBasicPaneBlock extends IronBarsBlock{
+import java.util.function.Consumer;
+
+public class TintedBasicPaneBlock extends IronBarsBlock {
 
     private final boolean lightBlock;
 
@@ -14,11 +18,10 @@ public class TintedBasicPaneBlock extends IronBarsBlock{
         this.lightBlock = lightBlock;
     }
 
-    protected boolean propagatesSkylightDown(BlockState p_154824_, BlockGetter p_154825_, BlockPos p_154826_) {
-        return false;
-    }
-
-    protected int getLightBlock(BlockState p_154828_, BlockGetter p_154829_, BlockPos p_154830_) {
-        return 15; // Max light level
+    @Override
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+        if (lightBlock) {
+            consumer.accept(Component.translatable("tooltip.glassential.light").withStyle(ChatFormatting.GRAY));
+        }
     }
 }

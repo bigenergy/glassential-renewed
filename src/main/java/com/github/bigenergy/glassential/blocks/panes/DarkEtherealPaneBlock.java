@@ -1,8 +1,12 @@
 package com.github.bigenergy.glassential.blocks.panes;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.DataComponentGetter;
+
+import java.util.function.Consumer;
 
 public class DarkEtherealPaneBlock extends EtherealPaneBlock {
 
@@ -10,11 +14,9 @@ public class DarkEtherealPaneBlock extends EtherealPaneBlock {
         super(properties, collidePlayers);
     }
 
-    protected boolean propagatesSkylightDown(BlockState p_154824_, BlockGetter p_154825_, BlockPos p_154826_) {
-        return false;
-    }
-
-    protected int getLightBlock(BlockState p_154828_, BlockGetter p_154829_, BlockPos p_154830_) {
-        return 15; // Max light level
+    @Override
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+        super.addToTooltip(tooltipContext, consumer, tooltipFlag, dataComponentGetter);
+        consumer.accept(Component.translatable("tooltip.glassential.dark").withStyle(ChatFormatting.GRAY));
     }
 }

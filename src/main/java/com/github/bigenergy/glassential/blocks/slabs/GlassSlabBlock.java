@@ -1,17 +1,12 @@
 package com.github.bigenergy.glassential.blocks.slabs;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.level.block.state.properties.SlabType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 public final class GlassSlabBlock extends SlabBlock
 {
@@ -101,26 +96,5 @@ public final class GlassSlabBlock extends SlabBlock
         }
 
         return false;
-    }
-
-    @Override
-    protected VoxelShape getVisualShape(BlockState state, BlockGetter world,
-                                     BlockPos pos, CollisionContext context)
-    {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected float getShadeBrightness(BlockState state, BlockGetter world,
-                                    BlockPos pos)
-    {
-        return 1.0F;
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(BlockState state, BlockGetter world,
-                                          BlockPos pos)
-    {
-        return true;
     }
 }

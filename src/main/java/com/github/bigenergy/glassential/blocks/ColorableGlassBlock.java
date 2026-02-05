@@ -51,27 +51,12 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return 1.0F;
-    }
-
-    @Override
     public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
         var be = level.getBlockEntity(pos);
         if (be instanceof ColorableGlassBlockEntity colorable && colorable.getEmitLight()) {
             return 15;
         }
         return super.getLightEmission(state, level, pos);
-    }
-
-    @Override
-    protected int getLightBlock(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        // If emitting light, block incoming light to emit properly
-        if (pState.getValue(LIT)) {
-            return 15;
-        }
-        // Otherwise glass doesn't block light
-        return 0;
     }
 
     @Override
@@ -104,15 +89,6 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
-        // If emitting light, don't propagate skylight so the block can emit properly
-        if (pState.getValue(LIT)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
         return pAdjacentBlockState.is(this) || super.skipRendering(pState, pAdjacentBlockState, pDirection);
     }
@@ -140,5 +116,10 @@ public class ColorableGlassBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return GlassentialBlockEntities.COLORABLE_GLASS.get().create(pPos, pState);
+    }
+
+    @Override
+    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.world.item.component.DataComponentGetter dataComponentGetter) {
+        consumer.accept(net.minecraft.network.chat.Component.translatable("tooltip.glassential.colorable").withStyle(net.minecraft.ChatFormatting.GRAY));
     }
 }

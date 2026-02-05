@@ -1,8 +1,12 @@
 package com.github.bigenergy.glassential.blocks;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.DataComponentGetter;
+
+import java.util.function.Consumer;
 
 public class DarkEtherealGlassBlock extends EtherealGlassBlock {
 
@@ -11,7 +15,8 @@ public class DarkEtherealGlassBlock extends EtherealGlassBlock {
 	}
 
 	@Override
-	protected int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
-		return 15; // Max light level
+	public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+		super.addToTooltip(tooltipContext, consumer, tooltipFlag, dataComponentGetter);
+		consumer.accept(Component.translatable("tooltip.glassential.dark").withStyle(ChatFormatting.GRAY));
 	}
 }
