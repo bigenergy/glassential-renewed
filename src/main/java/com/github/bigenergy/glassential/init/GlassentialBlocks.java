@@ -451,7 +451,7 @@ public class GlassentialBlocks {
 
     // Tools
     public static final DeferredItem<com.github.bigenergy.glassential.items.GlassPainterItem> GLASS_PAINTER =
-            ITEMS.register("glass_painter",
+            ITEMS.registerItem("glass_painter",
                     com.github.bigenergy.glassential.items.GlassPainterItem::new,
                     new net.minecraft.world.item.Item.Properties().stacksTo(1));
 }
