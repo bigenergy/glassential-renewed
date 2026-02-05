@@ -51,20 +51,6 @@ public class ColorableStainedGlassBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return 1.0F;
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
-        // If emitting light, don't propagate skylight so the block can emit properly
-        if (pState.getValue(LIT)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
         return pAdjacentBlockState.is(this) || super.skipRendering(pState, pAdjacentBlockState, pDirection);
     }
@@ -76,16 +62,6 @@ public class ColorableStainedGlassBlock extends BaseEntityBlock {
             return 15;
         }
         return super.getLightEmission(state, level, pos);
-    }
-
-    @Override
-    protected int getLightBlock(BlockState pState, net.minecraft.world.level.BlockGetter pLevel, BlockPos pPos) {
-        // If emitting light, block incoming light to emit properly
-        if (pState.getValue(LIT)) {
-            return 15;
-        }
-        // Otherwise glass doesn't block light
-        return 0;
     }
 
     @Override

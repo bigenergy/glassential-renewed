@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.redstone.Orientation;
-import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
@@ -95,16 +94,6 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
     }
 
     @Override
-    protected VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return 1.0F;
-    }
-
-    @Override
     public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
         if(blockEntity != null) {
@@ -116,11 +105,6 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
         return pAdjacentBlockState.is(this) ? true : super.skipRendering(pState, pAdjacentBlockState, pSide);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
-        return true;
     }
 
     @Nullable

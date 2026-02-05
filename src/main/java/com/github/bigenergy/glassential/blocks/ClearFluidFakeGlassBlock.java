@@ -106,16 +106,6 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
     }
 
     @Override
-    protected VoxelShape getVisualShape(BlockState pState, BlockGetter pReader, BlockPos pPos, CollisionContext pContext) {
-        return Shapes.empty();
-    }
-
-    @Override
-    protected float getShadeBrightness(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return 1.0F;
-    }
-
-    @Override
     public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
         ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
         if(blockEntity != null) {
@@ -127,11 +117,6 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
         return pAdjacentBlockState.is(this) ? true : super.skipRendering(pState, pAdjacentBlockState, pSide);
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
-        return true;
     }
 
     @Nullable

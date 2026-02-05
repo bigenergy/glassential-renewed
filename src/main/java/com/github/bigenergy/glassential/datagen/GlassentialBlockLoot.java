@@ -19,9 +19,12 @@ public class GlassentialBlockLoot extends BlockLootSubProvider {
 
     @Override
     public void generate() {
-        BuiltInRegistries.BLOCK.entrySet().stream()
-                .filter(e -> e.getKey().location().getNamespace().equals(Glassential.MODID))
-                .map(Map.Entry::getValue).forEach(block -> {
+        BuiltInRegistries.BLOCK.keySet().stream()
+                .filter(key -> key.getNamespace().equals(Glassential.MODID))
+                .map(key -> BuiltInRegistries.BLOCK.get(key))
+                .filter(java.util.Optional::isPresent)
+                .map(opt -> opt.get().value())
+                .forEach(block -> {
                     if (block instanceof SlabBlock) {
                         add(block, createSlabItemTable(block));
                     } else {
@@ -32,9 +35,11 @@ public class GlassentialBlockLoot extends BlockLootSubProvider {
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {
-        return BuiltInRegistries.BLOCK.entrySet().stream()
-                .filter(e -> e.getKey().location().getNamespace().equals(Glassential.MODID))
-                .map(Map.Entry::getValue)
+        return BuiltInRegistries.BLOCK.keySet().stream()
+                .filter(key -> key.getNamespace().equals(Glassential.MODID))
+                .map(key -> BuiltInRegistries.BLOCK.get(key))
+                .filter(java.util.Optional::isPresent)
+                .map(opt -> opt.get().value())
                 .toList();
     }
 }
