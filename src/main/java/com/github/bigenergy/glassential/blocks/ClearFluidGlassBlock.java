@@ -110,9 +110,4 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return GlassentialBlockEntities.CLEAR_FLUID_GLASS.get().create(pPos, pState);
     }
-
-    @Override
-    public void addToTooltip(net.minecraft.world.item.Item.TooltipContext tooltipContext, java.util.function.Consumer<net.minecraft.network.chat.Component> consumer, net.minecraft.world.item.TooltipFlag tooltipFlag, net.minecraft.core.component.DataComponentGetter dataComponentGetter) {
-        consumer.accept(net.minecraft.network.chat.Component.translatable("tooltip.glassential.clear_fluid").withStyle(net.minecraft.ChatFormatting.GRAY));
-    }
 }

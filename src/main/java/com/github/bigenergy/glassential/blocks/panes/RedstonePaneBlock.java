@@ -28,9 +28,4 @@ public class RedstonePaneBlock extends IronBarsBlock {
     public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         return 15;
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable("tooltip.glassential.redstone").withStyle(ChatFormatting.GRAY));
-    }
 }

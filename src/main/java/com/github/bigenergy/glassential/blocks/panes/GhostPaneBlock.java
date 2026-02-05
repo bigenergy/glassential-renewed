@@ -30,9 +30,4 @@ public class GhostPaneBlock extends IronBarsBlock {
         }
         return state.getShape(world, pos);
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable("tooltip.glassential.ghostly").withStyle(ChatFormatting.GRAY));
-    }
 }

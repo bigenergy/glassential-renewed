@@ -30,9 +30,4 @@ public class GhostGlassBlock extends TransparentBlock {
         //Ty KingLemming for finding that new way for the old behavior
         return !(context instanceof EntityCollisionContext && ((EntityCollisionContext) context).getEntity() instanceof Entity) ? state.getShape(world, pos) : Shapes.empty();
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable("tooltip.glassential.ghostly").withStyle(ChatFormatting.GRAY));
-    }
 }

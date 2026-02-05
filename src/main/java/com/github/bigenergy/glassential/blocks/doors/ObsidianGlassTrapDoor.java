@@ -14,9 +14,4 @@ public class ObsidianGlassTrapDoor extends TrapDoorBlock {
     public ObsidianGlassTrapDoor(Properties properties, BlockSetType blockSetType) {
         super(blockSetType, properties.noOcclusion());
     }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable("tooltip.glassential.protected_trapdoor").withStyle(ChatFormatting.GRAY));
-    }
 }

@@ -31,13 +31,8 @@ public class CustomGlassBlock extends TransparentBlock {
         this.tooltip = tooltip;
     }
 
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
-        consumer.accept(Component.translatable(tooltip).withStyle(ChatFormatting.GRAY));
     }
 
-    @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.getBlockState(pos.above()).is(Blocks.WATER)) {
             level.setBlock(pos.above(),
                     Blocks.BUBBLE_COLUMN.defaultBlockState().setValue(BubbleColumnBlock.DRAG_DOWN, true),
@@ -46,8 +41,6 @@ public class CustomGlassBlock extends TransparentBlock {
         }
     }
 
-    @Override
-    protected @NotNull BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pScheduledTickAccess,
                                               BlockPos pCurrentPos, Direction pFacing, BlockPos pFacingPos,
                                               BlockState pFacingState, RandomSource pRandom) {
         if (pFacing == Direction.UP && pFacingState.is(Blocks.WATER)) {
@@ -57,8 +50,6 @@ public class CustomGlassBlock extends TransparentBlock {
         return super.updateShape(pState, pLevel, pScheduledTickAccess, pCurrentPos, pFacing, pFacingPos, pFacingState, pRandom);
     }
 
-    @Override
-    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if (!pEntity.isSteppingCarefully() && pEntity instanceof LivingEntity) {
             pEntity.hurt(pLevel.damageSources().hotFloor(), 1.0F);
         }

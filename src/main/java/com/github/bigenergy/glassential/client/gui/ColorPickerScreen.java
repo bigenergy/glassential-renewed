@@ -2,47 +2,65 @@ package com.github.bigenergy.glassential.client.gui;
 
 import com.github.bigenergy.glassential.network.ColorUpdatePacket;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.neoforged.neoforge.network.handling.ClientPacketDistributor;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
-// Simplified color picker - custom rendering removed due to API changes in 1.21.4+
+// Simplified color picker - using buttons instead of custom mouse tracking for 1.21.11 compatibility
 public class ColorPickerScreen extends Screen {
     private final BlockPos blockPos;
-    private int selectedColor = 0xFFFFFF;
+    private int selectedColor;
 
-    private static final int PICKER_SIZE = 256;
-    private static final int PADDING = 10;
+    private static final int COLOR_CELL_SIZE = 20;
 
-    private int pickerX;
-    private int pickerY;
-
-    private float hue = 0.0f;
-    private float saturation = 1.0f;
-    private float brightness = 1.0f;
+    private int leftPos;
+    private int topPos;
 
     public ColorPickerScreen(BlockPos blockPos, int currentColor) {
         super(Component.literal("Color Picker"));
         this.blockPos = blockPos;
         this.selectedColor = currentColor;
-
-        int r = (currentColor >> 16) & 0xFF;
-        int g = (currentColor >> 8) & 0xFF;
-        int b = currentColor & 0xFF;
-        float[] hsb = rgbToHsb(r, g, b);
-        this.hue = hsb[0];
-        this.saturation = hsb[1];
-        this.brightness = hsb[2];
     }
 
     @Override
     protected void init() {
         super.init();
-        int totalWidth = PICKER_SIZE + PADDING;
-        pickerX = (this.width - totalWidth) / 2;
-        pickerY = (this.height - PICKER_SIZE) / 2;
+        int gridWidth = 6 * (COLOR_CELL_SIZE + 2);
+        int gridHeight = 6 * (COLOR_CELL_SIZE + 2);
+        leftPos = (this.width - gridWidth) / 2;
+        topPos = (this.height - gridHeight - 80) / 2;
+
+        // Create color palette buttons
+        int[] colors = {
+            0xFF0000, 0xFF7F00, 0xFFFF00, 0x7FFF00, 0x00FF00, 0x00FF7F,
+            0x00FFFF, 0x007FFF, 0x0000FF, 0x7F00FF, 0xFF00FF, 0xFF007F,
+            0x800000, 0x804000, 0x808000, 0x408000, 0x008000, 0x008040,
+            0x008080, 0x004080, 0x000080, 0x400080, 0x800080, 0x800040,
+            0xFFFFFF, 0xC0C0C0, 0x808080, 0x404040, 0x202020, 0x000000,
+            0xFFC0C0, 0xC0FFC0, 0xC0C0FF, 0xFFFFC0, 0xFFC0FF, 0xC0FFFF
+        };
+
+        for (int i = 0; i < colors.length; i++) {
+            int row = i / 6;
+            int col = i % 6;
+            final int color = colors[i];
+            int buttonX = leftPos + col * (COLOR_CELL_SIZE + 2);
+            int buttonY = topPos + row * (COLOR_CELL_SIZE + 2);
+
+            this.addRenderableWidget(new ColorButton(buttonX, buttonY, COLOR_CELL_SIZE, COLOR_CELL_SIZE, color, btn -> {
+                this.selectedColor = color;
+            }));
+        }
+
+        // Apply button
+        int applyY = topPos + 6 * (COLOR_CELL_SIZE + 2) + 50;
+        this.addRenderableWidget(Button.builder(Component.literal("Apply"), button -> {
+            PacketDistributor.sendToServer(new ColorUpdatePacket(blockPos, selectedColor));
+            this.onClose();
+        }).bounds(this.width / 2 - 50, applyY, 100, 20).build());
     }
 
     @Override
@@ -50,70 +68,17 @@ public class ColorPickerScreen extends Screen {
         // Simple background
         guiGraphics.fill(0, 0, this.width, this.height, 0x80000000);
 
-        // Render simplified color picker using fill rectangles
-        int step = 8;
-        for (int y = 0; y < PICKER_SIZE; y += step) {
-            for (int x = 0; x < PICKER_SIZE; x += step) {
-                float s = (float) x / PICKER_SIZE;
-                float b = 1.0f - ((float) y / PICKER_SIZE);
-                int color = hsbToRgb(hue, s, b);
-                guiGraphics.fill(pickerX + x, pickerY + y, pickerX + x + step, pickerY + y + step, 0xFF000000 | color);
-            }
-        }
-
-        // Draw selection indicator
-        int indicatorX = pickerX + (int) (saturation * PICKER_SIZE);
-        int indicatorY = pickerY + (int) ((1.0f - brightness) * PICKER_SIZE);
-        guiGraphics.fill(indicatorX - 3, indicatorY - 3, indicatorX + 3, indicatorY + 3, 0xFFFFFFFF);
-        guiGraphics.fill(indicatorX - 2, indicatorY - 2, indicatorX + 2, indicatorY + 2, 0xFF000000);
-
         // Color preview
-        int previewX = pickerX;
-        int previewY = pickerY + PICKER_SIZE + 10;
-        guiGraphics.fill(previewX, previewY, previewX + 40, previewY + 40, 0xFF000000 | selectedColor);
+        int previewY = topPos + 6 * (COLOR_CELL_SIZE + 2) + 10;
+        int previewX = this.width / 2 - 20;
+        guiGraphics.fill(previewX, previewY, previewX + 40, previewY + 30, 0xFF000000 | selectedColor);
+        guiGraphics.renderOutline(previewX - 1, previewY - 1, 42, 32, 0xFFFFFFFF);
 
         // Hex value
         String hexValue = String.format("#%06X", selectedColor);
-        guiGraphics.drawString(this.font, hexValue, previewX + 50, previewY + 15, 0xFFFFFFFF);
+        guiGraphics.drawString(this.font, hexValue, this.width / 2 - this.font.width(hexValue) / 2, previewY - 15, 0xFFFFFFFF);
 
         super.render(guiGraphics, mouseX, mouseY, partialTick);
-    }
-
-    @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) {
-            if (mouseX >= pickerX && mouseX < pickerX + PICKER_SIZE &&
-                mouseY >= pickerY && mouseY < pickerY + PICKER_SIZE) {
-                updateColorFromPicker((int) mouseX, (int) mouseY);
-                return true;
-            }
-        }
-        return super.mouseClicked(mouseX, mouseY, button);
-    }
-
-    @Override
-    public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
-        if (button == 0) {
-            if (mouseX >= pickerX && mouseX < pickerX + PICKER_SIZE &&
-                mouseY >= pickerY && mouseY < pickerY + PICKER_SIZE) {
-                updateColorFromPicker((int) mouseX, (int) mouseY);
-                return true;
-            }
-        }
-        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
-    }
-
-    private void updateColorFromPicker(int mouseX, int mouseY) {
-        saturation = Math.max(0, Math.min(1, (float) (mouseX - pickerX) / PICKER_SIZE));
-        brightness = Math.max(0, Math.min(1, 1.0f - (float) (mouseY - pickerY) / PICKER_SIZE));
-        selectedColor = hsbToRgb(hue, saturation, brightness);
-    }
-
-    @Override
-    public void onClose() {
-        // Send packet to server with selected color
-        ClientPacketDistributor.sendToServer(new ColorUpdatePacket(blockPos, selectedColor));
-        super.onClose();
     }
 
     @Override
@@ -121,12 +86,21 @@ public class ColorPickerScreen extends Screen {
         return false;
     }
 
-    private static int hsbToRgb(float hue, float saturation, float brightness) {
-        int rgb = java.awt.Color.HSBtoRGB(hue, saturation, brightness);
-        return rgb & 0xFFFFFF;
-    }
+    // Simple color button widget
+    private static class ColorButton extends Button {
+        private final int color;
 
-    private static float[] rgbToHsb(int r, int g, int b) {
-        return java.awt.Color.RGBtoHSB(r, g, b, null);
+        public ColorButton(int x, int y, int width, int height, int color, OnPress onPress) {
+            super(x, y, width, height, Component.empty(), onPress, DEFAULT_NARRATION);
+            this.color = color;
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+            graphics.fill(getX(), getY(), getX() + width, getY() + height, 0xFF000000 | color);
+            if (isHovered) {
+                graphics.renderOutline(getX() - 1, getY() - 1, width + 2, height + 2, 0xFFFFFFFF);
+            }
+        }
     }
 }
