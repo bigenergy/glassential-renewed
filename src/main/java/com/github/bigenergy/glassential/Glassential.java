@@ -136,7 +136,7 @@ public class Glassential {
                 new GlassentialBlockTag(out, lookup));
 
         gen.addProvider(true,
-                new GlassentialItemTag(out, lookup, blockTags.contentsGetter()));
+                new GlassentialItemTag(out, lookup, blockTags));
         gen.addProvider(true, new GlassentialFluid(out, lookup));
     }
 

@@ -92,7 +92,7 @@ public class GlassentialBlockTag extends BlockTagsProvider {
         });
     }
 
-    private static @Nullable DyeColor parseColorFromPath(String path) {
+    private static DyeColor parseColorFromPath(String path) {
         for (DyeColor c : DyeColor.values()) {
             if (path.startsWith(c.getName() + "_")) return c;
         }
