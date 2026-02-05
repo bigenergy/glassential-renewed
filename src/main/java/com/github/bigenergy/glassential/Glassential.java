@@ -6,7 +6,6 @@ import com.github.bigenergy.glassential.datagen.GlassentialFluid;
 import com.github.bigenergy.glassential.datagen.GlassentialItemTag;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
-import com.github.bigenergy.glassential.network.GlassPainterPacket;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -71,23 +70,11 @@ public class Glassential {
 
         CREATIVE_MODE_TABS.register(modEventBus);
 
-        // Register network packets
-        modEventBus.addListener(this::registerPackets);
-
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::gatherData);
         //modEventBus.addListener();
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
-
-    private void registerPackets(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent event) {
-        var registrar = event.registrar("1");
-        registrar.playToServer(
-            GlassPainterPacket.TYPE,
-            GlassPainterPacket.STREAM_CODEC,
-            GlassPainterPacket::handle
-        );
     }
 
     public static Identifier prefix(String name) {
