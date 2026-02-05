@@ -62,7 +62,6 @@ public class GlassPainterItem extends Item {
         return InteractionResult.SUCCESS;
     }
 
-    @net.neoforged.api.distmarker.OnlyIn(net.neoforged.api.distmarker.Dist.CLIENT)
     private void openPainterScreen(ItemStack stack) {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         CompoundTag tag = customData.copyTag();
