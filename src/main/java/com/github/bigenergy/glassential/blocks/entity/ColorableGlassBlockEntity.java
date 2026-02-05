@@ -33,7 +33,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     public void setColor(int color) {
         this.color = color;
         setChanged();
-        if (level != null && !level.isClientSide) {
+        if (level != null && !level.isClientSide()) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
             // Force light update if emitting light
             if (emitLight) {
@@ -49,7 +49,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     public void setEmitLight(boolean emitLight) {
         this.emitLight = emitLight;
         setChanged();
-        if (level != null && !level.isClientSide) {
+        if (level != null && !level.isClientSide()) {
             // Update BlockState LIT property
             BlockState currentState = getBlockState();
             if (currentState.hasProperty(com.github.bigenergy.glassential.blocks.ColorableGlassBlock.LIT)) {
@@ -68,7 +68,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     public void setEmitRedstone(boolean emitRedstone) {
         this.emitRedstone = emitRedstone;
         setChanged();
-        if (level != null && !level.isClientSide) {
+        if (level != null && !level.isClientSide()) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
@@ -80,7 +80,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     public void setPassPlayer(boolean passPlayer) {
         this.passPlayer = passPlayer;
         setChanged();
-        if (level != null && !level.isClientSide) {
+        if (level != null && !level.isClientSide()) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
@@ -92,7 +92,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     public void setPassEntity(boolean passEntity) {
         this.passEntity = passEntity;
         setChanged();
-        if (level != null && !level.isClientSide) {
+        if (level != null && !level.isClientSide()) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
@@ -110,11 +110,11 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     @Override
     protected void loadAdditional(@NotNull CompoundTag pTag, HolderLookup.@NotNull Provider pRegistries) {
         super.loadAdditional(pTag, pRegistries);
-        color = pTag.getInt("Color");
-        emitLight = pTag.getBoolean("EmitLight");
-        emitRedstone = pTag.getBoolean("EmitRedstone");
-        passPlayer = pTag.getBoolean("PassPlayer");
-        passEntity = pTag.getBoolean("PassEntity");
+        color = pTag.getInt("Color").orElse(0xFFFFFF);
+        emitLight = pTag.getBoolean("EmitLight").orElse(false);
+        emitRedstone = pTag.getBoolean("EmitRedstone").orElse(false);
+        passPlayer = pTag.getBoolean("PassPlayer").orElse(false);
+        passEntity = pTag.getBoolean("PassEntity").orElse(false);
     }
 
     @Override
@@ -143,14 +143,14 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     @Override
     public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         super.handleUpdateTag(tag, lookupProvider);
-        if (tag.contains("Color")) {
+        if (tag.contains("Color").orElse(false)) {
             int oldColor = color;
-            color = tag.getInt("Color");
-            emitLight = tag.getBoolean("EmitLight");
-            emitRedstone = tag.getBoolean("EmitRedstone");
-            passPlayer = tag.getBoolean("PassPlayer");
-            passEntity = tag.getBoolean("PassEntity");
-            if (level != null && level.isClientSide) {
+            color = tag.getInt("Color").orElse(0xFFFFFF);
+            emitLight = tag.getBoolean("EmitLight").orElse(false);
+            emitRedstone = tag.getBoolean("EmitRedstone").orElse(false);
+            passPlayer = tag.getBoolean("PassPlayer").orElse(false);
+            passEntity = tag.getBoolean("PassEntity").orElse(false);
+            if (level != null && level.isClientSide()) {
                 // Mark chunk for rebuild
                 var mc = Minecraft.getInstance();
                 if (mc != null && mc.levelRenderer != null) {

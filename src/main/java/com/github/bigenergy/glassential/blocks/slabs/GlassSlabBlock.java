@@ -104,21 +104,21 @@ public final class GlassSlabBlock extends SlabBlock
     }
 
     @Override
-    public VoxelShape getVisualShape(BlockState state, BlockGetter world,
+    protected VoxelShape getVisualShape(BlockState state, BlockGetter world,
                                      BlockPos pos, CollisionContext context)
     {
         return Shapes.empty();
     }
 
     @Override
-    public float getShadeBrightness(BlockState state, BlockGetter world,
+    protected float getShadeBrightness(BlockState state, BlockGetter world,
                                     BlockPos pos)
     {
         return 1.0F;
     }
 
     @Override
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter world,
+    protected boolean propagatesSkylightDown(BlockState state, BlockGetter world,
                                           BlockPos pos)
     {
         return true;

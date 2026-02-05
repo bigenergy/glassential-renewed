@@ -5,7 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -99,10 +98,9 @@ public class ColorPickerScreen extends Screen {
             }
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
+        BufferUploader.draw(bufferBuilder.buildOrThrow());
         RenderSystem.disableBlend();
 
         // Draw selection indicator
@@ -134,10 +132,9 @@ public class ColorPickerScreen extends Screen {
             bufferBuilder.addVertex(matrix, hueBarX, y1, 0).setColor(r, g, bl, 255);
         }
 
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
+        BufferUploader.draw(bufferBuilder.buildOrThrow());
         RenderSystem.disableBlend();
 
         // Draw selection indicator

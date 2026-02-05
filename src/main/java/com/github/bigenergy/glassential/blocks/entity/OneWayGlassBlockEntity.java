@@ -59,8 +59,8 @@ public class OneWayGlassBlockEntity extends BlockEntity {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
         super.loadAdditional(tag, lookup);
         BlockState def = Blocks.IRON_BLOCK.defaultBlockState();
-        if (tag.contains("Mimic")) {
-            var id = Identifier.tryParse(tag.getString("Mimic"));
+        if (tag.contains("Mimic").orElse(false)) {
+            var id = Identifier.tryParse(tag.getString("Mimic").orElse(""));
             if (id != null) {
                 var opt = BuiltInRegistries.BLOCK.getOptional(id);
                 if (opt.isPresent()) def = opt.get().defaultBlockState();
