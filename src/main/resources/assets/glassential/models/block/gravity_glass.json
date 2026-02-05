@@ -1,6 +1,6 @@
 {
     "loader": "fusion:model",
-    "type": "fusion:connecting",
+    "type": "connecting",
     "render_type": "translucent",
     "connections": [
       {
