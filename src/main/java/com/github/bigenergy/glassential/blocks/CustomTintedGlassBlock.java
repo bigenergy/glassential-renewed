@@ -1,16 +1,11 @@
 package com.github.bigenergy.glassential.blocks;
 
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
@@ -19,8 +14,6 @@ import net.minecraft.world.level.block.BubbleColumnBlock;
 import net.minecraft.world.level.block.TintedGlassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Consumer;
 
 public class CustomTintedGlassBlock extends TintedGlassBlock {
 
@@ -31,8 +24,8 @@ public class CustomTintedGlassBlock extends TintedGlassBlock {
         this.tooltip = tooltip;
     }
 
-    }
-
+    @Override
+    protected void tick(BlockState pState, ServerLevel level, BlockPos pos, RandomSource pRandom) {
         if (level.getBlockState(pos.above()).is(Blocks.WATER)) {
             level.setBlock(pos.above(),
                     Blocks.BUBBLE_COLUMN.defaultBlockState().setValue(BubbleColumnBlock.DRAG_DOWN, true),
@@ -41,6 +34,8 @@ public class CustomTintedGlassBlock extends TintedGlassBlock {
         }
     }
 
+    @Override
+    protected @NotNull BlockState updateShape(BlockState pState, LevelReader pLevel, ScheduledTickAccess pScheduledTickAccess,
                                               BlockPos pCurrentPos, Direction pFacing, BlockPos pFacingPos,
                                               BlockState pFacingState, RandomSource pRandom) {
         if (pFacing == Direction.UP && pFacingState.is(Blocks.WATER)) {
@@ -50,6 +45,8 @@ public class CustomTintedGlassBlock extends TintedGlassBlock {
         return super.updateShape(pState, pLevel, pScheduledTickAccess, pCurrentPos, pFacing, pFacingPos, pFacingState, pRandom);
     }
 
+    @Override
+    public void stepOn(Level pLevel, BlockPos pPos, BlockState pState, Entity pEntity) {
         if (!pEntity.isSteppingCarefully() && pEntity instanceof LivingEntity) {
             pEntity.hurt(pLevel.damageSources().hotFloor(), 1.0F);
         }
