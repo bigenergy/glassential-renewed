@@ -1,24 +1,19 @@
 package com.github.bigenergy.glassential.items;
 
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class GlassPainterItem extends Item {
 
@@ -36,12 +31,12 @@ public class GlassPainterItem extends Item {
             CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             CompoundTag tag = customData.copyTag();
 
-            if (tag.contains("Color").orElse(false)) {
-                int color = tag.getInt("Color").orElse(0xFFFFFF);
-                boolean emitLight = tag.getBoolean("EmitLight").orElse(false);
-                boolean emitRedstone = tag.getBoolean("EmitRedstone").orElse(false);
-                boolean passPlayer = tag.getBoolean("PassPlayer").orElse(false);
-                boolean passEntity = tag.getBoolean("PassEntity").orElse(false);
+            if (tag.contains("Color")) {
+                int color = tag.getInt("Color");
+                boolean emitLight = tag.getBoolean("EmitLight");
+                boolean emitRedstone = tag.getBoolean("EmitRedstone");
+                boolean passPlayer = tag.getBoolean("PassPlayer");
+                boolean passEntity = tag.getBoolean("PassEntity");
 
                 colorable.setColor(color);
                 colorable.setEmitLight(emitLight);
@@ -49,7 +44,7 @@ public class GlassPainterItem extends Item {
                 colorable.setPassPlayer(passPlayer);
                 colorable.setPassEntity(passEntity);
 
-                return InteractionResult.sidedSuccess(level.isClientSide());
+                return level.isClientSide() ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
             }
         }
 
@@ -72,14 +67,14 @@ public class GlassPainterItem extends Item {
         CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
         CompoundTag tag = customData.copyTag();
 
-        int currentColor = tag.getInt("Color").orElse(0);
+        int currentColor = tag.contains("Color") ? tag.getInt("Color") : 0xFFFFFF;
         if (currentColor == 0) {
             currentColor = 0xFFFFFF;
         }
-        boolean emitLight = tag.getBoolean("EmitLight").orElse(false);
-        boolean emitRedstone = tag.getBoolean("EmitRedstone").orElse(false);
-        boolean passPlayer = tag.getBoolean("PassPlayer").orElse(false);
-        boolean passEntity = tag.getBoolean("PassEntity").orElse(false);
+        boolean emitLight = tag.contains("EmitLight") && tag.getBoolean("EmitLight");
+        boolean emitRedstone = tag.contains("EmitRedstone") && tag.getBoolean("EmitRedstone");
+        boolean passPlayer = tag.contains("PassPlayer") && tag.getBoolean("PassPlayer");
+        boolean passEntity = tag.contains("PassEntity") && tag.getBoolean("PassEntity");
 
         Minecraft.getInstance().setScreen(
             new com.github.bigenergy.glassential.client.gui.GlassPainterScreen(
@@ -88,32 +83,6 @@ public class GlassPainterItem extends Item {
         );
     }
 
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull Item.TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-
-        CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-        CompoundTag tag = customData.copyTag();
-
-        if (tag.contains("Color").orElse(false)) {
-            int color = tag.getInt("Color").orElse(0xFFFFFF);
-            String hexColor = String.format("#%06X", color);
-            tooltipComponents.add(Component.translatable("tooltip.glassential.painter.color", hexColor).withStyle(ChatFormatting.GRAY));
-
-            if (tag.getBoolean("EmitLight").orElse(false)) {
-                tooltipComponents.add(Component.translatable("tooltip.glassential.painter.emit_light").withStyle(ChatFormatting.YELLOW));
-            }
-            if (tag.getBoolean("EmitRedstone").orElse(false)) {
-                tooltipComponents.add(Component.translatable("tooltip.glassential.painter.emit_redstone").withStyle(ChatFormatting.RED));
-            }
-            if (tag.getBoolean("PassPlayer").orElse(false)) {
-                tooltipComponents.add(Component.translatable("tooltip.glassential.painter.pass_player").withStyle(ChatFormatting.AQUA));
-            }
-            if (tag.getBoolean("PassEntity").orElse(false)) {
-                tooltipComponents.add(Component.translatable("tooltip.glassential.painter.pass_entity").withStyle(ChatFormatting.GREEN));
-            }
-        } else {
-            tooltipComponents.add(Component.translatable("tooltip.glassential.painter.usage").withStyle(ChatFormatting.GRAY));
-        }
-    }
+    // Note: appendHoverText removed due to API changes in 1.21.4+
+    // Tooltips can be added via item components instead
 }

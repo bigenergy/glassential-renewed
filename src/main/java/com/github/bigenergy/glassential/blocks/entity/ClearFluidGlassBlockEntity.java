@@ -3,9 +3,7 @@ package com.github.bigenergy.glassential.blocks.entity;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -15,14 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import net.minecraft.nbt.ListTag;
-import net.minecraft.network.Connection;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.Nullable;
 
 public class ClearFluidGlassBlockEntity extends BlockEntity {
     protected static final VoxelShape SHAPE_DOWN = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 0.01D, 16.0D);
@@ -41,104 +31,9 @@ public class ClearFluidGlassBlockEntity extends BlockEntity {
     }};
     protected VoxelShape occlusionShape = Shapes.empty();
     private final List<Direction> occlusionDirs = new ArrayList<>();
+
     public ClearFluidGlassBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(GlassentialBlockEntities.CLEAR_FLUID_GLASS.get(), pPos, pBlockState);
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.saveAdditional(pTag, pRegistries);
-        ListTag occlusionDirStrings = new ListTag();
-        for (Direction direction : occlusionDirs) {
-            CompoundTag compoundTag = new CompoundTag();
-            compoundTag.putString("dir", direction.toString());
-
-            occlusionDirStrings.add(compoundTag);
-        }
-        pTag.put("occlusiondirs", occlusionDirStrings);
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
-        super.loadAdditional(pTag, pRegistries);
-        ListTag occlusionDirTag = pTag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
-        for (int i = 0; i < occlusionDirTag.size(); i++) {
-            CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-            String dirString = dirCompoundTag.getString("dir").orElse("");
-            Direction direction = Direction.byName(dirString);
-            if (direction != null) {
-                occlusionDirs.add(direction);
-            }
-        }
-        VoxelShape shape = Shapes.empty();
-
-        for(Direction direction : occlusionDirs){
-            shape = Shapes.or(shape, occlusionShapes.get(direction));
-        }
-
-        setOcclusionShape(shape);
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
-        super.handleUpdateTag(tag, lookupProvider);
-        ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
-        for (int i = 0; i < occlusionDirTag.size(); i++) {
-            CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-            String dirString = dirCompoundTag.getString("dir").orElse("");
-            Direction direction = Direction.byName(dirString);
-            if (direction != null) {
-                occlusionDirs.add(direction);
-            }
-        }
-    }
-
-    @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
-        CompoundTag compoundTag = new CompoundTag();
-        ListTag occlusionDirStrings = new ListTag();
-        for (Direction direction : occlusionDirs) {
-            CompoundTag dirTag = new CompoundTag();
-            dirTag.putString("dir", direction.toString());
-
-            occlusionDirStrings.add(dirTag);
-        }
-        compoundTag.put("occlusiondirs", occlusionDirStrings);
-        return compoundTag;
-    }
-
-
-
-    @Nullable
-    @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider lookupProvider) {
-        super.onDataPacket(net, pkt, lookupProvider);
-        ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) this.level.getBlockEntity(pkt.getPos());
-        CompoundTag tag = pkt.getTag();
-        if(tag != null && tag.contains("occlusiondirs", 10).orElse(false)) {
-            ListTag occlusionDirTag = tag.getList("occlusiondirs", Tag.TAG_COMPOUND).orElse(new ListTag());
-            for (int i = 0; i < occlusionDirTag.size(); i++) {
-                CompoundTag dirCompoundTag = occlusionDirTag.getCompound(i);
-                String dirString = dirCompoundTag.getString("dir").orElse("");
-                Direction direction = Direction.byName(dirString);
-                if (direction != null) {
-                    occlusionDirs.add(direction);
-                }
-            }
-            VoxelShape shape = Shapes.empty();
-
-            for(Direction direction : occlusionDirs){
-                shape = Shapes.or(shape, occlusionShapes.get(direction));
-            }
-
-            blockEntity.setOcclusionShape(shape);
-        }
-        this.level.sendBlockUpdated(this.getBlockPos(), this.getBlockState(), this.getBlockState(), Block.UPDATE_IMMEDIATE);
     }
 
     public VoxelShape getOcclusionShape() {
@@ -149,8 +44,13 @@ public class ClearFluidGlassBlockEntity extends BlockEntity {
         this.occlusionShape = shape;
     }
 
-    public void addDirection(Direction direction){
+    public void addDirection(Direction direction) {
         occlusionDirs.add(direction);
+        VoxelShape shape = Shapes.empty();
+        for (Direction dir : occlusionDirs) {
+            shape = Shapes.or(shape, occlusionShapes.get(dir));
+        }
+        setOcclusionShape(shape);
     }
 
     public List<Direction> getOcclusionDirs() {

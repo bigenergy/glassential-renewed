@@ -15,28 +15,28 @@ public class GlassentialBlockEntities {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<OneWayGlassBlockEntity>> ONE_WAY_GLASS =
             BLOCK_ENTITIES.register("one_way_glass",
-                    () -> BlockEntityType.Builder.of(
+                    () -> new BlockEntityType<>(
                             OneWayGlassBlockEntity::new,
                             GlassentialBlocks.ONE_WAY_GLASS.get()
-                    ).build(null)
+                    )
             );
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ClearFluidGlassBlockEntity>> CLEAR_FLUID_GLASS =
             BLOCK_ENTITIES.register("clear_fluid_glass",
-                    () -> BlockEntityType.Builder.of(
+                    () -> new BlockEntityType<>(
                             ClearFluidGlassBlockEntity::new,
                             GlassentialBlocks.CLEAR_FLUID_GLASS.get(),
                             GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get()
-                    ).build(null)
+                    )
             );
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColorableGlassBlockEntity>> COLORABLE_GLASS =
             BLOCK_ENTITIES.register("colorable_glass",
-                    () -> BlockEntityType.Builder.of(
+                    () -> new BlockEntityType<>(
                             ColorableGlassBlockEntity::new,
                             GlassentialBlocks.COLORABLE_GLASS.get(),
                             GlassentialBlocks.COLORABLE_STAINED_GLASS.get()
-                    ).build(null)
+                    )
             );
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ColorableGlassBlockEntity>> COLORABLE_STAINED_GLASS =
