@@ -24,7 +24,7 @@ public class WaterFogEnvironmentMixin {
     private void glassential$clearWaterFog(FogData fogData, Camera camera, ClientLevel level,
                                             float viewDistance, DeltaTracker deltaTracker,
                                             CallbackInfo ci) {
-        BlockPos cameraPos = camera.getBlockPosition();
+        BlockPos cameraPos = camera.blockPosition();
 
         // Check if any ClearFluidGlass block is within 2 blocks of the camera
         for (BlockPos pos : BlockPos.betweenClosed(

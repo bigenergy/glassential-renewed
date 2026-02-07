@@ -5,6 +5,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ValueInput;
+import net.minecraft.nbt.ValueOutput;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -103,30 +105,28 @@ public class ColorableGlassBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        tag.putInt("Color", color);
-        tag.putBoolean("EmitLight", emitLight);
-        tag.putBoolean("EmitRedstone", emitRedstone);
-        tag.putBoolean("PassPlayer", passPlayer);
-        tag.putBoolean("PassEntity", passEntity);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        output.putInt("Color", color);
+        output.putBoolean("EmitLight", emitLight);
+        output.putBoolean("EmitRedstone", emitRedstone);
+        output.putBoolean("PassPlayer", passPlayer);
+        output.putBoolean("PassEntity", passEntity);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        color = tag.getIntOr("Color", 0xFFFFFF);
-        emitLight = tag.getBooleanOr("EmitLight", false);
-        emitRedstone = tag.getBooleanOr("EmitRedstone", false);
-        passPlayer = tag.getBooleanOr("PassPlayer", false);
-        passEntity = tag.getBooleanOr("PassEntity", false);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        color = input.getIntOr("Color", 0xFFFFFF);
+        emitLight = input.getBooleanOr("EmitLight", false);
+        emitRedstone = input.getBooleanOr("EmitRedstone", false);
+        passPlayer = input.getBooleanOr("PassPlayer", false);
+        passEntity = input.getBooleanOr("PassEntity", false);
     }
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        CompoundTag tag = super.getUpdateTag(registries);
-        saveAdditional(tag, registries);
-        return tag;
+        return this.saveWithoutMetadata(registries);
     }
 
     @Override

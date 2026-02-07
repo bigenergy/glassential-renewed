@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.BlockModelPart;
 import net.minecraft.client.renderer.block.model.BlockStateModel;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -87,6 +88,17 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
             }
 
             return quads;
+        }
+
+        @Override
+        public TextureAtlasSprite particleIcon() {
+            if (!glassParts.isEmpty()) {
+                return glassParts.get(0).particleIcon();
+            }
+            if (!mimicParts.isEmpty()) {
+                return mimicParts.get(0).particleIcon();
+            }
+            return null;
         }
     }
 }
