@@ -1,17 +1,12 @@
 package com.github.bigenergy.glassential.client.gui;
 
 import com.github.bigenergy.glassential.network.GlassPainterPacket;
-import com.mojang.blaze3d.platform.NativeImage;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 
 public class GlassPainterScreen extends Screen {
@@ -19,6 +14,7 @@ public class GlassPainterScreen extends Screen {
     private static final int GUI_WIDTH = 400;
     private static final int GUI_HEIGHT = 240;
     private static final int PICKER_SIZE = 180;
+    private static final int STEP = 3; // pixel step for fill-based rendering
 
     private final ItemStack painterStack;
     private int selectedColor;
@@ -37,13 +33,6 @@ public class GlassPainterScreen extends Screen {
 
     private boolean draggingPicker = false;
     private boolean draggingHue = false;
-
-    // Cached textures
-    private DynamicTexture pickerTexture;
-    private Identifier pickerLocation;
-    private DynamicTexture hueTexture;
-    private Identifier hueLocation;
-    private float lastHue = -1;
 
     public GlassPainterScreen(ItemStack stack, int currentColor, boolean emitLight, boolean emitRedstone, boolean passPlayer, boolean passEntity) {
         super(Component.translatable("gui.glassential.glass_painter"));
@@ -71,10 +60,6 @@ public class GlassPainterScreen extends Screen {
 
         this.leftPos = (this.width - GUI_WIDTH) / 2;
         this.topPos = (this.height - GUI_HEIGHT) / 2;
-
-        // Create textures
-        createPickerTexture();
-        createHueTexture();
 
         int checkboxX = leftPos + PICKER_SIZE + 70;
         int checkboxStartY = topPos + 20;
@@ -167,67 +152,22 @@ public class GlassPainterScreen extends Screen {
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
-    private void createPickerTexture() {
-        if (pickerTexture == null) {
-            NativeImage image = new NativeImage(PICKER_SIZE, PICKER_SIZE, false);
-            for (int py = 0; py < PICKER_SIZE; py++) {
-                for (int px = 0; px < PICKER_SIZE; px++) {
-                    float s = (float) px / PICKER_SIZE;
-                    float v = 1.0f - (float) py / PICKER_SIZE;
-                    float[] rgb = hsvToRgb(hue, s, v);
-                    int color = (255 << 24) |
-                               (((int)(rgb[0] * 255) & 0xFF) << 16) |
-                               (((int)(rgb[1] * 255) & 0xFF) << 8) |
-                               ((int)(rgb[2] * 255) & 0xFF);
-                    image.setPixelRGBA(px, py, color);
-                }
-            }
-            pickerTexture = new DynamicTexture(image);
-            pickerLocation = minecraft.getTextureManager().register("glassential_picker", pickerTexture);
-        } else if (Math.abs(hue - lastHue) > 0.001f) {
-            // Update texture when hue changes
-            NativeImage image = pickerTexture.getPixels();
-            for (int py = 0; py < PICKER_SIZE; py++) {
-                for (int px = 0; px < PICKER_SIZE; px++) {
-                    float s = (float) px / PICKER_SIZE;
-                    float v = 1.0f - (float) py / PICKER_SIZE;
-                    float[] rgb = hsvToRgb(hue, s, v);
-                    int color = (255 << 24) |
-                               (((int)(rgb[0] * 255) & 0xFF) << 16) |
-                               (((int)(rgb[1] * 255) & 0xFF) << 8) |
-                               ((int)(rgb[2] * 255) & 0xFF);
-                    image.setPixelRGBA(px, py, color);
-                }
-            }
-            pickerTexture.upload();
-        }
-        lastHue = hue;
-    }
-
-    private void createHueTexture() {
-        if (hueTexture == null) {
-            NativeImage image = new NativeImage(20, PICKER_SIZE, false);
-            for (int py = 0; py < PICKER_SIZE; py++) {
-                float h = (float) py / PICKER_SIZE;
-                float[] rgb = hsvToRgb(h, 1.0f, 1.0f);
-                int color = (255 << 24) |
+    private void drawColorPicker(GuiGraphics graphics, int x, int y, int width, int height) {
+        // Render saturation/brightness gradient using fill calls
+        for (int py = 0; py < height; py += STEP) {
+            for (int px = 0; px < width; px += STEP) {
+                float s = (float) px / width;
+                float v = 1.0f - (float) py / height;
+                float[] rgb = hsvToRgb(hue, s, v);
+                int color = 0xFF000000 |
                            (((int)(rgb[0] * 255) & 0xFF) << 16) |
                            (((int)(rgb[1] * 255) & 0xFF) << 8) |
                            ((int)(rgb[2] * 255) & 0xFF);
-                for (int px = 0; px < 20; px++) {
-                    image.setPixelRGBA(px, py, color);
-                }
+                int x2 = Math.min(x + px + STEP, x + width);
+                int y2 = Math.min(y + py + STEP, y + height);
+                graphics.fill(x + px, y + py, x2, y2, color);
             }
-            hueTexture = new DynamicTexture(image);
-            hueLocation = minecraft.getTextureManager().register("glassential_hue", hueTexture);
         }
-    }
-
-    private void drawColorPicker(GuiGraphics graphics, int x, int y, int width, int height) {
-        createPickerTexture();
-        RenderSystem.enableBlend();
-        graphics.blit(RenderType::guiTextured, pickerLocation, x, y, 0, 0, width, height, width, height);
-        RenderSystem.disableBlend();
 
         // Draw selection indicator
         int selX = x + (int)(saturation * width);
@@ -237,9 +177,17 @@ public class GlassPainterScreen extends Screen {
     }
 
     private void drawHueSlider(GuiGraphics graphics, int x, int y, int width, int height) {
-        RenderSystem.enableBlend();
-        graphics.blit(RenderType::guiTextured, hueLocation, x, y, 0, 0, width, height, width, height);
-        RenderSystem.disableBlend();
+        // Render hue gradient using fill calls
+        for (int py = 0; py < height; py += STEP) {
+            float h = (float) py / height;
+            float[] rgb = hsvToRgb(h, 1.0f, 1.0f);
+            int color = 0xFF000000 |
+                       (((int)(rgb[0] * 255) & 0xFF) << 16) |
+                       (((int)(rgb[1] * 255) & 0xFF) << 8) |
+                       ((int)(rgb[2] * 255) & 0xFF);
+            int y2 = Math.min(y + py + STEP, y + height);
+            graphics.fill(x, y + py, x + width, y2, color);
+        }
 
         graphics.renderOutline(x, y, width, height, 0xFFFFFFFF);
 
@@ -249,67 +197,61 @@ public class GlassPainterScreen extends Screen {
         graphics.fill(x - 1, selY - 1, x + width + 1, selY + 1, 0xFF000000);
     }
 
-    @Override
-    public void removed() {
-        super.removed();
-        if (pickerTexture != null) {
-            pickerTexture.close();
-        }
-        if (hueTexture != null) {
-            hueTexture.close();
-        }
-    }
+    // Handle mouse input using Screen's built-in tracking
+    private void handleMouseInput(double mouseX, double mouseY, int button, boolean isClick) {
+        if (button != 0) return;
 
-    @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) {
-            int pickerX = leftPos + 10;
-            int pickerY = topPos + 25;
-            int hueSliderX = pickerX + PICKER_SIZE + 10;
-            int hueSliderY = pickerY;
-            int hueSliderWidth = 20;
+        int pickerX = leftPos + 10;
+        int pickerY = topPos + 25;
+        int hueSliderX = pickerX + PICKER_SIZE + 10;
+        int hueSliderY = pickerY;
+        int hueSliderWidth = 20;
 
-            // Check color picker
+        if (isClick) {
+            // Check color picker area
             if (mouseX >= pickerX && mouseX <= pickerX + PICKER_SIZE &&
                 mouseY >= pickerY && mouseY <= pickerY + PICKER_SIZE) {
                 draggingPicker = true;
                 updatePickerColor(mouseX, mouseY, pickerX, pickerY);
-                return true;
+                return;
             }
 
-            // Check hue slider
+            // Check hue slider area
             if (mouseX >= hueSliderX && mouseX <= hueSliderX + hueSliderWidth &&
                 mouseY >= hueSliderY && mouseY <= hueSliderY + PICKER_SIZE) {
                 draggingHue = true;
                 updateHue(mouseY, hueSliderY);
-                return true;
+                return;
+            }
+        } else {
+            // Dragging
+            if (draggingPicker) {
+                updatePickerColor(mouseX, mouseY, pickerX, pickerY);
+            } else if (draggingHue) {
+                updateHue(mouseY, hueSliderY);
             }
         }
-
-        return super.mouseClicked(mouseX, mouseY, button);
     }
 
     @Override
-    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+    public boolean mouseClicked(net.minecraft.client.gui.navigation.events.MouseButtonEvent event, boolean doubleClick) {
+        handleMouseInput(event.mouseX(), event.mouseY(), event.button(), true);
+        if (draggingPicker || draggingHue) return true;
+        return super.mouseClicked(event, doubleClick);
+    }
+
+    @Override
+    public boolean mouseReleased(net.minecraft.client.gui.navigation.events.MouseButtonEvent event) {
         draggingPicker = false;
         draggingHue = false;
-        return super.mouseReleased(mouseX, mouseY, button);
+        return super.mouseReleased(event);
     }
 
     @Override
-    public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
-        if (draggingPicker) {
-            int pickerX = leftPos + 10;
-            int pickerY = topPos + 25;
-            updatePickerColor(mouseX, mouseY, pickerX, pickerY);
-            return true;
-        } else if (draggingHue) {
-            int hueSliderY = topPos + 25;
-            updateHue(mouseY, hueSliderY);
-            return true;
-        }
-
-        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
+    public boolean mouseDragged(net.minecraft.client.gui.navigation.events.MouseButtonEvent event, double dragX, double dragY) {
+        handleMouseInput(event.mouseX(), event.mouseY(), event.button(), false);
+        if (draggingPicker || draggingHue) return true;
+        return super.mouseDragged(event, dragX, dragY);
     }
 
     private void updatePickerColor(double mouseX, double mouseY, int pickerX, int pickerY) {
