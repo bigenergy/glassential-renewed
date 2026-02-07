@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 
@@ -234,22 +235,22 @@ public class GlassPainterScreen extends Screen {
     }
 
     @Override
-    public boolean mouseClicked(net.minecraft.client.gui.navigation.events.MouseButtonEvent event, boolean doubleClick) {
-        handleMouseInput(event.mouseX(), event.mouseY(), event.button(), true);
+    public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
+        handleMouseInput(event.x(), event.y(), event.button(), true);
         if (draggingPicker || draggingHue) return true;
         return super.mouseClicked(event, doubleClick);
     }
 
     @Override
-    public boolean mouseReleased(net.minecraft.client.gui.navigation.events.MouseButtonEvent event) {
+    public boolean mouseReleased(MouseButtonEvent event) {
         draggingPicker = false;
         draggingHue = false;
         return super.mouseReleased(event);
     }
 
     @Override
-    public boolean mouseDragged(net.minecraft.client.gui.navigation.events.MouseButtonEvent event, double dragX, double dragY) {
-        handleMouseInput(event.mouseX(), event.mouseY(), event.button(), false);
+    public boolean mouseDragged(MouseButtonEvent event, double dragX, double dragY) {
+        handleMouseInput(event.x(), event.y(), event.button(), false);
         if (draggingPicker || draggingHue) return true;
         return super.mouseDragged(event, dragX, dragY);
     }
