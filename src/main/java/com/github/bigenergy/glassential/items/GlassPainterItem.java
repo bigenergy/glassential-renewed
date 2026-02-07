@@ -27,25 +27,23 @@ public class GlassPainterItem extends Item {
         BlockEntity be = level.getBlockEntity(context.getClickedPos());
 
         if (be instanceof ColorableGlassBlockEntity colorable) {
-            ItemStack stack = context.getItemInHand();
-            CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-            CompoundTag tag = customData.copyTag();
+            // Always consume the interaction on colorable glass to prevent
+            // the GUI from opening (use() is called as fallback when useOn returns PASS)
+            if (!level.isClientSide()) {
+                ItemStack stack = context.getItemInHand();
+                CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+                CompoundTag tag = customData.copyTag();
 
-            if (tag.contains("Color")) {
-                int color = tag.getIntOr("Color", 0xFFFFFF);
-                boolean emitLight = tag.getBooleanOr("EmitLight", false);
-                boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
-                boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
-                boolean passEntity = tag.getBooleanOr("PassEntity", false);
-
-                colorable.setColor(color);
-                colorable.setEmitLight(emitLight);
-                colorable.setEmitRedstone(emitRedstone);
-                colorable.setPassPlayer(passPlayer);
-                colorable.setPassEntity(passEntity);
-
-                return level.isClientSide() ? InteractionResult.SUCCESS : InteractionResult.CONSUME;
+                int color = tag.getIntOr("Color", -1);
+                if (color >= 0) {
+                    colorable.setColor(color);
+                    colorable.setEmitLight(tag.getBooleanOr("EmitLight", false));
+                    colorable.setEmitRedstone(tag.getBooleanOr("EmitRedstone", false));
+                    colorable.setPassPlayer(tag.getBooleanOr("PassPlayer", false));
+                    colorable.setPassEntity(tag.getBooleanOr("PassEntity", false));
+                }
             }
+            return InteractionResult.SUCCESS;
         }
 
         return InteractionResult.PASS;
@@ -53,9 +51,6 @@ public class GlassPainterItem extends Item {
 
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
-        if (!player.isShiftKeyDown()) {
-            return InteractionResult.PASS;
-        }
         ItemStack stack = player.getItemInHand(hand);
 
         if (level.isClientSide()) {
@@ -84,7 +79,4 @@ public class GlassPainterItem extends Item {
             )
         );
     }
-
-    // Note: appendHoverText removed due to API changes in 1.21.4+
-    // Tooltips can be added via item components instead
 }

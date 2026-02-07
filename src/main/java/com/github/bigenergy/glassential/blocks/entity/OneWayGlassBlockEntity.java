@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.network.protocol.Packet;
@@ -81,5 +82,19 @@ public class OneWayGlassBlockEntity extends BlockEntity {
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void handleUpdateTag(ValueInput input) {
+        super.handleUpdateTag(input);
+        requestModelDataUpdate();
+        clientRefresh();
+    }
+
+    @Override
+    public void onDataPacket(Connection connection, ValueInput input) {
+        super.onDataPacket(connection, input);
+        requestModelDataUpdate();
+        clientRefresh();
     }
 }
