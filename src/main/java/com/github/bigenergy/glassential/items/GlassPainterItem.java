@@ -53,6 +53,9 @@ public class GlassPainterItem extends Item {
 
     @Override
     public @NotNull InteractionResult use(Level level, Player player, InteractionHand hand) {
+        if (!player.isShiftKeyDown()) {
+            return InteractionResult.PASS;
+        }
         ItemStack stack = player.getItemInHand(hand);
 
         if (level.isClientSide()) {

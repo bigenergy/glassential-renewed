@@ -3,6 +3,7 @@ package com.github.bigenergy.glassential.client;
 import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
+import com.github.bigenergy.glassential.client.model.OneWayBlockStateModel;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
@@ -11,6 +12,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 
 @EventBusSubscriber(modid = Glassential.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
@@ -72,6 +74,19 @@ public class ClientModEvents {
         });
     }
 
-    // TODO: One-way glass model wrapping disabled - model system changed in 1.21.4+
-    // Need to implement using new BlockStateModel system
+    @SubscribeEvent
+    public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
+        // Wrap one-way glass models with our custom model for each block state
+        GlassentialBlocks.ONE_WAY_GLASS.get().getStateDefinition().getPossibleStates().forEach(state -> {
+            event.getBakingResult().blockStateModels().computeIfPresent(
+                    state,
+                    (bs, model) -> {
+                        if (model instanceof OneWayBlockStateModel) {
+                            return model; // Already wrapped
+                        }
+                        return new OneWayBlockStateModel(model);
+                    }
+            );
+        });
+    }
 }
