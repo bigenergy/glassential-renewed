@@ -100,5 +100,13 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
             }
             return null;
         }
+
+        @Override
+        public boolean useAmbientOcclusion() {
+            if (!glassParts.isEmpty()) {
+                return glassParts.get(0).useAmbientOcclusion();
+            }
+            return true;
+        }
     }
 }
