@@ -25,6 +25,8 @@ import java.util.List;
  */
 public class OneWayBlockStateModel extends DelegateBlockStateModel {
 
+    private static final ThreadLocal<Boolean> COLLECTING = ThreadLocal.withInitial(() -> Boolean.FALSE);
+
     public OneWayBlockStateModel(BlockStateModel delegate) {
         super(delegate);
     }
@@ -32,33 +34,45 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
     @Override
     public void collectParts(BlockAndTintGetter level, BlockPos pos, BlockState state,
                              RandomSource random, List<BlockModelPart> parts) {
-        Direction opaqueFace = state.getValue(OneWayGlassBlock.OPAQUE_FACE);
-
-        ModelData data = level.getModelData(pos);
-        BlockState mimicState = data.get(OneWayGlassBlockEntity.MIMIC);
-
-        if (mimicState == null || mimicState.isAir()) {
-            // No mimic set, use default glass model
+        if (COLLECTING.get()) {
+            // Prevent infinite recursion: mimicModel.collectParts can re-enter
+            // through level.getModelData(pos) -> ModelDataManager.refreshAt -> collectParts
             this.delegate.collectParts(level, pos, state, random, parts);
             return;
         }
 
-        // Get the mimic block's model
-        BlockStateModel mimicModel = Minecraft.getInstance()
-                .getModelManager()
-                .getBlockModelShaper()
-                .getBlockModel(mimicState);
+        COLLECTING.set(Boolean.TRUE);
+        try {
+            Direction opaqueFace = state.getValue(OneWayGlassBlock.OPAQUE_FACE);
 
-        // Collect parts from both models
-        List<BlockModelPart> glassParts = new ArrayList<>();
-        this.delegate.collectParts(level, pos, state, random, glassParts);
+            ModelData data = level.getModelData(pos);
+            BlockState mimicState = data.get(OneWayGlassBlockEntity.MIMIC);
 
-        List<BlockModelPart> mimicParts = new ArrayList<>();
-        mimicModel.collectParts(level, pos, mimicState, random, mimicParts);
+            if (mimicState == null || mimicState.isAir()) {
+                // No mimic set, use default glass model
+                this.delegate.collectParts(level, pos, state, random, parts);
+                return;
+            }
 
-        // Create a composite part that uses mimic quads for the opaque face
-        // and glass quads for all other faces
-        parts.add(new CompositeBlockModelPart(glassParts, mimicParts, opaqueFace));
+            // Get the mimic block's model
+            BlockStateModel mimicModel = Minecraft.getInstance()
+                    .getModelManager()
+                    .getBlockModelShaper()
+                    .getBlockModel(mimicState);
+
+            // Collect parts from both models
+            List<BlockModelPart> glassParts = new ArrayList<>();
+            this.delegate.collectParts(level, pos, state, random, glassParts);
+
+            List<BlockModelPart> mimicParts = new ArrayList<>();
+            mimicModel.collectParts(level, pos, mimicState, random, mimicParts);
+
+            // Create a composite part that uses mimic quads for the opaque face
+            // and glass quads for all other faces
+            parts.add(new CompositeBlockModelPart(glassParts, mimicParts, opaqueFace));
+        } finally {
+            COLLECTING.set(Boolean.FALSE);
+        }
     }
 
     /**
