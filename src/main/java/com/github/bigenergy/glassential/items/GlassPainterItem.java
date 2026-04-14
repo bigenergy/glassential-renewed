@@ -1,7 +1,6 @@
 package com.github.bigenergy.glassential.items;
 
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
@@ -15,7 +14,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Consumer;
+
 public class GlassPainterItem extends Item {
+
+    /**
+     * Set from client-side initialization to open the painter screen.
+     * On dedicated server this stays as no-op.
+     */
+    public static Consumer<ItemStack> OPEN_SCREEN = stack -> {};
 
     public GlassPainterItem(Properties properties) {
         super(properties);
@@ -54,29 +61,9 @@ public class GlassPainterItem extends Item {
         ItemStack stack = player.getItemInHand(hand);
 
         if (level.isClientSide()) {
-            openPainterScreen(stack);
+            OPEN_SCREEN.accept(stack);
         }
 
         return InteractionResult.SUCCESS;
-    }
-
-    private void openPainterScreen(ItemStack stack) {
-        CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-        CompoundTag tag = customData.copyTag();
-
-        int currentColor = tag.getIntOr("Color", 0xFFFFFF);
-        if (currentColor == 0) {
-            currentColor = 0xFFFFFF;
-        }
-        boolean emitLight = tag.getBooleanOr("EmitLight", false);
-        boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
-        boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
-        boolean passEntity = tag.getBooleanOr("PassEntity", false);
-
-        Minecraft.getInstance().setScreen(
-            new com.github.bigenergy.glassential.client.gui.GlassPainterScreen(
-                stack, currentColor, emitLight, emitRedstone, passPlayer, passEntity
-            )
-        );
     }
 }

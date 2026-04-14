@@ -1,7 +1,6 @@
 package com.github.bigenergy.glassential.blocks.entity;
 
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -97,11 +96,8 @@ public class ColorableGlassBlockEntity extends BlockEntity {
 
     public void clientRefresh() {
         if (level != null && level.isClientSide()) {
-            var mc = Minecraft.getInstance();
-            if (mc != null && mc.levelRenderer != null) {
-                mc.levelRenderer.setBlocksDirty(worldPosition.getX(), worldPosition.getY(), worldPosition.getZ(),
-                                                 worldPosition.getX(), worldPosition.getY(), worldPosition.getZ());
-            }
+            requestModelDataUpdate();
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 

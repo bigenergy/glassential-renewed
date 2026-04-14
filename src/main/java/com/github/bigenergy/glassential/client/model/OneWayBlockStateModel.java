@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.BlockModelPart;
 import net.minecraft.client.renderer.block.model.BlockStateModel;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,7 +37,6 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
                              RandomSource random, List<BlockModelPart> parts) {
         if (COLLECTING.get()) {
             // Prevent infinite recursion: mimicModel.collectParts can re-enter
-            // through level.getModelData(pos) -> ModelDataManager.refreshAt -> collectParts
             this.delegate.collectParts(level, pos, state, random, parts);
             return;
         }
@@ -95,7 +95,7 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
                     quads.addAll(part.getQuads(direction));
                 }
             } else {
-                // For all other faces, return the glass quads
+                // For all other faces (including null/unculled), return the glass quads
                 for (BlockModelPart part : glassParts) {
                     quads.addAll(part.getQuads(direction));
                 }
@@ -121,6 +121,16 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
                 return glassParts.get(0).useAmbientOcclusion();
             }
             return true;
+        }
+
+        @Override
+        public ChunkSectionLayer getRenderType(BlockState state) {
+            // Delegate to the glass model's render type (translucent)
+            // so the glass faces render with transparency
+            if (!glassParts.isEmpty()) {
+                return glassParts.get(0).getRenderType(state);
+            }
+            return BlockModelPart.super.getRenderType(state);
         }
     }
 }

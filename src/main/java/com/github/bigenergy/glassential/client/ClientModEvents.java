@@ -3,10 +3,17 @@ package com.github.bigenergy.glassential.client;
 import com.github.bigenergy.glassential.Glassential;
 import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
+import com.github.bigenergy.glassential.client.gui.GlassPainterScreen;
 import com.github.bigenergy.glassential.client.model.OneWayBlockStateModel;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
+import com.github.bigenergy.glassential.items.GlassPainterItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,8 +27,27 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // Note: Render layers are now defined in block properties or JSON in 1.21.4+
-            // ItemBlockRenderTypes.setRenderLayer is deprecated/removed
+            // Register render types for translucent glass blocks
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+
+            // Register client-side screen opener for the Glass Painter item
+            GlassPainterItem.OPEN_SCREEN = stack -> {
+                CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+                CompoundTag tag = customData.copyTag();
+                int currentColor = tag.getIntOr("Color", 0xFFFFFF);
+                if (currentColor == 0) currentColor = 0xFFFFFF;
+                boolean emitLight = tag.getBooleanOr("EmitLight", false);
+                boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
+                boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
+                boolean passEntity = tag.getBooleanOr("PassEntity", false);
+                Minecraft.getInstance().setScreen(
+                    new GlassPainterScreen(stack, currentColor, emitLight, emitRedstone, passPlayer, passEntity)
+                );
+            };
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
 

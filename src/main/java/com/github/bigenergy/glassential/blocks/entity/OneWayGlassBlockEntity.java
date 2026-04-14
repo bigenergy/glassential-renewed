@@ -1,7 +1,6 @@
 package com.github.bigenergy.glassential.blocks.entity;
 
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -49,14 +48,8 @@ public class OneWayGlassBlockEntity extends BlockEntity {
 
     public void clientRefresh() {
         requestModelDataUpdate();
-        if (level != null && Minecraft.getInstance().levelRenderer != null) {
-            Minecraft.getInstance().levelRenderer.blockChanged(
-                    level,
-                    worldPosition,
-                    getBlockState(),
-                    getBlockState(),
-                    Block.UPDATE_CLIENTS
-            );
+        if (level != null) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 
