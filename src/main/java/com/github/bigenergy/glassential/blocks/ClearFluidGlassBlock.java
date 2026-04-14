@@ -95,10 +95,16 @@ public class ClearFluidGlassBlock extends BigGlassBlockEntity {
 
     @Override
     protected VoxelShape getOcclusionShape(BlockState pState) {
-        // Note: In 1.21.5+, getOcclusionShape no longer has access to BlockGetter/BlockPos
-        // The dynamic occlusion based on block entity is no longer directly possible here
-        // Return empty shape as default - fluid blocking is handled elsewhere
         return Shapes.empty();
+    }
+
+    @Override
+    public boolean shouldHideAdjacentFluidFace(BlockState state, Direction selfFace, FluidState adjacentFluid) {
+        // Hide water faces adjacent to this glass - replacement for dynamic getOcclusionShape in 1.21.1
+        if (adjacentFluid.is(GlassentialTags.Fluids.CLEAR_FLUID_GLASS_FLUIDS_TAG)) {
+            return true;
+        }
+        return super.shouldHideAdjacentFluidFace(state, selfFace, adjacentFluid);
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
