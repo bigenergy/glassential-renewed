@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GOG",
+    "GDG"
+  ],
+  "key": {
+    "G": { "item": "minecraft:tinted_glass" },
+    "O": { "item": "minecraft:observer" },
+    "D": { "item": "minecraft:black_dye" }
+  },
+  "result": {
+    "id": "glassential:tinted_one_way_glass",
+    "count": 6
+  }
+}

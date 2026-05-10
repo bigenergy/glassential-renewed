@@ -25,6 +25,7 @@ public class ClientModEvents {
 
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), RenderType.translucent());
@@ -54,7 +55,7 @@ public class ClientModEvents {
                     }
                 }
                 return -1;
-            }, GlassentialBlocks.ONE_WAY_GLASS.get());
+            }, GlassentialBlocks.ONE_WAY_GLASS.get(), GlassentialBlocks.TINTED_ONE_WAY_GLASS.get());
 
             // Colorable glass
             bc.register((state, level, pos, tintIndex) -> {

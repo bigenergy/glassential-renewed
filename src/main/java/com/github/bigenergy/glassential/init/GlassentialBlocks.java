@@ -184,6 +184,11 @@ public class GlassentialBlocks {
                     .isViewBlocking((s,w,p)->false)
                     .isSuffocating((s,w,p)->false)
                     .isRedstoneConductor((s,w,p)->false)), false);
+    public static final DeferredBlock<Block> TINTED_ONE_WAY_GLASS = registerTintedGlass("tinted_one_way_glass",
+            () -> new TintedOneWayGlassBlock(glassProp().strength(0.3F).noOcclusion()
+                    .isViewBlocking((s,w,p)->false)
+                    .isSuffocating((s,w,p)->false)
+                    .isRedstoneConductor((s,w,p)->false)), false);
     public static final DeferredBlock<Block> CLEAR_FLUID_GLASS = registerGlass("clear_fluid_glass",
             () -> new ClearFluidGlassBlock(BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.GLASS)), false);
     public static final DeferredBlock<Block> CLEAR_FLUID_FAKE_GLASS = registerGlass("clear_fluid_fake_glass",
