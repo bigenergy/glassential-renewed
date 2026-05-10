@@ -2,6 +2,7 @@ Glassential Renewed 3.4.2
 ================
 - Added Tinted One Way Glass
 - Fix: cull water faces adjacent to Clear Fluid Glass via LiquidBlockRenderer mixin
+- Updated PT_BR localization (thanks PrincessStellar)
 
 Glassential Renewed 3.4.1
 ================
