@@ -3,6 +3,9 @@ Glassential Renewed 3.4.2
 - Added Tinted One Way Glass
 - Fix: cull water faces adjacent to Clear Fluid Glass via LiquidBlockRenderer mixin
 - Updated PT_BR localization (thanks PrincessStellar)
+- One Way Glass faces now connect via Fusion CTM, just like the rest
+  of the glass blocks. Works on both sides of the block, including
+  through the opaque (mimic) face when the mimic is glass.
 
 Glassential Renewed 3.4.1
 ================

@@ -9,8 +9,10 @@ import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.model.data.ModelData;
@@ -45,9 +47,12 @@ public class OneWayBakedModel implements BakedModel /* + фордж-хук ни�
 
         BakedModel mimicModel = Minecraft.getInstance().getBlockRenderer().getBlockModel(mimic);
 
-        List<BakedQuad> quads = mimicModel.getQuads(mimic, side, rand, ModelData.EMPTY, layer);
+        // Pass the full ModelData through so Fusion's connection data reaches the mimic
+        // model when the mimic is glass-like (default). Mimic models that don't use any
+        // of our keys (e.g. stone) just ignore the extra entries.
+        List<BakedQuad> quads = mimicModel.getQuads(mimic, side, rand, data, layer);
         if (quads.isEmpty()) {
-            quads = mimicModel.getQuads(mimic, side, rand, ModelData.EMPTY, null);
+            quads = mimicModel.getQuads(mimic, side, rand, data, null);
         }
         return quads;
     }
@@ -61,6 +66,22 @@ public class OneWayBakedModel implements BakedModel /* + фордж-хук ни�
     @Override
     public @NotNull ChunkRenderTypeSet getRenderTypes(BlockState state, RandomSource rand, ModelData data) {
         return glassModel.getRenderTypes(state, rand, data);
+    }
+
+    @Override
+    public @NotNull ModelData getModelData(@NotNull BlockAndTintGetter level, @NotNull BlockPos pos,
+                                            @NotNull BlockState state, @NotNull ModelData modelData) {
+        // Forward to the wrapped glass model so Fusion (or any context-aware loader)
+        // can populate its connection data based on neighbor positions.
+        ModelData wrapped = glassModel.getModelData(level, pos, state, modelData);
+
+        // Fusion's getModelData replaces the ModelData rather than deriving from input,
+        // so our MIMIC entry from the block entity gets dropped. Re-attach it.
+        BlockState mimic = modelData.get(OneWayGlassBlockEntity.MIMIC);
+        if (mimic != null) {
+            return wrapped.derive().with(OneWayGlassBlockEntity.MIMIC, mimic).build();
+        }
+        return wrapped;
     }
     @Override public boolean useAmbientOcclusion() { return glassModel.useAmbientOcclusion(); }
     @Override public boolean isGui3d()             { return glassModel.isGui3d(); }
