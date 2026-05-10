@@ -1,3 +1,7 @@
+Glassential Renewed 3.4.2
+================
+- Added Tinted One Way Glass
+
 Glassential Renewed 3.4.1
 ================
 - Color picker fixes [#49](https://github.com/bigenergy/glassential-renewed/issues/49)
