@@ -136,12 +136,17 @@ public class ClearFluidFakeGlassBlock extends BigGlassBlockEntity {
 
     @Override
     public VoxelShape getOcclusionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        ClearFluidGlassBlockEntity blockEntity = (ClearFluidGlassBlockEntity) pLevel.getBlockEntity(pPos);
-        if(blockEntity != null) {
-            VoxelShape shape = blockEntity.getOcclusionShape();
-            return shape;
+        // Compute occlusion shape dynamically from the current world state.
+        // This avoids client/server desync issues with the BE-cached shape that caused
+        // certain planar floor configurations to not hide the water face on the DOWN side.
+        VoxelShape shape = Shapes.empty();
+        for (Direction direction : Direction.values()) {
+            FluidState fs = pLevel.getFluidState(pPos.relative(direction));
+            if (fs.is(GlassentialTags.Fluids.CLEAR_FLUID_GLASS_FLUIDS_TAG)) {
+                shape = Shapes.or(shape, occlusionShapes.get(direction));
+            }
         }
-        return Shapes.empty();
+        return shape;
     }
 
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {

@@ -7,7 +7,8 @@
   "mixins": [
   ],
   "client": [
-    "ConnectingBakedModelMixin"
+    "ConnectingBakedModelMixin",
+    "LiquidBlockRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
