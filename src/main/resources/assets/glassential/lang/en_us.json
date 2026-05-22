@@ -155,6 +155,9 @@
     "tooltip.glassential.painter.pass_player": "◯ Player Passthrough",
     "tooltip.glassential.painter.pass_entity": "◈ Entity Passthrough",
     "tooltip.glassential.painter.usage": "Right-click to configure",
+    "tooltip.glassential.painter.eyedropper": "Shift + right-click any block to copy its color",
+    "message.glassential.brush.copy_success": "Color %s copied to brush",
+    "message.glassential.brush.copy_failed": "Couldn't copy a color from this block",
 
     "itemGroup.glassential": "Glassential Renewed - Functional",
     "itemGroup.glassential_misc": "Glassential Renewed - Blocks"

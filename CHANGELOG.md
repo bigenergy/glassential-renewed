@@ -1,3 +1,11 @@
+Glassential Renewed 3.4.3
+================
+### Added
+- Glass Painter Brush now works as an eyedropper. Shift + right-click any
+  block to copy its color into the brush — works on Colored Glass (exact
+  RGB), any block with a color tint like grass/leaves/water (vanilla and
+  modded), and falls back to the block's map color for everything else.
+
 Glassential Renewed 3.4.2
 ================
 - Added Tinted One Way Glass

@@ -156,6 +156,9 @@
     "tooltip.glassential.painter.pass_player": "◯ Пропуск игроков",
     "tooltip.glassential.painter.pass_entity": "◈ Пропуск всех сущностей",
     "tooltip.glassential.painter.usage": "ПКМ для настройки",
+    "tooltip.glassential.painter.eyedropper": "Shift + ПКМ по любому блоку — скопировать его цвет",
+    "message.glassential.brush.copy_success": "Цвет %s скопирован в кисть",
+    "message.glassential.brush.copy_failed": "Не удалось скопировать цвет с этого блока",
 
     "itemGroup.glassential": "Glassential Renewed - Функц. блоки",
     "itemGroup.glassential_misc": "Glassential Renewed - Прочее"
