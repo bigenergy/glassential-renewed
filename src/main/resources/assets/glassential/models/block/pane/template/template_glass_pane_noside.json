@@ -7,40 +7,40 @@
         {   "from": [ 7, 0, 7.001 ],
             "to": [ 9, 16, 8 ],
             "faces": {
-                "west": { "uv": [  0, 0,  1, 16 ], "texture": "#pane", "cullface": "west" },
-				"east": { "uv": [  15, 0,  16, 16 ], "texture": "#pane", "cullface": "east" }
+                "west": { "uv": [  0, 0,  1, 16 ], "texture": "#pane", "cullface": "west", "tintindex": 0 },
+                "east": { "uv": [  15, 0,  16, 16 ], "texture": "#pane", "cullface": "east", "tintindex": 0 }
             }
         },
-		{   "from": [ 7, 15, 7.001 ],
+        {   "from": [ 7, 15, 7.001 ],
             "to": [ 9, 16, 8 ],
             "faces": {
-                "north": { "uv": [  9, 0,  7, 1 ], "texture": "#pane", "cullface": "up" }
+                "north": { "uv": [  9, 0,  7, 1 ], "texture": "#pane", "cullface": "up", "tintindex": 0 }
             }
         },
-		{   "from": [ 7, 1, 7.001 ],
+        {   "from": [ 7, 1, 7.001 ],
             "to": [ 9, 15, 8 ],
             "faces": {
-                "north": { "uv": [  15, 9,  1, 7 ], "texture": "#pane", "rotation": 90 }
+                "north": { "uv": [  15, 9,  1, 7 ], "texture": "#pane", "rotation": 90, "tintindex": 0 }
             }
         },
-		{   "from": [ 7, 0, 7.001 ],
+        {   "from": [ 7, 0, 7.001 ],
             "to": [ 9, 1, 8 ],
             "faces": {
-                "north": { "uv": [  9, 15,  7, 16 ], "texture": "#pane", "cullface": "down" }
+                "north": { "uv": [  9, 15,  7, 16 ], "texture": "#pane", "cullface": "down", "tintindex": 0 }
             }
         },
-		
-		
-		{   "from": [ 7, 15, 7.002 ],
+
+
+        {   "from": [ 7, 15, 7.002 ],
             "to": [ 9, 16, 8 ],
             "faces": {
-                "north": { "uv": [  9, 1,  7, 2 ], "texture": "#pane" }
+                "north": { "uv": [  9, 1,  7, 2 ], "texture": "#pane", "tintindex": 0 }
             }
         },
-		{   "from": [ 7, 0, 7.002 ],
+        {   "from": [ 7, 0, 7.002 ],
             "to": [ 9, 1, 8 ],
             "faces": {
-                "north": { "uv": [  9, 14,  7, 15 ], "texture": "#pane" }
+                "north": { "uv": [  9, 14,  7, 15 ], "texture": "#pane", "tintindex": 0 }
             }
         }
     ]

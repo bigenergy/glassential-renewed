@@ -318,6 +318,10 @@ public class GlassentialBlocks {
             () -> new BasicPaneBlock(glassPaneProp().lightLevel(b -> 15), true), false);
     public static final DeferredBlock<Block> GLASS_LIGHT_TINTED_PANE = registerPane("glass_light_tinted_pane",
             () -> new TintedBasicPaneBlock(glassPaneProp().lightLevel(b -> 15), true), false);
+    public static final DeferredBlock<Block> COLORABLE_GLASS_PANE = registerPane("colorable_glass_pane",
+            () -> new com.github.bigenergy.glassential.blocks.panes.ColorableGlassPaneBlock(glassPaneProp()), false);
+    public static final DeferredBlock<Block> COLORABLE_STAINED_GLASS_PANE = registerPane("colorable_stained_glass_pane",
+            () -> new com.github.bigenergy.glassential.blocks.panes.ColorableGlassPaneBlock(glassPaneProp()), false);
 
     // Slab
     public static final DeferredBlock<Block> GLASS_SLAB = registerSlab("glass_slab",

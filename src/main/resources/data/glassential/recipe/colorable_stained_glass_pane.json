@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "key": {
+    "G": { "item": "glassential:colorable_stained_glass" }
+  },
+  "result": {
+    "id": "glassential:colorable_stained_glass_pane",
+    "count": 16
+  }
+}

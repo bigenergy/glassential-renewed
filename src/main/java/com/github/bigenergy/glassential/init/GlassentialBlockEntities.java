@@ -36,7 +36,9 @@ public class GlassentialBlockEntities {
                     () -> BlockEntityType.Builder.of(
                             ColorableGlassBlockEntity::new,
                             GlassentialBlocks.COLORABLE_GLASS.get(),
-                            GlassentialBlocks.COLORABLE_STAINED_GLASS.get()
+                            GlassentialBlocks.COLORABLE_STAINED_GLASS.get(),
+                            GlassentialBlocks.COLORABLE_GLASS_PANE.get(),
+                            GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get()
                     ).build(null)
             );
 

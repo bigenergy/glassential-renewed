@@ -20,6 +20,8 @@
     "block.glassential.clear_fluid_fake_glass": "Clear Fluid Fake Glass",
     "block.glassential.colorable_glass": "Colorable Glass",
     "block.glassential.colorable_stained_glass": "Colorable Stained Glass",
+    "block.glassential.colorable_glass_pane": "Colorable Glass Pane",
+    "block.glassential.colorable_stained_glass_pane": "Colorable Stained Glass Pane",
 
     "block.glassential.glass_lava_lamp": "Lava Lamp",
     "block.glassential.glass_lava_lamp_tinted": "Tinted Lava Lamp",

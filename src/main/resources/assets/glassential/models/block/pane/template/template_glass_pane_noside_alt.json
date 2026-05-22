@@ -7,40 +7,40 @@
         {   "from": [ 8, 0, 7 ],
             "to": [ 8.999, 16, 9 ],
             "faces": {
-                "north": { "uv": [  0, 0,  1, 16 ], "texture": "#pane", "cullface": "north" },
-				"south": { "uv": [  15, 0,  16, 16 ], "texture": "#pane", "cullface": "south" }
+                "north": { "uv": [  0, 0,  1, 16 ], "texture": "#pane", "cullface": "north", "tintindex": 0 },
+                "south": { "uv": [  15, 0,  16, 16 ], "texture": "#pane", "cullface": "south", "tintindex": 0 }
             }
         },
-		{   "from": [ 8, 15, 7 ],
+        {   "from": [ 8, 15, 7 ],
             "to": [ 8.999, 16, 9 ],
             "faces": {
-                "east": { "uv": [  7, 0,  9, 1 ], "texture": "#pane", "cullface": "up" }
+                "east": { "uv": [  7, 0,  9, 1 ], "texture": "#pane", "cullface": "up", "tintindex": 0 }
             }
         },
-		{   "from": [ 8, 1, 7 ],
+        {   "from": [ 8, 1, 7 ],
             "to": [ 8.999, 15, 9 ],
             "faces": {
-                "east": { "uv": [  15, 7,  1, 9 ], "texture": "#pane", "rotation": 90 }
+                "east": { "uv": [  15, 7,  1, 9 ], "texture": "#pane", "rotation": 90, "tintindex": 0 }
             }
         },
-		{   "from": [ 8, 0, 7 ],
+        {   "from": [ 8, 0, 7 ],
             "to": [ 8.999, 1, 9 ],
             "faces": {
-                "east": { "uv": [  7, 15,  9, 16 ], "texture": "#pane", "cullface": "down" }
+                "east": { "uv": [  7, 15,  9, 16 ], "texture": "#pane", "cullface": "down", "tintindex": 0 }
             }
         },
-		
-		
-		{   "from": [ 8, 15, 7 ],
+
+
+        {   "from": [ 8, 15, 7 ],
             "to": [ 8.998, 16, 9 ],
             "faces": {
-                "east": { "uv": [  7, 1,  9, 2 ], "texture": "#pane" }
+                "east": { "uv": [  7, 1,  9, 2 ], "texture": "#pane", "tintindex": 0 }
             }
         },
-		{   "from": [ 8, 0, 7 ],
+        {   "from": [ 8, 0, 7 ],
             "to": [ 8.998, 1, 9 ],
             "faces": {
-                "east": { "uv": [  7, 14,  9, 15 ], "texture": "#pane" }
+                "east": { "uv": [  7, 14,  9, 15 ], "texture": "#pane", "tintindex": 0 }
             }
         }
     ]

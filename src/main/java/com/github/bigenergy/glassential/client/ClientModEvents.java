@@ -29,6 +29,8 @@ public class ClientModEvents {
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS_PANE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get(), RenderType.translucent());
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
 
@@ -78,6 +80,16 @@ public class ClientModEvents {
                 }
                 return 0xFFFFFF;
             }, GlassentialBlocks.COLORABLE_STAINED_GLASS.get());
+
+            // Colorable glass pane (same handler as the cube — same BE type)
+            bc.register((state, level, pos, tintIndex) -> {
+                if (level == null || pos == null) return 0xFFFFFF;
+                var be = level.getBlockEntity(pos);
+                if (be instanceof ColorableGlassBlockEntity colorable) {
+                    return colorable.getColor();
+                }
+                return 0xFFFFFF;
+            }, GlassentialBlocks.COLORABLE_GLASS_PANE.get(), GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get());
         });
     }
 
