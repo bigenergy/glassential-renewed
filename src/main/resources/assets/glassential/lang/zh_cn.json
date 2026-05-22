@@ -126,7 +126,8 @@
     "tooltip.glassential.ice": "冰在隔热玻璃中，不会融化",
     "tooltip.glassential.lava_lamp": "天然灯笼，炽如岩浆",
     "tooltip.glassential.gravity": "缓降，无碰撞",
-    "tooltip.glassential.one_way": "一扇秘密窗户。一面透明，另一面不透明。\\n使用任意方块右击其中一面即可伪装该面。",
+    "tooltip.glassential.one_way": "一扇秘密窗户。一面透明，另一面不透明。",
+    "tooltip.glassential.one_way.hint": "使用任意方块右击其中一面即可伪装该面。",
     "tooltip.glassential.clear_fluid": "消除玻璃后与之相邻的水面以获得清晰的视野",
 
     "tooltip.glassential.pane_frameless": "在方块之间时无框",

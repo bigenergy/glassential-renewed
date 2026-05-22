@@ -132,7 +132,8 @@
     "tooltip.glassential.ice": "Лёд в термальном стекле, не растает",
     "tooltip.glassential.lava_lamp": "Природный фонарь, обжигает как магма",
     "tooltip.glassential.gravity": "Смягчает падение, нет коллизии",
-    "tooltip.glassential.one_way": "Секретное окно. Прозрачно с одной стороны и непрозрачно с другой.\nПКМ блоком по стороне — замаскировать её этим блоком.",
+    "tooltip.glassential.one_way": "Секретное окно. Прозрачно с одной стороны и непрозрачно с другой.",
+    "tooltip.glassential.one_way.hint": "ПКМ блоком по стороне — замаскировать её этим блоком.",
     "tooltip.glassential.clear_fluid": "Убирает водный туман — вид в океан становится чистым",
     "tooltip.glassential.colorable": "Меняйте цвет и свойства с помощью Glassential кисти.",
 

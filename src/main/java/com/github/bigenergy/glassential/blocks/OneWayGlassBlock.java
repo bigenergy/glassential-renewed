@@ -57,6 +57,7 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
         pTooltipComponents.add(Component.translatable("tooltip.glassential.one_way").withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(Component.translatable("tooltip.glassential.one_way.hint").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

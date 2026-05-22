@@ -131,7 +131,8 @@
     "tooltip.glassential.ice": "Ice in thermal glass, not melt",
     "tooltip.glassential.lava_lamp": "Natural lantern, burns like magma",
     "tooltip.glassential.gravity": "Softens the fall, no collision",
-    "tooltip.glassential.one_way": "A secret window. Transparent from one side, solid from the other.\\nRight-click a face with any block to disguise that side.",
+    "tooltip.glassential.one_way": "A secret window. Transparent from one side, solid from the other.",
+    "tooltip.glassential.one_way.hint": "Right-click a face with any block to disguise that side.",
     "tooltip.glassential.clear_fluid": "Removes the near-surface water face behind the glass for a crystal-clear view",
     "tooltip.glassential.colorable": "Change color and properties with Glassential Brush",
 
