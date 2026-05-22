@@ -5,6 +5,11 @@ Glassential Renewed 3.4.3
   block to copy its color into the brush — works on Colored Glass (exact
   RGB), any block with a color tint like grass/leaves/water (vanilla and
   modded), and falls back to the block's map color for everything else.
+- Colorable Glass Pane and Colorable Stained Glass Pane — pane versions
+  of the colorable glass blocks. Full RGB picker, light emission,
+  redstone signal and pass-through flags all work the same. Paint them
+  with the Glass Painter Brush, copy colors with the eyedropper. Craft
+  16 panes from 6 colorable glass like a vanilla pane recipe.
 
 Glassential Renewed 3.4.2
 ================

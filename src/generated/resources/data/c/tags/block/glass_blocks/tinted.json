@@ -2,6 +2,7 @@
   "values": [
     "glassential:glass_light_tinted",
     "glassential:glass_redstone_tinted",
+    "glassential:tinted_one_way_glass",
     "glassential:glass_lava_lamp_tinted",
     "glassential:glass_glowstone_lamp_tinted"
   ]
