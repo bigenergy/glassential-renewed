@@ -1,3 +1,7 @@
 {
-  "parent": "glassential:block/clear_fluid_glass_all"
+  "parent": "minecraft:block/cube_all",
+  "render_type": "translucent",
+  "textures": {
+    "all": "glassential:block/clear_fluid_glass_item"
+  }
 }

@@ -10,6 +10,18 @@ Glassential Renewed 3.4.3
   redstone signal and pass-through flags all work the same. Paint them
   with the Glass Painter Brush, copy colors with the eyedropper. Craft
   16 panes from 6 colorable glass like a vanilla pane recipe.
+### Changed
+- Colorable Glass and Colorable Stained Glass now show a rainbow 3D
+  cube in the inventory, so they're easy to spot. (The placed block
+  is still a clean white base that paints to any RGB color.)
+- Clear Fluid Glass and Clear Fluid Fake Glass got distinct
+  water-themed inventory icons.
+- Colorable Glass Pane and Colorable Stained Glass Pane use matching
+  rainbow icons.
+
+### Fixed
+- One Way Glass tooltip no longer shows a literal "\n" — the
+  description now wraps onto a second line properly.
 
 Glassential Renewed 3.4.2
 ================
