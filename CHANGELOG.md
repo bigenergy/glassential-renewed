@@ -1,3 +1,10 @@
+Glassential Renewed 3.4.4
+================
+### Fixed
+- Fixed a crash (StackOverflowError) when a One Way Glass was disguised
+  as another One Way Glass — this could crash on placement and corrupt
+  the world so it crashed on every load. Affected worlds now load fine.
+
 Glassential Renewed 3.4.3
 ================
 ### Added

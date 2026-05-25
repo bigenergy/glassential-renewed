@@ -41,7 +41,11 @@ public class OneWayBakedModel implements BakedModel /* + фордж-хук ни�
         }
 
         BlockState mimic = data.get(OneWayGlassBlockEntity.MIMIC);
-        if (mimic == null) {
+        // Never render another One Way Glass as the mimic: its model is also a
+        // OneWayBakedModel, so doing so recurses into this method forever and crashes
+        // with a StackOverflowError. Fall back to the plain glass face instead.
+        // (instanceof covers TintedOneWayGlassBlock too, since it extends OneWayGlassBlock.)
+        if (mimic == null || mimic.getBlock() instanceof OneWayGlassBlock) {
             return glassModel.getQuads(state, side, rand, data, layer);
         }
 
