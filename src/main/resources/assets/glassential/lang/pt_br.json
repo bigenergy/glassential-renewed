@@ -21,12 +21,10 @@
     "block.glassential.colorable_stained_glass": "Vidro Tingido Colorível",
     "block.glassential.colorable_glass_pane": "Painel de Vidro Colorível",
     "block.glassential.colorable_stained_glass_pane": "Painel de Vidro Tingido Colorível",
-
     "block.glassential.glass_lava_lamp": "Lâmpada de Lava",
     "block.glassential.glass_lava_lamp_tinted": "Lâmpada de Lava Fumê",
     "block.glassential.glass_glowstone_lamp": "Lâmpada de Pedra Luminosa",
     "block.glassential.glass_glowstone_lamp_tinted": "Lâmpada de Pedra Luminosa Fumê",
-
     "block.glassential.glass_door": "Porta de Vidro",
     "block.glassential.dark_ethereal_door": "Porta de Vidro Etéreo Fumê",
     "block.glassential.dark_ethereal_reverse_door": "Porta de Vidro Etéreo Reverso Fumê",
@@ -36,7 +34,6 @@
     "block.glassential.redstone_door": "Porta de Vidro de Redstone",
     "block.glassential.ghostly_door": "Porta de Vidro Fantasmagórico",
     "block.glassential.obsidian_door": "Porta de Vidro de Obsidiana",
-
     "block.glassential.oak_glass_door": "Porta de Vidro de Carvalho",
     "block.glassential.spruce_glass_door": "Porta de Vidro de Abeto",
     "block.glassential.birch_glass_door": "Porta de Vidro de Eucalipto",
@@ -49,7 +46,6 @@
     "block.glassential.mangrove_glass_door": "Porta de Vidro de Mangue",
     "block.glassential.bamboo_glass_door": "Porta de Vidro de Bambu",
     "block.glassential.cherry_glass_door": "Porta de Vidro de Cerejeira",
-
     "block.glassential.oak_glass_trapdoor": "Alçapão de Vidro de Carvalho",
     "block.glassential.spruce_glass_trapdoor": "Alçapão de Vidro de Abeto",
     "block.glassential.birch_glass_trapdoor": "Alçapão de Vidro de Eucalipto",
@@ -62,7 +58,6 @@
     "block.glassential.mangrove_glass_trapdoor": "Alçapão de Vidro de Mangue",
     "block.glassential.bamboo_glass_trapdoor": "Alçapão de Vidro de Bambu",
     "block.glassential.cherry_glass_trapdoor": "Alçapão de Vidro de Cerejeira",
-
     "block.glassential.glass_trapdoor": "Alçapão de Vidro",
     "block.glassential.dark_ethereal_trapdoor": "Alçapão de Vidro Etéreo Fumê",
     "block.glassential.dark_ethereal_reverse_trapdoor": "Alçapão de Vidro Etéreo Reverso Fumê",
@@ -72,7 +67,6 @@
     "block.glassential.redstone_trapdoor": "Alçapão de Vidro de Redstone",
     "block.glassential.light_trapdoor": "Alçapão de Vidro Luminoso",
     "block.glassential.obsidian_trapdoor": "Alçapão de Vidro de Obsidiana",
-
     "block.glassential.gray_glass_trapdoor": "Alçapão de Vidro Cinza",
     "block.glassential.brown_glass_trapdoor": "Alçapão de Vidro Marrom",
     "block.glassential.yellow_glass_trapdoor": "Alçapão de Vidro Amarelo",
@@ -107,7 +101,6 @@
     "block.glassential.purple_glass_trapdoor": "Alçapão de Vidro Roxo",
     "block.glassential.lime_glass_trapdoor": "Alçapão de Vidro Verde Limão",
     "block.glassential.pink_glass_trapdoor": "Alçapão de Vidro Rosa",
-
     "block.glassential.glass_dark_ethereal_pane": "Painel de Vidro Etéreo Fumê",
     "block.glassential.glass_dark_ethereal_reverse_pane": "Painel de Vidro Etéreo Reverso Fumê",
     "block.glassential.glass_ethereal_pane": "Painel de Vidro Etéreo",
@@ -117,9 +110,7 @@
     "block.glassential.glass_light_tinted_pane": "Painel de Vidro Luminoso Fumê",
     "block.glassential.glass_redstone_pane": "Painel de Vidro de Redstone",
     "block.glassential.glass_redstone_tinted_pane": "Painel de Vidro de Redstone Fumê",
-
     "block.glassential.glass_slab": "Laje de Vidro",
-	
     "tooltip.glassential.dark": "Bloqueia a luz",
     "tooltip.glassential.dark_pane": "Bloqueia um pouco da luz",
     "tooltip.glassential.ethereal": "Não é sólido para jogadores",
@@ -134,23 +125,19 @@
     "tooltip.glassential.one_way.hint": "Clique com o botão direito em uma face com qualquer bloco para disfarçar esse lado.",
     "tooltip.glassential.clear_fluid": "Remove a face da água próxima à superfície atrás do vidro para uma visão cristalina",
     "tooltip.glassential.colorable": "Mude a cor e as propriedades com o Pincel Glassential",
-
     "tooltip.glassential.pane_frameless": "Sem bordas quando inserido entre blocos",
     "tooltip.glassential.pane_light": "Emite luz",
     "tooltip.glassential.pane_collideplayers": "Não é sólido para jogadores",
     "tooltip.glassential.protected": "Resistente a explosões",
     "tooltip.glassential.protected_door": "Resistente a explosões, funciona como uma porta de ferro",
     "tooltip.glassential.protected_trapdoor": "Resistente a explosões, funciona como um alçapão de ferro",
-
     "item.glassential.glass_painter": "Pincel Glassential",
-
     "gui.glassential.glass_painter": "Ajuste do Pincel Glassential",
     "gui.glassential.emit_light": "Emite Luz",
     "gui.glassential.emit_redstone": "Emite um sinal de Redstone",
     "gui.glassential.pass_player": "Atravessa jogador",
     "gui.glassential.pass_entity": "Atravessa todas as Entidades",
     "gui.glassential.apply": "Aplicar",
-
     "tooltip.glassential.painter.color": "Cor: %s",
     "tooltip.glassential.painter.emit_light": "✦ Emite Luz",
     "tooltip.glassential.painter.emit_redstone": "⚡ Emite Redstone",
@@ -160,7 +147,6 @@
     "tooltip.glassential.painter.eyedropper": "Shift + clique direito em qualquer bloco para copiar sua cor",
     "message.glassential.brush.copy_success": "Cor %s copiada para o pincel",
     "message.glassential.brush.copy_failed": "Não foi possível copiar a cor deste bloco",
-
     "itemGroup.glassential": "Glassential Renewed - Funcional",
     "itemGroup.glassential_misc": "Glassential Renewed - Blocos"
 }

@@ -22,12 +22,10 @@
     "block.glassential.colorable_stained_glass": "Цветное окрашенное стекло",
     "block.glassential.colorable_glass_pane": "Цветная стеклянная панель",
     "block.glassential.colorable_stained_glass_pane": "Цветная окрашенная стеклянная панель",
-
     "block.glassential.glass_lava_lamp": "Лавовый фонарь",
     "block.glassential.glass_lava_lamp_tinted": "Тонированный лавовый фонарь",
     "block.glassential.glass_glowstone_lamp": "Светокаменный фонарь",
     "block.glassential.glass_glowstone_lamp_tinted": "Тонированный светокаменный фонарь",
-
     "block.glassential.glass_door": "Стеклянная дверь",
     "block.glassential.dark_ethereal_door": "Дверь из тёмно-эфирного стекла",
     "block.glassential.dark_ethereal_reverse_door": "Дверь из обратного тёмно-эфирного стекла",
@@ -37,7 +35,6 @@
     "block.glassential.redstone_door": "Дверь из редстоунового стекла",
     "block.glassential.ghostly_door": "Дверь из призрачного стекла",
     "block.glassential.obsidian_door": "Дверь из обсидианового стекла",
-
     "block.glassential.oak_glass_door": "Дубовая стеклянная дверь",
     "block.glassential.spruce_glass_door": "Еловая стеклянная дверь",
     "block.glassential.birch_glass_door": "Берёзовая стеклянная дверь",
@@ -50,7 +47,6 @@
     "block.glassential.mangrove_glass_door": "Мангровая стеклянная дверь",
     "block.glassential.bamboo_glass_door": "Бамбуковая стеклянная дверь",
     "block.glassential.cherry_glass_door": "Вишнёвая стеклянная дверь",
-
     "block.glassential.oak_glass_trapdoor": "Дубовый стеклянный люк",
     "block.glassential.spruce_glass_trapdoor": "Еловый стеклянный люк",
     "block.glassential.birch_glass_trapdoor": "Берёзовый стеклянный люк",
@@ -63,7 +59,6 @@
     "block.glassential.mangrove_glass_trapdoor": "Мангровый стеклянный люк",
     "block.glassential.bamboo_glass_trapdoor": "Бамбуковый стеклянный люк",
     "block.glassential.cherry_glass_trapdoor": "Вишнёвый стеклянный люк",
-
     "block.glassential.glass_trapdoor": "Стеклянный люк",
     "block.glassential.dark_ethereal_trapdoor": "Люк из тёмно-эфирного стекла",
     "block.glassential.dark_ethereal_reverse_trapdoor": "Люк из обратного тёмно-эфирного стекла",
@@ -73,7 +68,6 @@
     "block.glassential.redstone_trapdoor": "Люк из редстоунового стекла",
     "block.glassential.light_trapdoor": "Люк из светящегося стекла",
     "block.glassential.obsidian_trapdoor": "Люк из обсидианового стекла",
-
     "block.glassential.gray_glass_trapdoor": "Серый стеклянный люк",
     "block.glassential.brown_glass_trapdoor": "Коричневый стеклянный люк",
     "block.glassential.yellow_glass_trapdoor": "Жёлтый стеклянный люк",
@@ -91,7 +85,6 @@
     "block.glassential.light_blue_glass_trapdoor": "Голубой стеклянный люк",
     "block.glassential.red_glass_trapdoor": "Красный стеклянный люк",
     "block.glassential.blue_glass_trapdoor": "Люк из синего стекла",
-
     "block.glassential.lime_glass_door": "Лаймовая стеклянная дверь",
     "block.glassential.orange_glass_door": "Оранжевая стеклянная дверь",
     "block.glassential.tinted_glass_door": "Дверь из тонированного стекла",
@@ -109,7 +102,6 @@
     "block.glassential.white_glass_door": "Белая стеклянная дверь",
     "block.glassential.purple_glass_door": "Фиолетовая стеклянная дверь",
     "block.glassential.magenta_glass_door": "Пурпурная стеклянная дверь",
-
     "block.glassential.glass_dark_ethereal_pane": "Тёмно-эфирная стеклянная панель",
     "block.glassential.glass_dark_ethereal_reverse_pane": "Тёмно-эфирная стеклянная панель (обратная)",
     "block.glassential.glass_ethereal_pane": "Эфирная стеклянная панель",
@@ -119,9 +111,7 @@
     "block.glassential.glass_light_tinted_pane": "Светящееся тонированная стеклянная панель",
     "block.glassential.glass_redstone_pane": "Редстоуновая стеклянная панель",
     "block.glassential.glass_redstone_tinted_pane": "Тонированная редстоуновая стеклянная панель",
-
     "block.glassential.glass_slab": "Стеклянная плита",
-	
     "tooltip.glassential.dark": "Блокирует свет",
     "tooltip.glassential.dark_pane": "Слегка блокирует свет",
     "tooltip.glassential.ethereal": "Пропускает игрока",
@@ -136,23 +126,19 @@
     "tooltip.glassential.one_way.hint": "ПКМ блоком по стороне — замаскировать её этим блоком.",
     "tooltip.glassential.clear_fluid": "Убирает водный туман — вид в океан становится чистым",
     "tooltip.glassential.colorable": "Меняйте цвет и свойства с помощью Glassential кисти.",
-
     "tooltip.glassential.pane_frameless": "Безрамочная при вставке между блоками",
     "tooltip.glassential.pane_light": "Излучает свет",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
     "tooltip.glassential.protected": "Устойчиво к взрывам, как обсидиан",
     "tooltip.glassential.protected_door": "Устойчиво к взрывам, работает как железная дверь",
     "tooltip.glassential.protected_trapdoor": "Устойчиво к взрывам, работает как железный люк",
-
     "item.glassential.glass_painter": "Glassential кисть",
-
     "gui.glassential.glass_painter": "Настройка цвета и свойств",
     "gui.glassential.emit_light": "Излучать свет",
     "gui.glassential.emit_redstone": "Излучать редстоун",
     "gui.glassential.pass_player": "Пропускать игрока",
     "gui.glassential.pass_entity": "Пропускать всех",
     "gui.glassential.apply": "Применить",
-
     "tooltip.glassential.painter.color": "Цвет: %s",
     "tooltip.glassential.painter.emit_light": "✦ Излучение света",
     "tooltip.glassential.painter.emit_redstone": "⚡ Излучение редстоуна",
@@ -162,7 +148,6 @@
     "tooltip.glassential.painter.eyedropper": "Shift + ПКМ по любому блоку — скопировать его цвет",
     "message.glassential.brush.copy_success": "Цвет %s скопирован в кисть",
     "message.glassential.brush.copy_failed": "Не удалось скопировать цвет с этого блока",
-
     "itemGroup.glassential": "Glassential Renewed - Функц. блоки",
     "itemGroup.glassential_misc": "Glassential Renewed - Прочее"
 }

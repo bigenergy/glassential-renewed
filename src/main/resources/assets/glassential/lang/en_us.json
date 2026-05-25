@@ -22,12 +22,10 @@
     "block.glassential.colorable_stained_glass": "Colorable Stained Glass",
     "block.glassential.colorable_glass_pane": "Colorable Glass Pane",
     "block.glassential.colorable_stained_glass_pane": "Colorable Stained Glass Pane",
-
     "block.glassential.glass_lava_lamp": "Lava Lamp",
     "block.glassential.glass_lava_lamp_tinted": "Tinted Lava Lamp",
     "block.glassential.glass_glowstone_lamp": "Glowstone Lamp",
     "block.glassential.glass_glowstone_lamp_tinted": "Glowstone Tinted lamp",
-
     "block.glassential.glass_door": "Glass Door",
     "block.glassential.dark_ethereal_door": "Tinted Ethereal Glass Door",
     "block.glassential.dark_ethereal_reverse_door": "Tinted Reverse Ethereal Glass Door",
@@ -37,7 +35,6 @@
     "block.glassential.redstone_door": "Redstone Glass Door",
     "block.glassential.ghostly_door": "Ghostly Glass Door",
     "block.glassential.obsidian_door": "Obsidian Glass Door",
-
     "block.glassential.oak_glass_door": "Oak Glass Door",
     "block.glassential.spruce_glass_door": "Spruce Glass Door",
     "block.glassential.birch_glass_door": "Birch Glass Door",
@@ -50,7 +47,6 @@
     "block.glassential.mangrove_glass_door": "Mangrove Glass Door",
     "block.glassential.bamboo_glass_door": "Bamboo Glass Door",
     "block.glassential.cherry_glass_door": "Cherry Glass Door",
-
     "block.glassential.oak_glass_trapdoor": "Oak Glass Trapdoor",
     "block.glassential.spruce_glass_trapdoor": "Spruce Glass Trapdoor",
     "block.glassential.birch_glass_trapdoor": "Birch Glass Trapdoor",
@@ -63,7 +59,6 @@
     "block.glassential.mangrove_glass_trapdoor": "Mangrove Glass Trapdoor",
     "block.glassential.bamboo_glass_trapdoor": "Bamboo Glass Trapdoor",
     "block.glassential.cherry_glass_trapdoor": "Cherry Glass Trapdoor",
-
     "block.glassential.glass_trapdoor": "Glass TrapDoor",
     "block.glassential.dark_ethereal_trapdoor": "Tinted Ethereal Glass TrapDoor",
     "block.glassential.dark_ethereal_reverse_trapdoor": "Tinted Reverse Ethereal Glass TrapDoor",
@@ -73,7 +68,6 @@
     "block.glassential.redstone_trapdoor": "Redstone Glass TrapDoor",
     "block.glassential.light_trapdoor": "Luminous Glass TrapDoor",
     "block.glassential.obsidian_trapdoor": "Obsidian Glass TrapDoor",
-
     "block.glassential.gray_glass_trapdoor": "Gray Glass Trapdoor",
     "block.glassential.brown_glass_trapdoor": "Brown Glass Trapdoor",
     "block.glassential.yellow_glass_trapdoor": "Yellow Glass Trapdoor",
@@ -108,7 +102,6 @@
     "block.glassential.purple_glass_trapdoor": "Purple Glass Trapdoor",
     "block.glassential.lime_glass_trapdoor": "Lime Glass Trapdoor",
     "block.glassential.pink_glass_trapdoor": "Pink Glass Trapdoor",
-
     "block.glassential.glass_dark_ethereal_pane": "Tinted Ethereal Glass Pane",
     "block.glassential.glass_dark_ethereal_reverse_pane": "Tinted Reverse Ethereal Glass Pane",
     "block.glassential.glass_ethereal_pane": "Ethereal Glass Pane",
@@ -118,9 +111,7 @@
     "block.glassential.glass_light_tinted_pane": "Tinted Luminous Glass Pane",
     "block.glassential.glass_redstone_pane": "Redstone Glass Pane",
     "block.glassential.glass_redstone_tinted_pane": "Tinted Redstone Glass Pane",
-
     "block.glassential.glass_slab": "Glass slab",
-	
     "tooltip.glassential.dark": "Blocks light",
     "tooltip.glassential.dark_pane": "Blocks light a bit",
     "tooltip.glassential.ethereal": "Not solid to players",
@@ -135,23 +126,19 @@
     "tooltip.glassential.one_way.hint": "Right-click a face with any block to disguise that side.",
     "tooltip.glassential.clear_fluid": "Removes the near-surface water face behind the glass for a crystal-clear view",
     "tooltip.glassential.colorable": "Change color and properties with Glassential Brush",
-
     "tooltip.glassential.pane_frameless": "Frameless when inserted between blocks",
     "tooltip.glassential.pane_light": "Emits light",
     "tooltip.glassential.pane_collideplayers": "Not solid to players",
     "tooltip.glassential.protected": "Resistant to explosions",
     "tooltip.glassential.protected_door": "Resistant to explosions, works like an iron door",
     "tooltip.glassential.protected_trapdoor": "Resistant to explosions, works like an iron trapdoor",
-
     "item.glassential.glass_painter": "Glassential Brush",
-
     "gui.glassential.glass_painter": "Glassential Brush Tuning",
     "gui.glassential.emit_light": "Emit Light",
     "gui.glassential.emit_redstone": "Emit Redstone Signal",
     "gui.glassential.pass_player": "Pass Player",
     "gui.glassential.pass_entity": "Pass All Entities",
     "gui.glassential.apply": "Apply",
-
     "tooltip.glassential.painter.color": "Color: %s",
     "tooltip.glassential.painter.emit_light": "✦ Emits Light",
     "tooltip.glassential.painter.emit_redstone": "⚡ Emits Redstone",
@@ -161,7 +148,6 @@
     "tooltip.glassential.painter.eyedropper": "Shift + right-click any block to copy its color",
     "message.glassential.brush.copy_success": "Color %s copied to brush",
     "message.glassential.brush.copy_failed": "Couldn't copy a color from this block",
-
     "itemGroup.glassential": "Glassential Renewed - Functional",
     "itemGroup.glassential_misc": "Glassential Renewed - Blocks"
 }
