@@ -2,7 +2,7 @@ package com.github.bigenergy.glassential.client.gui;
 
 import com.github.bigenergy.glassential.network.ColorUpdatePacket;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -70,7 +70,7 @@ public class ColorPickerScreen extends Screen {
     }
 
     @Override
-    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void extractRenderState(@NotNull GuiGraphicsExtractor guiGraphics, int mouseX, int mouseY, float partialTick) {
         // Simple background
         guiGraphics.fill(0, 0, this.width, this.height, 0x80000000);
 
@@ -88,13 +88,13 @@ public class ColorPickerScreen extends Screen {
         int previewY = topPos + 6 * (COLOR_CELL_SIZE + 2) + 10;
         int previewX = this.width / 2 - 20;
         guiGraphics.fill(previewX, previewY, previewX + 40, previewY + 30, 0xFF000000 | selectedColor);
-        guiGraphics.renderOutline(previewX - 1, previewY - 1, 42, 32, 0xFFFFFFFF);
+        guiGraphics.outline(previewX - 1, previewY - 1, 42, 32, 0xFFFFFFFF);
 
         // Hex value
         String hexValue = String.format("#%06X", selectedColor);
-        guiGraphics.drawString(this.font, hexValue, this.width / 2 - this.font.width(hexValue) / 2, previewY - 15, 0xFFFFFFFF);
+        guiGraphics.text(this.font, hexValue, this.width / 2 - this.font.width(hexValue) / 2, previewY - 15, 0xFFFFFFFF);
 
-        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        super.extractRenderState(guiGraphics, mouseX, mouseY, partialTick);
     }
 
     @Override

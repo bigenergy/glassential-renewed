@@ -2,7 +2,7 @@ package com.github.bigenergy.glassential.client.gui;
 
 import com.github.bigenergy.glassential.network.GlassPainterPacket;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Checkbox;
 import net.minecraft.client.gui.screens.Screen;
@@ -110,18 +110,18 @@ public class GlassPainterScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         // Disable background blur
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         // Draw GUI background
         graphics.fill(leftPos, topPos, leftPos + GUI_WIDTH, topPos + GUI_HEIGHT, 0xE0101010);
-        graphics.renderOutline(leftPos, topPos, GUI_WIDTH, GUI_HEIGHT, 0xFF8B8B8B);
+        graphics.outline(leftPos, topPos, GUI_WIDTH, GUI_HEIGHT, 0xFF8B8B8B);
 
         // Draw title
-        graphics.drawString(this.font, this.title, leftPos + 8, topPos + 6, 0xFFFFFF, false);
+        graphics.text(this.font, this.title.getVisualOrderText(), leftPos + 8, topPos + 6, 0xFFFFFF, false);
 
         // Draw color picker
         int pickerX = leftPos + 10;
@@ -143,17 +143,17 @@ public class GlassPainterScreen extends Screen {
                           (((int)(rgb[1] * 255) & 0xFF) << 8) |
                           ((int)(rgb[2] * 255) & 0xFF);
         graphics.fill(previewX, previewY, previewX + previewSize, previewY + previewSize, 0xFF000000 | currentColor);
-        graphics.renderOutline(previewX, previewY, previewSize, previewSize, 0xFFFFFFFF);
+        graphics.outline(previewX, previewY, previewSize, previewSize, 0xFFFFFFFF);
 
         // Draw hex color
         String hexColor = String.format("#%06X", currentColor);
         int hexX = previewX + previewSize / 2 - this.font.width(hexColor) / 2;
-        graphics.drawString(this.font, hexColor, hexX, previewY + previewSize + 5, 0xFFFFFF, false);
+        graphics.text(this.font, hexColor, hexX, previewY + previewSize + 5, 0xFFFFFF, false);
 
-        super.render(graphics, mouseX, mouseY, partialTick);
+        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
     }
 
-    private void drawColorPicker(GuiGraphics graphics, int x, int y, int width, int height) {
+    private void drawColorPicker(GuiGraphicsExtractor graphics, int x, int y, int width, int height) {
         // Render saturation/brightness gradient using fill calls
         for (int py = 0; py < height; py += STEP) {
             for (int px = 0; px < width; px += STEP) {
@@ -173,11 +173,11 @@ public class GlassPainterScreen extends Screen {
         // Draw selection indicator
         int selX = x + (int)(saturation * width);
         int selY = y + (int)((1.0f - brightness) * height);
-        graphics.renderOutline(selX - 4, selY - 4, 8, 8, 0xFFFFFFFF);
-        graphics.renderOutline(selX - 5, selY - 5, 10, 10, 0xFF000000);
+        graphics.outline(selX - 4, selY - 4, 8, 8, 0xFFFFFFFF);
+        graphics.outline(selX - 5, selY - 5, 10, 10, 0xFF000000);
     }
 
-    private void drawHueSlider(GuiGraphics graphics, int x, int y, int width, int height) {
+    private void drawHueSlider(GuiGraphicsExtractor graphics, int x, int y, int width, int height) {
         // Render hue gradient using fill calls
         for (int py = 0; py < height; py += STEP) {
             float h = (float) py / height;
@@ -190,7 +190,7 @@ public class GlassPainterScreen extends Screen {
             graphics.fill(x, y + py, x + width, y2, color);
         }
 
-        graphics.renderOutline(x, y, width, height, 0xFFFFFFFF);
+        graphics.outline(x, y, width, height, 0xFFFFFFFF);
 
         // Draw selection indicator
         int selY = y + (int)(hue * height);

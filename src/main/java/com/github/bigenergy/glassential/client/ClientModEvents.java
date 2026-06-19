@@ -11,8 +11,9 @@ import com.github.bigenergy.glassential.network.GlassPainterPacket;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.client.color.block.BlockTintSource;
+import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -29,21 +30,17 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
+import java.util.List;
+
 @EventBusSubscriber(modid = Glassential.MODID, value = Dist.CLIENT)
 public class ClientModEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // Register render types for translucent glass blocks
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS_PANE.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get(), ChunkSectionLayer.TRANSLUCENT);
+            // Render types are now defined exclusively via the "render_type" field in each
+            // block model JSON (e.g. "render_type": "translucent"). ItemBlockRenderTypes
+            // was removed in 26.x — there's no Java-side per-block render-layer registration.
 
             // Register client-side eyedropper for the Glass Painter item.
             // All client-only class references (Minecraft, BlockColors, ClientPacketDistributor)
@@ -65,9 +62,19 @@ public class ClientModEvents {
                 }
 
                 if (color == -1) {
-                    int tint = Minecraft.getInstance().getBlockColors().getColor(state, level, pos, 0);
-                    if (tint != -1) {
-                        color = tint & 0xFFFFFF;
+                    // 26.x: BlockColors.getColor is gone; iterate registered tint sources instead.
+                    // colorInWorld wants a BlockAndTintGetter — on the client, the level
+                    // is always a ClientLevel which implements it.
+                    BlockAndTintGetter tintLevel = Minecraft.getInstance().level;
+                    if (tintLevel != null) {
+                        List<BlockTintSource> tintSources = Minecraft.getInstance().getBlockColors().getTintSources(state);
+                        for (BlockTintSource src : tintSources) {
+                            int tint = src.colorInWorld(state, tintLevel, pos);
+                            if (tint != -1 && (tint & 0xFFFFFF) != 0xFFFFFF) {
+                                color = tint & 0xFFFFFF;
+                                break;
+                            }
+                        }
                     }
                 }
 
@@ -79,10 +86,9 @@ public class ClientModEvents {
                 }
 
                 if (color == -1) {
-                    player.displayClientMessage(
+                    player.sendOverlayMessage(
                         Component.translatable("message.glassential.brush.copy_failed")
-                            .withStyle(ChatFormatting.RED),
-                        true
+                            .withStyle(ChatFormatting.RED)
                     );
                     return;
                 }
@@ -98,10 +104,9 @@ public class ClientModEvents {
                 ));
 
                 String hex = String.format("#%06X", color & 0xFFFFFF);
-                player.displayClientMessage(
+                player.sendOverlayMessage(
                     Component.translatable("message.glassential.brush.copy_success", hex)
-                        .withStyle(ChatFormatting.GREEN),
-                    true
+                        .withStyle(ChatFormatting.GREEN)
                 );
             };
 
@@ -122,62 +127,62 @@ public class ClientModEvents {
 
             BlockColors bc = Minecraft.getInstance().getBlockColors();
 
-            // reentrancy guard
+            // 26.x: BlockColors.register now takes a List<BlockTintSource> + Block varargs.
+            // The lambda-based (state, level, pos, tintIdx) -> int form is gone.
+            // We wrap each color logic in a BlockTintSource and override colorInWorld
+            // (the no-context color(state) fallback returns -1 / white).
+
+            // One Way Glass — mirror the mimic block's color.
             final ThreadLocal<Boolean> REENTRANT = ThreadLocal.withInitial(() -> false);
-
-            bc.register((state, level, pos, tintIndex) -> {
-                if (level == null || pos == null) return -1;
-
-                if (Boolean.TRUE.equals(REENTRANT.get())) return -1;
-
-                var be = level.getBlockEntity(pos);
-                if (be instanceof OneWayGlassBlockEntity ow) {
-                    BlockState mimic = ow.getMimic();
-
-                    if (mimic == null || mimic.isAir()) return -1;
-                    if (mimic.getBlock() == state.getBlock()) return -1;
-
-                    try {
-                        REENTRANT.set(true);
-                        return bc.getColor(mimic, level, pos, tintIndex);
-                    } finally {
-                        REENTRANT.set(false);
+            BlockTintSource oneWayTint = new BlockTintSource() {
+                @Override
+                public int color(BlockState state) {
+                    return -1;
+                }
+                @Override
+                public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                    if (Boolean.TRUE.equals(REENTRANT.get())) return -1;
+                    BlockEntity be = level.getBlockEntity(pos);
+                    if (be instanceof OneWayGlassBlockEntity ow) {
+                        BlockState mimic = ow.getMimic();
+                        if (mimic == null || mimic.isAir()) return -1;
+                        if (mimic.getBlock() == state.getBlock()) return -1;
+                        try {
+                            REENTRANT.set(true);
+                            List<BlockTintSource> srcs = bc.getTintSources(mimic);
+                            if (srcs.isEmpty()) return -1;
+                            return srcs.get(0).colorInWorld(mimic, level, pos);
+                        } finally {
+                            REENTRANT.set(false);
+                        }
                     }
+                    return -1;
                 }
-                return -1;
-            }, GlassentialBlocks.ONE_WAY_GLASS.get(), GlassentialBlocks.TINTED_ONE_WAY_GLASS.get());
+            };
+            bc.register(List.of(oneWayTint),
+                    GlassentialBlocks.ONE_WAY_GLASS.get(),
+                    GlassentialBlocks.TINTED_ONE_WAY_GLASS.get());
 
-            // Colorable glass
-            bc.register((state, level, pos, tintIndex) -> {
-                if (level == null || pos == null) return 0xFFFFFF;
-
-                var be = level.getBlockEntity(pos);
-                if (be instanceof ColorableGlassBlockEntity colorable) {
-                    return colorable.getColor();
+            // Colorable glass / stained / panes — all read from ColorableGlassBlockEntity.
+            BlockTintSource colorableTint = new BlockTintSource() {
+                @Override
+                public int color(BlockState state) {
+                    return 0xFFFFFF;
                 }
-                return 0xFFFFFF;
-            }, GlassentialBlocks.COLORABLE_GLASS.get());
-
-            // Colorable stained glass
-            bc.register((state, level, pos, tintIndex) -> {
-                if (level == null || pos == null) return 0xFFFFFF;
-
-                var be = level.getBlockEntity(pos);
-                if (be instanceof ColorableGlassBlockEntity colorable) {
-                    return colorable.getColor();
+                @Override
+                public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                    BlockEntity be = level.getBlockEntity(pos);
+                    if (be instanceof ColorableGlassBlockEntity colorable) {
+                        return colorable.getColor();
+                    }
+                    return 0xFFFFFF;
                 }
-                return 0xFFFFFF;
-            }, GlassentialBlocks.COLORABLE_STAINED_GLASS.get());
-
-            // Colorable glass panes (same handler — same BE type)
-            bc.register((state, level, pos, tintIndex) -> {
-                if (level == null || pos == null) return 0xFFFFFF;
-                var be = level.getBlockEntity(pos);
-                if (be instanceof ColorableGlassBlockEntity colorable) {
-                    return colorable.getColor();
-                }
-                return 0xFFFFFF;
-            }, GlassentialBlocks.COLORABLE_GLASS_PANE.get(), GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get());
+            };
+            bc.register(List.of(colorableTint),
+                    GlassentialBlocks.COLORABLE_GLASS.get(),
+                    GlassentialBlocks.COLORABLE_STAINED_GLASS.get(),
+                    GlassentialBlocks.COLORABLE_GLASS_PANE.get(),
+                    GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get());
         });
     }
 

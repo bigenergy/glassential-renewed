@@ -51,7 +51,7 @@ public class GlassentialBlocks {
     @SafeVarargs
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> factory,
             Supplier<BlockBehaviour.Properties> propsSupplier, boolean isSimpleBlock, Kind... kinds) {
-        DeferredBlock<T> block = BLOCKS.registerBlock(name, factory, propsSupplier.get());
+        DeferredBlock<T> block = BLOCKS.registerBlock(name, factory, propsSupplier);
         DeferredItem<BlockItem> item = ITEMS.registerSimpleBlockItem(name, block);
 
         if (isSimpleBlock) {
@@ -465,5 +465,5 @@ public class GlassentialBlocks {
     public static final DeferredItem<com.github.bigenergy.glassential.items.GlassPainterItem> GLASS_PAINTER =
             ITEMS.registerItem("glass_painter",
                     com.github.bigenergy.glassential.items.GlassPainterItem::new,
-                    new net.minecraft.world.item.Item.Properties().stacksTo(1));
+                    () -> new net.minecraft.world.item.Item.Properties().stacksTo(1));
 }
