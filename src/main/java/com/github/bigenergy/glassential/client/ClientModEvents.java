@@ -137,26 +137,28 @@ public class ClientModEvents {
             BlockTintSource oneWayTint = new BlockTintSource() {
                 @Override
                 public int color(BlockState state) {
-                    return -1;
+                    return 0xFFFFFFFF;
                 }
                 @Override
                 public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
-                    if (Boolean.TRUE.equals(REENTRANT.get())) return -1;
+                    if (Boolean.TRUE.equals(REENTRANT.get())) return 0xFFFFFFFF;
                     BlockEntity be = level.getBlockEntity(pos);
                     if (be instanceof OneWayGlassBlockEntity ow) {
                         BlockState mimic = ow.getMimic();
-                        if (mimic == null || mimic.isAir()) return -1;
-                        if (mimic.getBlock() == state.getBlock()) return -1;
+                        if (mimic == null || mimic.isAir()) return 0xFFFFFFFF;
+                        if (mimic.getBlock() == state.getBlock()) return 0xFFFFFFFF;
                         try {
                             REENTRANT.set(true);
                             List<BlockTintSource> srcs = bc.getTintSources(mimic);
-                            if (srcs.isEmpty()) return -1;
-                            return srcs.get(0).colorInWorld(mimic, level, pos);
+                            if (srcs.isEmpty()) return 0xFFFFFFFF;
+                            int c = srcs.get(0).colorInWorld(mimic, level, pos);
+                            // ensure full alpha for translucent rendering
+                            return 0xFF000000 | (c & 0xFFFFFF);
                         } finally {
                             REENTRANT.set(false);
                         }
                     }
-                    return -1;
+                    return 0xFFFFFFFF;
                 }
             };
             bc.register(List.of(oneWayTint),
@@ -167,15 +169,16 @@ public class ClientModEvents {
             BlockTintSource colorableTint = new BlockTintSource() {
                 @Override
                 public int color(BlockState state) {
-                    return 0xFFFFFF;
+                    // 26.x BlockTintSource expects ARGB; alpha 0 makes translucent rendering invisible.
+                    return 0xFFFFFFFF;
                 }
                 @Override
                 public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
                     BlockEntity be = level.getBlockEntity(pos);
                     if (be instanceof ColorableGlassBlockEntity colorable) {
-                        return colorable.getColor();
+                        return 0xFF000000 | (colorable.getColor() & 0xFFFFFF);
                     }
-                    return 0xFFFFFF;
+                    return 0xFFFFFFFF;
                 }
             };
             bc.register(List.of(colorableTint),
