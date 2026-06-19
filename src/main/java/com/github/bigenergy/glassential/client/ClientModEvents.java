@@ -5,6 +5,8 @@ import com.github.bigenergy.glassential.blocks.entity.ColorableGlassBlockEntity;
 import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import com.github.bigenergy.glassential.client.gui.GlassPainterScreen;
 import com.github.bigenergy.glassential.client.model.OneWayBlockStateModel;
+import com.github.bigenergy.glassential.client.renderer.OneWayGlassBlockEntityRenderer;
+import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import com.github.bigenergy.glassential.items.GlassPainterItem;
 import com.github.bigenergy.glassential.network.GlassPainterPacket;
@@ -27,6 +29,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
@@ -208,5 +211,13 @@ public class ClientModEvents {
                 );
             });
         }
+    }
+
+    @SubscribeEvent
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(
+                GlassentialBlockEntities.ONE_WAY_GLASS.get(),
+                OneWayGlassBlockEntityRenderer::new
+        );
     }
 }
