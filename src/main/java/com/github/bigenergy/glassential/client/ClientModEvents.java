@@ -29,10 +29,13 @@ public class ClientModEvents {
         event.enqueueWork(() -> {
             // Register render types for translucent glass blocks
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS_PANE.get(), ChunkSectionLayer.TRANSLUCENT);
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get(), ChunkSectionLayer.TRANSLUCENT);
 
             // Register client-side screen opener for the Glass Painter item
             GlassPainterItem.OPEN_SCREEN = stack -> {
@@ -74,7 +77,7 @@ public class ClientModEvents {
                     }
                 }
                 return -1;
-            }, GlassentialBlocks.ONE_WAY_GLASS.get());
+            }, GlassentialBlocks.ONE_WAY_GLASS.get(), GlassentialBlocks.TINTED_ONE_WAY_GLASS.get());
 
             // Colorable glass
             bc.register((state, level, pos, tintIndex) -> {
@@ -97,22 +100,37 @@ public class ClientModEvents {
                 }
                 return 0xFFFFFF;
             }, GlassentialBlocks.COLORABLE_STAINED_GLASS.get());
+
+            // Colorable glass panes (same handler — same BE type)
+            bc.register((state, level, pos, tintIndex) -> {
+                if (level == null || pos == null) return 0xFFFFFF;
+                var be = level.getBlockEntity(pos);
+                if (be instanceof ColorableGlassBlockEntity colorable) {
+                    return colorable.getColor();
+                }
+                return 0xFFFFFF;
+            }, GlassentialBlocks.COLORABLE_GLASS_PANE.get(), GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get());
         });
     }
 
     @SubscribeEvent
     public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
         // Wrap one-way glass models with our custom model for each block state
-        GlassentialBlocks.ONE_WAY_GLASS.get().getStateDefinition().getPossibleStates().forEach(state -> {
-            event.getBakingResult().blockStateModels().computeIfPresent(
-                    state,
-                    (bs, model) -> {
-                        if (model instanceof OneWayBlockStateModel) {
-                            return model; // Already wrapped
+        for (var block : new net.minecraft.world.level.block.Block[]{
+                GlassentialBlocks.ONE_WAY_GLASS.get(),
+                GlassentialBlocks.TINTED_ONE_WAY_GLASS.get()
+        }) {
+            block.getStateDefinition().getPossibleStates().forEach(state -> {
+                event.getBakingResult().blockStateModels().computeIfPresent(
+                        state,
+                        (bs, model) -> {
+                            if (model instanceof OneWayBlockStateModel) {
+                                return model;
+                            }
+                            return new OneWayBlockStateModel(model);
                         }
-                        return new OneWayBlockStateModel(model);
-                    }
-            );
-        });
+                );
+            });
+        }
     }
 }

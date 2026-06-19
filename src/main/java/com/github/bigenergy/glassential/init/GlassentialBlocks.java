@@ -211,6 +211,12 @@ public class GlassentialBlocks {
                     .isSuffocating((s,w,p)->false)
                     .isRedstoneConductor((s,w,p)->false)),
             GlassentialBlocks::glassProp, false);
+    public static final DeferredBlock<Block> TINTED_ONE_WAY_GLASS = registerTintedGlass("tinted_one_way_glass",
+            props -> new TintedOneWayGlassBlock(props.strength(0.3F).noOcclusion()
+                    .isViewBlocking((s,w,p)->false)
+                    .isSuffocating((s,w,p)->false)
+                    .isRedstoneConductor((s,w,p)->false)),
+            GlassentialBlocks::glassProp, false);
     public static final DeferredBlock<Block> CLEAR_FLUID_GLASS = registerGlass("clear_fluid_glass",
             ClearFluidGlassBlock::new,
             () -> BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.GLASS), false);
@@ -390,6 +396,12 @@ public class GlassentialBlocks {
             GlassentialBlocks::glassPaneProp, false);
     public static final DeferredBlock<Block> GLASS_LIGHT_TINTED_PANE = registerPane("glass_light_tinted_pane",
             props -> new TintedBasicPaneBlock(props.lightLevel(b -> 15), true),
+            GlassentialBlocks::glassPaneProp, false);
+    public static final DeferredBlock<Block> COLORABLE_GLASS_PANE = registerPane("colorable_glass_pane",
+            com.github.bigenergy.glassential.blocks.panes.ColorableGlassPaneBlock::new,
+            GlassentialBlocks::glassPaneProp, false);
+    public static final DeferredBlock<Block> COLORABLE_STAINED_GLASS_PANE = registerPane("colorable_stained_glass_pane",
+            com.github.bigenergy.glassential.blocks.panes.ColorableGlassPaneBlock::new,
             GlassentialBlocks::glassPaneProp, false);
 
     // Slab

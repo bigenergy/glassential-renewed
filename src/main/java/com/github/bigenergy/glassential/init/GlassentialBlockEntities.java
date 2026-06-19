@@ -17,7 +17,8 @@ public class GlassentialBlockEntities {
             BLOCK_ENTITIES.register("one_way_glass",
                     () -> new BlockEntityType<>(
                             OneWayGlassBlockEntity::new,
-                            GlassentialBlocks.ONE_WAY_GLASS.get()
+                            GlassentialBlocks.ONE_WAY_GLASS.get(),
+                            GlassentialBlocks.TINTED_ONE_WAY_GLASS.get()
                     )
             );
 
@@ -35,7 +36,9 @@ public class GlassentialBlockEntities {
                     () -> new BlockEntityType<>(
                             ColorableGlassBlockEntity::new,
                             GlassentialBlocks.COLORABLE_GLASS.get(),
-                            GlassentialBlocks.COLORABLE_STAINED_GLASS.get()
+                            GlassentialBlocks.COLORABLE_STAINED_GLASS.get(),
+                            GlassentialBlocks.COLORABLE_GLASS_PANE.get(),
+                            GlassentialBlocks.COLORABLE_STAINED_GLASS_PANE.get()
                     )
             );
 

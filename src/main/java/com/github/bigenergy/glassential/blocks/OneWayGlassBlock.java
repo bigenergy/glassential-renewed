@@ -53,6 +53,12 @@ public class OneWayGlassBlock extends TransparentBlock implements EntityBlock {
         Direction face = hit.getDirection();
 
         if (stack.getItem() instanceof BlockItem bi) {
+            // Disallow disguising One Way Glass as another One Way Glass: the renderer
+            // would recurse into itself and crash (StackOverflowError). #53
+            if (bi.getBlock() instanceof OneWayGlassBlock) {
+                return InteractionResult.FAIL;
+            }
+
             level.setBlock(pos, state.setValue(OPAQUE_FACE, face), Block.UPDATE_CLIENTS);
 
             ow.setMimic(bi.getBlock().defaultBlockState());

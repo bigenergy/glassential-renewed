@@ -54,6 +54,16 @@ public class OneWayBlockStateModel extends DelegateBlockStateModel {
                 return;
             }
 
+            // Never render another One Way Glass as the mimic: its model is also a
+            // OneWayBlockStateModel, so doing so re-enters this method. The ThreadLocal
+            // COLLECTING flag catches it, but bail out explicitly to avoid the wasted
+            // recursive call and to be robust against any reentrancy edge cases.
+            // (instanceof covers TintedOneWayGlassBlock too, since it extends OneWayGlassBlock.)
+            if (mimicState.getBlock() instanceof OneWayGlassBlock) {
+                this.delegate.collectParts(level, pos, state, random, parts);
+                return;
+            }
+
             // Get the mimic block's model
             BlockStateModel mimicModel = Minecraft.getInstance()
                     .getModelManager()

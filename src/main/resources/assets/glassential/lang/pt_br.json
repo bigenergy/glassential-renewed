@@ -13,6 +13,11 @@
     "block.glassential.obsidian_glass": "Vidro de Obsidiana",
     "block.glassential.ice_glass": "Vidro de Gelo",
     "block.glassential.iron_glass": "Vidro de Ferro",
+    "block.glassential.tinted_one_way_glass": "Vidro Unidirecional Fumê",
+    "block.glassential.colorable_glass_pane": "Painel de Vidro Colorível",
+    "block.glassential.colorable_stained_glass_pane": "Painel de Vidro Tingido Colorível",
+    "message.glassential.brush.copy_success": "Cor %s copiada para o pincel",
+    "message.glassential.brush.copy_failed": "Não foi possível copiar a cor deste bloco",
 
     "block.glassential.glass_lava_lamp": "Luminária de Lava",
     "block.glassential.glass_lava_lamp_tinted": "Luminária de Lava Fumê",
