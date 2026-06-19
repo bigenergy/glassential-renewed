@@ -1,4 +1,4 @@
-# Glassential Renewed 1.21.11 (BETA) [NEOFORGE]
+# Glassential Renewed 5 (26.1.2) [NEOFORGE]
 
 [![CurseForge Downloads](https://cf.way2muchnoise.eu/full_945149_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/glassential-renewed)
 [![Minecraft Versions](https://cf.way2muchnoise.eu/versions/945149.svg)](https://www.curseforge.com/minecraft/mc-mods/glassential-renewed)
