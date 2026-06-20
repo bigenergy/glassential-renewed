@@ -90,7 +90,8 @@ public class OneWayGlassBlockEntityRenderer
 
         pose.pushPose();
         applyFaceSlabTransform(pose, state.opaqueFace);
-        collector.submitMovingBlock(pose, state.mimicMovingBlock);
+        // 26.2 added a third int parameter (outline color, 0 = no outline).
+        collector.submitMovingBlock(pose, state.mimicMovingBlock, 0);
         pose.popPose();
     }
 

@@ -5,6 +5,7 @@ import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
@@ -33,43 +34,43 @@ public class GlassentialBlockTag extends BlockTagsProvider {
                                 GlassentialBlocks.GLASSES_TINTED.stream(),
                                 GlassentialBlocks.PANES.stream(),
                                 GlassentialBlocks.SLABS.stream()
-                        ).flatMap(s -> s.map(DeferredHolder::get))
-                        .toArray(Block[]::new)
+                        ).flatMap(s -> s.map(DeferredHolder::getKey))
+                        .toArray(ResourceKey[]::new)
         );
 
         tag(Tags.Blocks.GLASS_BLOCKS).add(
                 Stream.concat(
                         GlassentialBlocks.GLASSES.stream(),
                         GlassentialBlocks.GLASSES_TINTED.stream()
-                ).map(DeferredHolder::get).toArray(Block[]::new)
+                ).map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         tag(Tags.Blocks.GLASS_BLOCKS_TINTED).add(
-                GlassentialBlocks.GLASSES_TINTED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.GLASSES_TINTED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
         tag(Tags.Blocks.GLASS_PANES).add(
-                GlassentialBlocks.PANES.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.PANES.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         // ======== DOORS ========
         tag(BlockTags.DOORS).add(
-                GlassentialBlocks.DOORS.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.DOORS.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         // ======== DOORS DYED ========
         tag(GlassentialTags.Blocks.DOORS_DYED).add(
-                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
         tag(BlockTags.DOORS).add(
-                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
         tag(Tags.Blocks.DYED).add(
-                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.DOORS_DYED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         GlassentialBlocks.DOOR_COLOR.forEach((def, color) -> {
-            tag(GlassentialTags.Blocks.DOORS_DYED_BY_COLOR.get(color)).add(def.get());
-            tag(cDyedBlock(color)).add(def.get());
+            tag(GlassentialTags.Blocks.DOORS_DYED_BY_COLOR.get(color)).add(def.getKey());
+            tag(cDyedBlock(color)).add(def.getKey());
         });
 
         // ======== TRAPDOORS ========
@@ -77,19 +78,19 @@ public class GlassentialBlockTag extends BlockTagsProvider {
                 Stream.concat(
                         GlassentialBlocks.TRAPDOORS.stream(),
                         GlassentialBlocks.TRAPDOORS_DYED.stream()
-                ).map(DeferredHolder::get).toArray(Block[]::new)
+                ).map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         tag(GlassentialTags.Blocks.TRAPDOORS_DYED).add(
-                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
         tag(Tags.Blocks.DYED).add(
-                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::get).toArray(Block[]::new)
+                GlassentialBlocks.TRAPDOORS_DYED.stream().map(DeferredHolder::getKey).toArray(ResourceKey[]::new)
         );
 
         GlassentialBlocks.TRAPDOOR_COLOR.forEach((def, color) -> {
-            tag(GlassentialTags.Blocks.TRAPDOORS_DYED_BY_COLOR.get(color)).add(def.get());
-            tag(cDyedBlock(color)).add(def.get());
+            tag(GlassentialTags.Blocks.TRAPDOORS_DYED_BY_COLOR.get(color)).add(def.getKey());
+            tag(cDyedBlock(color)).add(def.getKey());
         });
     }
 

@@ -123,7 +123,7 @@ public class ClientModEvents {
                 boolean emitRedstone = tag.getBooleanOr("EmitRedstone", false);
                 boolean passPlayer = tag.getBooleanOr("PassPlayer", false);
                 boolean passEntity = tag.getBooleanOr("PassEntity", false);
-                Minecraft.getInstance().setScreen(
+                Minecraft.getInstance().setScreenAndShow(
                     new GlassPainterScreen(stack, currentColor, emitLight, emitRedstone, passPlayer, passEntity)
                 );
             };
