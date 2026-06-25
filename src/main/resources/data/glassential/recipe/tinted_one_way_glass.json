@@ -6,9 +6,9 @@
     "GDG"
   ],
   "key": {
-    "G": { "item": "minecraft:tinted_glass" },
-    "O": { "item": "minecraft:observer" },
-    "D": { "item": "minecraft:black_dye" }
+    "G": "minecraft:tinted_glass",
+    "O": "minecraft:observer",
+    "D": "minecraft:black_dye"
   },
   "result": {
     "id": "glassential:tinted_one_way_glass",

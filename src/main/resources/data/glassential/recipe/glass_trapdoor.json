@@ -5,12 +5,8 @@
     "#A"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:glass"
-    },
-    "A": {
-      "item": "glassential:glass_slab"
-    }
+    "#": "minecraft:glass",
+    "A": "glassential:glass_slab"
   },
   "result": {
     "id": "glassential:glass_trapdoor",

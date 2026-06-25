@@ -5,7 +5,7 @@
     "GGG"
   ],
   "key": {
-    "G": { "item": "glassential:colorable_glass" }
+    "G": "glassential:colorable_glass"
   },
   "result": {
     "id": "glassential:colorable_glass_pane",

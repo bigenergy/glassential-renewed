@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "minecraft:spruce_door"
-    },
-    {
-      "item": "minecraft:glass_pane"
-    }
+    "minecraft:spruce_door",
+    "minecraft:glass_pane"
   ],
   "result": {
     "id": "glassential:spruce_glass_door"

@@ -6,15 +6,9 @@
     "AAA"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:glowstone"
-    },
-    "A": {
-      "item": "minecraft:glass"
-    },
-    "B": {
-      "item": "glassential:glass_light"
-    }
+    "#": "minecraft:glowstone",
+    "A": "minecraft:glass",
+    "B": "glassential:glass_light"
   },
   "result": {
     "id": "glassential:glass_glowstone_lamp",

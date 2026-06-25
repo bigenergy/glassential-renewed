@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:tinted_glass"
-    },
-    "A": {
-      "item": "glassential:glass_redstone"
-    }
+    "#": "minecraft:tinted_glass",
+    "A": "glassential:glass_redstone"
   },
   "result": {
     "id": "glassential:glass_redstone_tinted",

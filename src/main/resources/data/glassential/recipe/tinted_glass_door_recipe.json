@@ -7,24 +7,12 @@
     "45"
   ],
   "key": {
-    "0": {
-      "item": "minecraft:tinted_glass"
-    },
-    "1": {
-      "item": "minecraft:tinted_glass"
-    },
-    "2": {
-      "item": "minecraft:tinted_glass"
-    },
-    "3": {
-      "item": "minecraft:tinted_glass"
-    },
-    "4": {
-      "item": "minecraft:tinted_glass"
-    },
-    "5": {
-      "item": "minecraft:tinted_glass"
-    }
+    "0": "minecraft:tinted_glass",
+    "1": "minecraft:tinted_glass",
+    "2": "minecraft:tinted_glass",
+    "3": "minecraft:tinted_glass",
+    "4": "minecraft:tinted_glass",
+    "5": "minecraft:tinted_glass"
   },
   "result": {
     "id": "glassential:tinted_glass_door",

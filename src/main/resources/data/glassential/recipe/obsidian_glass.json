@@ -7,12 +7,8 @@
     "#A#"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:glass"
-    },
-    "A": {
-      "item": "minecraft:obsidian"
-    }
+    "#": "minecraft:glass",
+    "A": "minecraft:obsidian"
   },
   "result": {
     "id": "glassential:obsidian_glass",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "glassential:birch_glass_trapdoor"
-    }
+    "glassential:birch_glass_trapdoor"
   ],
   "result": {
     "id": "minecraft:birch_trapdoor"

@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:cobweb"
-    },
-    "A": {
-      "item": "glassential:iron_glass"
-    }
+    "#": "minecraft:cobweb",
+    "A": "glassential:iron_glass"
   },
   "result": {
     "id": "glassential:gravity_glass",

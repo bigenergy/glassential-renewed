@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "minecraft:acacia_door"
-    },
-    {
-      "item": "minecraft:glass_pane"
-    }
+    "minecraft:acacia_door",
+    "minecraft:glass_pane"
   ],
   "result": {
     "id": "glassential:acacia_glass_door"

@@ -1,12 +1,15 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "group": "glassential_glass_ghostly",
-    "ingredients": [
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-		{ "item": "minecraft:glass" },
-        { "item": "minecraft:ender_pearl" }
-    ],
-	"result": { "id": "glassential:glass_ghostly", "count": 4 }
+  "type": "minecraft:crafting_shapeless",
+  "group": "glassential_glass_ghostly",
+  "ingredients": [
+    "minecraft:glass",
+    "minecraft:glass",
+    "minecraft:glass",
+    "minecraft:glass",
+    "minecraft:ender_pearl"
+  ],
+  "result": {
+    "id": "glassential:glass_ghostly",
+    "count": 4
+  }
 }

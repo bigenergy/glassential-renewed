@@ -7,24 +7,12 @@
     "45"
   ],
   "key": {
-    "0": {
-      "item": "minecraft:purple_stained_glass"
-    },
-    "1": {
-      "item": "minecraft:purple_stained_glass"
-    },
-    "2": {
-      "item": "minecraft:purple_stained_glass"
-    },
-    "3": {
-      "item": "minecraft:purple_stained_glass"
-    },
-    "4": {
-      "item": "minecraft:purple_stained_glass"
-    },
-    "5": {
-      "item": "minecraft:purple_stained_glass"
-    }
+    "0": "minecraft:purple_stained_glass",
+    "1": "minecraft:purple_stained_glass",
+    "2": "minecraft:purple_stained_glass",
+    "3": "minecraft:purple_stained_glass",
+    "4": "minecraft:purple_stained_glass",
+    "5": "minecraft:purple_stained_glass"
   },
   "result": {
     "id": "glassential:purple_glass_door",
