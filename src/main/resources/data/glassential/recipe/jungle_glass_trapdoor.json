@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
   "ingredients": [
-    {
-      "item": "minecraft:jungle_trapdoor"
-    },
-    {
-      "item": "minecraft:glass_pane"
-    }
+    "minecraft:jungle_trapdoor",
+    "minecraft:glass_pane"
   ],
   "result": {
     "id": "glassential:jungle_glass_trapdoor"

@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:lava_bucket"
-    },
-    "A": {
-      "item": "minecraft:tinted_glass"
-    }
+    "#": "minecraft:lava_bucket",
+    "A": "minecraft:tinted_glass"
   },
   "result": {
     "id": "glassential:glass_lava_lamp_tinted",

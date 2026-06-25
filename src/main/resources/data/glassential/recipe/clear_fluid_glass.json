@@ -7,8 +7,8 @@
     "GGG"
   ],
   "key": {
-    "G": { "item": "minecraft:glass" },
-    "P": { "item": "minecraft:prismarine_crystals" }
+    "G": "minecraft:glass",
+    "P": "minecraft:prismarine_crystals"
   },
   "result": {
     "id": "glassential:clear_fluid_glass",

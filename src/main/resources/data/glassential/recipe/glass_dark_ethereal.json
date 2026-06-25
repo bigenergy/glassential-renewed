@@ -1,16 +1,19 @@
 {
-    "type": "minecraft:crafting_shapeless",
-    "group": "glassential_glass_dark_ethereal",
-    "ingredients": [
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-		{ "item": "minecraft:tinted_glass" },
-        { "item": "minecraft:ender_eye" }
-    ],
-	"result": { "id": "glassential:glass_dark_ethereal", "count": 8 }
+  "type": "minecraft:crafting_shapeless",
+  "group": "glassential_glass_dark_ethereal",
+  "ingredients": [
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:tinted_glass",
+    "minecraft:ender_eye"
+  ],
+  "result": {
+    "id": "glassential:glass_dark_ethereal",
+    "count": 8
+  }
 }

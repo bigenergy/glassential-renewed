@@ -6,21 +6,11 @@
     "###"
   ],
   "key": {
-    "R": {
-      "item": "minecraft:red_dye"
-    },
-    "G": {
-      "item": "minecraft:green_dye"
-    },
-    "B": {
-      "item": "minecraft:blue_dye"
-    },
-    "Q": {
-      "item": "minecraft:quartz"
-    },
-    "#": {
-      "item": "minecraft:glass"
-    }
+    "R": "minecraft:red_dye",
+    "G": "minecraft:green_dye",
+    "B": "minecraft:blue_dye",
+    "Q": "minecraft:quartz",
+    "#": "minecraft:glass"
   },
   "result": {
     "id": "glassential:colorable_glass",

@@ -6,12 +6,8 @@
     "AAA"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:ice"
-    },
-    "A": {
-      "item": "minecraft:glass"
-    }
+    "#": "minecraft:ice",
+    "A": "minecraft:glass"
   },
   "result": {
     "id": "glassential:ice_glass",

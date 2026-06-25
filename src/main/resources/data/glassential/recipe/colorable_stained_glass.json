@@ -6,21 +6,11 @@
     "###"
   ],
   "key": {
-    "R": {
-      "item": "minecraft:red_dye"
-    },
-    "G": {
-      "item": "minecraft:green_dye"
-    },
-    "B": {
-      "item": "minecraft:blue_dye"
-    },
-    "Q": {
-      "item": "minecraft:amethyst_shard"
-    },
-    "#": {
-      "item": "minecraft:white_stained_glass"
-    }
+    "R": "minecraft:red_dye",
+    "G": "minecraft:green_dye",
+    "B": "minecraft:blue_dye",
+    "Q": "minecraft:amethyst_shard",
+    "#": "minecraft:white_stained_glass"
   },
   "result": {
     "id": "glassential:colorable_stained_glass",
