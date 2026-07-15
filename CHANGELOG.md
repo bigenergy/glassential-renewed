@@ -1,3 +1,11 @@
+Glassential Renewed 3.4.5
+================
+### Fixed
+- Rain, snow and clouds now show through plain glass and One Way Glass.
+  (Coloured / stained / functional glasses still block weather like in
+  vanilla — they need partial alpha for their tint, which fundamentally
+  conflicts with the pass that renders weather.)
+
 Glassential Renewed 3.4.4
 ================
 ### Fixed
