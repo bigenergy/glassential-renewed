@@ -1,0 +1,9 @@
+{
+  "type": "block",
+  "pool": "glass_pane",
+  "variants": {
+    "": {
+      "model": "glassential:block/tinted_glass_pane"
+    }
+  }
+}
