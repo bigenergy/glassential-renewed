@@ -80,7 +80,7 @@
     },
     "top": "#bottom"
   },
-  "render_type": "cutout",
+  "render_type": "translucent",
   "parent": "block/slab",
   "textures": {
     "bottom": "glassential:block/glass",

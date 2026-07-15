@@ -1,7 +1,7 @@
 {
-    "fusion": {
-        "type": "connecting",
-        "layout": "simple",
-        "render_type": "translucent"
-    }
+  "fusion": {
+    "type": "connecting",
+    "layout": "simple",
+    "render_type": "translucent"
+  }
 }

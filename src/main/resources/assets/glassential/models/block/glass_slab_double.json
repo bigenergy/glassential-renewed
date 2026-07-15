@@ -6,6 +6,6 @@
       "type": "is_same_block"
     }
   ],
-  "render_type": "cutout",
+  "render_type": "translucent",
   "parent": "block/glass"
 }

@@ -24,9 +24,15 @@ public class ClientModEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
 
         event.enqueueWork(() -> {
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), RenderType.translucent());
+            // One Way and Tinted One Way use cutout so weather (snow/rain/clouds) renders
+            // correctly through them. Their JSON models set render_type=cutout too.
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.cutout());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), RenderType.cutout());
+            // Clear Fluid and Colorable need real alpha blending (semi-transparent /
+            // dynamic RGB tint), so they stay on translucent — weather won't render
+            // through them but that's an acceptable trade for the visual.
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_GLASS.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.CLEAR_FLUID_FAKE_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_STAINED_GLASS.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.COLORABLE_GLASS_PANE.get(), RenderType.translucent());
