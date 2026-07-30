@@ -20,10 +20,10 @@ apply plugin: 'org.spongepowered.mixin'
 
 group = mod_group_id
 version = "${minecraft_version}-${mod_version}"
-archivesBaseName = "glassential-renewed-forge-${minecraft_version}"
+archivesBaseName = "Glassential-renewed-${minecraft_version}"
 
 base {
-    archivesName = "glassential-renewed-forge"
+    archivesName = "Glassential-renewed"
 }
 
 
