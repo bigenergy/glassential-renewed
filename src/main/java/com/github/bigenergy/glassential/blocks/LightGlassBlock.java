@@ -1,0 +1,30 @@
+package com.github.bigenergy.glassential.blocks;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.AbstractGlassBlock;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+public class LightGlassBlock extends AbstractGlassBlock {
+
+	public LightGlassBlock(Properties settings) {
+		super(settings.lightLevel((b) -> 15));
+	}
+
+    @Override
+    public void appendHoverText(
+            @NotNull ItemStack stack,
+            @Nullable BlockGetter level,
+            @NotNull List<Component> tooltipComponents,
+            @NotNull TooltipFlag tooltipFlag
+    ) {
+        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
+        tooltipComponents.add(Component.translatable("tooltip.glassential.light").withStyle(ChatFormatting.GRAY));
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "glassential:dark_oak_glass_door"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dark_oak_door"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "glassential:block/colorable_stained_glass"
+    },
+    "lit=true": {
+      "model": "glassential:block/colorable_stained_glass"
+    }
+  }
+}

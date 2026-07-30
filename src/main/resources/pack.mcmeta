@@ -1,6 +1,8 @@
 {
-    "pack": {
-        "description": "Glassential resources",
-        "pack_format": 4
-    }
+  "pack": {
+    "description": "Glassential Renewed resources",
+    "pack_format": 15,
+    "forge:resource_pack_format": 15,
+    "forge:data_pack_format": 18
+  }
 }

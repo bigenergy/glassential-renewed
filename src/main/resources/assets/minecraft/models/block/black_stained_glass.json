@@ -1,9 +1,13 @@
 {
-  "loader":"fusion:model",
-  "type":"connecting",
-  "connections":[{"type":"is_same_block"}],
-  "parent":"minecraft:block/cube_all",
-  "textures":{
-    "all":"glassential:block/vanilla_glass/black_stained_glass"
+  "loader": "fusion:model",
+  "type": "connecting",
+  "connections": [
+    {
+      "type": "is_same_block"
+    }
+  ],
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "glassential:block/vanilla_glass/black_stained_glass"
   }
 }

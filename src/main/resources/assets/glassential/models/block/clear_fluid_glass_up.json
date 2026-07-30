@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "render_type": "cutout_mipped",
+  "textures": {
+    "particle": "glassential:block/clear_fluid_glass_all",
+    "down": "glassential:block/clear_fluid_glass_blank",
+    "up": "glassential:block/clear_fluid_glass_blank",
+    "north": "glassential:block/clear_fluid_glass_up",
+    "east": "glassential:block/clear_fluid_glass_up",
+    "south": "glassential:block/clear_fluid_glass_up",
+    "west": "glassential:block/clear_fluid_glass_up"
+  }
+}

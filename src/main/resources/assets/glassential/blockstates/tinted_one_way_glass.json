@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "opaque_face=down":  { "model": "glassential:block/tinted_one_way_glass" },
+    "opaque_face=up":    { "model": "glassential:block/tinted_one_way_glass" },
+    "opaque_face=north": { "model": "glassential:block/tinted_one_way_glass" },
+    "opaque_face=south": { "model": "glassential:block/tinted_one_way_glass" },
+    "opaque_face=west":  { "model": "glassential:block/tinted_one_way_glass" },
+    "opaque_face=east":  { "model": "glassential:block/tinted_one_way_glass" }
+  }
+}

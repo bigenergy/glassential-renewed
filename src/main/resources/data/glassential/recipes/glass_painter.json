@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RGB",
+    " D ",
+    " E "
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:red_dye"
+    },
+    "G": {
+      "item": "minecraft:green_dye"
+    },
+    "B": {
+      "item": "minecraft:blue_dye"
+    },
+    "D": {
+      "item": "minecraft:stick"
+    },
+    "E": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "glassential:glass_painter",
+    "count": 1
+  }
+}

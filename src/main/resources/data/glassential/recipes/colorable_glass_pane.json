@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "glassential:colorable_glass"
+    }
+  },
+  "result": {
+    "item": "glassential:colorable_glass_pane",
+    "count": 16
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "glassential:mangrove_glass_trapdoor"
+    }
+  ],
+  "result": {
+    "item": "minecraft:mangrove_trapdoor"
+  }
+}
