@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "glassential:item/ethereal_reverse_door"
+    }
+}

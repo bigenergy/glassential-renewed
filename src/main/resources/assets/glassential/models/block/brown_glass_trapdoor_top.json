@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_orientable_trapdoor_top",
+  "textures": {
+    "texture": "glassential:block/brownglasstrapdoor",
+    "particle": "glassential:block/brownglasstrapdoor"
+  },
+  "render_type": "translucent"
+}

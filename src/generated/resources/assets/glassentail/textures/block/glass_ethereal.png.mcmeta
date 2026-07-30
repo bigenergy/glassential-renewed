@@ -1,0 +1,9 @@
+{
+  "fusion": {
+    "type": "fusion:scrolling",
+    "frame_height": 8,
+    "frame_width": 8,
+    "loop_type": "reverse",
+    "to": "top_right"
+  }
+}
