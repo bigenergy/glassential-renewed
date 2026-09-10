@@ -12,6 +12,8 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,13 +52,7 @@ public class ColorableGlassBlockEntity extends BlockEntity {
         this.emitLight = emitLight;
         setChanged();
         if (level != null && !level.isClientSide) {
-            // Update BlockState LIT property
-            BlockState currentState = getBlockState();
-            if (currentState.hasProperty(com.github.bigenergy.glassential.blocks.ColorableGlassBlock.LIT)) {
-                level.setBlock(worldPosition, currentState.setValue(com.github.bigenergy.glassential.blocks.ColorableGlassBlock.LIT, emitLight), Block.UPDATE_ALL);
-            } else if (currentState.hasProperty(com.github.bigenergy.glassential.blocks.ColorableStainedGlassBlock.LIT)) {
-                level.setBlock(worldPosition, currentState.setValue(com.github.bigenergy.glassential.blocks.ColorableStainedGlassBlock.LIT, emitLight), Block.UPDATE_ALL);
-            }
+            applyLitProperty(emitLight);
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
     }
@@ -95,6 +91,60 @@ public class ColorableGlassBlockEntity extends BlockEntity {
         if (level != null && !level.isClientSide) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
         }
+    }
+
+    /**
+     * Applies a whole brush configuration at once.
+     *
+     * <p>Each individual setter broadcasts on its own, so calling all five in a row
+     * sends five block updates for one click. This sends one. It is also the only
+     * entry point that is safe to call from an item: painting has to stay
+     * server-authoritative, or the colour exists solely on the painter's client and
+     * no other player is ever told about it.
+     */
+    public void applySettings(int color, boolean emitLight, boolean emitRedstone,
+                              boolean passPlayer, boolean passEntity) {
+        this.color = color;
+        this.emitLight = emitLight;
+        this.emitRedstone = emitRedstone;
+        this.passPlayer = passPlayer;
+        this.passEntity = passEntity;
+        setChanged();
+
+        if (level == null || level.isClientSide) {
+            return;
+        }
+
+        applyLitProperty(emitLight);
+        level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_CLIENTS);
+
+        if (emitLight) {
+            level.getChunkSource().getLightEngine().checkBlock(worldPosition);
+        }
+    }
+
+    /** Keeps the block's "lit" blockstate in step with {@link #emitLight}. */
+    private void applyLitProperty(boolean emitLight) {
+        BlockState current = getBlockState();
+        BooleanProperty lit = litProperty(current);
+        if (lit != null && current.getValue(lit) != emitLight) {
+            level.setBlock(worldPosition, current.setValue(lit, emitLight), Block.UPDATE_ALL);
+        }
+    }
+
+    /**
+     * Every block sharing this block entity declares its own "lit" property instance,
+     * and properties compare by identity — so a static reference matches exactly one
+     * of them and silently misses the rest. Look the property up off the state.
+     */
+    @Nullable
+    private static BooleanProperty litProperty(BlockState state) {
+        for (Property<?> property : state.getProperties()) {
+            if (property instanceof BooleanProperty bool && "lit".equals(bool.getName())) {
+                return bool;
+            }
+        }
+        return null;
     }
 
     @Override

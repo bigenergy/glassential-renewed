@@ -50,29 +50,32 @@ public class GlassPainterItem extends Item {
 
         // Regular right-click on a Colorable Glass: apply the brush's stored settings.
         BlockEntity be = level.getBlockEntity(pos);
-        if (be instanceof ColorableGlassBlockEntity colorable) {
-            ItemStack stack = context.getItemInHand();
-            CustomData customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-            CompoundTag tag = customData.copyTag();
-
-            if (tag.contains("Color")) {
-                int color = tag.getInt("Color");
-                boolean emitLight = tag.getBoolean("EmitLight");
-                boolean emitRedstone = tag.getBoolean("EmitRedstone");
-                boolean passPlayer = tag.getBoolean("PassPlayer");
-                boolean passEntity = tag.getBoolean("PassEntity");
-
-                colorable.setColor(color);
-                colorable.setEmitLight(emitLight);
-                colorable.setEmitRedstone(emitRedstone);
-                colorable.setPassPlayer(passPlayer);
-                colorable.setPassEntity(passEntity);
-
-                return InteractionResult.sidedSuccess(level.isClientSide);
-            }
+        if (!(be instanceof ColorableGlassBlockEntity colorable)) {
+            return InteractionResult.PASS;
         }
 
-        return InteractionResult.PASS;
+        CustomData customData = context.getItemInHand()
+                .getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+        CompoundTag tag = customData.copyTag();
+        if (!tag.contains("Color")) {
+            return InteractionResult.PASS;
+        }
+
+        // Both sides agree on whether this click paints, but only the server writes.
+        // A client that edits its own copy of the block entity shows the colour to the
+        // player holding the brush and to nobody else, because nothing ever reaches
+        // the server to be broadcast.
+        if (!level.isClientSide) {
+            colorable.applySettings(
+                    tag.getInt("Color"),
+                    tag.getBoolean("EmitLight"),
+                    tag.getBoolean("EmitRedstone"),
+                    tag.getBoolean("PassPlayer"),
+                    tag.getBoolean("PassEntity")
+            );
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
     /**
