@@ -1,3 +1,22 @@
+Glassential Renewed 3.4.6
+================
+### Added
+- Smart Glass — clear on its own, frosts over while it gets a redstone
+  signal. Light still passes through when frosted, so the window goes
+  opaque without darkening the room. A signal anywhere on a connected
+  panel frosts the whole panel, so the lever can sit out of sight
+  instead of stuck on the glass. Crafted from glass, redstone and an
+  amethyst shard.
+
+### Fixed
+- Gravity Glass now works on mobs, items and other entities, not only
+  players. They fall through and get the softened landing too —
+  before, everything except players just stood on top of it.
+- Painting Colorable Glass on a server is now visible to other
+  players. The colour was applied only on the painter's own client.
+- Colorable Glass Panes now apply light emission properly — the lit
+  state was only ever set on the full blocks, never on panes.
+
 Glassential Renewed 3.4.5
 ================
 ### Fixed
