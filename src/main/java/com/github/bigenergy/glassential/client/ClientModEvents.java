@@ -15,6 +15,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.ChunkRenderTypeSet;
 import net.neoforged.neoforge.client.event.ModelEvent;
 
 @EventBusSubscriber(modid = Glassential.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -28,6 +29,12 @@ public class ClientModEvents {
             // correctly through them. Their JSON models set render_type=cutout too.
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.ONE_WAY_GLASS.get(), RenderType.cutout());
             ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.TINTED_ONE_WAY_GLASS.get(), RenderType.cutout());
+            // Smart Glass renders on a different layer per state: the clear model is
+            // cutout so weather still shows through it, the frosted model is translucent
+            // so light bleeds through the frost. Fusion reads render_type off each model,
+            // so this block-level entry is only the fallback and has to list both.
+            ItemBlockRenderTypes.setRenderLayer(GlassentialBlocks.SMART_GLASS.get(),
+                    ChunkRenderTypeSet.of(RenderType.cutout(), RenderType.translucent()));
             // Clear Fluid and Colorable need real alpha blending (semi-transparent /
             // dynamic RGB tint), so they stay on translucent — weather won't render
             // through them but that's an acceptable trade for the visual.

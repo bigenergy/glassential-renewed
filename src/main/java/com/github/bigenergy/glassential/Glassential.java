@@ -94,26 +94,8 @@ public class Glassential {
         return ResourceLocation.fromNamespaceAndPath("glassential", name.toLowerCase(Locale.ROOT));
     }
 
-//    private void commonSetup(final FMLCommonSetupEvent event) {
-//        // Some common setup code
-//        LOGGER.info("Starting Glassential Renewed");
-//
-////        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-////
-////        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-////
-////        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
-//    }
-
-//    // Add the example block item to the building blocks tab
-//    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-//        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
-//    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
         LOGGER.info("Starting Glassential Renewed");
     }
 

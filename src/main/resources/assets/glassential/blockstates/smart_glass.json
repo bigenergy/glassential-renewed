@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "glassential:block/smart_glass" },
+        "powered=true": { "model": "glassential:block/smart_glass_frosted" }
+    }
+}

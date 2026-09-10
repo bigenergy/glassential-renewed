@@ -167,6 +167,8 @@ public class GlassentialBlocks {
             () -> new RedstoneGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> GLASS_REDSTONE_TINTED = registerTintedGlass("glass_redstone_tinted",
             () -> new TintedRedstoneGlassBlock(glassProp()), false);
+    public static final DeferredBlock<Block> SMART_GLASS = registerGlass("smart_glass",
+            () -> new SmartGlassBlock(glassProp()), false);
     public static final DeferredBlock<Block> OBSIDIAN_GLASS = registerGlass("obsidian_glass",
             () -> new TooltipGlassBlock(glassProtectedProp(), "tooltip.glassential.protected"), false);
     public static final DeferredBlock<Block> STONE_GLASS = registerGlass("stone_glass",
