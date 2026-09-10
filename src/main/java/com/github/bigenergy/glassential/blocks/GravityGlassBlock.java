@@ -7,7 +7,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -39,8 +38,9 @@ public class GravityGlassBlock extends TransparentBlock {
 
     @Override
     public @NotNull VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return !(context instanceof EntityCollisionContext && ((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
-
+        return context instanceof EntityCollisionContext entityContext && entityContext.getEntity() != null
+                ? Shapes.empty()
+                : state.getShape(world, pos);
     }
 
     @Override
