@@ -18,6 +18,7 @@
     "glassential:iron_glass",
     "glassential:gravity_glass",
     "glassential:one_way_glass",
+    "glassential:tinted_one_way_glass",
     "glassential:clear_fluid_glass",
     "glassential:clear_fluid_fake_glass",
     "glassential:glass_lava_lamp",
@@ -26,6 +27,7 @@
     "glassential:glass_glowstone_lamp_tinted",
     "glassential:glass_light_tinted",
     "glassential:glass_redstone_tinted",
+    "glassential:tinted_one_way_glass",
     "glassential:glass_lava_lamp_tinted",
     "glassential:glass_glowstone_lamp_tinted"
   ]

@@ -5,7 +5,6 @@ import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.MovingBlockRenderState;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
@@ -20,16 +19,17 @@ import org.jetbrains.annotations.NotNull;
  *
  * <p>The implementation uses {@code SubmitNodeCollector#submitMovingBlock}, which is
  * the pipeline that goes through the full block-rendering path (atlas binding, tint,
- * AO — everything that {@code submitBlockModel} skips when called from a BER context).
- * To avoid rendering the mimic on all six faces of the cube, the pose is translated
- * and scaled before submitting so the mimic is squashed into a paper-thin slab
- * sitting flush against the opaque face. From any viewpoint where the opaque face is
- * visible, the player sees a full-size mimic texture; the other faces of the mimic
- * collapse into invisible slivers around the perimeter.</p>
+ * AO — everything that {@code submitBlockModel} skips when called from a BER context).</p>
  *
- * <p>The 5-side glass-only effect comes for free: the base glass model still renders
- * all six glass faces normally. The mimic slab simply sits outside the opaque face,
- * so only that face is visually replaced.</p>
+ * <p>The submitted state is the One Way Glass itself, wrapped in a
+ * {@link OneWayMimicRenderState} that carries the mimic and the opaque face. The
+ * renderer therefore resolves {@code OneWayBlockStateModel}, which recognises that
+ * state and emits only the mimic's quads facing out of the opaque face. Submitting
+ * the whole mimic instead would also draw its inward-facing side, which shows through
+ * the glass — the face has to stay see-through from inside.</p>
+ *
+ * <p>The pose is still squashed into a thin slab just outside the opaque face, so the
+ * mimic face sits clear of the glass face instead of Z-fighting with it.</p>
  */
 public class OneWayGlassBlockEntityRenderer
         implements BlockEntityRenderer<OneWayGlassBlockEntity, OneWayGlassRenderState> {
@@ -69,16 +69,20 @@ public class OneWayGlassBlockEntityRenderer
 
         if (!(be.getLevel() instanceof ClientLevel level)) return;
 
-        MovingBlockRenderState mbs = new MovingBlockRenderState();
+        OneWayMimicRenderState mbs = new OneWayMimicRenderState();
         mbs.blockPos = be.getBlockPos();
         mbs.randomSeedPos = be.getBlockPos();
-        mbs.blockState = mimic;
+        // The glass, not the mimic: the renderer then resolves OneWayBlockStateModel,
+        // which draws only the mimic's opaque face for this state.
+        mbs.blockState = ownState;
+        mbs.mimic = mimic;
+        mbs.opaqueFace = ownState.getValue(OneWayGlassBlock.OPAQUE_FACE);
         mbs.biome = level.getBiome(be.getBlockPos());
         mbs.cardinalLighting = level.cardinalLighting();
         mbs.lightEngine = level.getLightEngine();
 
         state.mimicMovingBlock = mbs;
-        state.opaqueFace = ownState.getValue(OneWayGlassBlock.OPAQUE_FACE);
+        state.opaqueFace = mbs.opaqueFace;
     }
 
     @Override
@@ -96,9 +100,9 @@ public class OneWayGlassBlockEntityRenderer
 
     /**
      * Compress the mimic block to a paper-thin slab sitting just outside the
-     * given face of the unit cube. The slab's outward face aligns with the
-     * one-way glass's opaque face (offset slightly to avoid Z-fighting); the
-     * remaining five faces of the mimic collapse to invisible slivers.
+     * given face of the unit cube, so the mimic's face lands on the one-way
+     * glass's opaque face (offset slightly to avoid Z-fighting). Only that face
+     * is emitted — see {@code OneWayBlockStateModel}.
      *
      * <p>Block-local coordinates: cube occupies (0,0,0)–(1,1,1). The face
      * pointing in the {@link Direction#getNormal()} direction is the visible one.</p>
