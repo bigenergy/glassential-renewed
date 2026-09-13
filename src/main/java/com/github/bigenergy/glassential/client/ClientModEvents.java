@@ -111,6 +111,4 @@ public class ClientModEvents {
     public static void onRegisterGeometryLoaders(ModelEvent.RegisterGeometryLoaders e) {
         e.register(ResourceLocation.fromNamespaceAndPath(Glassential.MODID, "one_way_loader"), new OneWayModelGeometry.Loader());
     }
-
-    // Model wrapping is now handled by ConnectingBakedModelMixin
 }
