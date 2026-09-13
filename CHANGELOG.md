@@ -1,3 +1,8 @@
+Glassential Renewed 3.4.7
+================
+### Fixed
+- Colorable & Stained colorable glasses fix (support fusion 1.3+)
+
 Glassential Renewed 3.4.6
 ================
 ### Added
