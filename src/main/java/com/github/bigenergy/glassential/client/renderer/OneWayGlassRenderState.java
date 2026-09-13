@@ -13,7 +13,10 @@ import org.jetbrains.annotations.Nullable;
  */
 public class OneWayGlassRenderState extends BlockEntityRenderState {
 
-    /** The mimic block prepared for {@code SubmitNodeCollector#submitMovingBlock}. */
+    /**
+     * What gets submitted via {@code SubmitNodeCollector#submitMovingBlock}: the glass,
+     * as a {@link OneWayMimicRenderState} carrying the mimic and its face.
+     */
     @Nullable
     public MovingBlockRenderState mimicMovingBlock;
 

@@ -1,4 +1,4 @@
 {
-  "loader": "glassential:one_way_loader",
-  "glass_model": "minecraft:block/tinted_glass"
+  "parent": "minecraft:block/tinted_glass",
+  "render_type": "translucent"
 }

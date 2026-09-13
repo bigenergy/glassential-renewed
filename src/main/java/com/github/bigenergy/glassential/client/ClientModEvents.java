@@ -6,6 +6,7 @@ import com.github.bigenergy.glassential.blocks.entity.OneWayGlassBlockEntity;
 import com.github.bigenergy.glassential.client.gui.GlassPainterScreen;
 import com.github.bigenergy.glassential.client.model.OneWayBlockStateModel;
 import com.github.bigenergy.glassential.client.renderer.OneWayGlassBlockEntityRenderer;
+import com.github.bigenergy.glassential.client.renderer.OneWayMimicRenderState;
 import com.github.bigenergy.glassential.init.GlassentialBlockEntities;
 import com.github.bigenergy.glassential.init.GlassentialBlocks;
 import com.github.bigenergy.glassential.items.GlassPainterItem;
@@ -145,23 +146,25 @@ public class ClientModEvents {
                 @Override
                 public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
                     if (Boolean.TRUE.equals(REENTRANT.get())) return 0xFFFFFFFF;
-                    BlockEntity be = level.getBlockEntity(pos);
-                    if (be instanceof OneWayGlassBlockEntity ow) {
-                        BlockState mimic = ow.getMimic();
-                        if (mimic == null || mimic.isAir()) return 0xFFFFFFFF;
-                        if (mimic.getBlock() == state.getBlock()) return 0xFFFFFFFF;
-                        try {
-                            REENTRANT.set(true);
-                            List<BlockTintSource> srcs = bc.getTintSources(mimic);
-                            if (srcs.isEmpty()) return 0xFFFFFFFF;
-                            int c = srcs.get(0).colorInWorld(mimic, level, pos);
-                            // ensure full alpha for translucent rendering
-                            return 0xFF000000 | (c & 0xFFFFFF);
-                        } finally {
-                            REENTRANT.set(false);
-                        }
+                    BlockState mimic = null;
+                    if (level instanceof OneWayMimicRenderState mimicRender) {
+                        // Mimic face drawn by the BER: that level has no block entity.
+                        mimic = mimicRender.mimic;
+                    } else if (level.getBlockEntity(pos) instanceof OneWayGlassBlockEntity ow) {
+                        mimic = ow.getMimic();
                     }
-                    return 0xFFFFFFFF;
+                    if (mimic == null || mimic.isAir()) return 0xFFFFFFFF;
+                    if (mimic.getBlock() == state.getBlock()) return 0xFFFFFFFF;
+                    try {
+                        REENTRANT.set(true);
+                        List<BlockTintSource> srcs = bc.getTintSources(mimic);
+                        if (srcs.isEmpty()) return 0xFFFFFFFF;
+                        int c = srcs.get(0).colorInWorld(mimic, level, pos);
+                        // ensure full alpha for translucent rendering
+                        return 0xFF000000 | (c & 0xFFFFFF);
+                    } finally {
+                        REENTRANT.set(false);
+                    }
                 }
             };
             bc.register(List.of(oneWayTint),
